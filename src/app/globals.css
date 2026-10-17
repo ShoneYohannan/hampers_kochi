@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Palette Option C: Dark Green & Gold with Warm Ivory */
+    --color-forest-900: #0B1D15;
+    --color-forest-800: #10291E;
+    --color-forest-700: #183C2D;
+    --color-forest-600: #23523E;
+    
+    --color-gold-300: #E6CE9F;
+    --color-gold-400: #D8B979;
+    --color-gold-500: #C5A869;
+    --color-gold-600: #A88B4D;
+    
+    --color-ivory-50: #FCFBF8;
+    --color-ivory-100: #F7F4EC;
+    --color-ivory-200: #EFE9DC;
+    --color-ivory-300: #E1D6C2;
+    
+    --color-charcoal-900: #141A17;
+    --color-charcoal-700: #38423D;
+    --color-charcoal-500: #68756F;
+    
+    --background: #FCFBF8;
+    --foreground: #141A17;
+  }
+}
+
+/* Custom Typography Utilities */
+.font-serif-luxury {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.font-sans-clean {
+  font-family: var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Smooth luxury animations & scrollbar */
+html {
+  scroll-behavior: smooth;
+  background-color: #FCFBF8;
+  color: #141A17;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F4EC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C5A869;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A88B4D;
+}
+
+/* Subtle Shimmer Effect for Gold Badges */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #C5A869 0%,
+    #FDF6E2 50%,
+    #C5A869 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear;
+}
+
+.gold-border-glow:hover {
+  box-shadow: 0 0 25px rgba(197, 168, 105, 0.25);
+  border-color: #D8B979;
+}
