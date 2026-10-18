@@ -4,6 +4,7 @@ import './globals.css';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { ToastProvider } from '@/context/ToastContext';
+import { CmsProvider } from '@/context/CmsContext';
 import CartDrawer from '@/components/ui/CartDrawer';
 import CheckoutModal from '@/components/ui/CheckoutModal';
 import WhatsAppConcierge from '@/components/ui/WhatsAppConcierge';
@@ -77,16 +78,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${jakarta.variable} scroll-smooth`}>
       <body className="min-h-screen bg-[#FCFBF8] text-[#141A17] font-sans-clean antialiased selection:bg-[#C5A869]/25 selection:text-[#0B1D15] flex flex-col overflow-x-hidden">
-        <ToastProvider>
-          <CartProvider>
-            <WishlistProvider>
-              {children}
-              <CartDrawer />
-              <CheckoutModal />
-              <WhatsAppConcierge />
-            </WishlistProvider>
-          </CartProvider>
-        </ToastProvider>
+        <CmsProvider>
+          <ToastProvider>
+            <CartProvider>
+              <WishlistProvider>
+                {children}
+                <CartDrawer />
+                <CheckoutModal />
+                <WhatsAppConcierge />
+              </WishlistProvider>
+            </CartProvider>
+          </ToastProvider>
+        </CmsProvider>
       </body>
     </html>
   );

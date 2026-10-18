@@ -14,6 +14,7 @@ import {
   X
 } from 'lucide-react';
 import { useToast } from '@/context/ToastContext';
+import { useCms } from '@/context/CmsContext';
 
 const InstagramIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -37,7 +38,13 @@ export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [termsModalOpen, setTermsModalOpen] = useState(false);
+  const [currentYear, setCurrentYear] = useState('2026');
   const toast = useToast();
+  const { settings } = useCms();
+
+  React.useEffect(() => {
+    setCurrentYear(String(new Date().getFullYear()));
+  }, []);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -197,6 +204,15 @@ export default function Footer() {
                   Privacy & Terms of Atelier
                 </button>
               </li>
+              <li className="pt-1 border-t border-[#C5A869]/15">
+                <Link
+                  href="/cms"
+                  className="text-[#D8B979] hover:text-white transition-colors flex items-center gap-1.5 font-medium"
+                >
+                  <Sparkles className="w-3 h-3 text-[#C5A869]" />
+                  <span>Client Atelier CMS Portal</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -223,28 +239,28 @@ export default function Footer() {
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#D8B979] shrink-0" />
                 <a
-                  href="tel:+919645556010"
-                  className="hover:text-[#D8B979] transition-colors font-medium"
+                  href={`tel:${(settings?.phone || '+91 96455 56010').replace(/\s+/g, '')}`}
+                  className="hover:text-[#D8B979] transition-colors font-medium whitespace-nowrap font-mono"
                   title="Call Phone Concierge"
                 >
-                  +91 96455 56010
+                  {settings?.phone || '+91 96455 56010'}
                 </a>
               </div>
 
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#D8B979] shrink-0" />
                 <a
-                  href="mailto:concierge@thekochiatelier.com"
-                  className="hover:text-[#D8B979] transition-colors font-medium"
+                  href={`mailto:${settings?.email || 'concierge@thekochiatelier.com'}`}
+                  className="hover:text-[#D8B979] transition-colors font-medium whitespace-nowrap truncate max-w-[240px]"
                   title="Send Email"
                 >
-                  concierge@thekochiatelier.com
+                  {settings?.email || 'concierge@thekochiatelier.com'}
                 </a>
               </div>
             </div>
 
             <div className="pt-2 text-[11px] text-[#C5A869]">
-              Studio Hours: Monday – Saturday, 9:30 AM – 8:00 PM IST
+              Studio Hours: {settings?.studioHours || 'Monday – Saturday, 9:30 AM – 8:00 PM IST'}
             </div>
           </div>
 
@@ -253,7 +269,7 @@ export default function Footer() {
         {/* Bottom Rights & Badges */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EFE9DC]/60 gap-4">
           <div>
-            &copy; {new Date().getFullYear()} The Kochi Atelier Ltd. Handcrafted in Kochi &bull; Delivered All Over India.
+            &copy; {currentYear} The Kochi Atelier Ltd. Handcrafted in Kochi &bull; Delivered All Over India.
           </div>
 
           {/* Payment and Assurance Icons */}

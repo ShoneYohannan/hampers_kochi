@@ -64,3 +64,29 @@ export interface CheckoutFormData {
   giftMessage?: string;
   paymentMethod?: 'whatsapp';
 }
+
+export interface StoreSettings {
+  phone: string;
+  whatsapp: string;
+  email: string;
+  address: string;
+  studioHours: string;
+  promoCode: string;
+  promoDiscountPercent: number;
+  freeShippingThreshold: number;
+}
+
+export interface OrderInquiry {
+  id: string;
+  timestamp: string;
+  customerName: string;
+  phone: string;
+  email?: string;
+  city: string;
+  state: string;
+  pincode: string;
+  totalAmount: number;
+  items: { name: string; quantity: number; price: number }[];
+  giftNote?: string;
+}
+

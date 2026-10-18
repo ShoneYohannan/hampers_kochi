@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import { Search, X, Star, ArrowRight, Sparkles } from 'lucide-react';
-import { ALL_PRODUCTS } from '@/data/products';
+import { useCms } from '@/context/CmsContext';
 import { Product } from '@/types';
 
 interface SearchModalProps {
@@ -23,12 +23,13 @@ const POPULAR_SEARCHES = [
 ];
 
 export default function SearchModal({ isOpen, onClose, onSelectProduct }: SearchModalProps) {
+  const { products } = useCms();
   const [query, setQuery] = useState('');
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    return ALL_PRODUCTS.filter(
+    return products.filter(
       (p) =>
         p.name.toLowerCase().includes(q) ||
         p.subtitle.toLowerCase().includes(q) ||

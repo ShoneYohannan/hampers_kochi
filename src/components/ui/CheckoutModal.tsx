@@ -14,6 +14,7 @@ import {
 import confetti from 'canvas-confetti';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
+import { useCms } from '@/context/CmsContext';
 
 const INDIAN_STATES = [
   'Kerala',
@@ -53,6 +54,7 @@ export default function CheckoutModal() {
   } = useCart();
 
   const toast = useToast();
+  const { addInquiry } = useCms();
 
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
@@ -137,6 +139,24 @@ export default function CheckoutModal() {
     );
 
     window.open(`https://wa.me/919645556010?text=${msg}`, '_blank');
+
+    addInquiry({
+      id: generatedId,
+      timestamp: new Date().toLocaleString('en-IN'),
+      customerName: fullName,
+      phone,
+      email: email || undefined,
+      city,
+      state,
+      pincode,
+      totalAmount: finalTotal,
+      items: items.map((i) => ({
+        name: i.product.name,
+        quantity: i.quantity,
+        price: i.product.price,
+      })),
+      giftNote: giftNote || undefined,
+    });
 
     setOrderComplete(true);
     toast.success(`Order ${generatedId} transferred to WhatsApp Concierge!`);

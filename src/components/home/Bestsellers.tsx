@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Sparkles, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
-import { ALL_PRODUCTS } from '@/data/products';
+import { useCms } from '@/context/CmsContext';
 import { Product, OccasionCategory } from '@/types';
 import ProductCard from '@/components/ui/ProductCard';
 
@@ -29,11 +29,12 @@ export default function Bestsellers({
   selectedCategory,
   onSelectCategory,
 }: BestsellersProps) {
+  const { products } = useCms();
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured');
   const [visibleCount, setVisibleCount] = useState(12);
 
   const filteredProducts = useMemo(() => {
-    let list = [...ALL_PRODUCTS];
+    let list = [...products];
 
     if (selectedCategory === 'Bestsellers') {
       list = list.filter((p) => p.isBestseller);

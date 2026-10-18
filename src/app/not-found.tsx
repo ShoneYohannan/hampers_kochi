@@ -77,7 +77,7 @@ export default function NotFound() {
 
       {/* Footer minimal */}
       <footer className="p-6 border-t border-[#C5A869]/15 text-center text-xs text-[#EFE9DC]/50">
-        &copy; {new Date().getFullYear()} The Kochi Atelier. Handcrafted in Kochi, Delivered Across India.
+        &copy; 2026 The Kochi Atelier. Handcrafted in Kochi, Delivered Across India.
       </footer>
 
     </div>
