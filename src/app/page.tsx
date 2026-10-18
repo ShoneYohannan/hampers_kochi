@@ -35,7 +35,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col bg-[#FCFBF8]">
+    <main className="flex flex-col bg-[#FCFBF8]">
       {/* Top Announcement Bar */}
       <AnnouncementBar />
 

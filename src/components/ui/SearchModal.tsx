@@ -116,13 +116,14 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }: Search
                   className="py-3 px-2 flex items-center justify-between hover:bg-[#F7F4EC] rounded-lg transition-colors cursor-pointer group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="relative w-14 h-14 rounded overflow-hidden bg-[#F7F4EC] border border-[#EFE9DC] shrink-0">
+                    <div className="relative w-12 h-16 rounded overflow-hidden bg-[#0B1D15] border border-[#C5A869]/20 shrink-0">
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
                         className="object-cover"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D15]/50 to-transparent" />
                     </div>
                     <div>
                       <h4 className="text-sm font-serif-luxury text-[#0B1D15] group-hover:text-[#23523E] font-medium leading-snug">

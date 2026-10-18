@@ -132,13 +132,14 @@ export default function CartDrawer() {
                   className="flex gap-3.5 p-3 rounded-lg border border-[#EFE9DC] bg-white hover:border-[#C5A869]/50 transition-colors"
                 >
                   {/* Thumbnail */}
-                  <div className="relative w-20 h-20 rounded bg-[#F7F4EC] overflow-hidden shrink-0 border border-[#EFE9DC]">
+                  <div className="relative w-20 h-28 rounded overflow-hidden bg-[#0B1D15] shrink-0 border border-[#C5A869]/20">
                     <Image
                       src={item.product.image}
                       alt={item.product.name}
                       fill
                       className="object-cover"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D15]/60 to-transparent" />
                   </div>
 
                   {/* Details */}

@@ -68,13 +68,14 @@ export default function WishlistModal({ isOpen, onClose, onSelectProduct }: Wish
                     onClose();
                   }}
                 >
-                  <div className="relative w-16 h-16 rounded overflow-hidden bg-[#F7F4EC] border border-[#EFE9DC] shrink-0">
+                  <div className="relative w-14 h-20 rounded overflow-hidden bg-[#0B1D15] border border-[#C5A869]/20 shrink-0">
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
                       className="object-cover"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D15]/60 to-transparent" />
                   </div>
                   <div>
                     <h4 className="text-xs sm:text-sm font-serif-luxury text-[#0B1D15] font-medium line-clamp-1">
