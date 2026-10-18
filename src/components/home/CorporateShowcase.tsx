@@ -1,26 +1,36 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { Briefcase, Building, CheckCircle2, Download, MessageSquare, Send, Sparkles } from 'lucide-react';
+import { useToast } from '@/context/ToastContext';
 
 export default function CorporateShowcase() {
   const [formSent, setFormSent] = useState(false);
   const [companyName, setCompanyName] = useState('');
   const [email, setEmail] = useState('');
   const [quantity, setQuantity] = useState('25-50 Units');
+  const toast = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!companyName.trim() || !email.trim()) {
+      toast.error('Please enter your company name and work email.');
+      return;
+    }
     setFormSent(true);
+    toast.success('Corporate inquiry received! Our concierge will share volume pricing within 2 hours.');
     setTimeout(() => {
       setCompanyName('');
       setEmail('');
-    }, 3000);
+    }, 4000);
   };
 
   const corporateWhatsApp = encodeURIComponent(
-    'Hello The Kochi Atelier Corporate Team, I would like to request your 2026 Corporate Luxury Gifting Catalogue and discuss a bulk curation.'
+    'Hello The Kochi Atelier Corporate Team, I would like to request your 2026 Corporate Luxury Gifting Catalogue and discuss a bespoke bulk curation.'
+  );
+
+  const lookbookWhatsApp = encodeURIComponent(
+    'Hello The Kochi Atelier, please share the 2026 Corporate Luxury Lookbook PDF & Volume Gifting Suite.'
   );
 
   return (
@@ -79,11 +89,13 @@ export default function CorporateShowcase() {
               </a>
 
               <a
-                href="#contact"
-                className="px-6 py-3.5 rounded bg-[#183C2D] border border-[#C5A869]/40 text-[#FCFBF8] hover:bg-[#23523E] font-medium text-xs uppercase tracking-[0.18em] transition-all flex items-center gap-2"
+                href={`https://wa.me/919645556010?text=${lookbookWhatsApp}`}
+                target="_blank"
+                rel="noreferrer"
+                className="px-6 py-3.5 rounded bg-[#183C2D] border border-[#C5A869]/40 text-[#FCFBF8] hover:bg-[#23523E] font-medium text-xs uppercase tracking-[0.18em] transition-all flex items-center gap-2 cursor-pointer"
               >
                 <Download className="w-4 h-4 text-[#D8B979]" />
-                <span>Download Lookbook PDF</span>
+                <span>Request Lookbook PDF</span>
               </a>
             </div>
 
@@ -91,7 +103,7 @@ export default function CorporateShowcase() {
 
           {/* Right Corporate Form / Card */}
           <div className="lg:col-span-5">
-            <div className="bg-[#10291E] p-8 rounded-xl border border-[#C5A869]/40 shadow-2xl relative">
+            <div className="bg-[#10291E] p-6 sm:p-8 rounded-xl border border-[#C5A869]/40 shadow-2xl relative">
               <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#C5A869]/20">
                 <Building className="w-6 h-6 text-[#D8B979]" />
                 <div>
@@ -114,12 +126,12 @@ export default function CorporateShowcase() {
                 <form onSubmit={handleSubmit} className="space-y-4 text-left">
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-[#EFE9DC]/75 mb-1">
-                      Organization / Company Name
+                      Organization / Company Name *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Sterling Capital, Bangalore"
+                      placeholder="e.g. Prestige Tech Solutions"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
                       className="w-full bg-[#0B1D15] border border-[#C5A869]/30 rounded p-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-[#D8B979]"
@@ -128,7 +140,7 @@ export default function CorporateShowcase() {
 
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-[#EFE9DC]/75 mb-1">
-                      Work Email Address
+                      Work Email Address *
                     </label>
                     <input
                       type="email"

@@ -10,9 +10,10 @@ import {
   ArrowRight, 
   ShieldCheck, 
   Truck, 
-  HeartHandshake, 
-  Check
+  Check,
+  X
 } from 'lucide-react';
+import { useToast } from '@/context/ToastContext';
 
 const InstagramIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -26,22 +27,25 @@ const FacebookIcon = () => (
   </svg>
 );
 
-const LinkedinIcon = () => (
+const WhatsAppIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
   </svg>
 );
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [termsModalOpen, setTermsModalOpen] = useState(false);
+  const toast = useToast();
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (newsletterEmail) {
+    if (newsletterEmail && newsletterEmail.includes('@')) {
       setSubscribed(true);
+      toast.success('Welcome to The Atelier Circle! Code ROYAL10 copied.');
+    } else {
+      toast.error('Please enter a valid email address.');
     }
   };
 
@@ -99,31 +103,58 @@ export default function Footer() {
               <div className="text-[10px] tracking-[0.3em] text-[#C5A869] font-medium uppercase mb-1">
                 Haute Gifting Atelier
               </div>
-              <h2 className="text-2xl font-serif-luxury tracking-widest text-[#FCFBF8] font-normal">
-                THE KOCHI ATELIER
-              </h2>
+              <Link
+                href="/"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="inline-block group"
+              >
+                <h2 className="text-2xl font-serif-luxury tracking-widest text-[#FCFBF8] font-normal group-hover:text-[#C5A869] transition-colors">
+                  THE KOCHI ATELIER
+                </h2>
+              </Link>
             </div>
             
             <p className="text-xs text-[#EFE9DC]/75 leading-relaxed font-light">
-              Crafting transcendent luxury hampers inspired by the historic maritime splendour of 
+              Crafting transcendent luxury gift hampers inspired by the historic maritime splendour of 
               the Malabar coast. Sourced with honor, curated with precision, and delivered across India 
               with distinction.
             </p>
 
             <div className="flex items-center gap-3 pt-2 text-[#D8B979]">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-[#183C2D] border border-[#C5A869]/30 flex items-center justify-center hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/hampers_kochi/"
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-full bg-[#183C2D] border border-[#C5A869]/30 flex items-center justify-center hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors"
+                aria-label="Instagram"
+                title="Follow on Instagram"
+              >
                 <InstagramIcon />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-[#183C2D] border border-[#C5A869]/30 flex items-center justify-center hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors" aria-label="Facebook">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-full bg-[#183C2D] border border-[#C5A869]/30 flex items-center justify-center hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors"
+                aria-label="Facebook"
+                title="Facebook"
+              >
                 <FacebookIcon />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-[#183C2D] border border-[#C5A869]/30 flex items-center justify-center hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors" aria-label="LinkedIn">
-                <LinkedinIcon />
+              <a
+                href="https://wa.me/919645556010"
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-full bg-[#183C2D] border border-[#C5A869]/30 flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-colors"
+                aria-label="WhatsApp"
+                title="WhatsApp Concierge"
+              >
+                <WhatsAppIcon />
               </a>
             </div>
           </div>
 
-          {/* Col 2: Hampers & Curations (3 cols) */}
+          {/* Col 2: Curated Collections (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#C5A869] font-semibold">
               Curated Collections
@@ -132,13 +163,13 @@ export default function Footer() {
               <li><a href="#bestsellers" className="hover:text-[#D8B979] transition-colors">Bestseller Curations</a></li>
               <li><a href="#occasions" className="hover:text-[#D8B979] transition-colors">Wedding & Bridal Suites</a></li>
               <li><a href="#occasions" className="hover:text-[#D8B979] transition-colors">Anniversary & Romance Trunks</a></li>
-              <li><a href="#occasions" className="hover:text-[#D8B979] transition-colors">Festive & Diwali Brass Hampers</a></li>
+              <li><a href="#occasions" className="hover:text-[#D8B979] transition-colors">Festive & Traditional Hampers</a></li>
               <li><a href="#corporate" className="hover:text-[#D8B979] transition-colors">Executive Corporate Gifting</a></li>
               <li><a href="#bestsellers" className="hover:text-[#D8B979] transition-colors">Single-Estate Tea & Spices</a></li>
             </ul>
           </div>
 
-          {/* Col 3: Customer Care & Pan-India (2 cols) */}
+          {/* Col 3: Client Concierge (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#C5A869] font-semibold">
               Client Concierge
@@ -146,10 +177,26 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-[#EFE9DC]/80 font-light">
               <li><a href="#story" className="hover:text-[#D8B979] transition-colors">Our Craft & Story</a></li>
               <li><a href="#testimonials" className="hover:text-[#D8B979] transition-colors">Client Reviews</a></li>
-              <li><span className="text-[#D8B979]">All India Express Shipping</span></li>
-              <li><span className="text-[#EFE9DC]/60">Chilled Transit Protection</span></li>
-              <li><span className="text-[#EFE9DC]/60">Track Your Consignment</span></li>
-              <li><span className="text-[#EFE9DC]/60">Privacy & Terms of Atelier</span></li>
+              <li><a href="#delivery" className="hover:text-[#D8B979] transition-colors">All India Express Shipping</a></li>
+              <li><a href="#delivery" className="hover:text-[#D8B979] transition-colors">Chilled Transit Protection</a></li>
+              <li>
+                <a
+                  href="https://wa.me/919645556010?text=Hello%20Concierge,%20I%20would%20like%20to%20track%20my%20consignment."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-[#D8B979] transition-colors flex items-center gap-1"
+                >
+                  <span>Track Consignment</span>
+                </a>
+              </li>
+              <li>
+                <button
+                  onClick={() => setTermsModalOpen(true)}
+                  className="hover:text-[#D8B979] transition-colors text-left cursor-pointer"
+                >
+                  Privacy & Terms of Atelier
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -159,22 +206,38 @@ export default function Footer() {
               Studio & Atelier
             </h4>
             
-            <div className="space-y-2 text-xs text-[#EFE9DC]/80 font-light">
-              <div className="flex items-start gap-2">
+            <div className="space-y-2.5 text-xs text-[#EFE9DC]/80 font-light">
+              <a
+                href="https://maps.google.com/?q=Panampilly+Nagar+Kochi+Kerala"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-start gap-2 hover:text-[#D8B979] transition-colors"
+                title="View on Google Maps"
+              >
                 <MapPin className="w-4 h-4 text-[#D8B979] shrink-0 mt-0.5" />
                 <span>
                   Atelier House, 4th Cross Road, Panampilly Nagar & Bastion Street, Fort Kochi, Kerala 682001
                 </span>
-              </div>
+              </a>
 
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#D8B979] shrink-0" />
-                <a href="tel:+919645556010" className="hover:text-[#D8B979]">+91 96455 56010</a>
+                <a
+                  href="tel:+919645556010"
+                  className="hover:text-[#D8B979] transition-colors font-medium"
+                  title="Call Phone Concierge"
+                >
+                  +91 96455 56010
+                </a>
               </div>
 
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#D8B979] shrink-0" />
-                <a href="mailto:concierge@thekochiatelier.com" className="hover:text-[#D8B979]">
+                <a
+                  href="mailto:concierge@thekochiatelier.com"
+                  className="hover:text-[#D8B979] transition-colors font-medium"
+                  title="Send Email"
+                >
                   concierge@thekochiatelier.com
                 </a>
               </div>
@@ -190,17 +253,62 @@ export default function Footer() {
         {/* Bottom Rights & Badges */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EFE9DC]/60 gap-4">
           <div>
-            &copy; 2026 The Kochi Atelier Ltd. Handcrafted in Kochi &bull; Delivered All Over India.
+            &copy; {new Date().getFullYear()} The Kochi Atelier Ltd. Handcrafted in Kochi &bull; Delivered All Over India.
           </div>
 
           {/* Payment and Assurance Icons */}
-          <div className="flex items-center gap-4 text-[11px]">
-            <span className="text-[#D8B979]">&bull; 100% Secure Checkout</span>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-[11px]">
+            <span className="text-[#D8B979]">&bull; 100% Secure WhatsApp Ordering</span>
             <span>UPI &bull; Netbanking &bull; Visa &bull; Mastercard &bull; Razorpay</span>
           </div>
         </div>
 
       </div>
+
+      {/* Atelier Privacy & Terms Modal */}
+      {termsModalOpen && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in">
+          <div
+            className="relative bg-[#0B1D15] border border-[#C5A869]/40 rounded-xl max-w-xl w-full p-6 sm:p-8 text-left shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between pb-3 border-b border-[#C5A869]/20">
+              <h3 className="text-xl font-serif-luxury text-white">Atelier Standards & Terms</h3>
+              <button
+                onClick={() => setTermsModalOpen(false)}
+                className="p-1 rounded-full text-[#EFE9DC]/70 hover:text-white transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="text-xs text-[#EFE9DC]/80 space-y-3 font-light leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
+              <p>
+                <strong>Handcrafted Curations:</strong> Every gift curation from The Kochi Atelier is assembled by master artisans. Perishable confectionery and chocolates are temperature-shielded with ice packs for climate-safe pan-India transit.
+              </p>
+              <p>
+                <strong>Dispatch & Delivery:</strong> Express dispatches occur within 24 to 48 hours from our Fort Kochi studio. BlueDart Air and premium couriers deliver within 2 to 4 business days to 28,000+ Indian postal codes.
+              </p>
+              <p>
+                <strong>Client Confidentiality & Privacy:</strong> Recipient names, custom calligraphy notes, and corporate data remain strictly confidential. We never disclose client gifting lists to third parties.
+              </p>
+              <p>
+                <strong>Damage-Free Guarantee:</strong> If any curation suffers transit damage, we immediately dispatch an artisan replacement upon receipt of unboxing photos via our WhatsApp concierge (+91 96455 56010).
+              </p>
+            </div>
+
+            <div className="pt-3 border-t border-[#C5A869]/20 text-right">
+              <button
+                onClick={() => setTermsModalOpen(false)}
+                className="px-6 py-2.5 rounded bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] text-xs font-semibold uppercase tracking-wider transition-colors"
+              >
+                Understood
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

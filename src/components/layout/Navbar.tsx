@@ -9,6 +9,9 @@ import {
   X,
   ChevronDown,
   Phone,
+  MessageSquare,
+  Sparkles,
+  Heart,
 } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
@@ -17,6 +20,7 @@ interface NavbarProps {
   onOpenSearch: () => void;
   onOpenWishlist: () => void;
   onOpenBuilder: () => void;
+  onSelectOccasion?: (occasion: string) => void;
 }
 
 export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: NavbarProps) {
@@ -30,24 +34,31 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    setMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const shopLinks = [
-    { label: 'All Hampers', href: '#bestsellers' },
-    { label: 'Bestsellers', href: '#bestsellers' },
-    { label: 'New Arrivals', href: '#bestsellers' },
-    { label: 'Limited Editions', href: '#bestsellers' },
+    { label: 'All Curated Hampers', href: '#bestsellers' },
+    { label: 'Bestseller Curations', href: '#bestsellers' },
+    { label: 'Rare Limited Editions', href: '#bestsellers' },
+    { label: 'Gourmet Treats & Teas', href: '#bestsellers' },
   ];
 
   const occasionLinks = [
-    { label: 'Birthday', href: '#bestsellers' },
-    { label: 'Wedding & Bridal', href: '#bestsellers' },
-    { label: 'Anniversary & Romance', href: '#bestsellers' },
-    { label: 'Festive & Celebration', href: '#bestsellers' },
-    { label: 'Corporate & Executive', href: '#bestsellers' },
-    { label: 'Gourmet & Sweets', href: '#bestsellers' },
+    { label: 'Birthday Celebrations', href: '#occasions' },
+    { label: 'Wedding & Bridal Suite', href: '#occasions' },
+    { label: 'Anniversary & Romance', href: '#occasions' },
+    { label: 'Festive & Traditional Brass', href: '#occasions' },
+    { label: 'Corporate & Executive Gifting', href: '#corporate' },
   ];
 
   return (
@@ -58,22 +69,32 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
           : 'bg-[#0B1D15] border-b border-[#C5A869]/15 py-4'
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        <div className="flex items-center justify-between gap-6">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="flex items-center justify-between gap-4">
 
-          {/* Logo / Wordmark */}
-          <Link href="/" className="flex-shrink-0 group">
+          {/* Logo / Wordmark - Clickable to top */}
+          <Link
+            href="/"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex-shrink-0 group flex items-center gap-2"
+          >
             <span className="font-serif-luxury text-[#EFE9DC] text-xl sm:text-2xl tracking-wide italic group-hover:text-[#C5A869] transition-colors">
               hampers<span className="text-[#C5A869] not-italic">_</span>kochi
             </span>
           </Link>
 
-          {/* Desktop Navigation — centered */}
+          {/* Desktop Navigation — Centered */}
           <nav className="hidden lg:flex items-center gap-7 text-[11px] uppercase tracking-[0.2em] font-medium text-[#EFE9DC]/85">
 
-            <a href="/" className="hover:text-[#C5A869] transition-colors py-1">
+            <Link
+              href="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="hover:text-[#C5A869] transition-colors py-1"
+            >
               Home
-            </a>
+            </Link>
 
             {/* Shop Hampers Dropdown */}
             <div
@@ -81,12 +102,15 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
               onMouseEnter={() => setShopDropdown(true)}
               onMouseLeave={() => setShopDropdown(false)}
             >
-              <button className="flex items-center gap-1 hover:text-[#C5A869] transition-colors py-1 cursor-pointer">
+              <button
+                onClick={() => scrollToSection('bestsellers')}
+                className="flex items-center gap-1 hover:text-[#C5A869] transition-colors py-1 cursor-pointer"
+              >
                 <span>Shop Hampers</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${shopDropdown ? 'rotate-180 text-[#C5A869]' : ''}`} />
               </button>
               {shopDropdown && (
-                <div className="absolute top-full -left-4 w-52 bg-[#0B1D15] border border-[#C5A869]/25 shadow-2xl py-2 rounded-sm animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="absolute top-full -left-4 w-56 bg-[#0B1D15] border border-[#C5A869]/25 shadow-2xl py-2 rounded-sm animate-in fade-in slide-in-from-top-1 duration-150">
                   {shopLinks.map((item) => (
                     <a
                       key={item.label}
@@ -107,7 +131,10 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
               onMouseEnter={() => setOccasionsDropdown(true)}
               onMouseLeave={() => setOccasionsDropdown(false)}
             >
-              <button className="flex items-center gap-1 hover:text-[#C5A869] transition-colors py-1 cursor-pointer">
+              <button
+                onClick={() => scrollToSection('occasions')}
+                className="flex items-center gap-1 hover:text-[#C5A869] transition-colors py-1 cursor-pointer"
+              >
                 <span>Occasions</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${occasionsDropdown ? 'rotate-180 text-[#C5A869]' : ''}`} />
               </button>
@@ -127,6 +154,15 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
               )}
             </div>
 
+            {/* Custom Builder Promo trigger */}
+            <button
+              onClick={onOpenBuilder}
+              className="hover:text-[#C5A869] text-[#D8B979] transition-colors py-1 flex items-center gap-1 cursor-pointer"
+            >
+              <Sparkles className="w-3 h-3" />
+              <span>Create Hamper</span>
+            </button>
+
             <a href="#corporate" className="hover:text-[#C5A869] transition-colors py-1">
               Corporate Gifts
             </a>
@@ -140,69 +176,187 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
             </a>
           </nav>
 
-          {/* Right Icons */}
+          {/* Right Action Icons */}
           <div className="flex items-center gap-1 sm:gap-2">
             {/* Search */}
             <button
               onClick={onOpenSearch}
-              className="p-2.5 text-[#EFE9DC]/80 hover:text-[#C5A869] transition-colors"
-              aria-label="Search"
+              className="p-2 sm:p-2.5 text-[#EFE9DC]/80 hover:text-[#C5A869] transition-colors cursor-pointer"
+              aria-label="Search Catalog"
+              title="Search Catalog"
             >
               <Search className="w-4 h-4" />
             </button>
 
-            {/* Phone / WhatsApp */}
+            {/* Wishlist */}
+            <button
+              onClick={onOpenWishlist}
+              className="relative p-2 sm:p-2.5 text-[#EFE9DC]/80 hover:text-[#C5A869] transition-colors cursor-pointer"
+              aria-label="Wishlist"
+              title="Saved Items"
+            >
+              <Heart className="w-4 h-4" />
+              {wishlistCount > 0 && (
+                <span className="absolute 1 top-1.5 right-1.5 w-3.5 h-3.5 bg-[#C5A869] text-[#0B1D15] rounded-full text-[9px] font-bold flex items-center justify-center">
+                  {wishlistCount}
+                </span>
+              )}
+            </button>
+
+            {/* Clickable Phone Number */}
+            <a
+              href="tel:+919645556010"
+              className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 text-[#EFE9DC]/80 hover:text-[#C5A869] text-[11px] tracking-wider transition-colors border border-transparent hover:border-[#C5A869]/30 rounded"
+              title="Call The Kochi Atelier"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#C5A869]" />
+              <span className="hidden xl:inline">+91 96455 56010</span>
+            </a>
+
+            {/* WhatsApp direct chat link */}
             <a
               href="https://wa.me/919645556010"
               target="_blank"
               rel="noreferrer"
-              className="hidden sm:flex p-2.5 text-[#EFE9DC]/80 hover:text-[#C5A869] transition-colors"
-              aria-label="Call us"
+              className="hidden sm:flex p-2 sm:p-2.5 text-[#EFE9DC]/80 hover:text-[#25D366] transition-colors"
+              aria-label="Chat on WhatsApp"
+              title="WhatsApp Concierge"
             >
-              <Phone className="w-4 h-4" />
+              <MessageSquare className="w-4 h-4" />
             </a>
 
-            {/* Cart */}
+            {/* Shopping Bag Button */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative flex items-center gap-1.5 px-3.5 py-2 border border-[#C5A869]/40 text-[#EFE9DC]/90 hover:border-[#C5A869] hover:text-[#C5A869] transition-all duration-200 text-[11px] tracking-[0.15em] uppercase"
+              className="relative flex items-center gap-1.5 px-3 py-2 border border-[#C5A869]/40 text-[#EFE9DC]/90 hover:border-[#C5A869] hover:text-[#C5A869] transition-all duration-200 text-[11px] tracking-[0.15em] uppercase cursor-pointer"
               aria-label="Shopping Bag"
             >
-              <ShoppingBag className="w-4 h-4" />
+              <ShoppingBag className="w-4 h-4 text-[#C5A869]" />
               <span className="hidden sm:inline">Bag</span>
               {totalItems > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#C5A869] text-[#0B1D15] rounded-full text-[10px] font-bold flex items-center justify-center">
+                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#C5A869] text-[#0B1D15] rounded-full text-[10px] font-bold flex items-center justify-center shadow-sm">
                   {totalItems}
                 </span>
               )}
             </button>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2.5 text-[#EFE9DC]/80 hover:text-[#C5A869] transition-colors ml-1"
-              aria-label="Menu"
+              className="lg:hidden p-2 text-[#EFE9DC]/80 hover:text-[#C5A869] transition-colors ml-0.5 cursor-pointer"
+              aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Mobile Menu'}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#C5A869]" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Enhanced Luxury Mobile Drawer / Slide-Out Navigation */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0B1D15] border-t border-[#C5A869]/15 px-6 py-6 space-y-5 animate-in slide-in-from-top-3 duration-200">
-          <div className="flex flex-col space-y-4 text-[12px] uppercase tracking-[0.2em] font-medium">
-            <a href="#bestsellers" onClick={() => setMobileMenuOpen(false)} className="text-[#EFE9DC]/85 hover:text-[#C5A869] py-1 border-b border-[#C5A869]/10 pb-3">Shop Hampers</a>
-            <a href="#occasions" onClick={() => setMobileMenuOpen(false)} className="text-[#EFE9DC]/85 hover:text-[#C5A869] py-1 border-b border-[#C5A869]/10 pb-3">Occasions</a>
-            <button onClick={() => { setMobileMenuOpen(false); onOpenBuilder(); }} className="text-left text-[#C5A869] hover:text-[#D8B979] py-1 border-b border-[#C5A869]/10 pb-3">Create Your Own</button>
-            <a href="#corporate" onClick={() => setMobileMenuOpen(false)} className="text-[#EFE9DC]/85 hover:text-[#C5A869] py-1 border-b border-[#C5A869]/10 pb-3">Corporate Gifts</a>
-            <a href="#story" onClick={() => setMobileMenuOpen(false)} className="text-[#EFE9DC]/85 hover:text-[#C5A869] py-1 border-b border-[#C5A869]/10 pb-3">Our Story</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="text-[#EFE9DC]/85 hover:text-[#C5A869] py-1">Contact</a>
+        <div className="lg:hidden bg-[#0B1D15] border-t border-[#C5A869]/20 px-6 py-6 space-y-6 animate-in slide-in-from-top-3 duration-200 shadow-2xl">
+          
+          {/* Main Navigation links */}
+          <div className="flex flex-col space-y-3.5 text-xs uppercase tracking-[0.2em] font-medium text-[#EFE9DC]/90">
+            
+            <a
+              href="#bestsellers"
+              onClick={() => scrollToSection('bestsellers')}
+              className="hover:text-[#C5A869] py-1 border-b border-[#C5A869]/10 pb-3 flex items-center justify-between"
+            >
+              <span>Shop All Hampers</span>
+              <span className="text-[10px] text-[#C5A869]">Explore &rarr;</span>
+            </a>
+
+            <a
+              href="#occasions"
+              onClick={() => scrollToSection('occasions')}
+              className="hover:text-[#C5A869] py-1 border-b border-[#C5A869]/10 pb-3 flex items-center justify-between"
+            >
+              <span>Curated Occasions</span>
+              <span className="text-[10px] text-[#C5A869]">Weddings, Birthdays &bull;</span>
+            </a>
+
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenBuilder();
+              }}
+              className="text-left text-[#D8B979] hover:text-white py-1 border-b border-[#C5A869]/10 pb-3 flex items-center justify-between cursor-pointer"
+            >
+              <span className="flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#C5A869]" />
+                Create Your Own Hamper
+              </span>
+              <span className="text-[9px] bg-[#C5A869]/20 text-[#D8B979] px-2 py-0.5 rounded uppercase">Custom</span>
+            </button>
+
+            <a
+              href="#corporate"
+              onClick={() => scrollToSection('corporate')}
+              className="hover:text-[#C5A869] py-1 border-b border-[#C5A869]/10 pb-3 flex items-center justify-between"
+            >
+              <span>Corporate Gifting</span>
+              <span className="text-[10px] text-[#EFE9DC]/50">Bulk Suites</span>
+            </a>
+
+            <a
+              href="#story"
+              onClick={() => scrollToSection('story')}
+              className="hover:text-[#C5A869] py-1 border-b border-[#C5A869]/10 pb-3"
+            >
+              Our Story & Heritage
+            </a>
+
+            <a
+              href="#delivery"
+              onClick={() => scrollToSection('delivery')}
+              className="hover:text-[#C5A869] py-1 border-b border-[#C5A869]/10 pb-3"
+            >
+              Pan-India Express Delivery
+            </a>
+
+            <a
+              href="#testimonials"
+              onClick={() => scrollToSection('testimonials')}
+              className="hover:text-[#C5A869] py-1 border-b border-[#C5A869]/10 pb-3"
+            >
+              Client Reviews
+            </a>
+
+            <a
+              href="#contact"
+              onClick={() => scrollToSection('contact')}
+              className="hover:text-[#C5A869] py-1"
+            >
+              Contact & Studio
+            </a>
           </div>
 
-          <div className="pt-2 text-[10px] tracking-[0.2em] uppercase text-[#C5A869]/60">
-            Pan-India Express · 28,000+ Pincodes
+          {/* Direct Mobile Contact CTA Box */}
+          <div className="pt-2 border-t border-[#C5A869]/15 flex flex-col gap-2.5">
+            <a
+              href="tel:+919645556010"
+              className="w-full py-3 px-4 rounded bg-[#183C2D] border border-[#C5A869]/40 text-[#EFE9DC] text-xs font-semibold uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:bg-[#23523E] transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#D8B979]" />
+              <span>Call Concierge: +91 96455 56010</span>
+            </a>
+
+            <a
+              href="https://wa.me/919645556010"
+              target="_blank"
+              rel="noreferrer"
+              className="w-full py-3 px-4 rounded bg-[#25D366] text-white text-xs font-semibold uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-colors shadow-md"
+            >
+              <MessageSquare className="w-3.5 h-3.5 text-white" />
+              <span>WhatsApp Direct Chat</span>
+            </a>
+          </div>
+
+          {/* Shipping badge */}
+          <div className="text-[10px] tracking-[0.2em] uppercase text-[#C5A869]/70 text-center">
+            Express Climate-Controlled Shipping Across 28,000+ Pincodes
           </div>
         </div>
       )}

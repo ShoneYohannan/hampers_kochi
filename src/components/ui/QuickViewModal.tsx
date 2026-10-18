@@ -19,6 +19,7 @@ import {
 import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
+import { useToast } from '@/context/ToastContext';
 
 interface QuickViewModalProps {
   product: Product | null;
@@ -28,6 +29,7 @@ interface QuickViewModalProps {
 export default function QuickViewModal({ product, onClose }: QuickViewModalProps) {
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
+  const toast = useToast();
 
   const [selectedImage, setSelectedImage] = useState<string>('');
   const [quantity, setQuantity] = useState(1);
@@ -43,6 +45,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
   const handleAddToCart = () => {
     addToCart(product, quantity, giftNote, recipient);
     setAdded(true);
+    toast.success(`Added ${quantity}x "${product.name}" to Bag!`);
     setTimeout(() => {
       setAdded(false);
       onClose();
@@ -144,8 +147,16 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                 </div>
 
                 <button
-                  onClick={() => toggleWishlist(product)}
-                  className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded border transition-colors ${
+                  type="button"
+                  onClick={() => {
+                    toggleWishlist(product);
+                    if (!isFavorited) {
+                      toast.success(`Saved "${product.name}" to your Wishlist`);
+                    } else {
+                      toast.info(`Removed "${product.name}" from your Wishlist`);
+                    }
+                  }}
+                  className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded border transition-colors cursor-pointer ${
                     isFavorited
                       ? 'border-[#C5A869] text-[#C5A869] bg-[#C5A869]/10'
                       : 'border-[#EFE9DC] text-[#68756F] hover:text-[#0B1D15]'

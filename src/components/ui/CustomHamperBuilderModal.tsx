@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { BUILDER_ITEMS } from '@/data/products';
 import { useCart } from '@/context/CartContext';
+import { useToast } from '@/context/ToastContext';
 import { Product } from '@/types';
 
 interface CustomHamperBuilderModalProps {
@@ -27,6 +28,7 @@ interface CustomHamperBuilderModalProps {
 
 export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamperBuilderModalProps) {
   const { addToCart } = useCart();
+  const toast = useToast();
 
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(1);
   const [selectedBox, setSelectedBox] = useState(BUILDER_ITEMS.boxes[0]);
@@ -95,6 +97,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
     };
 
     addToCart(customProduct, 1, calligraphyMessage, recipientName);
+    toast.success(`Bespoke Hamper in "${selectedBox.name}" added to Bag!`);
     onClose();
   };
 

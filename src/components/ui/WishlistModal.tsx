@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { X, Heart, ShoppingBag, Trash2, ArrowRight } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
+import { useToast } from '@/context/ToastContext';
 import { Product } from '@/types';
 
 interface WishlistModalProps {
@@ -16,6 +17,7 @@ interface WishlistModalProps {
 export default function WishlistModal({ isOpen, onClose, onSelectProduct }: WishlistModalProps) {
   const { wishlist, toggleWishlist } = useWishlist();
   const { addToCart } = useCart();
+  const toast = useToast();
 
   if (!isOpen) return null;
 
@@ -92,16 +94,26 @@ export default function WishlistModal({ isOpen, onClose, onSelectProduct }: Wish
 
                 <div className="flex items-center gap-2">
                   <button
-                    onClick={() => addToCart(product, 1)}
-                    className="p-2 rounded bg-[#0B1D15] text-[#FCFBF8] hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors"
+                    type="button"
+                    onClick={() => {
+                      addToCart(product, 1);
+                      toast.success(`Added "${product.name}" to Bag!`);
+                    }}
+                    className="p-2 rounded bg-[#0B1D15] text-[#FCFBF8] hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors cursor-pointer"
                     title="Add to Bag"
+                    aria-label="Add to Bag"
                   >
                     <ShoppingBag className="w-4 h-4" />
                   </button>
                   <button
-                    onClick={() => toggleWishlist(product)}
-                    className="p-2 text-[#68756F] hover:text-red-700 transition-colors"
+                    type="button"
+                    onClick={() => {
+                      toggleWishlist(product);
+                      toast.info(`Removed "${product.name}" from Wishlist`);
+                    }}
+                    className="p-2 text-[#68756F] hover:text-red-700 transition-colors cursor-pointer"
                     title="Remove"
+                    aria-label="Remove from wishlist"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>

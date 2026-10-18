@@ -37,10 +37,11 @@ export default function InstagramGallery() {
           </div>
 
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/hampers_kochi/"
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#C5A869]/50 text-xs font-medium uppercase tracking-wider text-[#0B1D15] hover:bg-[#0B1D15] hover:text-[#FCFBF8] transition-all"
+            title="Follow hampers_kochi on Instagram"
           >
             <InstagramIcon className="w-4 h-4 text-[#C5A869]" />
             <span>Follow @thekochiatelier</span>

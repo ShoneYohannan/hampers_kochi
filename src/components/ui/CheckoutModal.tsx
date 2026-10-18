@@ -8,10 +8,12 @@ import {
   CheckCircle2, 
   MessageSquare, 
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  AlertCircle
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useCart } from '@/context/CartContext';
+import { useToast } from '@/context/ToastContext';
 
 const INDIAN_STATES = [
   'Kerala',
@@ -50,6 +52,8 @@ export default function CheckoutModal() {
     clearCart,
   } = useCart();
 
+  const toast = useToast();
+
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -59,6 +63,7 @@ export default function CheckoutModal() {
   const [pincode, setPincode] = useState('');
   const [deliveryDate, setDeliveryDate] = useState('');
   const [giftNote, setGiftNote] = useState('');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [orderComplete, setOrderComplete] = useState(false);
   const [orderId, setOrderId] = useState('');
 
@@ -68,6 +73,35 @@ export default function CheckoutModal() {
 
   const handlePlaceOrder = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage(null);
+
+    // Validation checks
+    if (!fullName.trim()) {
+      setErrorMessage('Please provide your recipient or contact full name.');
+      toast.error('Recipient name is required.');
+      return;
+    }
+
+    const cleanPhone = phone.replace(/\D/g, '');
+    if (cleanPhone.length < 10) {
+      setErrorMessage('Please provide a valid 10-digit mobile number for dispatch coordination.');
+      toast.error('Invalid phone number (minimum 10 digits required).');
+      return;
+    }
+
+    if (!address.trim() || !city.trim()) {
+      setErrorMessage('Please provide a complete street address and city.');
+      toast.error('Complete street address & city are required.');
+      return;
+    }
+
+    const cleanPin = pincode.replace(/\D/g, '');
+    if (cleanPin.length !== 6) {
+      setErrorMessage('Please enter a valid 6-digit Indian Postal PIN code.');
+      toast.error('PIN code must be exactly 6 digits.');
+      return;
+    }
+
     const generatedId = `TKA-${Math.floor(100000 + Math.random() * 900000)}`;
     setOrderId(generatedId);
 
@@ -105,30 +139,32 @@ export default function CheckoutModal() {
     window.open(`https://wa.me/919645556010?text=${msg}`, '_blank');
 
     setOrderComplete(true);
+    toast.success(`Order ${generatedId} transferred to WhatsApp Concierge!`);
     clearCart();
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
       <div 
         className="relative bg-white rounded-xl shadow-2xl max-w-3xl w-full overflow-hidden border border-[#C5A869]/30 text-left"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="p-5 bg-[#0B1D15] text-[#FCFBF8] border-b border-[#C5A869]/30 flex items-center justify-between">
+        <div className="p-4 sm:p-5 bg-[#0B1D15] text-[#FCFBF8] border-b border-[#C5A869]/30 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-[#D8B979]" />
-            <h2 className="text-lg font-serif-luxury tracking-wider">
+            <h2 className="text-base sm:text-lg font-serif-luxury tracking-wider">
               {orderComplete ? 'Order Transmitted via WhatsApp' : 'Direct WhatsApp Order & Delivery Details'}
             </h2>
           </div>
           
           <button
+            type="button"
             onClick={() => {
               setIsCheckoutOpen(false);
               setOrderComplete(false);
             }}
-            className="p-1.5 rounded-full text-[#EFE9DC]/75 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-1.5 rounded-full text-[#EFE9DC]/75 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Close checkout"
           >
             <X className="w-5 h-5" />
@@ -137,7 +173,7 @@ export default function CheckoutModal() {
 
         {orderComplete ? (
           /* Order Confirmation Screen */
-          <div className="p-8 sm:p-12 text-center space-y-6">
+          <div className="p-6 sm:p-12 text-center space-y-6">
             <div className="w-16 h-16 rounded-full bg-[#183C2D] border border-[#C5A869] text-[#D8B979] flex items-center justify-center mx-auto shadow-lg">
               <CheckCircle2 className="w-9 h-9" />
             </div>
@@ -154,7 +190,7 @@ export default function CheckoutModal() {
               </p>
             </div>
 
-            <div className="p-5 rounded-lg bg-[#FCFBF8] border border-[#EFE9DC] text-xs text-[#38423D] max-w-md mx-auto space-y-2 text-left">
+            <div className="p-4 sm:p-5 rounded-lg bg-[#FCFBF8] border border-[#EFE9DC] text-xs text-[#38423D] max-w-md mx-auto space-y-2 text-left">
               <div className="flex justify-between">
                 <span className="text-[#68756F]">Delivery Destination:</span>
                 <span className="font-medium text-[#0B1D15]">{city}, {state} ({pincode})</span>
@@ -174,18 +210,19 @@ export default function CheckoutModal() {
             </p>
 
             <button
+              type="button"
               onClick={() => {
                 setIsCheckoutOpen(false);
                 setOrderComplete(false);
               }}
-              className="px-8 py-3.5 rounded bg-[#0B1D15] text-[#FCFBF8] hover:bg-[#C5A869] hover:text-[#0B1D15] text-xs uppercase tracking-[0.2em] font-medium transition-colors shadow-md"
+              className="px-8 py-3.5 rounded bg-[#0B1D15] text-[#FCFBF8] hover:bg-[#C5A869] hover:text-[#0B1D15] text-xs uppercase tracking-[0.2em] font-medium transition-colors shadow-md cursor-pointer"
             >
               Return to Gallery
             </button>
           </div>
         ) : (
           /* Checkout Form */
-          <form onSubmit={handlePlaceOrder} className="p-6 sm:p-8 space-y-6 max-h-[80vh] overflow-y-auto">
+          <form onSubmit={handlePlaceOrder} className="p-4 sm:p-8 space-y-6 max-h-[80vh] overflow-y-auto">
             
             {/* Notice bar */}
             <div className="p-3.5 rounded-lg bg-[#F7F4EC] border border-[#C5A869]/40 flex items-center gap-3 text-xs text-[#0B1D15]">
@@ -194,26 +231,37 @@ export default function CheckoutModal() {
               </div>
               <div>
                 <span className="font-semibold block text-[#0B1D15]">Direct WhatsApp Ordering</span>
-                <span className="text-[#68756F]">No payment gateway required. Your order will be sent directly to WhatsApp (+91 96455 56010).</span>
+                <span className="text-[#68756F]">No payment gateway hassle. Your order and details are transmitted directly to WhatsApp (+91 96455 56010).</span>
               </div>
             </div>
 
+            {/* Error Message Banner */}
+            {errorMessage && (
+              <div className="p-3.5 rounded-lg bg-[#291010] border border-red-500/50 flex items-start gap-2.5 text-xs text-red-200 animate-in fade-in">
+                <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                <span>{errorMessage}</span>
+              </div>
+            )}
+
             {/* Delivery Details */}
             <div>
-              <h3 className="text-sm uppercase tracking-wider font-semibold text-[#0B1D15] mb-4 flex items-center gap-2">
+              <h3 className="text-xs sm:text-sm uppercase tracking-wider font-semibold text-[#0B1D15] mb-4 flex items-center gap-2">
                 <Truck className="w-4 h-4 text-[#C5A869]" />
                 <span>1. Pan-India Delivery Destination</span>
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div>
-                  <label className="block text-[#68756F] mb-1 font-medium">Your Name *</label>
+                  <label className="block text-[#68756F] mb-1 font-medium">Your Full Name *</label>
                   <input
                     type="text"
                     required
-                    placeholder="Full Name"
+                    placeholder="e.g. Anand Varma"
                     value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
+                    onChange={(e) => {
+                      setFullName(e.target.value);
+                      if (errorMessage) setErrorMessage(null);
+                    }}
                     className="w-full p-2.5 rounded border border-[#EFE9DC] focus:outline-none focus:border-[#C5A869]"
                   />
                 </div>
@@ -223,9 +271,12 @@ export default function CheckoutModal() {
                   <input
                     type="tel"
                     required
-                    placeholder="+91 96455 56010"
+                    placeholder="10-digit number (e.g. 9645556010)"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                      if (errorMessage) setErrorMessage(null);
+                    }}
                     className="w-full p-2.5 rounded border border-[#EFE9DC] focus:outline-none focus:border-[#C5A869]"
                   />
                 </div>
@@ -234,7 +285,7 @@ export default function CheckoutModal() {
                   <label className="block text-[#68756F] mb-1 font-medium">Email Address (Optional)</label>
                   <input
                     type="email"
-                    placeholder="name@example.com"
+                    placeholder="patron@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full p-2.5 rounded border border-[#EFE9DC] focus:outline-none focus:border-[#C5A869]"
@@ -248,7 +299,10 @@ export default function CheckoutModal() {
                     required
                     placeholder="House/Apartment Name, Street, Landmark"
                     value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                      if (errorMessage) setErrorMessage(null);
+                    }}
                     className="w-full p-2.5 rounded border border-[#EFE9DC] focus:outline-none focus:border-[#C5A869]"
                   />
                 </div>
@@ -260,7 +314,10 @@ export default function CheckoutModal() {
                     required
                     placeholder="e.g. Kochi, Bengaluru, Mumbai"
                     value={city}
-                    onChange={(e) => setCity(e.target.value)}
+                    onChange={(e) => {
+                      setCity(e.target.value);
+                      if (errorMessage) setErrorMessage(null);
+                    }}
                     className="w-full p-2.5 rounded border border-[#EFE9DC] focus:outline-none focus:border-[#C5A869]"
                   />
                 </div>
@@ -286,7 +343,10 @@ export default function CheckoutModal() {
                     maxLength={6}
                     placeholder="6-digit PIN (e.g. 682001)"
                     value={pincode}
-                    onChange={(e) => setPincode(e.target.value)}
+                    onChange={(e) => {
+                      setPincode(e.target.value.replace(/\D/g, ''));
+                      if (errorMessage) setErrorMessage(null);
+                    }}
                     className="w-full p-2.5 rounded border border-[#EFE9DC] focus:outline-none focus:border-[#C5A869]"
                   />
                 </div>
@@ -335,7 +395,7 @@ export default function CheckoutModal() {
 
             {/* Order Total & Submit */}
             <div className="pt-4 border-t border-[#EFE9DC] flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div>
+              <div className="text-left w-full sm:w-auto">
                 <span className="text-xs text-[#68756F] block">Total Amount:</span>
                 <span className="text-2xl font-serif-luxury text-[#0B1D15] font-semibold">
                   ₹{finalTotal.toLocaleString('en-IN')}

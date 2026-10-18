@@ -1,28 +1,36 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Truck, MapPin, Search, CheckCircle, ShieldCheck, Clock } from 'lucide-react';
+import { Truck, MapPin, CheckCircle, ShieldCheck, Clock } from 'lucide-react';
+import { useToast } from '@/context/ToastContext';
 
 export default function PanIndiaBanner() {
   const [pincode, setPincode] = useState('');
-  const [pincodeResult, setPincodeResult] = useState<string | null>(null);
+  const [pincodeResult, setPincodeResult] = useState<{ text: string; isSuccess: boolean } | null>(null);
+  const toast = useToast();
 
   const checkPincode = (e: React.FormEvent) => {
     e.preventDefault();
     const clean = pincode.trim();
     if (clean.length === 6 && /^\d+$/.test(clean)) {
       if (clean.startsWith('682') || clean.startsWith('683') || clean.startsWith('680') || clean.startsWith('686')) {
-        setPincodeResult('🎉 Eligible for Same-Day or Next-Day Express Delivery in Kochi & Central Kerala!');
+        const msg = `PIN ${clean}: Eligible for Same-Day or Next-Day Hand-Delivery in Kochi & Central Kerala!`;
+        setPincodeResult({ text: msg, isSuccess: true });
+        toast.success(`Express Delivery verified for PIN ${clean}`);
       } else {
-        setPincodeResult('✓ Eligible for Express Air Delivery Pan-India (2 to 4 Business Days, Climate-Protected)!');
+        const msg = `PIN ${clean}: Eligible for Express Air Delivery Pan-India (2 to 4 Days, Climate-Insulated)!`;
+        setPincodeResult({ text: msg, isSuccess: true });
+        toast.success(`Pan-India Express verified for PIN ${clean}`);
       }
     } else {
-      setPincodeResult('⚠️ Please enter a valid 6-digit Indian PIN code.');
+      const errMsg = 'Please enter a valid 6-digit Indian Postal PIN code (e.g. 682001 or 560001).';
+      setPincodeResult({ text: errMsg, isSuccess: false });
+      toast.error('Invalid PIN code. Please enter 6 digits.');
     }
   };
 
   return (
-    <section className="py-14 bg-[#10291E] text-[#FCFBF8] border-b border-[#C5A869]/20 relative overflow-hidden">
+    <section id="delivery" className="py-14 bg-[#10291E] text-[#FCFBF8] border-b border-[#C5A869]/20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -38,7 +46,7 @@ export default function PanIndiaBanner() {
               From Our Kochi Atelier to Any Doorstep in India
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#EFE9DC]/80 font-light max-w-xl">
+            <p className="text-xs sm:text-sm text-[#EFE9DC]/80 font-light max-w-xl leading-relaxed">
               We ship across all 28 states and union territories — Mumbai, Bengaluru, Delhi NCR, 
               Hyderabad, Chennai, Kolkata, and beyond. Every hamper is packaged in cushioned, climate-sealed 
               chambers so chocolates arrive cold and brass arrives gleaming.
@@ -55,7 +63,7 @@ export default function PanIndiaBanner() {
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle className="w-3.5 h-3.5 text-[#D8B979]" />
-                Live SMS & WhatsApp Tracking
+                Live WhatsApp Dispatch Updates
               </span>
             </div>
           </div>
@@ -77,22 +85,28 @@ export default function PanIndiaBanner() {
                   placeholder="Enter 6-digit Pincode (e.g. 682001 or 560001)"
                   value={pincode}
                   onChange={(e) => {
-                    setPincode(e.target.value);
+                    setPincode(e.target.value.replace(/\D/g, ''));
                     setPincodeResult(null);
                   }}
                   className="flex-1 bg-[#10291E] border border-[#C5A869]/30 rounded px-3 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-[#D8B979]"
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2.5 bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] rounded text-xs font-semibold uppercase tracking-wider transition-colors shrink-0"
+                  className="px-4 py-2.5 bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] rounded text-xs font-semibold uppercase tracking-wider transition-colors shrink-0 cursor-pointer"
                 >
                   Verify
                 </button>
               </form>
 
               {pincodeResult && (
-                <div className="mt-3 p-2.5 rounded bg-[#183C2D] border border-[#C5A869]/30 text-xs text-[#EFE9DC] animate-in fade-in duration-200">
-                  {pincodeResult}
+                <div
+                  className={`mt-3 p-2.5 rounded text-xs leading-relaxed animate-in fade-in duration-200 border ${
+                    pincodeResult.isSuccess
+                      ? 'bg-[#183C2D] border-[#C5A869]/40 text-[#EFE9DC]'
+                      : 'bg-[#291010] border-red-500/40 text-red-200'
+                  }`}
+                >
+                  {pincodeResult.text}
                 </div>
               )}
 

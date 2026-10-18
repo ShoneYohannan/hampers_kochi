@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Heart, ShoppingBag, Eye, Star, MessageSquare, ArrowUpRight } from 'lucide-react';
+import { Heart, ShoppingBag, Star, MessageSquare, ArrowUpRight } from 'lucide-react';
 import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
+import { useToast } from '@/context/ToastContext';
 
 interface ProductCardProps {
   product: Product;
@@ -15,6 +16,7 @@ interface ProductCardProps {
 export default function ProductCard({ product, onQuickView }: ProductCardProps) {
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
+  const toast = useToast();
   const [isAdded, setIsAdded] = useState(false);
 
   const isFavorited = isInWishlist(product.id);
@@ -23,7 +25,18 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
     e.stopPropagation();
     addToCart(product, 1);
     setIsAdded(true);
+    toast.success(`Added "${product.name}" to Bag!`);
     setTimeout(() => setIsAdded(false), 1800);
+  };
+
+  const handleToggleWishlist = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleWishlist(product);
+    if (!isFavorited) {
+      toast.success(`Saved "${product.name}" to your Wishlist`);
+    } else {
+      toast.info(`Removed "${product.name}" from your Wishlist`);
+    }
   };
 
   const whatsappMessage = encodeURIComponent(
@@ -42,6 +55,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
           src={product.image}
           alt={product.name}
           fill
+          quality={85}
           className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
@@ -69,11 +83,9 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
 
         {/* Wishlist Button */}
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleWishlist(product);
-          }}
-          className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 z-10 shadow-md ${
+          type="button"
+          onClick={handleToggleWishlist}
+          className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 z-10 shadow-md cursor-pointer ${
             isFavorited
               ? 'bg-[#0B1D15] text-[#C5A869] border border-[#C5A869]'
               : 'bg-white/20 backdrop-blur-sm text-white hover:text-[#C5A869] hover:bg-white/30 border border-white/20'
@@ -132,7 +144,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
                 target="_blank"
                 rel="noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#25D366]/20 border border-white/20 hover:border-[#25D366]/50 flex items-center justify-center text-white hover:text-[#25D366] transition-all duration-200 backdrop-blur-sm"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#25D366]/20 border border-white/20 hover:border-[#25D366]/50 flex items-center justify-center text-white hover:text-[#25D366] transition-all duration-200 backdrop-blur-sm cursor-pointer"
                 title="Order via WhatsApp"
                 aria-label="Order on WhatsApp"
               >
@@ -141,8 +153,9 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
 
               {/* Add to Bag */}
               <button
+                type="button"
                 onClick={handleAdd}
-                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 shadow-sm ${
+                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 shadow-sm cursor-pointer ${
                   isAdded
                     ? 'bg-[#183C2D] text-[#D8B979] border border-[#C5A869]'
                     : 'bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] border border-[#C5A869]'
@@ -155,11 +168,12 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
 
               {/* Quick View */}
               <button
+                type="button"
                 onClick={(e) => {
                   e.stopPropagation();
                   onQuickView(product);
                 }}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center text-white transition-all duration-200 backdrop-blur-sm"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center text-white transition-all duration-200 backdrop-blur-sm cursor-pointer"
                 title="Quick View"
                 aria-label="Quick View"
               >

@@ -25,6 +25,23 @@
     --background: #FCFBF8;
     --foreground: #141A17;
   }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    scroll-behavior: smooth;
+    background-color: #FCFBF8;
+    color: #141A17;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 /* Custom Typography Utilities */
@@ -34,13 +51,6 @@
 
 .font-sans-clean {
   font-family: var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* Smooth luxury animations & scrollbar */
-html {
-  scroll-behavior: smooth;
-  background-color: #FCFBF8;
-  color: #141A17;
 }
 
 ::-webkit-scrollbar {

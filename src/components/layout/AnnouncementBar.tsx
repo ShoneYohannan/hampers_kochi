@@ -36,10 +36,9 @@ export default function AnnouncementBar() {
         {/* Right: Phone */}
         <div className="hidden sm:flex items-center shrink-0">
           <a
-            href="https://wa.me/919645556010"
-            target="_blank"
-            rel="noreferrer"
+            href="tel:+919645556010"
             className="tracking-[0.15em] text-[#EFE9DC]/80 hover:text-[#C5A869] transition-colors"
+            title="Call The Kochi Atelier"
           >
             +91 96455 56010
           </a>

@@ -14,6 +14,7 @@ import {
   Check
 } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useToast } from '@/context/ToastContext';
 
 export default function CartDrawer() {
   const {
@@ -32,6 +33,7 @@ export default function CartDrawer() {
     setIsCheckoutOpen,
   } = useCart();
 
+  const toast = useToast();
   const [couponInput, setCouponInput] = useState('');
   const [couponError, setCouponError] = useState(false);
 
@@ -46,8 +48,10 @@ export default function CartDrawer() {
     const success = applyCoupon(couponInput);
     if (!success) {
       setCouponError(true);
+      toast.error('Invalid privilege voucher. Try ROYAL10 for 10% off.');
       setTimeout(() => setCouponError(false), 2500);
     } else {
+      toast.success(`Privilege Voucher "${couponInput.toUpperCase()}" Applied! 10% saved.`);
       setCouponInput('');
     }
   };
@@ -57,10 +61,10 @@ export default function CartDrawer() {
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div 
-        className="absolute inset-y-0 right-0 max-w-full flex pl-10"
+        className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between border-l border-[#C5A869]/30">
+        <div className="w-[100vw] sm:w-[440px] max-w-full bg-white shadow-2xl flex flex-col justify-between border-l border-[#C5A869]/30">
           
           {/* Header */}
           <div className="p-5 bg-[#0B1D15] text-[#FCFBF8] border-b border-[#C5A869]/30 flex items-center justify-between">
@@ -150,8 +154,12 @@ export default function CartDrawer() {
                           {item.product.name}
                         </h4>
                         <button
-                          onClick={() => removeFromCart(item.product.id)}
-                          className="text-[#68756F] hover:text-red-700 p-1"
+                          type="button"
+                          onClick={() => {
+                            removeFromCart(item.product.id);
+                            toast.info(`Removed "${item.product.name}" from Bag`);
+                          }}
+                          className="text-[#68756F] hover:text-red-700 p-1 cursor-pointer"
                           aria-label="Remove item"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
