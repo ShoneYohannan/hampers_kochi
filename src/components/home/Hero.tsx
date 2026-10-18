@@ -9,10 +9,10 @@ interface HeroProps {
 }
 
 const HERO_IMAGES = [
-  { src: '/images/1001373001.jpg.jpeg', alt: 'Royal Malabar Sovereign Trunk' },
-  { src: '/images/1001629822.jpg.jpeg', alt: 'Grand Utsav Festive Chest' },
-  { src: '/images/1001707222.jpg.jpeg', alt: 'Opulent Gold & Velvet Keepsake' },
-  { src: '/images/1001483615.jpg.jpeg', alt: 'Travancore Grandeur Bridal Suite' },
+  { src: '/images/1002090346.jpg.jpeg', alt: 'Artisan Wicker Hamper with Fresh Roses', pos: 'center' },
+  { src: '/images/1001901798.jpg.jpeg', alt: 'Elegant Polka-Dot Gift Box with Peach Bow', pos: '30% center' },
+  { src: '/images/1002015334.jpg.jpeg', alt: 'Premium Luxury Gift Box with Watch & Perfume', pos: 'center 30%' },
+  { src: '/images/1001877030.jpg.jpeg', alt: 'Birthday Hamper with Flowers & Chocolate Brownie', pos: 'center 20%' },
 ];
 
 export default function Hero({ onOpenBuilder }: HeroProps) {
@@ -40,7 +40,8 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
           alt={HERO_IMAGES[currentImg].alt}
           fill
           priority
-          className={`object-cover object-center transition-opacity duration-700 ease-in-out ${fading ? 'opacity-0' : 'opacity-100'}`}
+          className={`object-cover transition-opacity duration-700 ease-in-out ${fading ? 'opacity-0' : 'opacity-100'}`}
+          style={{ objectPosition: HERO_IMAGES[currentImg].pos }}
           sizes="(max-width: 1024px) 100vw, 55vw"
         />
 
