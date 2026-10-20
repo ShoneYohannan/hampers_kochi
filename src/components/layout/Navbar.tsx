@@ -88,7 +88,7 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
           </Link>
 
           {/* Desktop Navigation — Perfectly Scaled Responsive Typography */}
-          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5 2xl:gap-7 text-xs xl:text-[13px] 2xl:text-[14px] uppercase tracking-[0.09em] xl:tracking-[0.12em] font-semibold text-[#FCFBF8]">
+          <nav className="hidden lg:flex items-center gap-2.5 xl:gap-3.5 2xl:gap-5 text-[11px] xl:text-xs 2xl:text-[13px] uppercase tracking-[0.06em] xl:tracking-[0.09em] font-semibold text-[#FCFBF8]">
 
             <Link
               href="/"
@@ -200,24 +200,14 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
               )}
             </button>
 
-            {/* Clickable Phone Number: full number on 2xl+, compact icon on md-xl to give WhatsApp Order full breathing room */}
+            {/* Clickable Phone Number: sleek icon button to give WhatsApp Order 100% breathing room without overflow */}
             <a
               href={`tel:${cleanPhone}`}
-              className="hidden 2xl:flex items-center gap-2 px-3 py-1.5 text-[#FCFBF8] hover:text-[#D8B979] text-xs transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded whitespace-nowrap group shrink-0"
+              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 text-[#FCFBF8] hover:text-[#D8B979] text-xs transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded shrink-0 group"
               title={`Call Concierge: ${displayPhone}`}
+              aria-label={`Call Concierge: ${displayPhone}`}
             >
-              <Phone className="w-3.5 h-3.5 text-[#D8B979] shrink-0 group-hover:scale-110 transition-transform" />
-              <span className="font-mono text-xs font-semibold whitespace-nowrap">
-                {displayPhone}
-              </span>
-            </a>
-            <a
-              href={`tel:${cleanPhone}`}
-              className="hidden md:flex 2xl:hidden p-2 text-[#EFE9DC]/90 hover:text-[#D8B979] transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded shrink-0"
-              title={`Call Concierge: ${displayPhone}`}
-              aria-label="Call Concierge"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#D8B979]" />
+              <Phone className="w-3.5 h-3.5 text-[#D8B979] group-hover:scale-110 transition-transform" />
             </a>
 
             {/* Direct WhatsApp Ordering Button — fully visible on all viewports */}
