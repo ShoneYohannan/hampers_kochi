@@ -70,9 +70,9 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
           : 'bg-[#0B1D15] border-b border-[#C5A869]/15 py-3.5 sm:py-4'
       }`}
     >
-      {/* Full-width container: removes artificial 250px+ dead space on left */}
-      <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16">
-        <div className="flex items-center justify-between gap-6">
+      {/* Full-width container with responsive padding to prevent overflow on laptops */}
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div className="flex items-center justify-between gap-3 lg:gap-4 xl:gap-6">
 
           {/* Logo / Wordmark - Aligned to left edge */}
           <Link
@@ -82,13 +82,13 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
             }}
             className="flex-shrink-0 group flex items-center gap-2"
           >
-            <span className="font-serif-luxury text-[#FCFBF8] text-2xl sm:text-3xl lg:text-[30px] tracking-wide italic group-hover:text-[#D8B979] transition-colors whitespace-nowrap">
+            <span className="font-serif-luxury text-[#FCFBF8] text-2xl sm:text-3xl lg:text-[28px] xl:text-[30px] tracking-wide italic group-hover:text-[#D8B979] transition-colors whitespace-nowrap">
               hampers<span className="text-[#D8B979] not-italic">_</span>kochi
             </span>
           </Link>
 
-          {/* Desktop Navigation — Clear, Readable, Properly Sized Typography */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[13px] xl:text-[14px] uppercase tracking-[0.14em] font-semibold text-[#FCFBF8]">
+          {/* Desktop Navigation — Perfectly Scaled Responsive Typography */}
+          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5 2xl:gap-7 text-xs xl:text-[13px] 2xl:text-[14px] uppercase tracking-[0.09em] xl:tracking-[0.12em] font-semibold text-[#FCFBF8]">
 
             <Link
               href="/"
@@ -203,11 +203,11 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
             {/* Clickable Phone Number */}
             <a
               href={`tel:${cleanPhone}`}
-              className="hidden md:flex items-center gap-2 px-3.5 py-2 text-[#FCFBF8] hover:text-[#D8B979] text-xs xl:text-sm transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded whitespace-nowrap group"
+              className="hidden md:flex items-center gap-1.5 xl:gap-2 px-2.5 xl:px-3 py-1.5 xl:py-2 text-[#FCFBF8] hover:text-[#D8B979] text-xs transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded whitespace-nowrap group shrink-0"
               title={`Call Concierge: ${displayPhone}`}
             >
-              <Phone className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#D8B979] shrink-0 group-hover:scale-110 transition-transform" />
-              <span className="font-mono text-xs xl:text-sm font-semibold whitespace-nowrap">
+              <Phone className="w-3.5 h-3.5 text-[#D8B979] shrink-0 group-hover:scale-110 transition-transform" />
+              <span className="font-mono text-xs font-semibold whitespace-nowrap">
                 {displayPhone}
               </span>
             </a>
@@ -217,7 +217,7 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
               href={`https://wa.me/${whatsappNumber}?text=Hello%20The%20Kochi%20Atelier%2C%20I%20would%20like%20to%20order%20a%20luxury%20hamper.`}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-4 xl:px-5 py-2.5 bg-[#25D366] hover:bg-[#128C7E] text-white text-xs xl:text-sm font-bold uppercase tracking-wider rounded transition-all shadow-md hover:shadow-lg whitespace-nowrap cursor-pointer"
+              className="flex items-center gap-1.5 xl:gap-2 px-3 xl:px-4 py-2 bg-[#25D366] hover:bg-[#128C7E] text-white text-xs xl:text-sm font-bold uppercase tracking-wider rounded transition-all shadow-md hover:shadow-lg whitespace-nowrap cursor-pointer shrink-0"
               title="Direct WhatsApp Order"
               aria-label="Order on WhatsApp"
             >

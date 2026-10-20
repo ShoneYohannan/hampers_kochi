@@ -24,7 +24,7 @@ export default function AnnouncementBar() {
   const displayPhone = settings?.phone || '+91 96455 56010';
 
   return (
-    <div className="bg-[#0B1D15] text-[#EFE9DC] border-b border-[#C5A869]/20 py-2.5 px-6 sm:px-10 lg:px-14 xl:px-16">
+    <div className="bg-[#0B1D15] text-[#EFE9DC] border-b border-[#C5A869]/20 py-2.5 px-4 sm:px-6 lg:px-8 xl:px-12">
       <div className="w-full flex items-center justify-between">
         {/* Left: EST branding — aligned to left edge */}
         <div className="hidden sm:flex items-center gap-2 text-[#D8B979] tracking-[0.2em] uppercase font-semibold text-xs shrink-0">
