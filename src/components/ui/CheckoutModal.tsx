@@ -131,7 +131,7 @@ export default function CheckoutModal() {
       `• Phone: ${phone}\n` +
       `• Email: ${email || 'N/A'}\n` +
       `• Delivery Address: ${address}, ${city}, ${state} - PIN: ${pincode}\n` +
-      `• Preferred Delivery Date: ${deliveryDate || 'Earliest Pan-India Express'}\n\n` +
+      `• Preferred Delivery Date: ${deliveryDate || 'Earliest All-India Delivery'}\n\n` +
       `*Curated Hampers Ordered:*\n${itemsSummary}\n\n` +
       `*Total Estimated Amount:* ₹${finalTotal.toLocaleString('en-IN')}\n` +
       (giftNote ? `\n*Wax-Sealed Calligraphy Message:* "${giftNote}"\n` : '') +
@@ -267,7 +267,7 @@ export default function CheckoutModal() {
             <div>
               <h3 className="text-xs sm:text-sm uppercase tracking-wider font-semibold text-[#0B1D15] mb-4 flex items-center gap-2">
                 <Truck className="w-4 h-4 text-[#C5A869]" />
-                <span>1. Pan-India Delivery Destination</span>
+                <span>1. All-India Delivery Destination</span>
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
@@ -421,7 +421,7 @@ export default function CheckoutModal() {
                   ₹{finalTotal.toLocaleString('en-IN')}
                 </span>
                 <span className="text-[11px] text-[#25D366] block font-medium">
-                  Free Pan-India Express Delivery
+                  Free All-India Express Delivery
                 </span>
               </div>
 

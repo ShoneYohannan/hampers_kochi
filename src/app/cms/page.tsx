@@ -180,7 +180,7 @@ export default function CmsPage() {
         boxType: formBoxType,
         dimensions: '34cm x 26cm x 14cm',
         weight: '2.2 kg',
-        deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+        deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
         isBestseller: formIsBestseller,
         isLimitedEdition: formIsLimitedEdition,
       };

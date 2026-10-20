@@ -47,7 +47,7 @@ export default function WhatsAppConcierge() {
           {/* Body */}
           <div className="p-4 bg-[#FAF8F5] space-y-3">
             <div className="p-3 rounded bg-white border border-[#EFE9DC] text-xs text-[#38423D] leading-relaxed shadow-sm">
-              Namaskaram! How may we assist your gifting celebration today? We offer same-day delivery in Kochi and pan-India express courier with custom wax seals.
+              Namaskaram! How may we assist your gifting celebration today? We craft bespoke hampers on pre-order with hand-delivery in Kochi and express all-India delivery.
             </div>
 
             <form onSubmit={handleSend} className="space-y-2">

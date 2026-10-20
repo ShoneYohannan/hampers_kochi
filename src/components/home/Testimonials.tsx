@@ -116,7 +116,7 @@ export default function Testimonials() {
         {/* Trust Badges Bar */}
         <div className="mt-16 pt-10 border-t border-[#E8E1D4] grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="space-y-1.5 p-4 rounded-xl bg-white/70 border border-[#E8E1D4]">
-            <span className="font-serif-luxury text-lg sm:text-xl text-[#0B1D15] font-semibold block">Pan-India Express</span>
+            <span className="font-serif-luxury text-lg sm:text-xl text-[#0B1D15] font-semibold block">All-India Delivery</span>
             <span className="text-xs sm:text-sm text-[#505D56] block leading-relaxed">Air courier with live tracking to 28,000+ pincodes</span>
           </div>
           <div className="space-y-1.5 p-4 rounded-xl bg-white/70 border border-[#E8E1D4]">

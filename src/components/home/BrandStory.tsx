@@ -19,7 +19,7 @@ export default function BrandStory() {
     {
       icon: ShieldCheck,
       title: 'Climate-Insulated Transit',
-      desc: 'Pan-India shipping with thermal insulated foil lining and ice gel packs for fine chocolates and delicate confectionery.',
+      desc: 'All-India shipping with thermal insulated foil lining and ice gel packs for fine chocolates and delicate confectionery.',
     },
     {
       icon: HeartHandshake,
@@ -91,7 +91,7 @@ export default function BrandStory() {
               </div>
               <div className="w-[1px] h-10 bg-[#C5A869]/40" />
               <div>
-                <div className="text-2xl font-serif-luxury text-[#0B1D15] font-semibold">Pan-India</div>
+                <div className="text-2xl font-serif-luxury text-[#0B1D15] font-semibold">All-India</div>
                 <div className="text-[11px] text-[#68756F] uppercase tracking-wider">Climate-Protected Shipping</div>
               </div>
             </div>

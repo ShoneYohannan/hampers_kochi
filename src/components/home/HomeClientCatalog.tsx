@@ -64,7 +64,7 @@ export default function HomeClientCatalog() {
       {/* Corporate & Executive Gifting Showcase */}
       <CorporateShowcase />
 
-      {/* Pan-India Express Delivery & Pincode Checker */}
+      {/* All-India Express Delivery & Pincode Checker */}
       <PanIndiaBanner />
 
       {/* Customer Testimonials & Verified Google Reviews */}

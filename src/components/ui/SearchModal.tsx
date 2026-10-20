@@ -94,7 +94,7 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }: Search
             </div>
 
             <div className="pt-4 border-t border-[#EFE9DC] text-xs text-[#68756F]">
-              Search through our 34 handcrafted curations with pan-India express courier.
+              Search through our 34 handcrafted curations with all-India express delivery.
             </div>
           </div>
         )}
@@ -141,7 +141,7 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }: Search
                     <div className="text-sm font-serif-luxury font-semibold text-[#0B1D15]">
                       ₹{product.price.toLocaleString('en-IN')}
                     </div>
-                    <div className="text-[10px] text-[#25D366] font-medium">Pan-India Express</div>
+                    <div className="text-[10px] text-[#25D366] font-medium">All-India Delivery</div>
                   </div>
                 </div>
               ))

@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: '%s | HamPers Kochi • The Kochi Atelier',
   },
   description:
-    'Handcrafted luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes, Kasavu silks, single-estate teas, Belgian chocolates & wax-sealed calligraphy with express Pan-India delivery.',
+    'Handcrafted luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes, Kasavu silks, single-estate teas, Belgian chocolates & wax-sealed calligraphy with express all-India delivery.',
   keywords: [
     'luxury hampers kochi',
     'luxury gift hampers india',

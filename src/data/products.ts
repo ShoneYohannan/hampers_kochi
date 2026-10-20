@@ -17,7 +17,7 @@ export const ALL_PRODUCTS: Product[] = [
       '/images/1001483615.jpg.jpeg',
     ],
     category: 'Bestsellers',
-    tags: ['Bestseller', 'Signature Keepsake', 'Pan-India Express'],
+    tags: ['Bestseller', 'Signature Keepsake', 'All-India Delivery'],
     description: 'An opulent tribute to Kerala’s rich heritage. Featuring artisanal single-estate spice chocolates, pure Nilgiri golden pekoe tea, and a hand-turned brass keepsake.',
     detailedDescription: 'Hand-assembled in our Fort Kochi atelier, the Royal Malabar Sovereign Trunk represents the pinnacle of luxury gifting. Housed within a handcrafted emerald velvet rigid casket with brass hasp and lock, this gift conveys profound respect and celebration.',
     contents: [
@@ -31,7 +31,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Handmade Emerald Velvet Rigid Trunk with Gold Latch',
     dimensions: '35cm x 28cm x 15cm',
     weight: '2.4 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -63,7 +63,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Matte Charcoal & Gold Foil Embossed Keepsake Box',
     dimensions: '32cm x 25cm x 12cm',
     weight: '1.9 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -96,7 +96,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Hand-Carved Cedarwood Box with Satin Lining',
     dimensions: '38cm x 30cm x 16cm',
     weight: '3.1 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isLimitedEdition: true,
   },
   {
@@ -127,7 +127,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Forest Green Matte Rigid Box with Magnetic Closure',
     dimensions: '28cm x 22cm x 10cm',
     weight: '1.6 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-5',
@@ -158,7 +158,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Architectural Slate Grey Box with Gold Magnetic Flap',
     dimensions: '34cm x 26cm x 12cm',
     weight: '2.2 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -190,7 +190,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Pastel Ivory & Gold Foil Round Hatbox with Satin Cord',
     dimensions: '25cm Diameter x 20cm Height',
     weight: '1.7 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -221,7 +221,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Natural Pine Wood Keepsake Casket with Sliding Lid',
     dimensions: '30cm x 22cm x 11cm',
     weight: '2.0 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-8',
@@ -252,7 +252,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Imperial Red & Gold Brocade Gift Chest with Silk Tassel',
     dimensions: '36cm x 28cm x 14cm',
     weight: '2.8 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isLimitedEdition: true,
   },
   {
@@ -283,7 +283,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Plush Emerald Velvet Keepsake Box with Ribbon Pull',
     dimensions: '33cm x 26cm x 13cm',
     weight: '2.1 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -315,7 +315,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Antique Distressed Wooden Chest with Brass Inlay',
     dimensions: '29cm x 21cm x 10cm',
     weight: '1.8 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-11',
@@ -346,7 +346,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Blush Ivory Rigid Box with Satin Bow',
     dimensions: '27cm x 20cm x 11cm',
     weight: '1.5 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -378,7 +378,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Hand-Stitched Hunter Green Leatherette Trunk with Brass Buckles',
     dimensions: '36cm x 28cm x 15cm',
     weight: '2.9 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isLimitedEdition: true,
   },
   {
@@ -409,7 +409,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Warm Ivory Cylinder Hatbox with Gold Foil Monogram',
     dimensions: '24cm Diameter x 22cm Height',
     weight: '1.6 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-14',
@@ -440,7 +440,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Forest Green Fabric Textured Box with Gold Foil Crest',
     dimensions: '30cm x 24cm x 11cm',
     weight: '1.9 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-15',
@@ -471,7 +471,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Teak Finish Keepsake Wood Trunk with Antique Brass Latch',
     dimensions: '34cm x 25cm x 14cm',
     weight: '2.5 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -502,7 +502,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Deep Matte Black Rigid Chest with Champagne Gold Interior',
     dimensions: '32cm x 24cm x 12cm',
     weight: '2.0 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-17',
@@ -532,7 +532,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Warm Ivory Rigid Box with Gold Foil Geometric Pattern',
     dimensions: '28cm x 22cm x 10cm',
     weight: '1.7 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-18',
@@ -563,7 +563,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Emerald Green Hardbound Keepsake Chest with Gold Filigree',
     dimensions: '33cm x 25cm x 12cm',
     weight: '2.3 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -595,7 +595,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Ivory & Sage Green Keepsake Suitcase with Brass Locks',
     dimensions: '32cm x 24cm x 13cm',
     weight: '1.8 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-20',
@@ -626,7 +626,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Executive Charcoal Sturdy Box with Custom Gold Foiled Sleeve',
     dimensions: '38cm x 28cm x 14cm',
     weight: '2.6 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -657,7 +657,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Ivory Textured Rigid Box with Gold Foil Inscription',
     dimensions: '35cm x 26cm x 13cm',
     weight: '2.4 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-22',
@@ -688,7 +688,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Handcrafted Teakwood Trunk with Brass Inlay & Velvet Lining',
     dimensions: '42cm x 32cm x 18cm',
     weight: '4.2 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isLimitedEdition: true,
   },
   {
@@ -719,7 +719,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Golden Ivory Square Rigid Gift Box with Satin Ribbon',
     dimensions: '26cm x 26cm x 12cm',
     weight: '1.4 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -750,7 +750,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Forest Green Rigid Box with Crimson Ribbon & Gold Wax Seal',
     dimensions: '28cm x 22cm x 11cm',
     weight: '1.7 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-25',
@@ -781,7 +781,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Emerald Velvet Octagonal Box with Gold Foil Crest',
     dimensions: '30cm x 25cm x 10cm',
     weight: '1.6 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-26',
@@ -811,7 +811,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Handwoven Bamboo Chest with Ivory Paper Wrap',
     dimensions: '29cm x 22cm x 12cm',
     weight: '1.8 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-27',
@@ -841,7 +841,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Warm Ivory Textured Casket with Satin Lining',
     dimensions: '35cm x 27cm x 13cm',
     weight: '2.5 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -872,7 +872,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Architectural Charcoal & Gold Rigid Presentation Trunk',
     dimensions: '39cm x 29cm x 14cm',
     weight: '2.7 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isLimitedEdition: true,
   },
   {
@@ -904,7 +904,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Deep Maroon Velvet Chest with Golden Latch',
     dimensions: '36cm x 30cm x 15cm',
     weight: '3.2 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -935,7 +935,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Gold Foiled Tiered Slide Box with Ribbon Pull',
     dimensions: '31cm x 24cm x 11cm',
     weight: '1.9 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -966,7 +966,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Midnight Emerald Velvet Box with Satin Ties',
     dimensions: '30cm x 24cm x 12cm',
     weight: '1.9 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-32',
@@ -996,7 +996,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Metallic Champagne Gold Rigid Trunk with Brass Clasp',
     dimensions: '36cm x 26cm x 14cm',
     weight: '2.5 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isBestseller: true,
   },
   {
@@ -1027,7 +1027,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Sturdy Textured Ivory Gift Box with Sage Green Ribbon',
     dimensions: '32cm x 25cm x 13cm',
     weight: '2.1 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
   },
   {
     id: 'hamper-34',
@@ -1060,7 +1060,7 @@ export const ALL_PRODUCTS: Product[] = [
     boxType: 'Solid Teakwood Heirloom Chest with Velvet Quilted Interior & Brass Fittings',
     dimensions: '45cm x 35cm x 20cm',
     weight: '5.4 kg',
-    deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+    deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     isLimitedEdition: true,
   },
 ];

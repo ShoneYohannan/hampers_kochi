@@ -14,13 +14,13 @@ export default function PanIndiaBanner() {
     const clean = pincode.trim();
     if (clean.length === 6 && /^\d+$/.test(clean)) {
       if (clean.startsWith('682') || clean.startsWith('683') || clean.startsWith('680') || clean.startsWith('686')) {
-        const msg = `PIN ${clean}: Eligible for Same-Day or Next-Day Hand-Delivery in Kochi & Central Kerala!`;
+        const msg = `PIN ${clean}: Eligible for Handcrafted Pre-Order Delivery in Kochi & Central Kerala!`;
         setPincodeResult({ text: msg, isSuccess: true });
-        toast.success(`Express Delivery verified for PIN ${clean}`);
+        toast.success(`Delivery verified for PIN ${clean}`);
       } else {
-        const msg = `PIN ${clean}: Eligible for Express Air Delivery Pan-India (2 to 4 Days, Climate-Insulated)!`;
+        const msg = `PIN ${clean}: Eligible for Express Air Delivery Across All India (2 to 4 Days, Climate-Insulated)!`;
         setPincodeResult({ text: msg, isSuccess: true });
-        toast.success(`Pan-India Express verified for PIN ${clean}`);
+        toast.success(`All-India Delivery verified for PIN ${clean}`);
       }
     } else {
       const errMsg = 'Please enter a valid 6-digit Indian Postal PIN code (e.g. 682001 or 560001).';
@@ -39,23 +39,23 @@ export default function PanIndiaBanner() {
           <div className="lg:col-span-7 space-y-3 text-left">
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#D8B979] font-medium">
               <Truck className="w-4 h-4 text-[#D8B979]" />
-              <span>Pan-India Logistics Network</span>
+              <span>All-India Delivery Network</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif-luxury font-normal leading-tight">
-              From Our Kochi Atelier to Any Doorstep in India
+              From Our Kochi Atelier to Any Doorstep Across India
             </h2>
 
             <p className="text-xs sm:text-sm text-[#EFE9DC]/80 font-light max-w-xl leading-relaxed">
-              We ship across all 28 states and union territories — Mumbai, Bengaluru, Delhi NCR, 
-              Hyderabad, Chennai, Kolkata, and beyond. Every hamper is packaged in cushioned, climate-sealed 
-              chambers so chocolates arrive cold and brass arrives gleaming.
+              We deliver across all 28 states and union territories — Mumbai, Bengaluru, Delhi NCR, 
+              Hyderabad, Chennai, Kolkata, and beyond. Every bespoke hamper is handcrafted on pre-order in cushioned, climate-sealed 
+              chambers so chocolates arrive cold and brass keepsakes arrive gleaming.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-[#EFE9DC]/70">
               <span className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-[#D8B979]" />
-                Same-Day Dispatch in Kochi
+                Bespoke Pre-Order Dispatch
               </span>
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#D8B979]" />

@@ -113,7 +113,7 @@ export default function Hero({}: HeroProps) {
           {/* Description - Clear, factual, specific */}
           <p className="text-[#EFE9DC]/90 text-base sm:text-lg font-light leading-relaxed max-w-md">
             Curated with Kerala Kasavu handlooms, hand-cast brass keepsakes, single-estate high-grown teas,
-            and artisanal chocolates. Delivered same-day in Kochi and express Pan-India.
+            and artisanal chocolates. Handcrafted on pre-order with all-India express delivery.
           </p>
 
           {/* CTAs: Crisp rectangular buttons, no pill shapes */}
@@ -127,24 +127,24 @@ export default function Hero({}: HeroProps) {
             </a>
 
             <a
-              href="https://wa.me/919645556010?text=Hello%20The%20Kochi%20Atelier%2C%20I%20would%20like%20to%20order%20a%20luxury%20hamper."
+              href="https://wa.me/919645556010?text=Hello%20The%20Kochi%20Atelier%2C%20I%20would%20like%20to%20pre-order%20a%20luxury%20hamper."
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer shadow-sm rounded-sm"
             >
-              <span>Order via WhatsApp</span>
+              <span>Pre-Order on WhatsApp</span>
             </a>
           </div>
 
-          {/* Stats row - No random star emojis */}
+          {/* Stats row - Pre-Order & All-India Delivery */}
           <div className="mt-14 pt-8 border-t border-[#C5A869]/15 grid grid-cols-3 gap-6">
             <div>
-              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">Same-Day</div>
-              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Kochi Delivery</div>
+              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">Pre-Order</div>
+              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Handcrafted Only</div>
             </div>
             <div>
-              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">Pan-India</div>
-              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Air Express</div>
+              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">All-India</div>
+              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Express Delivery</div>
             </div>
             <div>
               <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">5.0 / 5.0</div>

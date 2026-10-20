@@ -8,7 +8,7 @@ export default function StructuredData() {
     name: 'HamPers Kochi',
     alternateName: 'The Kochi Atelier',
     description:
-      'Handcrafted luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes, Kasavu silks, single-estate teas, Belgian chocolates, and bespoke wax-sealed calligraphy with express Pan-India delivery.',
+      'Handcrafted luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes, Kasavu silks, single-estate teas, Belgian chocolates, and bespoke wax-sealed calligraphy with express all-India delivery.',
     url: 'https://hamperskochi.com',
     telephone: '+91-96455-56010',
     email: 'concierge@thekochiatelier.com',
@@ -72,7 +72,7 @@ export default function StructuredData() {
         name: 'What are your delivery timelines within Kochi and across India?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'We provide same-day or next-day express hand-delivery across Kochi and Ernakulam. For pan-India orders, we ship via air courier with insulated thermal packaging and ice-pack protection for chocolates, reaching major metros (Mumbai, Delhi, Bengaluru, Chennai, Hyderabad) within 2 to 3 business days.',
+          text: 'Every creation is handcrafted on a bespoke pre-order basis for pristine freshness. For Kochi and Ernakulam, pre-orders are hand-delivered upon readiness or on your scheduled date. For all-India delivery, we ship via priority air courier with insulated thermal packaging and ice-pack protection, reaching major metros (Mumbai, Delhi, Bengaluru, Chennai, Hyderabad) within 2 to 4 business days.',
         },
       },
       {

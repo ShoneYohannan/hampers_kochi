@@ -20,7 +20,7 @@ const FAQ_ITEMS: FaqItem[] = [
     category: 'Delivery & Shipping',
     question: 'What are your delivery timelines within Kochi and across India?',
     answer:
-      'For Kochi and Ernakulam, we offer same-day or next-day direct hand-delivery. For Pan-India addresses (including Bangalore, Mumbai, Delhi NCR, Chennai, and Hyderabad), we dispatch via premium air express couriers with thermal insulation and gel ice packs, arriving within 2 to 4 business days.',
+      'All HamPers Kochi creations are handcrafted on a bespoke pre-order basis to ensure optimal freshness and artisanal perfection. For Kochi and Ernakulam, pre-orders are hand-delivered upon completion or your preferred scheduled celebration date. For all-India delivery (including Bengaluru, Mumbai, Delhi NCR, Chennai, and Hyderabad), we dispatch via premium priority air express with thermal insulation and gel ice packs, arriving within 2 to 4 business days.',
   },
   {
     category: 'Personalization',
@@ -69,7 +69,7 @@ export default function FaqSection() {
             Frequently Asked Questions
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#68756F] font-light">
-            Answers regarding our Kochi atelier craftsmanship, climate-protected pan-India shipping,
+            Answers regarding our Kochi atelier craftsmanship, climate-protected all-India shipping,
             and bespoke personalization.
           </p>
         </div>

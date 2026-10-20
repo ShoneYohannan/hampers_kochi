@@ -92,7 +92,7 @@ export default function CartDrawer() {
                 <div className="flex items-center justify-between text-[#38423D]">
                   <span className="flex items-center gap-1.5 font-medium">
                     <Truck className="w-4 h-4 text-[#C5A869]" />
-                    Add <strong className="text-[#0B1D15]">₹{freeShippingDiff.toLocaleString('en-IN')}</strong> more for Free Pan-India Delivery!
+                    Add <strong className="text-[#0B1D15]">₹{freeShippingDiff.toLocaleString('en-IN')}</strong> more for Free All-India Delivery!
                   </span>
                   <span className="font-semibold text-[#0B1D15]">{progressPercent}%</span>
                 </div>
@@ -106,7 +106,7 @@ export default function CartDrawer() {
             ) : (
               <div className="flex items-center gap-2 text-[#183C2D] font-medium">
                 <Check className="w-4 h-4 text-[#C5A869]" />
-                <span>You qualify for <strong>Complimentary Pan-India Express Delivery!</strong></span>
+                <span>You qualify for <strong>Complimentary All-India Express Delivery!</strong></span>
               </div>
             )}
           </div>
@@ -263,7 +263,7 @@ export default function CartDrawer() {
                 )}
 
                 <div className="flex justify-between">
-                  <span>Pan-India Climate Courier</span>
+                  <span>All-India Climate Courier</span>
                   <span className="font-medium">
                     {shippingFee === 0 ? (
                       <span className="text-[#183C2D] font-bold">COMPLIMENTARY</span>

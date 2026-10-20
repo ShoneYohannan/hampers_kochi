@@ -97,9 +97,9 @@ export default function PolicyModals({ activePolicy, onClose }: PolicyModalsProp
               </p>
               <h4 className="font-serif-luxury text-base text-[#0B1D15] font-semibold mt-4">1. Delivery Zones &amp; Timelines</h4>
               <ul className="list-disc pl-5 space-y-1">
-                <li><strong>Kochi &amp; Ernakulam:</strong> Same-day &amp; next-day white-glove hand delivery available.</li>
+                <li><strong>Kochi &amp; Ernakulam:</strong> Handcrafted on pre-order with white-glove hand delivery upon completion or your preferred celebration date.</li>
                 <li><strong>Kerala Statewide:</strong> 24 to 48 hours via express ground courier.</li>
-                <li><strong>Pan-India Metros:</strong> 2 to 4 business days via priority air express (BlueDart, DTDC Air, Delhivery).</li>
+                <li><strong>All-India Delivery:</strong> 2 to 4 business days via priority air express (BlueDart, DTDC Air, Delhivery).</li>
               </ul>
               <h4 className="font-serif-luxury text-base text-[#0B1D15] font-semibold mt-4">2. Climate-Insulated Thermal Protection</h4>
               <p>

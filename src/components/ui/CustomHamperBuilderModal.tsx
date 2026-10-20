@@ -93,7 +93,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
       boxType: selectedBox.name,
       dimensions: '34cm x 26cm x 13cm',
       weight: '2.2 kg',
-      deliveryEstimate: 'Next-Day in Kochi | 2-4 Days Pan-India Express',
+      deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     };
 
     addToCart(customProduct, 1, calligraphyMessage, recipientName);
@@ -357,7 +357,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
             <div className="text-xl font-serif-luxury font-semibold text-[#0B1D15]">
               ₹{totalPrice.toLocaleString('en-IN')}
               <span className="text-[11px] text-[#183C2D] font-normal ml-2 font-sans">
-                (Pan-India Delivery Included)
+                (All-India Delivery Included)
               </span>
             </div>
           </div>

@@ -111,7 +111,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
               <li><a href="#story" className="hover:text-[#C5A869] transition-colors">Our Kochi Heritage Story</a></li>
               <li><a href="#curator" className="hover:text-[#C5A869] transition-colors">Meet the Master Curator</a></li>
               <li><a href="#faq" className="hover:text-[#C5A869] transition-colors">Frequently Asked Questions</a></li>
-              <li><a href="#delivery" className="hover:text-[#C5A869] transition-colors">Pan-India Pincode Checker</a></li>
+              <li><a href="#delivery" className="hover:text-[#C5A869] transition-colors">All-India Pincode Checker</a></li>
               <li><a href="#testimonials" className="hover:text-[#C5A869] transition-colors">Customer Reviews &amp; Testimonials</a></li>
               <li><a href="/sitemap.xml" className="hover:text-[#C5A869] transition-colors text-[11px] opacity-75">XML Sitemap</a></li>
             </ul>

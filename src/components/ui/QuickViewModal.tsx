@@ -125,7 +125,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-[#68756F] flex items-center gap-1.5"><Truck className="w-3.5 h-3.5 text-[#C5A869]" /> Delivery:</span>
-                <span className="font-medium text-[#183C2D]">Pan-India Express</span>
+                <span className="font-medium text-[#183C2D]">All-India Delivery</span>
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                   </span>
                 )}
                 <span className="text-[11px] bg-[#10291E]/10 text-[#10291E] font-medium px-2 py-0.5 rounded">
-                  All Taxes & Standard Pan-India Packaging Included
+                  All Taxes & Standard All-India Packaging Included
                 </span>
               </div>
 
