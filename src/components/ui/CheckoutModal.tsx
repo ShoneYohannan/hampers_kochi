@@ -7,7 +7,7 @@ import {
   Truck, 
   CheckCircle2, 
   MessageSquare, 
-  Sparkles,
+  Feather,
   ArrowRight,
   AlertCircle
 } from 'lucide-react';
@@ -184,7 +184,7 @@ export default function CheckoutModal() {
               setIsCheckoutOpen(false);
               setOrderComplete(false);
             }}
-            className="p-1.5 rounded-full text-[#EFE9DC]/75 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="p-1.5 rounded-sm text-[#EFE9DC]/75 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Close checkout"
           >
             <X className="w-5 h-5" />
@@ -194,7 +194,7 @@ export default function CheckoutModal() {
         {orderComplete ? (
           /* Order Confirmation Screen */
           <div className="p-6 sm:p-12 text-center space-y-6">
-            <div className="w-16 h-16 rounded-full bg-[#183C2D] border border-[#C5A869] text-[#D8B979] flex items-center justify-center mx-auto shadow-lg">
+            <div className="w-16 h-16 rounded-sm bg-[#183C2D] border border-[#C5A869] text-[#D8B979] flex items-center justify-center mx-auto shadow-lg">
               <CheckCircle2 className="w-9 h-9" />
             </div>
 
@@ -246,7 +246,7 @@ export default function CheckoutModal() {
             
             {/* Notice bar */}
             <div className="p-3.5 rounded-lg bg-[#F7F4EC] border border-[#C5A869]/40 flex items-center gap-3 text-xs text-[#0B1D15]">
-              <div className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-sm bg-[#25D366] text-white flex items-center justify-center shrink-0">
                 <MessageSquare className="w-4 h-4" />
               </div>
               <div>
@@ -386,7 +386,7 @@ export default function CheckoutModal() {
             {/* Personalized Note */}
             <div className="pt-4 border-t border-[#EFE9DC]">
               <label className="block text-xs font-semibold uppercase tracking-wider text-[#0B1D15] mb-1.5 flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#C5A869]" />
+                <Feather className="w-3.5 h-3.5 text-[#C5A869]" />
                 <span>Complimentary Wax-Sealed Calligraphy Message (Optional)</span>
               </label>
               <textarea

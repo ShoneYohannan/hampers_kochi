@@ -24,7 +24,7 @@ export default function InstagramGallery() {
 
   return (
     <section className="py-16 bg-[#FCFBF8] border-b border-[#EFE9DC]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16">
         
         <div className="flex flex-col sm:flex-row items-center justify-between mb-10 pb-4 border-b border-[#EFE9DC] gap-4">
           <div className="text-center sm:text-left">
@@ -40,7 +40,7 @@ export default function InstagramGallery() {
             href="https://www.instagram.com/hampers_kochi/"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#C5A869]/50 text-xs font-medium uppercase tracking-wider text-[#0B1D15] hover:bg-[#0B1D15] hover:text-[#FCFBF8] transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-sm border border-[#C5A869]/50 text-xs font-medium uppercase tracking-wider text-[#0B1D15] hover:bg-[#0B1D15] hover:text-[#FCFBF8] transition-all"
             title="Follow hampers_kochi on Instagram"
           >
             <InstagramIcon className="w-4 h-4 text-[#C5A869]" />
@@ -58,7 +58,7 @@ export default function InstagramGallery() {
             >
               <Image
                 src={post.image}
-                alt="The Kochi Atelier Hamper Unboxing"
+                alt={`${post.tag.replace('#', '')} Unboxing Moment - HamPers Kochi Luxury Gifting Atelier`}
                 fill
                 className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"

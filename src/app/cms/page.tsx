@@ -12,7 +12,7 @@ import {
   RotateCcw,
   Search,
   ArrowLeft,
-  Sparkles,
+  PackageOpen,
   Download,
   Upload,
   CheckCircle2,
@@ -51,7 +51,7 @@ const PRESET_IMAGES = [
   '/images/1001490450.jpg.jpeg',
   '/images/1001611483.jpg.jpeg',
   '/images/1001707222.jpg.jpeg',
-  '/images/1001877030.jpg.jpeg',
+  '/images/celebration-birthday-hamper.jpg',
   '/images/1001901798.jpg.jpeg',
   '/images/1002015334.jpg.jpeg',
   '/images/1002090346.jpg.jpeg',
@@ -244,7 +244,7 @@ export default function CmsPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/"
-              className="p-2 rounded-full bg-[#183C2D] border border-[#C5A869]/40 hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors"
+              className="p-2 rounded-sm bg-[#183C2D] border border-[#C5A869]/40 hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors"
               title="Return to Live Website"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -294,7 +294,7 @@ export default function CmsPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-4 py-2 rounded-sm text-xs font-medium uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
                   isActive
                     ? 'bg-[#C5A869] text-[#0B1D15] font-semibold shadow-md'
                     : 'bg-[#183C2D]/60 text-[#EFE9DC]/75 hover:bg-[#183C2D] hover:text-[#C5A869]'
@@ -392,7 +392,7 @@ export default function CmsPage() {
                       </span>
                       {p.isBestseller && (
                         <span className="bg-[#C5A869] text-[#0B1D15] text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded">
-                          ★ Bestseller
+                          Bestseller
                         </span>
                       )}
                     </div>
@@ -728,7 +728,7 @@ export default function CmsPage() {
             {/* Modal Header */}
             <div className="flex items-center justify-between pb-3 border-b border-[#C5A869]/20">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-[#D8B979]" />
+                <PackageOpen className="w-5 h-5 text-[#D8B979]" />
                 <h3 className="text-xl font-serif-luxury text-white">
                   {isAddingNew ? 'Create New Atelier Hamper' : `Edit: ${formName}`}
                 </h3>
@@ -738,7 +738,7 @@ export default function CmsPage() {
                   setEditingProduct(null);
                   setIsAddingNew(false);
                 }}
-                className="p-1.5 rounded-full text-[#EFE9DC]/60 hover:text-white"
+                className="p-1.5 rounded-sm text-[#EFE9DC]/60 hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -829,7 +829,7 @@ export default function CmsPage() {
                     onChange={(e) => setFormIsBestseller(e.target.checked)}
                     className="w-4 h-4 rounded text-[#C5A869]"
                   />
-                  <span>Mark as Bestseller ★</span>
+                  <span>Mark as Bestseller</span>
                 </label>
 
                 <label className="flex items-center gap-2 cursor-pointer text-white">

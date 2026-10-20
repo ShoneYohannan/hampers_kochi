@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { Heart, ShoppingBag, Star, MessageSquare, ArrowUpRight } from 'lucide-react';
+import { Heart, Star, MessageSquare, Eye } from 'lucide-react';
 import { Product } from '@/types';
-import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { useToast } from '@/context/ToastContext';
 
@@ -14,20 +13,10 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, onQuickView }: ProductCardProps) {
-  const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const toast = useToast();
-  const [isAdded, setIsAdded] = useState(false);
 
   const isFavorited = isInWishlist(product.id);
-
-  const handleAdd = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    addToCart(product, 1);
-    setIsAdded(true);
-    toast.success(`Added "${product.name}" to Bag!`);
-    setTimeout(() => setIsAdded(false), 1800);
-  };
 
   const handleToggleWishlist = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -40,43 +29,37 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello The Kochi Atelier, I am interested in ordering "${product.name}" (Price: ₹${product.price.toLocaleString('en-IN')}). Could you please confirm delivery details?`
+    `Hello The Kochi Atelier, I would like to order "${product.name}" (Price: ₹${product.price.toLocaleString('en-IN')}). Could you please share payment and delivery details?`
   );
   const whatsappUrl = `https://wa.me/919645556010?text=${whatsappMessage}`;
 
   return (
     <div
-      className="group relative rounded-lg overflow-hidden bg-[#0B1D15] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 border border-[#C5A869]/20 hover:border-[#C5A869]/60"
+      className="group relative rounded-xl overflow-hidden bg-white border border-[#E8E1D4] hover:border-[#D8B979] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer"
       onClick={() => onQuickView(product)}
     >
-      {/* Portrait Image Container */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden">
+      {/* ── IMAGE CONTAINER (Unobscured & Clean) ── */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#F7F4EC]">
         <Image
           src={product.image}
-          alt={product.name}
+          alt={`${product.name} - Luxury Handcrafted Gift Hamper by The Kochi Atelier`}
           fill
-          quality={85}
+          quality={90}
           className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-
-        {/* Gradient overlay — strong at bottom for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D15] via-[#0B1D15]/30 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-300" />
-
-        {/* Subtle gold inner border on hover */}
-        <div className="absolute inset-0 border border-transparent group-hover:border-[#C5A869]/40 transition-colors duration-300 pointer-events-none rounded-lg" />
 
         {/* Top Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
           {product.isBestseller && (
-            <span className="bg-[#0B1D15]/90 backdrop-blur-sm text-[#D8B979] text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded border border-[#C5A869]/40 shadow-sm flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D8B979] animate-pulse" />
+            <span className="bg-[#0B1D15]/95 backdrop-blur-sm text-[#D8B979] text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded border border-[#D8B979]/40 shadow-sm flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-sm bg-[#D8B979]" />
               Bestseller
             </span>
           )}
           {product.isLimitedEdition && (
-            <span className="bg-[#C5A869] text-[#0B1D15] text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded shadow-sm">
-              Rare Edition
+            <span className="bg-[#D8B979] text-[#0B1D15] text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded shadow-sm">
+              Limited Edition
             </span>
           )}
         </div>
@@ -85,102 +68,84 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
         <button
           type="button"
           onClick={handleToggleWishlist}
-          className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 z-10 shadow-md cursor-pointer ${
+          className={`absolute top-3 right-3 w-8 h-8 rounded-sm flex items-center justify-center transition-all duration-200 z-10 shadow-md cursor-pointer ${
             isFavorited
-              ? 'bg-[#0B1D15] text-[#C5A869] border border-[#C5A869]'
-              : 'bg-white/20 backdrop-blur-sm text-white hover:text-[#C5A869] hover:bg-white/30 border border-white/20'
+              ? 'bg-[#0B1D15] text-[#D8B979] border border-[#D8B979]'
+              : 'bg-white/80 hover:bg-white text-[#0B1D15] hover:text-[#D8B979] border border-black/5'
           }`}
           aria-label={isFavorited ? 'Remove from wishlist' : 'Add to wishlist'}
         >
-          <Heart className={`w-4 h-4 ${isFavorited ? 'fill-[#C5A869]' : ''}`} />
+          <Heart className={`w-4 h-4 ${isFavorited ? 'fill-[#D8B979] text-[#D8B979]' : ''}`} />
         </button>
 
-        {/* Rating pill — top center on hover */}
-        <div className="absolute top-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-          <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full border border-[#C5A869]/30">
-            <Star className="w-3 h-3 text-[#D8B979] fill-[#D8B979]" />
-            <span className="text-[10px] font-semibold text-white">{product.rating}</span>
-            <span className="text-[10px] text-white/60">({product.reviewsCount})</span>
-          </div>
+        {/* Quick View Button on Image Hover */}
+        <div className="absolute inset-x-0 bottom-3 px-4 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(product);
+            }}
+            className="w-full py-2 bg-[#0B1D15]/90 hover:bg-[#0B1D15] text-[#EFE9DC] hover:text-[#D8B979] text-xs font-semibold uppercase tracking-wider rounded backdrop-blur-sm transition-colors flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
+          >
+            <Eye className="w-3.5 h-3.5" />
+            <span>Quick View Details</span>
+          </button>
         </div>
+      </div>
 
-        {/* Bottom overlay content — always visible */}
-        <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 z-10">
-
-          {/* Category label */}
-          <div className="text-[10px] uppercase tracking-[0.2em] text-[#C5A869] font-medium mb-1">
-            {product.category}
+      {/* ── PRODUCT DETAILS (Clean, Luxury & Readable) ── */}
+      <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-white">
+        <div>
+          {/* Category & Rating */}
+          <div className="flex items-center justify-between gap-2 mb-1.5">
+            <span className="text-[11px] uppercase tracking-[0.2em] text-[#96742E] font-semibold">
+              {product.category}
+            </span>
+            <div className="flex items-center gap-1 text-xs text-[#505D56]">
+              <Star className="w-3.5 h-3.5 text-[#D8B979] fill-[#D8B979]" />
+              <span className="font-semibold text-[#0B1D15]">{product.rating}</span>
+              <span className="text-[11px] text-[#78857F]">({product.reviewsCount})</span>
+            </div>
           </div>
 
           {/* Product Name */}
-          <h3 className="text-base sm:text-lg font-serif-luxury font-normal text-[#FCFBF8] leading-snug line-clamp-2 group-hover:text-[#D8B979] transition-colors duration-300">
+          <h3 className="text-lg sm:text-xl font-serif-luxury font-normal text-[#0B1D15] leading-snug line-clamp-1 group-hover:text-[#96742E] transition-colors duration-200">
             {product.name}
           </h3>
 
-          {/* Subtitle — hidden initially, revealed on hover */}
-          <p className="mt-1 text-xs text-[#EFE9DC]/70 line-clamp-1 font-light opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-10 overflow-hidden">
-            {product.subtitle}
+          {/* Subtitle / Contents Preview */}
+          <p className="mt-1 text-xs sm:text-sm text-[#505D56] font-light line-clamp-2 leading-relaxed">
+            {product.subtitle || product.description}
           </p>
+        </div>
 
-          {/* Price & Actions row */}
-          <div className="mt-3 pt-3 border-t border-[#C5A869]/20 flex items-center justify-between gap-2">
-            {/* Pricing */}
-            <div className="flex items-baseline gap-2">
-              <span className="text-lg font-serif-luxury text-[#D8B979] font-semibold">
-                ₹{product.price.toLocaleString('en-IN')}
+        {/* Pricing & Direct WhatsApp CTA */}
+        <div className="mt-4 pt-3 border-t border-[#E8E1D4]">
+          <div className="flex items-baseline gap-2 mb-3">
+            <span className="text-xl sm:text-2xl font-serif-luxury text-[#0B1D15] font-semibold">
+              ₹{product.price.toLocaleString('en-IN')}
+            </span>
+            {product.originalPrice && (
+              <span className="text-xs sm:text-sm text-[#78857F] line-through">
+                ₹{product.originalPrice.toLocaleString('en-IN')}
               </span>
-              {product.originalPrice && (
-                <span className="text-xs text-[#EFE9DC]/50 line-through">
-                  ₹{product.originalPrice.toLocaleString('en-IN')}
-                </span>
-              )}
-            </div>
-
-            {/* Action Icons */}
-            <div className="flex items-center gap-1.5 shrink-0" onClick={(e) => e.stopPropagation()}>
-              {/* WhatsApp */}
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#25D366]/20 border border-white/20 hover:border-[#25D366]/50 flex items-center justify-center text-white hover:text-[#25D366] transition-all duration-200 backdrop-blur-sm cursor-pointer"
-                title="Order via WhatsApp"
-                aria-label="Order on WhatsApp"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-              </a>
-
-              {/* Add to Bag */}
-              <button
-                type="button"
-                onClick={handleAdd}
-                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 shadow-sm cursor-pointer ${
-                  isAdded
-                    ? 'bg-[#183C2D] text-[#D8B979] border border-[#C5A869]'
-                    : 'bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] border border-[#C5A869]'
-                }`}
-                title={isAdded ? 'Added to Bag' : 'Add to Bag'}
-                aria-label={isAdded ? 'Added to Bag' : 'Add to Bag'}
-              >
-                <ShoppingBag className="w-3.5 h-3.5" />
-              </button>
-
-              {/* Quick View */}
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onQuickView(product);
-                }}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center text-white transition-all duration-200 backdrop-blur-sm cursor-pointer"
-                title="Quick View"
-                aria-label="Quick View"
-              >
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+            )}
           </div>
+
+          {/* Direct WhatsApp Ordering Button — Uncongested & Prominent */}
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="w-full py-2.5 px-4 rounded bg-[#25D366] hover:bg-[#128C7E] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all hover:shadow-md cursor-pointer"
+            title="Order directly via WhatsApp"
+            aria-label={`Order ${product.name} on WhatsApp`}
+          >
+            <MessageSquare className="w-4 h-4 text-white shrink-0" />
+            <span>Order on WhatsApp</span>
+          </a>
         </div>
       </div>
     </div>

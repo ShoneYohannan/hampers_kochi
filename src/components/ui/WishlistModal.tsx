@@ -32,14 +32,14 @@ export default function WishlistModal({ isOpen, onClose, onSelectProduct }: Wish
           <div className="flex items-center gap-2">
             <Heart className="w-5 h-5 text-[#D8B979] fill-[#D8B979]" />
             <h2 className="text-lg font-serif-luxury tracking-wider">Your Saved Curations</h2>
-            <span className="text-xs bg-[#183C2D] text-[#D8B979] px-2 py-0.5 rounded-full border border-[#C5A869]/30">
+            <span className="text-xs bg-[#183C2D] text-[#D8B979] px-2 py-0.5 rounded-sm border border-[#C5A869]/30">
               {wishlist.length}
             </span>
           </div>
           
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full text-[#EFE9DC]/75 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-1.5 rounded-sm text-[#EFE9DC]/75 hover:text-white hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -49,7 +49,7 @@ export default function WishlistModal({ isOpen, onClose, onSelectProduct }: Wish
         <div className="p-6 max-h-[60vh] overflow-y-auto space-y-4">
           {wishlist.length === 0 ? (
             <div className="text-center py-12 space-y-3">
-              <div className="w-14 h-14 rounded-full bg-[#F7F4EC] border border-[#EFE9DC] flex items-center justify-center text-[#C5A869] mx-auto">
+              <div className="w-14 h-14 rounded-sm bg-[#F7F4EC] border border-[#EFE9DC] flex items-center justify-center text-[#C5A869] mx-auto">
                 <Heart className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-serif-luxury text-[#0B1D15]">No Saved Hampers</h3>

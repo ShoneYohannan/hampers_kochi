@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { 
   X, 
-  Sparkles, 
+  Gift, 
   Check, 
   Plus, 
   Trash2, 
@@ -110,7 +110,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
         {/* Modal Header */}
         <div className="p-5 bg-[#0B1D15] text-[#FCFBF8] border-b border-[#C5A869]/30 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-[#D8B979]" />
+            <Gift className="w-5 h-5 text-[#D8B979]" />
             <div>
               <h2 className="text-lg font-serif-luxury tracking-wider">The Bespoke Hamper Atelier</h2>
               <span className="text-[11px] text-[#EFE9DC]/70">Step {currentStep} of 4 &bull; Tailored to Perfection</span>
@@ -119,7 +119,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
           
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full text-[#EFE9DC]/75 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-1.5 rounded-sm text-[#EFE9DC]/75 hover:text-white hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -136,7 +136,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
             <button
               key={item.step}
               onClick={() => setCurrentStep(item.step as any)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase transition-colors shrink-0 ${
+              className={`px-3 py-1.5 rounded-sm text-xs font-medium tracking-wider uppercase transition-colors shrink-0 ${
                 currentStep === item.step
                   ? 'bg-[#0B1D15] text-[#D8B979] font-semibold shadow-sm'
                   : 'text-[#68756F] hover:text-[#0B1D15]'
@@ -181,7 +181,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                       <div className="flex items-center justify-between">
                         <h4 className="text-sm font-serif-luxury font-medium text-[#0B1D15]">{box.name}</h4>
                         {selectedBox.id === box.id && (
-                          <span className="w-5 h-5 rounded-full bg-[#183C2D] text-[#D8B979] flex items-center justify-center text-xs">
+                          <span className="w-5 h-5 rounded-sm bg-[#183C2D] text-[#D8B979] flex items-center justify-center text-xs">
                             <Check className="w-3 h-3" />
                           </span>
                         )}

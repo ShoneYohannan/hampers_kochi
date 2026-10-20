@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
-import { Search, X, Star, ArrowRight, Sparkles } from 'lucide-react';
+import { Search, X, Star, ArrowRight, TrendingUp } from 'lucide-react';
 import { useCms } from '@/context/CmsContext';
 import { Product } from '@/types';
 
@@ -68,7 +68,7 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }: Search
           )}
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-white/10 text-[#EFE9DC]/80 hover:text-white transition-colors"
+            className="p-1.5 rounded-sm hover:bg-white/10 text-[#EFE9DC]/80 hover:text-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -78,15 +78,15 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }: Search
         {!query && (
           <div className="p-6 space-y-4">
             <div className="text-[11px] uppercase tracking-wider text-[#C5A869] font-semibold flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Trending Luxury Searches</span>
+              <TrendingUp className="w-3.5 h-3.5" />
+              <span>Trending Searches</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {POPULAR_SEARCHES.map((tag) => (
                 <button
                   key={tag}
                   onClick={() => setQuery(tag)}
-                  className="px-3 py-1.5 rounded-full bg-[#F7F4EC] text-[#38423D] hover:bg-[#0B1D15] hover:text-[#D8B979] text-xs font-medium border border-[#EFE9DC] transition-colors"
+                  className="px-3 py-1.5 rounded-sm bg-[#F7F4EC] text-[#38423D] hover:bg-[#0B1D15] hover:text-[#D8B979] text-xs font-medium border border-[#EFE9DC] transition-colors"
                 >
                   {tag}
                 </button>

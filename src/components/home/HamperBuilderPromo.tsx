@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import { Sparkles, Box, Cookie, Feather, Stamp, ArrowRight } from 'lucide-react';
+import { Gift, Box, Cookie, Feather, Stamp, ArrowRight } from 'lucide-react';
 
 interface HamperBuilderPromoProps {
   onOpenBuilder: () => void;
@@ -12,43 +11,39 @@ export default function HamperBuilderPromo({ onOpenBuilder }: HamperBuilderPromo
   const steps = [
     {
       num: '01',
+      title: 'Choose Trunk or Casket',
       icon: Box,
-      title: 'Select Luxury Base Box',
-      desc: 'Handmade emerald velvet chests, ivory rigid boxes, or solid cedarwood caskets.',
+      desc: 'Handmade emerald velvet casket, vintage wicker trunk, or matte gold embossed box.',
     },
     {
       num: '02',
+      title: 'Select Artisanal Treats',
       icon: Cookie,
-      title: 'Curate Artisanal Goodies',
-      desc: 'Choose from single-origin coffees, Belgian truffles, brass diyas, and soy candles.',
+      desc: 'Belgian truffles, single-estate pekoe teas, saffron honey, or spiced roasted nuts.',
     },
     {
       num: '03',
+      title: 'Add Keepsakes & Accents',
       icon: Stamp,
-      title: 'Tailor Finishing Details',
-      desc: 'Double-faced champagne gold satin ribbon with hand-pressed gold hot wax seal.',
+      desc: 'Hand-cast brass nilavilakku, artisanal soy candle, or kasavu handloom stole.',
     },
     {
       num: '04',
+      title: 'Wax Seal Calligraphy',
       icon: Feather,
-      title: 'Wax-Sealed Calligraphy',
       desc: 'Your personalized message penned by our in-house master calligrapher on cotton paper.',
     },
   ];
 
   return (
     <section className="py-16 md:py-24 bg-[#0B1D15] text-[#FCFBF8] relative overflow-hidden border-b border-[#C5A869]/25">
-      {/* Background ambient accents */}
-      <div className="absolute -top-20 -left-20 w-80 h-80 bg-[#183C2D]/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#C5A869]/10 rounded-full blur-3xl pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#183C2D] border border-[#C5A869]/40 text-[#D8B979] text-xs uppercase tracking-[0.2em] mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#D8B979]" />
-            <span>Interactive Gifting Experience</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-[#183C2D] border border-[#C5A869]/40 text-[#D8B979] text-xs uppercase tracking-[0.2em] mb-3">
+            <Gift className="w-3.5 h-3.5 text-[#D8B979]" />
+            <span>Interactive Custom Atelier</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-luxury font-normal leading-tight">
             The Bespoke Atelier: <br className="hidden sm:inline" />
@@ -69,14 +64,14 @@ export default function HamperBuilderPromo({ onOpenBuilder }: HamperBuilderPromo
             return (
               <div
                 key={step.num}
-                className="p-6 rounded-lg bg-[#10291E]/80 border border-[#C5A869]/30 hover:border-[#D8B979] transition-all duration-300 relative group flex flex-col justify-between"
+                className="p-6 rounded bg-[#10291E] border border-[#C5A869]/30 hover:border-[#D8B979] transition-all duration-300 relative group flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-mono font-bold text-[#C5A869] tracking-widest">
                       STEP {step.num}
                     </span>
-                    <div className="w-10 h-10 rounded-full bg-[#0B1D15] border border-[#C5A869]/40 flex items-center justify-center text-[#D8B979] group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 rounded-sm bg-[#0B1D15] border border-[#C5A869]/40 flex items-center justify-center text-[#D8B979] group-hover:scale-105 transition-transform duration-300">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
@@ -97,7 +92,7 @@ export default function HamperBuilderPromo({ onOpenBuilder }: HamperBuilderPromo
         </div>
 
         {/* CTA Banner Box */}
-        <div className="rounded-xl p-8 bg-gradient-to-r from-[#122E23] via-[#0B1D15] to-[#183C2D] border border-[#C5A869]/50 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="rounded p-8 bg-[#10291E] border border-[#C5A869]/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center md:text-left">
             <h3 className="text-xl sm:text-2xl font-serif-luxury text-[#FCFBF8]">
               Ready to craft an unforgettable personal hamper?
@@ -109,9 +104,9 @@ export default function HamperBuilderPromo({ onOpenBuilder }: HamperBuilderPromo
 
           <button
             onClick={onOpenBuilder}
-            className="px-8 py-4 rounded bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] font-medium text-xs sm:text-sm uppercase tracking-[0.2em] transition-all duration-300 shadow-xl hover:shadow-[#C5A869]/30 flex items-center gap-2 group cursor-pointer shrink-0"
+            className="px-8 py-4 rounded-sm bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] font-medium text-xs sm:text-sm uppercase tracking-[0.2em] transition-all duration-300 shadow-xl flex items-center gap-2 group cursor-pointer shrink-0"
           >
-            <Sparkles className="w-4 h-4" />
+            <Gift className="w-4 h-4" />
             <span>Launch Hamper Builder</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </button>

@@ -13,7 +13,7 @@ interface OccasionsGridProps {
 export default function OccasionsGrid({ onSelectOccasion }: OccasionsGridProps) {
   return (
     <section id="occasions" className="py-16 md:py-24 bg-[#FCFBF8] border-b border-[#EFE9DC]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
@@ -41,7 +41,7 @@ export default function OccasionsGrid({ onSelectOccasion }: OccasionsGridProps) 
               <div className="relative aspect-[4/3] sm:aspect-[1/1] w-full overflow-hidden">
                 <Image
                   src={item.image}
-                  alt={item.title}
+                  alt={`${item.title} Luxury Gift Hamper Collection in Kochi`}
                   fill
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -60,7 +60,7 @@ export default function OccasionsGrid({ onSelectOccasion }: OccasionsGridProps) 
                   <span className="text-[10px] uppercase tracking-[0.2em] text-[#C5A869] font-medium">
                     {item.itemCount}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-[#183C2D]/80 border border-[#C5A869]/40 flex items-center justify-center text-[#D8B979] group-hover:bg-[#C5A869] group-hover:text-[#0B1D15] transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <div className="w-8 h-8 rounded-sm bg-[#183C2D]/80 border border-[#C5A869]/40 flex items-center justify-center text-[#D8B979] group-hover:bg-[#C5A869] group-hover:text-[#0B1D15] transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>

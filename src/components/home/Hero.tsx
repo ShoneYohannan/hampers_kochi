@@ -5,18 +5,38 @@ import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 interface HeroProps {
-  onOpenBuilder: () => void;
+  onOpenBuilder?: () => void;
 }
 
 const HERO_IMAGES = [
-  { src: '/images/front.jpg', alt: 'The Signature Kerala Kasavu & Jasmine Grand Festive Hamper', pos: 'center 40%' },
-  { src: '/images/1002090346.jpg.jpeg', alt: 'Artisan Wicker Hamper with Fresh Roses', pos: 'center' },
-  { src: '/images/1001901798.jpg.jpeg', alt: 'Elegant Polka-Dot Gift Box with Peach Bow', pos: '30% center' },
-  { src: '/images/1002015334.jpg.jpeg', alt: 'Premium Luxury Gift Box with Watch & Perfume', pos: 'center 30%' },
-  { src: '/images/1001877030.jpg.jpeg', alt: 'Birthday Hamper with Flowers & Chocolate Brownie', pos: 'center 20%' },
+  {
+    src: '/images/front.jpg',
+    alt: 'The Signature Kerala Kasavu & Jasmine Grand Festive Hamper with Brass Keepsake and Artisanal Delicacies',
+    pos: 'center 40%',
+  },
+  {
+    src: '/images/1002090346.jpg.jpeg',
+    alt: 'Handcrafted Heritage Wicker Hamper with Fresh Exotic Florals and Artisanal Chocolates from Kochi',
+    pos: 'center',
+  },
+  {
+    src: '/images/1001726475.jpg.jpeg',
+    alt: 'Royal Kerala Kasavu Silk Handloom & Single-Origin Chocolate Luxury Suite Hamper',
+    pos: 'center',
+  },
+  {
+    src: '/images/1001981345.jpg.jpeg',
+    alt: 'Traditional Malabar Wicker Casket with Hand-Cast Brass Vilakku Lamp and High-Grown Nilgiri Teas',
+    pos: 'center 40%',
+  },
+  {
+    src: '/images/celebration-birthday-hamper.jpg',
+    alt: 'Bespoke Celebration Hamper with Fresh Botanical Accents and Gourmet Artisanal Bakes',
+    pos: 'center 30%',
+  },
 ];
 
-export default function Hero({ onOpenBuilder }: HeroProps) {
+export default function Hero({}: HeroProps) {
   const [currentImg, setCurrentImg] = useState(0);
   const [fading, setFading] = useState(false);
 
@@ -32,108 +52,103 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
   }, []);
 
   return (
-    <section className="relative w-full flex flex-col lg:flex-row" style={{ minHeight: 'calc(100vh - 88px)' }}>
+    <section id="home" className="relative w-full flex flex-col lg:flex-row overflow-hidden" style={{ minHeight: 'calc(100vh - 88px)' }}>
 
-      {/* ── LEFT: Full-bleed image panel ── */}
+      {/* ── LEFT: Full-bleed image panel (fills edge-to-edge, zero left blank space) ── */}
       <div className="relative w-full lg:w-[55%] h-[55vw] sm:h-[70vw] lg:h-auto overflow-hidden bg-[#0B1D15] flex-shrink-0">
         <Image
           src={HERO_IMAGES[currentImg].src}
           alt={HERO_IMAGES[currentImg].alt}
           fill
           priority
+          sizes="(max-width: 1024px) 100vw, 55vw"
           className={`object-cover transition-opacity duration-700 ease-in-out ${fading ? 'opacity-0' : 'opacity-100'}`}
           style={{ objectPosition: HERO_IMAGES[currentImg].pos }}
-          sizes="(max-width: 1024px) 100vw, 55vw"
         />
 
         {/* Subtle right-edge vignette for blending into the right panel */}
         <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-r from-transparent to-[#0B1D15] hidden lg:block" />
 
-        {/* Image Dot Navigation */}
+        {/* Image Indicators (Clean architectural lines, no pill shapes) */}
         <div className="absolute bottom-6 left-6 flex items-center gap-2 z-10">
           {HERO_IMAGES.map((_, idx) => (
             <button
               key={idx}
               onClick={() => { setFading(true); setTimeout(() => { setCurrentImg(idx); setFading(false); }, 300); }}
-              className={`transition-all duration-300 rounded-full ${
+              className={`transition-all duration-300 rounded-sm cursor-pointer ${
                 currentImg === idx
-                  ? 'w-6 h-1.5 bg-[#C5A869]'
-                  : 'w-1.5 h-1.5 bg-white/40 hover:bg-white/70'
+                  ? 'w-7 h-1.5 bg-[#D8B979]'
+                  : 'w-2 h-1.5 bg-white/40 hover:bg-white/80'
               }`}
-              aria-label={`View image ${idx + 1}`}
+              aria-label={`View curation visual ${idx + 1}`}
             />
           ))}
         </div>
       </div>
 
-      {/* ── RIGHT: Content panel ── */}
-      <div className="relative w-full lg:w-[45%] bg-[#0B1D15] flex flex-col justify-center px-8 sm:px-12 lg:px-14 xl:px-20 py-16 lg:py-0">
+      {/* ── RIGHT: Content panel (Clean solid dark forest green, no AI purple/gradient blobs) ── */}
+      <div className="relative w-full lg:w-[45%] bg-[#0B1D15] flex flex-col justify-center px-8 sm:px-12 lg:pl-20 xl:pl-28 2xl:pl-36 lg:pr-10 xl:pr-16 py-16 lg:py-0">
 
-        {/* Decorative ambient glow */}
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#C5A869]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/4 right-0 w-64 h-64 bg-[#183C2D]/60 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 max-w-lg">
+        <div className="relative z-10 max-w-xl">
 
           {/* Label */}
-          <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-[#C5A869] font-medium mb-6 flex items-center gap-3">
-            <span className="w-8 h-[1px] bg-[#C5A869]/60" />
-            Luxury Hampers · Est. 2016
+          <div className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#D8B979] font-medium mb-6 flex items-center gap-3">
+            <span className="w-8 h-[1px] bg-[#D8B979]/60" />
+            HamPers Kochi · Fort Kochi Atelier
           </div>
 
-          {/* Headline */}
-          <h1 className="font-serif-luxury font-normal text-[#FCFBF8] leading-[1.1] tracking-tight">
+          {/* Headline - Direct, clear, concrete, no vague poetic fluff */}
+          <h1 className="font-serif-luxury font-normal text-[#FCFBF8] leading-[1.08] tracking-tight">
             <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl mb-1">
-              The Art of
+              Luxury Gift Hampers
             </span>
-            <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl italic text-[#C5A869] mb-1">
-              Thoughtful
-            </span>
-            <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl">
-              Gifting.
+            <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl italic text-[#D8B979] mb-1">
+              Handcrafted in Kochi.
             </span>
           </h1>
 
           {/* Divider */}
-          <div className="w-12 h-[1px] bg-[#C5A869]/50 my-7" />
+          <div className="w-14 h-[1px] bg-[#D8B979]/60 my-7" />
 
-          {/* Description */}
-          <p className="text-[#EFE9DC]/75 text-sm sm:text-base font-light leading-relaxed max-w-sm">
-            Hand-assembled hampers of single-estate teas, Belgian chocolate truffles,
-            and artisanal provisions — wrapped in silk, finished with your own words.
+          {/* Description - Clear, factual, specific */}
+          <p className="text-[#EFE9DC]/90 text-base sm:text-lg font-light leading-relaxed max-w-md">
+            Curated with Kerala Kasavu handlooms, hand-cast brass keepsakes, single-estate high-grown teas,
+            and artisanal chocolates. Delivered same-day in Kochi and express Pan-India.
           </p>
 
-          {/* CTAs */}
+          {/* CTAs: Crisp rectangular buttons, no pill shapes */}
           <div className="mt-10 flex flex-wrap gap-4 items-center">
             <a
               href="#bestsellers"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#C5A869] text-[#0B1D15] text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-[#D8B979] transition-all duration-300 group shadow-lg shadow-[#C5A869]/20"
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#D8B979] text-[#0B1D15] text-xs font-semibold tracking-[0.2em] uppercase hover:bg-[#E6CE9F] transition-all duration-300 group shadow-md rounded-sm"
             >
               <span>Explore Hampers</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
 
-            <button
-              onClick={onOpenBuilder}
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-[#C5A869]/50 text-[#EFE9DC] text-[11px] font-medium tracking-[0.2em] uppercase hover:border-[#C5A869] hover:text-[#C5A869] transition-all duration-300 cursor-pointer"
+            <a
+              href="https://wa.me/919645556010?text=Hello%20The%20Kochi%20Atelier%2C%20I%20would%20like%20to%20order%20a%20luxury%20hamper."
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer shadow-sm rounded-sm"
             >
-              Create Your Own
-            </button>
+              <span>Order via WhatsApp</span>
+            </a>
           </div>
 
-          {/* Stats row */}
+          {/* Stats row - No random star emojis */}
           <div className="mt-14 pt-8 border-t border-[#C5A869]/15 grid grid-cols-3 gap-6">
             <div>
-              <div className="text-[#C5A869] text-lg sm:text-xl font-serif-luxury font-semibold">48 hrs</div>
-              <div className="text-[#EFE9DC]/50 text-[10px] uppercase tracking-[0.2em] mt-0.5">Dispatch</div>
+              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">Same-Day</div>
+              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Kochi Delivery</div>
             </div>
             <div>
-              <div className="text-[#C5A869] text-lg sm:text-xl font-serif-luxury font-semibold">Pan-India</div>
-              <div className="text-[#EFE9DC]/50 text-[10px] uppercase tracking-[0.2em] mt-0.5">Delivery</div>
+              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">Pan-India</div>
+              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Air Express</div>
             </div>
             <div>
-              <div className="text-[#C5A869] text-lg sm:text-xl font-serif-luxury font-semibold">Hand-tied</div>
-              <div className="text-[#EFE9DC]/50 text-[10px] uppercase tracking-[0.2em] mt-0.5">In Atelier</div>
+              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">5.0 / 5.0</div>
+              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Google Rating</div>
             </div>
           </div>
 

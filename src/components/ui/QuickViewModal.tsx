@@ -11,7 +11,6 @@ import {
   ShieldCheck, 
   Heart, 
   MessageSquare, 
-  Sparkles, 
   Box, 
   Weight, 
   Maximize2 
@@ -66,7 +65,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/90 hover:bg-[#0B1D15] hover:text-white border border-[#EFE9DC] flex items-center justify-center text-[#141A17] transition-colors shadow-md"
+          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-sm bg-white/90 hover:bg-[#0B1D15] hover:text-white border border-[#EFE9DC] flex items-center justify-center text-[#141A17] transition-colors shadow-md"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -199,7 +198,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
               {product.contents && product.contents.length > 0 && (
                 <div className="mt-4 p-4 rounded-lg bg-[#FCFBF8] border border-[#EFE9DC]">
                   <div className="text-[11px] uppercase tracking-wider font-semibold text-[#0B1D15] mb-2 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#C5A869]" />
+                    <Check className="w-3.5 h-3.5 text-[#C5A869]" />
                     <span>Curated Treasures Inside This Box:</span>
                   </div>
                   <ul className="space-y-1.5 text-xs text-[#38423D]">
@@ -252,6 +251,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                   <button
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                     className="px-3 py-2 text-sm text-[#0B1D15] hover:bg-[#F7F4EC]"
+                    aria-label="Decrease quantity"
                   >
                     -
                   </button>
@@ -259,39 +259,29 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                   <button
                     onClick={() => setQuantity((q) => q + 1)}
                     className="px-3 py-2 text-sm text-[#0B1D15] hover:bg-[#F7F4EC]"
+                    aria-label="Increase quantity"
                   >
                     +
                   </button>
                 </div>
 
-                {/* Add to Bag Button */}
-                <button
-                  onClick={handleAddToCart}
-                  className={`flex-1 py-3 px-4 rounded text-xs font-semibold uppercase tracking-[0.18em] transition-all flex items-center justify-center gap-2 shadow-md ${
-                    added
-                      ? 'bg-[#183C2D] text-white'
-                      : 'bg-[#0B1D15] text-[#FCFBF8] hover:bg-[#C5A869] hover:text-[#0B1D15]'
-                  }`}
-                >
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>{added ? 'Added to Bag ✓' : `Add to Bag • ₹${(product.price * quantity).toLocaleString('en-IN')}`}</span>
-                </button>
-
-                {/* WhatsApp Order */}
+                {/* Direct WhatsApp Order CTA */}
                 <a
-                  href={whatsappUrl}
+                  href={`https://wa.me/919645556010?text=${encodeURIComponent(
+                    `Hello The Kochi Atelier, I would like to order "${product.name}" (Quantity: ${quantity}, Total: ₹${(product.price * quantity).toLocaleString('en-IN')}).${giftNote ? ` Personalized Note: "${giftNote}"` : ''} Please share delivery and payment details.`
+                  )}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-3 rounded bg-[#25D366]/15 hover:bg-[#25D366] text-[#128C7E] hover:text-white border border-[#25D366]/40 transition-colors shadow-sm"
-                  title="Enquire / Order via WhatsApp"
+                  className="flex-1 py-3 px-4 rounded text-xs font-semibold uppercase tracking-[0.18em] transition-all flex items-center justify-center gap-2 shadow-md bg-[#25D366] hover:bg-[#128C7E] text-white cursor-pointer"
                 >
-                  <MessageSquare className="w-5 h-5" />
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Order on WhatsApp • ₹{(product.price * quantity).toLocaleString('en-IN')}</span>
                 </a>
               </div>
 
               <div className="mt-3 flex items-center justify-between text-[11px] text-[#68756F]">
-                <span>✓ Delivery All Over India (28,000+ Pincodes)</span>
-                <span>✓ 100% Damage-Free Guarantee</span>
+                <span className="flex items-center gap-1"><Check className="w-3 h-3 text-[#C5A869]" /> Express Delivery Across India</span>
+                <span className="flex items-center gap-1"><Check className="w-3 h-3 text-[#C5A869]" /> 100% Damage-Free Guarantee</span>
               </div>
             </div>
 

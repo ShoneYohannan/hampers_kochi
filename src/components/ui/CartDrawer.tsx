@@ -71,14 +71,14 @@ export default function CartDrawer() {
             <div className="flex items-center gap-2">
               <ShoppingBag className="w-5 h-5 text-[#D8B979]" />
               <h2 className="text-lg font-serif-luxury tracking-wider">Your Shopping Bag</h2>
-              <span className="text-xs bg-[#183C2D] text-[#D8B979] px-2 py-0.5 rounded-full border border-[#C5A869]/30">
+              <span className="text-xs bg-[#183C2D] text-[#D8B979] px-2 py-0.5 rounded-sm border border-[#C5A869]/30">
                 {items.length} {items.length === 1 ? 'Curated Gift' : 'Curated Gifts'}
               </span>
             </div>
             
             <button
               onClick={() => setIsCartOpen(false)}
-              className="p-1.5 rounded-full text-[#EFE9DC]/75 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-1.5 rounded-sm text-[#EFE9DC]/75 hover:text-white hover:bg-white/10 transition-colors"
               aria-label="Close cart"
             >
               <X className="w-5 h-5" />
@@ -96,16 +96,16 @@ export default function CartDrawer() {
                   </span>
                   <span className="font-semibold text-[#0B1D15]">{progressPercent}%</span>
                 </div>
-                <div className="w-full bg-[#E1D6C2] h-2 rounded-full overflow-hidden">
+                <div className="w-full bg-[#E1D6C2] h-2 rounded-sm overflow-hidden">
                   <div
-                    className="bg-[#C5A869] h-full transition-all duration-500 rounded-full"
+                    className="bg-[#C5A869] h-full transition-all duration-500 rounded-sm"
                     style={{ width: `${progressPercent}%` }}
                   />
                 </div>
               </div>
             ) : (
               <div className="flex items-center gap-2 text-[#183C2D] font-medium">
-                <Sparkles className="w-4 h-4 text-[#C5A869]" />
+                <Check className="w-4 h-4 text-[#C5A869]" />
                 <span>You qualify for <strong>Complimentary Pan-India Express Delivery!</strong></span>
               </div>
             )}
@@ -115,7 +115,7 @@ export default function CartDrawer() {
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
             {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12 space-y-3">
-                <div className="w-16 h-16 rounded-full bg-[#F7F4EC] border border-[#EFE9DC] flex items-center justify-center text-[#C5A869]">
+                <div className="w-16 h-16 rounded-sm bg-[#F7F4EC] border border-[#EFE9DC] flex items-center justify-center text-[#C5A869]">
                   <ShoppingBag className="w-8 h-8" />
                 </div>
                 <h3 className="text-xl font-serif-luxury text-[#0B1D15]">Your Bag is Empty</h3>

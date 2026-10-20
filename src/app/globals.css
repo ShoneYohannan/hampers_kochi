@@ -104,3 +104,14 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Hide Next.js Development Indicator (N) badge */
+nextjs-portal,
+[data-nextjs-dev-indicator],
+[data-nextjs-toast-wrapper],
+div[data-nextjs-dev-indicator="true"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

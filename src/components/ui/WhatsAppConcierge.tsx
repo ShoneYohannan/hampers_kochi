@@ -1,15 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MessageSquare, X, Send, Sparkles } from 'lucide-react';
+import { MessageSquare, X, Send } from 'lucide-react';
 
 export default function WhatsAppConcierge() {
   const [isOpen, setIsOpen] = useState(false);
   const [customQuery, setCustomQuery] = useState('');
-
-  const defaultGreeting = encodeURIComponent(
-    'Hello The Kochi Atelier, I would like assistance with selecting a luxury hamper curation.'
-  );
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,15 +20,15 @@ export default function WhatsAppConcierge() {
       
       {/* Popover Dialogue Box */}
       {isOpen && (
-        <div className="mb-3 w-80 sm:w-88 bg-white rounded-xl shadow-2xl border border-[#C5A869]/40 overflow-hidden animate-in slide-in-from-bottom-3 duration-200 text-left">
+        <div className="mb-3 w-80 sm:w-88 bg-white rounded-lg shadow-2xl border border-[#C5A869]/40 overflow-hidden animate-in slide-in-from-bottom-3 duration-200 text-left">
           {/* Header */}
           <div className="p-4 bg-[#0B1D15] text-[#FCFBF8] border-b border-[#C5A869]/30 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="relative">
-                <div className="w-8 h-8 rounded-full bg-[#183C2D] border border-[#C5A869] flex items-center justify-center text-[#D8B979]">
-                  <Sparkles className="w-4 h-4" />
+                <div className="w-8 h-8 rounded-sm bg-[#183C2D] border border-[#C5A869] flex items-center justify-center text-[#D8B979]">
+                  <MessageSquare className="w-4 h-4 text-[#25D366]" />
                 </div>
-                <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] absolute bottom-0 right-0 border-2 border-[#0B1D15]" />
+                <span className="w-2.5 h-2.5 rounded-sm bg-[#25D366] absolute bottom-0 right-0 border border-[#0B1D15]" />
               </div>
               <div>
                 <h4 className="text-xs font-semibold text-white tracking-wide">Kochi Atelier Concierge</h4>
@@ -50,7 +46,7 @@ export default function WhatsAppConcierge() {
 
           {/* Body */}
           <div className="p-4 bg-[#FAF8F5] space-y-3">
-            <div className="p-3 rounded-lg bg-white border border-[#EFE9DC] text-xs text-[#38423D] leading-relaxed shadow-sm">
+            <div className="p-3 rounded bg-white border border-[#EFE9DC] text-xs text-[#38423D] leading-relaxed shadow-sm">
               Namaskaram! How may we assist your gifting celebration today? We offer same-day delivery in Kochi and pan-India express courier with custom wax seals.
             </div>
 
@@ -78,15 +74,15 @@ export default function WhatsAppConcierge() {
         </div>
       )}
 
-      {/* Floating Trigger Button */}
+      {/* Floating Trigger Button (Clean luxury rounded square) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#0B1D15] text-[#D8B979] hover:text-[#FCFBF8] border-2 border-[#C5A869] shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 group relative cursor-pointer"
+        className="w-12 h-12 sm:w-13 sm:h-13 rounded-lg bg-[#0B1D15] text-[#D8B979] hover:text-[#FCFBF8] border-2 border-[#C5A869] shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 group relative cursor-pointer"
         aria-label="WhatsApp Concierge"
         title="Chat with Gifting Concierge"
       >
-        <MessageSquare className="w-6 h-6 text-[#25D366] group-hover:scale-110 transition-transform" />
-        <span className="w-3 h-3 rounded-full bg-[#25D366] absolute top-0 right-0 border-2 border-[#0B1D15]" />
+        <MessageSquare className="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform" />
+        <span className="w-2.5 h-2.5 rounded-sm bg-[#25D366] absolute -top-1 -right-1 border border-[#0B1D15]" />
       </button>
 
     </div>

@@ -35,21 +35,21 @@ export default function CorporateShowcase() {
 
   return (
     <section id="corporate" className="py-16 md:py-24 bg-[#0B1D15] text-[#FCFBF8] relative overflow-hidden border-b border-[#C5A869]/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Text & Features */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#183C2D] border border-[#C5A869]/40 text-[#D8B979] text-xs uppercase tracking-[0.2em]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-[#183C2D] border border-[#C5A869]/40 text-[#D8B979] text-xs uppercase tracking-[0.2em]">
               <Briefcase className="w-3.5 h-3.5" />
               <span>Enterprise & Executive Gifting</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-luxury font-normal leading-tight">
-              Bespoke Corporate Curations <br />
+              Executive Corporate Gifting <br />
               <span className="italic font-light text-[#D8B979]">
-                That Leave An Enduring Mark
+                Custom Branded Keepsake Trunks
               </span>
             </h2>
 
@@ -114,8 +114,8 @@ export default function CorporateShowcase() {
 
               {formSent ? (
                 <div className="py-10 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-[#183C2D] border border-[#C5A869] text-[#D8B979] flex items-center justify-center mx-auto">
-                    <Sparkles className="w-6 h-6" />
+                  <div className="w-12 h-12 rounded-sm bg-[#183C2D] border border-[#C5A869] text-[#D8B979] flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h4 className="text-lg font-serif-luxury text-white">Inquiry Received</h4>
                   <p className="text-xs text-[#EFE9DC]/80">

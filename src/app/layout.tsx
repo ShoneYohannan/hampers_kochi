@@ -31,12 +31,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://hamperskochi.com'),
   title: {
-    default: 'hampers_kochi | Luxury Gift Hampers Delivered Across India',
-    template: '%s | hampers_kochi • The Kochi Atelier',
+    default: 'HamPers Kochi | Luxury Gift Hampers Delivered Across India',
+    template: '%s | HamPers Kochi • The Kochi Atelier',
   },
   description:
-    'Handcrafted luxury gift hampers curated in Kochi, delivered across India. Artisanal delicacies, single-estate teas, heirloom brassware, and bespoke wax-sealed calligraphy.',
+    'Handcrafted luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes, Kasavu silks, single-estate teas, Belgian chocolates & wax-sealed calligraphy with express Pan-India delivery.',
   keywords: [
     'luxury hampers kochi',
     'luxury gift hampers india',
@@ -46,8 +47,31 @@ export const metadata: Metadata = {
     'luxury dry fruit hampers',
     'birthday gift hampers india',
     'the kochi atelier',
+    'hampers kochi',
+    'bespoke hampers ernakulam',
+    'kasavu silk hampers',
+    'brass vilakku hampers',
   ],
-  authors: [{ name: 'The Kochi Atelier' }],
+  authors: [{ name: 'The Kochi Atelier Curators', url: 'https://hamperskochi.com/#curator' }],
+  creator: 'HamPers Kochi',
+  publisher: 'The Kochi Atelier',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'google-site-verification-hampers-kochi-official',
+  },
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
@@ -57,16 +81,28 @@ export const metadata: Metadata = {
     apple: '/icon.svg',
   },
   openGraph: {
-    title: 'hampers_kochi | Haute Gifting & Luxury Curations',
-    description: 'Bespoke artisanal hampers handcrafted in Kochi. Express delivery all over India.',
-    type: 'website',
+    title: 'HamPers Kochi | Haute Gifting & Luxury Curations',
+    description:
+      'Handcrafted luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes, single-estate teas, artisanal chocolates & wax-sealed calligraphy.',
+    url: 'https://hamperskochi.com',
+    siteName: 'HamPers Kochi',
     locale: 'en_IN',
-    siteName: 'hampers_kochi',
+    type: 'website',
+    images: [
+      {
+        url: '/images/front.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'HamPers Kochi - Handcrafted Luxury Gift Hampers in Kerala',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'hampers_kochi | Luxury Gift Hampers Delivered Across India',
-    description: 'Handcrafted luxury gift hampers curated in Kochi, delivered across India.',
+    title: 'HamPers Kochi | Luxury Gift Hampers Delivered Across India',
+    description:
+      'Bespoke artisanal gift hampers handcrafted in Kochi, Kerala. Express climate-protected delivery across India.',
+    images: ['/images/front.jpg'],
   },
 };
 
@@ -77,6 +113,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${jakarta.variable} scroll-smooth`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      </head>
       <body className="min-h-screen bg-[#FCFBF8] text-[#141A17] font-sans-clean antialiased selection:bg-[#C5A869]/25 selection:text-[#0B1D15] flex flex-col overflow-x-hidden">
         <CmsProvider>
           <ToastProvider>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Sparkles, MessageSquare, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, Compass, MessageSquare, ShoppingBag } from 'lucide-react';
 
 export default function NotFound() {
   return (
@@ -31,8 +31,8 @@ export default function NotFound() {
       <main className="flex-1 flex items-center justify-center p-6 text-center">
         <div className="max-w-xl mx-auto space-y-6">
           
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#183C2D] border border-[#C5A869]/40 text-[#D8B979] text-xs uppercase tracking-[0.25em]">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm bg-[#183C2D] border border-[#C5A869]/40 text-[#D8B979] text-xs uppercase tracking-[0.25em]">
+            <Compass className="w-3.5 h-3.5" />
             <span>404 &bull; Curation Undiscovered</span>
           </div>
 
