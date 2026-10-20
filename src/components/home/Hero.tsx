@@ -9,6 +9,7 @@ interface HeroProps {
 }
 
 const HERO_IMAGES = [
+  { src: '/images/front.jpg', alt: 'The Signature Kerala Kasavu & Jasmine Grand Festive Hamper', pos: 'center 40%' },
   { src: '/images/1002090346.jpg.jpeg', alt: 'Artisan Wicker Hamper with Fresh Roses', pos: 'center' },
   { src: '/images/1001901798.jpg.jpeg', alt: 'Elegant Polka-Dot Gift Box with Peach Bow', pos: '30% center' },
   { src: '/images/1002015334.jpg.jpeg', alt: 'Premium Luxury Gift Box with Watch & Perfume', pos: 'center 30%' },
