@@ -200,10 +200,10 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
               )}
             </button>
 
-            {/* Clickable Phone Number */}
+            {/* Clickable Phone Number: full number on 2xl+, compact icon on md-xl to give WhatsApp Order full breathing room */}
             <a
               href={`tel:${cleanPhone}`}
-              className="hidden md:flex items-center gap-1.5 xl:gap-2 px-2.5 xl:px-3 py-1.5 xl:py-2 text-[#FCFBF8] hover:text-[#D8B979] text-xs transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded whitespace-nowrap group shrink-0"
+              className="hidden 2xl:flex items-center gap-2 px-3 py-1.5 text-[#FCFBF8] hover:text-[#D8B979] text-xs transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded whitespace-nowrap group shrink-0"
               title={`Call Concierge: ${displayPhone}`}
             >
               <Phone className="w-3.5 h-3.5 text-[#D8B979] shrink-0 group-hover:scale-110 transition-transform" />
@@ -211,13 +211,21 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
                 {displayPhone}
               </span>
             </a>
+            <a
+              href={`tel:${cleanPhone}`}
+              className="hidden md:flex 2xl:hidden p-2 text-[#EFE9DC]/90 hover:text-[#D8B979] transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded shrink-0"
+              title={`Call Concierge: ${displayPhone}`}
+              aria-label="Call Concierge"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#D8B979]" />
+            </a>
 
-            {/* Direct WhatsApp Ordering Button */}
+            {/* Direct WhatsApp Ordering Button — fully visible on all viewports */}
             <a
               href={`https://wa.me/${whatsappNumber}?text=Hello%20The%20Kochi%20Atelier%2C%20I%20would%20like%20to%20order%20a%20luxury%20hamper.`}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1.5 xl:gap-2 px-3 xl:px-4 py-2 bg-[#25D366] hover:bg-[#128C7E] text-white text-xs xl:text-sm font-bold uppercase tracking-wider rounded transition-all shadow-md hover:shadow-lg whitespace-nowrap cursor-pointer shrink-0"
+              className="flex items-center gap-1.5 xl:gap-2 px-3.5 xl:px-4 py-2 bg-[#25D366] hover:bg-[#128C7E] text-white text-xs xl:text-sm font-bold uppercase tracking-wider rounded transition-all shadow-md hover:shadow-lg whitespace-nowrap cursor-pointer shrink-0"
               title="Direct WhatsApp Order"
               aria-label="Order on WhatsApp"
             >
