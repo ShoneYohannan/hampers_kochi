@@ -138,10 +138,10 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }: Search
                   </div>
 
                   <div className="text-right shrink-0 pl-3">
-                    <div className="text-sm font-serif-luxury font-semibold text-[#0B1D15]">
-                      ₹{product.price.toLocaleString('en-IN')}
+                    <div className="text-xs font-semibold text-[#A88B4D]">
+                      Price on Request
                     </div>
-                    <div className="text-[10px] text-[#25D366] font-medium">All-India Delivery</div>
+                    <div className="text-[10px] text-[#25D366] font-medium">WhatsApp Quote</div>
                   </div>
                 </div>
               ))

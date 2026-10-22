@@ -2,18 +2,18 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { 
-  X, 
-  Star, 
-  ShoppingBag, 
-  Truck, 
-  Check, 
-  ShieldCheck, 
-  Heart, 
-  MessageSquare, 
-  Box, 
-  Weight, 
-  Maximize2 
+import {
+  X,
+  Star,
+  ShoppingBag,
+  Truck,
+  Check,
+  ShieldCheck,
+  Heart,
+  MessageSquare,
+  Box,
+  Weight,
+  Maximize2
 } from 'lucide-react';
 import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
@@ -58,7 +58,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div 
+      <div
         className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full overflow-hidden border border-[#C5A869]/30 text-left"
         onClick={(e) => e.stopPropagation()}
       >
@@ -72,7 +72,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-0 max-h-[85vh] overflow-y-auto">
-          
+
           {/* Left Column: Image Gallery (5 cols) */}
           <div className="md:col-span-5 bg-[#F7F4EC] p-6 flex flex-col justify-between border-b md:border-b-0 md:border-r border-[#EFE9DC]">
             {/* Main Image */}
@@ -89,18 +89,17 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
               </div>
             </div>
 
-            {/* Thumbnails */}
-            {product.galleryImages && product.galleryImages.length > 1 && (
+            {/* Thumbnails - only show if there are multiple genuine photos of this exact hamper */}
+            {product.galleryImages && product.galleryImages.filter((img) => img === product.image).length > 1 && (
               <div className="flex items-center gap-2 mt-4 overflow-x-auto pb-1">
-                {product.galleryImages.map((img, idx) => (
+                {product.galleryImages.filter((img) => img === product.image).map((img, idx) => (
                   <button
                     key={idx}
                     onClick={() => setSelectedImage(img)}
-                    className={`relative w-16 h-16 rounded border-2 overflow-hidden shrink-0 transition-all ${
-                      currentImage === img
+                    className={`relative w-16 h-16 rounded border-2 overflow-hidden shrink-0 transition-all ${currentImage === img
                         ? 'border-[#C5A869] shadow-sm scale-105'
                         : 'border-[#EFE9DC] hover:border-[#C5A869]/50'
-                    }`}
+                      }`}
                   >
                     <Image
                       src={img}
@@ -133,17 +132,11 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
           {/* Right Column: Product Details & Customization (7 cols) */}
           <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6">
             <div>
-              {/* Rating & Wishlist */}
+              {/* Header Meta & Wishlist */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-xs text-[#38423D]">
-                  <div className="flex text-[#D8B979]">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-[#D8B979]" />
-                    ))}
-                  </div>
-                  <span className="font-semibold text-[#0B1D15]">{product.rating}</span>
-                  <span className="text-[#68756F]">({product.reviewsCount} reviews)</span>
-                </div>
+                <span className="text-[11px] uppercase tracking-[0.2em] text-[#96742E] font-semibold">
+                  {product.category} &bull; Handcrafted
+                </span>
 
                 <button
                   type="button"
@@ -155,11 +148,10 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                       toast.info(`Removed "${product.name}" from your Wishlist`);
                     }
                   }}
-                  className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded border transition-colors cursor-pointer ${
-                    isFavorited
+                  className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded border transition-colors cursor-pointer ${isFavorited
                       ? 'border-[#C5A869] text-[#C5A869] bg-[#C5A869]/10'
                       : 'border-[#EFE9DC] text-[#68756F] hover:text-[#0B1D15]'
-                  }`}
+                    }`}
                 >
                   <Heart className={`w-3.5 h-3.5 ${isFavorited ? 'fill-[#C5A869]' : ''}`} />
                   <span>{isFavorited ? 'Saved' : 'Save'}</span>
@@ -174,18 +166,13 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                 {product.subtitle}
               </p>
 
-              {/* Price */}
-              <div className="mt-3 flex items-baseline gap-3">
-                <span className="text-2xl sm:text-3xl font-serif-luxury text-[#0B1D15] font-semibold">
-                  ₹{product.price.toLocaleString('en-IN')}
+              {/* Price on Request */}
+              <div className="mt-3 flex items-center gap-3">
+                <span className="text-xl sm:text-2xl font-serif-luxury text-[#0B1D15] font-semibold">
+                  Price on Request
                 </span>
-                {product.originalPrice && (
-                  <span className="text-sm text-[#68756F] line-through">
-                    ₹{product.originalPrice.toLocaleString('en-IN')}
-                  </span>
-                )}
                 <span className="text-[11px] bg-[#10291E]/10 text-[#10291E] font-medium px-2 py-0.5 rounded">
-                  All Taxes & Standard All-India Packaging Included
+                  Inquire on WhatsApp for Price & Delivery
                 </span>
               </div>
 
@@ -228,14 +215,20 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                 </div>
 
                 <div>
-                  <label className="block text-[11px] uppercase tracking-wider font-medium text-[#38423D] mb-1">
-                    Complimentary Wax-Sealed Gift Note (Optional)
-                  </label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-[11px] uppercase tracking-wider font-medium text-[#38423D]">
+                      Complimentary Wax-Sealed Gift Note (Max 50 Letters)
+                    </label>
+                    <span className="text-[10px] text-[#A88B4D] font-mono">
+                      {giftNote.length}/50
+                    </span>
+                  </div>
                   <textarea
                     rows={2}
-                    placeholder="Write a heartfelt gift message. Our calligrapher will hand-letter it on cotton paper..."
+                    maxLength={50}
+                    placeholder="Write a heartfelt gift message (up to 50 letters)..."
                     value={giftNote}
-                    onChange={(e) => setGiftNote(e.target.value)}
+                    onChange={(e) => setGiftNote(e.target.value.slice(0, 50))}
                     className="w-full text-xs p-2.5 rounded border border-[#EFE9DC] focus:outline-none focus:border-[#C5A869]"
                   />
                 </div>
@@ -268,14 +261,14 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                 {/* Direct WhatsApp Order CTA */}
                 <a
                   href={`https://wa.me/919645556010?text=${encodeURIComponent(
-                    `Hello The Kochi Atelier, I would like to order "${product.name}" (Quantity: ${quantity}, Total: ₹${(product.price * quantity).toLocaleString('en-IN')}).${giftNote ? ` Personalized Note: "${giftNote}"` : ''} Please share delivery and payment details.`
+                    `Hello Hampers Kochi, I would like to inquire about the price and order details for "${product.name}" (Quantity: ${quantity}).${giftNote ? ` Personalized Note: "${giftNote}"` : ''} Please share pricing and dispatch details.`
                   )}`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex-1 py-3 px-4 rounded text-xs font-semibold uppercase tracking-[0.18em] transition-all flex items-center justify-center gap-2 shadow-md bg-[#25D366] hover:bg-[#128C7E] text-white cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>Order on WhatsApp • ₹{(product.price * quantity).toLocaleString('en-IN')}</span>
+                  <span>Contact WhatsApp for Price</span>
                 </a>
               </div>
 

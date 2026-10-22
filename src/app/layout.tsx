@@ -33,8 +33,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://hamperskochi.com'),
   title: {
-    default: 'HamPers Kochi | Luxury Gift Hampers Delivered Across India',
-    template: '%s | HamPers Kochi • The Kochi Atelier',
+    default: 'Hampers  Kochi | Luxury Gift Hampers Delivered Across India',
+    template: '%s | Hampers  Kochi',
   },
   description:
     'Handcrafted luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes, Kasavu silks, single-estate teas, Belgian chocolates & wax-sealed calligraphy with express all-India delivery.',

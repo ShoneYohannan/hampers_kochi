@@ -27,7 +27,7 @@ interface CmsContextType {
 
 const DEFAULT_ANNOUNCEMENTS = [
   'HAND-TIED IN OUR KOCHI ATELIER · DELIVERED ACROSS INDIA WITHIN 48 HOURS',
-  'COMPLIMENTARY CALLIGRAPHY NOTE WITH EVERY ORDER · CODE: ROYAL10 FOR 10% OFF',
+  'COMPLIMENTARY PERSONALIZED CALLIGRAPHY NOTE WITH EVERY ORDER',
   'PRE-ORDER ONLY · BESPOKE HANDCRAFTED HAMPERS · ALL-INDIA DELIVERY ACROSS 28,000+ PINCODES',
 ];
 
@@ -37,8 +37,8 @@ const DEFAULT_SETTINGS: StoreSettings = {
   email: 'concierge@thekochiatelier.com',
   address: 'Atelier House, 4th Cross Road, Panampilly Nagar & Bastion Street, Fort Kochi, Kerala 682001',
   studioHours: 'Monday – Saturday, 9:30 AM – 8:00 PM IST',
-  promoCode: 'ROYAL10',
-  promoDiscountPercent: 10,
+  promoCode: '',
+  promoDiscountPercent: 0,
   freeShippingThreshold: 2999,
 };
 
@@ -58,7 +58,14 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
       if (storedProducts) {
         const parsed = JSON.parse(storedProducts);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setProducts(parsed);
+          const cleanedProducts = parsed.map((p: Product) => ({
+            ...p,
+            galleryImages: [p.image],
+          }));
+          setProducts(cleanedProducts);
+          try {
+            localStorage.setItem('atelier_products', JSON.stringify(cleanedProducts));
+          } catch {}
         }
       }
 
@@ -66,7 +73,20 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
       if (storedAnnouncements) {
         const parsedAnnounce = JSON.parse(storedAnnouncements);
         if (Array.isArray(parsedAnnounce) && parsedAnnounce.length > 0) {
-          setAnnouncements(parsedAnnounce);
+          const cleaned = parsedAnnounce
+            .map((msg: string) =>
+              typeof msg === 'string'
+                ? msg
+                    .replace(/\s*·\s*CODE:\s*ROYAL10\s*FOR\s*10%\s*OFF/gi, '')
+                    .replace(/CODE:\s*ROYAL10\s*FOR\s*10%\s*OFF/gi, '')
+                    .trim()
+                : ''
+            )
+            .filter((msg: string) => msg.length > 0);
+          setAnnouncements(cleaned.length > 0 ? cleaned : DEFAULT_ANNOUNCEMENTS);
+          try {
+            localStorage.setItem('atelier_announcements', JSON.stringify(cleaned.length > 0 ? cleaned : DEFAULT_ANNOUNCEMENTS));
+          } catch {}
         }
       }
 

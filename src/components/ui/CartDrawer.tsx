@@ -48,7 +48,7 @@ export default function CartDrawer() {
     const success = applyCoupon(couponInput);
     if (!success) {
       setCouponError(true);
-      toast.error('Invalid privilege voucher. Try ROYAL10 for 10% off.');
+      toast.error('Invalid privilege voucher code.');
       setTimeout(() => setCouponError(false), 2500);
     } else {
       toast.success(`Privilege Voucher "${couponInput.toUpperCase()}" Applied! 10% saved.`);
@@ -166,8 +166,8 @@ export default function CartDrawer() {
                         </button>
                       </div>
 
-                      <div className="text-xs font-semibold text-[#0B1D15] mt-0.5">
-                        ₹{item.product.price.toLocaleString('en-IN')}
+                      <div className="text-xs font-semibold text-[#A88B4D] mt-0.5">
+                        Price on Request
                       </div>
 
                       {item.recipientName && (
@@ -195,8 +195,8 @@ export default function CartDrawer() {
                         </button>
                       </div>
 
-                      <span className="text-xs font-semibold text-[#0B1D15]">
-                        ₹{(item.product.price * item.quantity).toLocaleString('en-IN')}
+                      <span className="text-xs font-semibold text-[#183C2D]">
+                        WhatsApp Quote
                       </span>
                     </div>
 
@@ -230,7 +230,7 @@ export default function CartDrawer() {
                     <Tag className="w-3.5 h-3.5 text-[#C5A869] absolute left-2.5 top-3" />
                     <input
                       type="text"
-                      placeholder="Enter promo code (e.g. ROYAL10)"
+                      placeholder="Enter promo voucher code"
                       value={couponInput}
                       onChange={(e) => setCouponInput(e.target.value)}
                       className="w-full text-xs pl-8 pr-2 py-2 rounded border border-[#EFE9DC] uppercase placeholder-normal focus:outline-none focus:border-[#C5A869]"
@@ -245,38 +245,18 @@ export default function CartDrawer() {
                 </form>
               )}
               {couponError && (
-                <p className="text-[11px] text-red-600">Invalid voucher. Try <strong>ROYAL10</strong>.</p>
+                <p className="text-[11px] text-red-600">Invalid voucher code.</p>
               )}
 
-              {/* Price Breakdown */}
+              {/* Price on Request Notice */}
               <div className="space-y-1.5 text-xs text-[#38423D] pt-2 border-t border-[#EFE9DC]">
-                <div className="flex justify-between">
-                  <span>Subtotal</span>
-                  <span className="font-medium text-[#0B1D15]">₹{subtotal.toLocaleString('en-IN')}</span>
+                <div className="flex justify-between items-center text-sm font-serif-luxury text-[#0B1D15] font-semibold pt-1">
+                  <span>Atelier Pricing</span>
+                  <span className="text-sm text-[#A88B4D]">Price on Request via WhatsApp</span>
                 </div>
-
-                {discount > 0 && (
-                  <div className="flex justify-between text-[#183C2D]">
-                    <span>Atelier Privilege Discount (10%)</span>
-                    <span>-₹{discount.toLocaleString('en-IN')}</span>
-                  </div>
-                )}
-
-                <div className="flex justify-between">
-                  <span>All-India Climate Courier</span>
-                  <span className="font-medium">
-                    {shippingFee === 0 ? (
-                      <span className="text-[#183C2D] font-bold">COMPLIMENTARY</span>
-                    ) : (
-                      `₹${shippingFee}`
-                    )}
-                  </span>
-                </div>
-
-                <div className="flex justify-between text-base font-serif-luxury text-[#0B1D15] font-semibold pt-2 border-t border-[#EFE9DC]">
-                  <span>Total Amount</span>
-                  <span className="text-lg text-[#0B1D15]">₹{finalTotal.toLocaleString('en-IN')}</span>
-                </div>
+                <p className="text-[11px] text-[#68756F]">
+                  Custom curations & bulk orders are finalized directly with our Fort Kochi concierge.
+                </p>
               </div>
 
               {/* Checkout / Order on WhatsApp Buttons */}
@@ -287,7 +267,7 @@ export default function CartDrawer() {
                 }}
                 className="w-full py-3.5 rounded bg-[#25D366] hover:bg-[#128C7E] text-white text-xs font-semibold uppercase tracking-[0.18em] transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
               >
-                <span>Enter Address & Order via WhatsApp</span>
+                <span>Inquire Pricing & Order via WhatsApp</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 

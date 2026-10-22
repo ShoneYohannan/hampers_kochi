@@ -29,7 +29,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello The Kochi Atelier, I would like to order "${product.name}" (Price: ₹${product.price.toLocaleString('en-IN')}). Could you please share payment and delivery details?`
+    `Hello Hampers Kochi, I would like to inquire about the price and order details for "${product.name}". Could you please share the pricing and availability?`
   );
   const whatsappUrl = `https://wa.me/919645556010?text=${whatsappMessage}`;
 
@@ -42,7 +42,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#F7F4EC]">
         <Image
           src={product.image}
-          alt={`${product.name} - Luxury Handcrafted Gift Hamper by The Kochi Atelier`}
+          alt={`${product.name} - Luxury Handcrafted Gift Hamper by Hampers Kochi`}
           fill
           quality={90}
           className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -97,16 +97,14 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
       {/* ── PRODUCT DETAILS (Clean, Luxury & Readable) ── */}
       <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-white">
         <div>
-          {/* Category & Rating */}
+          {/* Category */}
           <div className="flex items-center justify-between gap-2 mb-1.5">
             <span className="text-[11px] uppercase tracking-[0.2em] text-[#96742E] font-semibold">
               {product.category}
             </span>
-            <div className="flex items-center gap-1 text-xs text-[#505D56]">
-              <Star className="w-3.5 h-3.5 text-[#D8B979] fill-[#D8B979]" />
-              <span className="font-semibold text-[#0B1D15]">{product.rating}</span>
-              <span className="text-[11px] text-[#78857F]">({product.reviewsCount})</span>
-            </div>
+            <span className="text-[10px] uppercase tracking-[0.15em] text-[#78857F] font-medium">
+              Handcrafted
+            </span>
           </div>
 
           {/* Product Name */}
@@ -120,31 +118,29 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
           </p>
         </div>
 
-        {/* Pricing & Direct WhatsApp CTA */}
+        {/* Contact WhatsApp for Price CTA */}
         <div className="mt-4 pt-3 border-t border-[#E8E1D4]">
-          <div className="flex items-baseline gap-2 mb-3">
-            <span className="text-xl sm:text-2xl font-serif-luxury text-[#0B1D15] font-semibold">
-              ₹{product.price.toLocaleString('en-IN')}
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs uppercase tracking-wider font-semibold text-[#A88B4D]">
+              Price on Request
             </span>
-            {product.originalPrice && (
-              <span className="text-xs sm:text-sm text-[#78857F] line-through">
-                ₹{product.originalPrice.toLocaleString('en-IN')}
-              </span>
-            )}
+            <span className="text-[10px] text-[#68756F]">
+              Direct Atelier Quote
+            </span>
           </div>
 
-          {/* Direct WhatsApp Ordering Button — Uncongested & Prominent */}
+          {/* Direct WhatsApp Price Button */}
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noreferrer"
             onClick={(e) => e.stopPropagation()}
             className="w-full py-2.5 px-4 rounded bg-[#25D366] hover:bg-[#128C7E] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all hover:shadow-md cursor-pointer"
-            title="Order directly via WhatsApp"
-            aria-label={`Order ${product.name} on WhatsApp`}
+            title="Contact on WhatsApp for Price"
+            aria-label={`Inquire price for ${product.name} on WhatsApp`}
           >
             <MessageSquare className="w-4 h-4 text-white shrink-0" />
-            <span>Order on WhatsApp</span>
+            <span>Contact WhatsApp for Price</span>
           </a>
         </div>
       </div>

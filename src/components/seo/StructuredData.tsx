@@ -50,7 +50,8 @@ export default function StructuredData() {
       },
     ],
     sameAs: [
-      'https://www.instagram.com/hampers_kochi/',
+      'https://www.instagram.com/hampers_kochi?srtk=MTR0NmdzYjF3ZzR3ZA==',
+      'https://in.pinterest.com/hamperskochi/',
       'https://maps.google.com/?q=HamPers+Kochi',
     ],
   };
@@ -147,7 +148,10 @@ export default function StructuredData() {
     },
     description:
       'Master artisan curator celebrating Kerala craft heritage through luxury keepsake gifting, heirloom brasscraft, and single-origin gourmet provisions.',
-    sameAs: 'https://www.instagram.com/hampers_kochi/',
+    sameAs: [
+      'https://www.instagram.com/hampers_kochi?srtk=MTR0NmdzYjF3ZzR3ZA==',
+      'https://in.pinterest.com/hamperskochi/'
+    ],
   };
 
   return (

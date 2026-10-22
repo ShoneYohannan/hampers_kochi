@@ -13,8 +13,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001373001.jpg.jpeg',
     galleryImages: [
       '/images/1001373001.jpg.jpeg',
-      '/images/1001436447.jpg.jpeg',
-      '/images/1001483615.jpg.jpeg',
     ],
     category: 'Bestsellers',
     tags: ['Bestseller', 'Signature Keepsake', 'All-India Delivery'],
@@ -46,8 +44,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001436447.jpg.jpeg',
     galleryImages: [
       '/images/1001436447.jpg.jpeg',
-      '/images/1001373001.jpg.jpeg',
-      '/images/1001490450.jpg.jpeg',
     ],
     category: 'Anniversary & Romance',
     tags: ['Anniversary', 'Luxury Keepsake', 'Popular Choice'],
@@ -78,8 +74,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001483615.jpg.jpeg',
     galleryImages: [
       '/images/1001483615.jpg.jpeg',
-      '/images/1001551007.jpg.jpeg',
-      '/images/1001629822.jpg.jpeg',
     ],
     category: 'Wedding & Bridal',
     tags: ['Wedding & Bridal', 'Handcrafted', 'Heirloom'],
@@ -111,7 +105,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001490450.jpg.jpeg',
     galleryImages: [
       '/images/1001490450.jpg.jpeg',
-      '/images/1001551239.jpg.jpeg',
     ],
     category: 'Personalized & Keepsakes',
     tags: ['Wellness', 'Organic', 'Self-Care'],
@@ -141,7 +134,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001551007.jpg.jpeg',
     galleryImages: [
       '/images/1001551007.jpg.jpeg',
-      '/images/1001707222.jpg.jpeg',
     ],
     category: 'Corporate & Executive',
     tags: ['Corporate', 'Executive', 'Bespoke'],
@@ -173,7 +165,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001551239.jpg.jpeg',
     galleryImages: [
       '/images/1001551239.jpg.jpeg',
-      '/images/1001611483.jpg.jpeg',
     ],
     category: 'Birthday',
     tags: ['Birthday', 'Joyous Gifting', 'Fast Seller'],
@@ -205,7 +196,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001611483.jpg.jpeg',
     galleryImages: [
       '/images/1001611483.jpg.jpeg',
-      '/images/1001629822.jpg.jpeg',
     ],
     category: 'Gourmet & Sweets',
     tags: ['Gourmet', 'Kerala Coffee', 'Artisanal'],
@@ -235,7 +225,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001629822.jpg.jpeg',
     galleryImages: [
       '/images/1001629822.jpg.jpeg',
-      '/images/1001707222.jpg.jpeg',
     ],
     category: 'Festive & Celebration',
     tags: ['Festive', 'Diwali & Celebrations', 'Grand Gift'],
@@ -267,7 +256,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001707222.jpg.jpeg',
     galleryImages: [
       '/images/1001707222.jpg.jpeg',
-      '/images/1001707225.jpg.jpeg',
     ],
     category: 'Anniversary & Romance',
     tags: ['Romance', 'Silk Keepsake', 'Luxury'],
@@ -298,7 +286,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001707225.jpg.jpeg',
     galleryImages: [
       '/images/1001707225.jpg.jpeg',
-      '/images/1001726475.jpg.jpeg',
     ],
     category: 'Gourmet & Sweets',
     tags: ['Gourmet', 'Kerala Spices', 'Heritage'],
@@ -329,7 +316,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001726475.jpg.jpeg',
     galleryImages: [
       '/images/1001726475.jpg.jpeg',
-      '/images/1001726483.jpg.jpeg',
     ],
     category: 'Wedding & Bridal',
     tags: ['Bridesmaid', 'Personalized', 'Girls Gifting'],
@@ -361,7 +347,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001726483.jpg.jpeg',
     galleryImages: [
       '/images/1001726483.jpg.jpeg',
-      '/images/1001832953.jpg.jpeg',
     ],
     category: 'Corporate & Executive',
     tags: ['Executive', 'Gourmet Bar', 'Premium Leatherette'],
@@ -393,7 +378,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001832953.jpg.jpeg',
     galleryImages: [
       '/images/1001832953.jpg.jpeg',
-      '/images/celebration-birthday-hamper.jpg',
     ],
     category: 'Birthday',
     tags: ['Birthday', 'French Confections', 'Chic'],
@@ -423,7 +407,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/celebration-birthday-hamper.jpg',
     galleryImages: [
       '/images/celebration-birthday-hamper.jpg',
-      '/images/1001877031.jpg.jpeg',
     ],
     category: 'Personalized & Keepsakes',
     tags: ['Spiritual', 'Fragrance', 'Housewarming'],
@@ -454,7 +437,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001877031.jpg.jpeg',
     galleryImages: [
       '/images/1001877031.jpg.jpeg',
-      '/images/1001901679.jpg.jpeg',
     ],
     category: 'Bestsellers',
     tags: ['Bestseller', 'Heritage', 'Kochi Exclusive'],
@@ -486,7 +468,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001901679.jpg.jpeg',
     galleryImages: [
       '/images/1001901679.jpg.jpeg',
-      '/images/1001901798.jpg.jpeg',
     ],
     category: 'Anniversary & Romance',
     tags: ['Romance', 'Velvet', 'Midnight Gold'],
@@ -516,7 +497,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001901798.jpg.jpeg',
     galleryImages: [
       '/images/1001901798.jpg.jpeg',
-      '/images/1001939481.jpg.jpeg',
     ],
     category: 'Gourmet & Sweets',
     tags: ['Gourmet', 'Confections', 'Sweet Tooth'],
@@ -546,7 +526,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001939481.jpg.jpeg',
     galleryImages: [
       '/images/1001939481.jpg.jpeg',
-      '/images/1001959585.jpg.jpeg',
     ],
     category: 'Festive & Celebration',
     tags: ['Festive', 'Dry Fruits', 'Celebration'],
@@ -578,7 +557,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001959585.jpg.jpeg',
     galleryImages: [
       '/images/1001959585.jpg.jpeg',
-      '/images/1001981333.jpg.jpeg',
     ],
     category: 'Personalized & Keepsakes',
     tags: ['Baby Shower', 'Organic', 'Heirloom Keepsake'],
@@ -609,7 +587,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001981333.jpg.jpeg',
     galleryImages: [
       '/images/1001981333.jpg.jpeg',
-      '/images/1001981335.jpg.jpeg',
     ],
     category: 'Corporate & Executive',
     tags: ['Corporate', 'Bulk Customization', 'VIP Gifting'],
@@ -641,7 +618,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001981335.jpg.jpeg',
     galleryImages: [
       '/images/1001981335.jpg.jpeg',
-      '/images/1001981345.jpg.jpeg',
     ],
     category: 'Anniversary & Romance',
     tags: ['Romance', 'Brut & Truffles', 'Bestseller'],
@@ -671,7 +647,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1001981345.jpg.jpeg',
     galleryImages: [
       '/images/1001981345.jpg.jpeg',
-      '/images/1002001857.jpg.jpeg',
     ],
     category: 'Bestsellers',
     tags: ['Collector Item', 'Heirloom Brass', 'Royal Heritage'],
@@ -703,7 +678,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002001857.jpg.jpeg',
     galleryImages: [
       '/images/1002001857.jpg.jpeg',
-      '/images/1002001862.jpg.jpeg',
     ],
     category: 'Birthday',
     tags: ['Birthday', 'Joyous', 'Value Luxury'],
@@ -734,7 +708,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002001862.jpg.jpeg',
     galleryImages: [
       '/images/1002001862.jpg.jpeg',
-      '/images/1002002010.jpg.jpeg',
     ],
     category: 'Festive & Celebration',
     tags: ['Holiday', 'Christmas & New Year', 'Cozy Treats'],
@@ -764,7 +737,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002002010.jpg.jpeg',
     galleryImages: [
       '/images/1002002010.jpg.jpeg',
-      '/images/1002009086.jpg.jpeg',
     ],
     category: 'Personalized & Keepsakes',
     tags: ['Tea Connoisseur', 'Handcrafted Brass', 'Wellness'],
@@ -795,7 +767,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002009086.jpg.jpeg',
     galleryImages: [
       '/images/1002009086.jpg.jpeg',
-      '/images/1002009326.jpg.jpeg',
     ],
     category: 'Gourmet & Sweets',
     tags: ['Kerala Heritage', 'Authentic Sweets', 'Gourmet'],
@@ -825,7 +796,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002009326.jpg.jpeg',
     galleryImages: [
       '/images/1002009326.jpg.jpeg',
-      '/images/1002015334.jpg.jpeg',
     ],
     category: 'Wedding & Bridal',
     tags: ['Wedding', 'Marble Keepsake', 'Pure Elegance'],
@@ -856,7 +826,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002015334.jpg.jpeg',
     galleryImages: [
       '/images/1002015334.jpg.jpeg',
-      '/images/1002015427.jpg.jpeg',
     ],
     category: 'Corporate & Executive',
     tags: ['Corporate', 'Leadership', 'VIP Executive'],
@@ -887,7 +856,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002015427.jpg.jpeg',
     galleryImages: [
       '/images/1002015427.jpg.jpeg',
-      '/images/1002015494.jpg.jpeg',
     ],
     category: 'Festive & Celebration',
     tags: ['Festive', 'Diwali Special', 'Brass Urli'],
@@ -919,7 +887,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002015494.jpg.jpeg',
     galleryImages: [
       '/images/1002015494.jpg.jpeg',
-      '/images/1002022283.jpg.jpeg',
     ],
     category: 'Gourmet & Sweets',
     tags: ['Chocolatier', 'Handcrafted', 'Bestseller'],
@@ -950,7 +917,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002022283.jpg.jpeg',
     galleryImages: [
       '/images/1002022283.jpg.jpeg',
-      '/images/1002029660.jpg.jpeg',
     ],
     category: 'Anniversary & Romance',
     tags: ['Anniversary', 'Romance', 'Velvet'],
@@ -980,7 +946,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002029660.jpg.jpeg',
     galleryImages: [
       '/images/1002029660.jpg.jpeg',
-      '/images/1002029806.jpg.jpeg',
     ],
     category: 'Bestsellers',
     tags: ['Bestseller', 'Celebration', 'Gold Trunk'],
@@ -1011,7 +976,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002029806.jpg.jpeg',
     galleryImages: [
       '/images/1002029806.jpg.jpeg',
-      '/images/1002090346.jpg.jpeg',
     ],
     category: 'Gourmet & Sweets',
     tags: ['Coffee', 'French Press', 'Gourmet'],
@@ -1041,8 +1005,6 @@ export const ALL_PRODUCTS: Product[] = [
     image: '/images/1002090346.jpg.jpeg',
     galleryImages: [
       '/images/1002090346.jpg.jpeg',
-      '/images/1001373001.jpg.jpeg',
-      '/images/1001483615.jpg.jpeg',
     ],
     category: 'Bestsellers',
     tags: ['Ultra Luxury', 'State Gift', 'Rare Collector Item'],

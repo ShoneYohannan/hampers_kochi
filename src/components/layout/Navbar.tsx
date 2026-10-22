@@ -17,10 +17,11 @@ import { useCms } from '@/context/CmsContext';
 interface NavbarProps {
   onOpenSearch: () => void;
   onOpenWishlist: () => void;
+  onOpenBuilder?: () => void;
   onSelectOccasion?: (occasion: string) => void;
 }
 
-export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
+export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [shopDropdown, setShopDropdown] = useState(false);
@@ -44,18 +45,19 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
   };
 
   const shopLinks = [
-    { label: 'All Curated Hampers', href: '#bestsellers' },
-    { label: 'Bestseller Curations', href: '#bestsellers' },
-    { label: 'Rare Limited Editions', href: '#bestsellers' },
-    { label: 'Gourmet Treats & Teas', href: '#bestsellers' },
+    { label: 'All Curated Hampers', href: '/shop' },
+    { label: 'Bestseller Curations', href: '/shop?category=Bestsellers' },
+    { label: 'Rare Limited Editions', href: '/shop?category=Bestsellers' },
+    { label: 'Gourmet Treats & Teas', href: '/shop?category=Gourmet%20%26%20Sweets' },
   ];
 
   const occasionLinks = [
-    { label: 'Birthday Celebrations', href: '#occasions' },
-    { label: 'Wedding & Bridal Suite', href: '#occasions' },
-    { label: 'Anniversary & Romance', href: '#occasions' },
-    { label: 'Festive & Traditional Brass', href: '#occasions' },
-    { label: 'Corporate & Executive Gifting', href: '#corporate' },
+    { label: 'All Milestone Occasions', href: '/occasions' },
+    { label: 'Birthday Celebrations', href: '/shop?category=Birthday' },
+    { label: 'Wedding & Bridal Suite', href: '/shop?category=Wedding%20%26%20Bridal' },
+    { label: 'Anniversary & Romance', href: '/shop?category=Anniversary%20%26%20Romance' },
+    { label: 'Festive & Traditional Brass', href: '/shop?category=Festive%20%26%20Celebration' },
+    { label: 'Corporate & Executive Gifting', href: '/corporate' },
   ];
 
   const cleanPhone = (settings?.phone || '+91 96455 56010').replace(/\s+/g, '');
@@ -64,11 +66,10 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#0B1D15]/98 backdrop-blur-md shadow-lg border-b border-[#C5A869]/20 py-3'
-          : 'bg-[#0B1D15] border-b border-[#C5A869]/15 py-3.5 sm:py-4'
-      }`}
+      className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
+        ? 'bg-[#0B1D15]/98 backdrop-blur-md shadow-lg border-b border-[#C5A869]/20 py-3'
+        : 'bg-[#0B1D15] border-b border-[#C5A869]/15 py-3.5 sm:py-4'
+        }`}
     >
       {/* Full-width container with responsive padding to prevent overflow on laptops */}
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
@@ -77,25 +78,21 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
           {/* Logo / Wordmark - Aligned to left edge */}
           <Link
             href="/"
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
             className="flex-shrink-0 group flex items-center gap-2"
           >
-            <span className="font-serif-luxury text-[#FCFBF8] text-2xl sm:text-3xl lg:text-[28px] xl:text-[30px] tracking-wide italic group-hover:text-[#D8B979] transition-colors whitespace-nowrap">
-              hampers<span className="text-[#D8B979] not-italic">_</span>kochi
+            <span className="font-serif-luxury text-[#FCFBF8] text-2xl sm:text-3xl lg:text-[28px] xl:text-[30px] tracking-wide group-hover:text-[#D8B979] transition-colors whitespace-nowrap">
+              Hampers <span className="text-[#D8B979]">Kochi</span>
             </span>
           </Link>
 
-          {/* Desktop Navigation — Perfectly Scaled Responsive Typography */}
+          {/* Desktop Navigation — Exactly Matching Image 5 */}
           <nav className="hidden lg:flex items-center gap-2.5 xl:gap-3.5 2xl:gap-5 text-[11px] xl:text-xs 2xl:text-[13px] uppercase tracking-[0.06em] xl:tracking-[0.09em] font-semibold text-[#FCFBF8]">
 
             <Link
               href="/"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap"
             >
-              Home
+              HOME
             </Link>
 
             {/* Shop Hampers Dropdown */}
@@ -104,24 +101,24 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
               onMouseEnter={() => setShopDropdown(true)}
               onMouseLeave={() => setShopDropdown(false)}
             >
-              <button
-                onClick={() => scrollToSection('bestsellers')}
+              <Link
+                href="/shop"
                 className="flex items-center gap-1.5 hover:text-[#D8B979] transition-colors py-1 cursor-pointer whitespace-nowrap"
               >
                 <span>Shop Hampers</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${shopDropdown ? 'rotate-180 text-[#D8B979]' : ''}`} />
-              </button>
+              </Link>
               {shopDropdown && (
                 <div className="absolute top-full -left-4 w-60 bg-[#0B1D15] border border-[#C5A869]/25 shadow-2xl py-2 rounded-sm animate-in fade-in slide-in-from-top-1 duration-150">
                   {shopLinks.map((item) => (
-                    <a
+                    <Link
                       key={item.label}
                       href={item.href}
                       onClick={() => setShopDropdown(false)}
                       className="block px-5 py-2.5 text-[#EFE9DC]/90 hover:text-[#D8B979] hover:bg-[#183C2D]/50 transition-colors text-xs tracking-[0.15em] whitespace-nowrap font-medium"
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -133,44 +130,53 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
               onMouseEnter={() => setOccasionsDropdown(true)}
               onMouseLeave={() => setOccasionsDropdown(false)}
             >
-              <button
-                onClick={() => scrollToSection('occasions')}
+              <Link
+                href="/occasions"
                 className="flex items-center gap-1.5 hover:text-[#D8B979] transition-colors py-1 cursor-pointer whitespace-nowrap"
               >
                 <span>Occasions</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${occasionsDropdown ? 'rotate-180 text-[#D8B979]' : ''}`} />
-              </button>
+              </Link>
               {occasionsDropdown && (
                 <div className="absolute top-full -left-4 w-64 bg-[#0B1D15] border border-[#C5A869]/25 shadow-2xl py-2 rounded-sm animate-in fade-in slide-in-from-top-1 duration-150">
                   {occasionLinks.map((item) => (
-                    <a
+                    <Link
                       key={item.label}
                       href={item.href}
                       onClick={() => setOccasionsDropdown(false)}
                       className="block px-5 py-2.5 text-[#EFE9DC]/90 hover:text-[#D8B979] hover:bg-[#183C2D]/50 transition-colors text-xs tracking-[0.15em] whitespace-nowrap font-medium"
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
 
-            <a href="#corporate" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
-              Corporate Gifts
-            </a>
+            <Link href="/corporate" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
+              CORPORATE GIFTS
+            </Link>
 
-            <a href="#story" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
-              Our Story
-            </a>
+            <Link href="/story" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
+              OUR STORY
+            </Link>
 
-            <a href="#testimonials" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
-              Reviews
-            </a>
+            <Link href="/reviews" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
+              REVIEWS
+            </Link>
 
-            <a href="#contact" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
-              Contact
-            </a>
+            <Link href="/contact" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
+              CONTACT
+            </Link>
+
+            {onOpenBuilder && (
+              <button
+                onClick={onOpenBuilder}
+                className="text-[#D8B979] hover:text-white transition-colors py-1 whitespace-nowrap cursor-pointer uppercase tracking-[0.16em] font-semibold border-b border-[#D8B979]/50 hover:border-white"
+              >
+                BUILD BESPOKE
+              </button>
+            )}
           </nav>
 
           {/* Right Action Icons & Direct WhatsApp */}
@@ -238,67 +244,79 @@ export default function Navbar({ onOpenSearch, onOpenWishlist }: NavbarProps) {
       {/* Enhanced Luxury Mobile Navigation */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#0B1D15] border-t border-[#C5A869]/20 px-6 py-6 space-y-5 animate-in slide-in-from-top-3 duration-200 shadow-2xl">
-          
-          {/* Main Navigation links */}
+
+          {/* Main Navigation links matching Image 5 */}
           <div className="flex flex-col space-y-3.5 text-sm uppercase tracking-[0.16em] font-semibold text-[#FCFBF8]">
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#D8B979] py-1 border-b border-[#C5A869]/10 pb-3"
             >
-              Home
+              HOME
             </Link>
 
-            <a
-              href="#bestsellers"
-              onClick={() => scrollToSection('bestsellers')}
+            <Link
+              href="/shop"
+              onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#D8B979] py-1 border-b border-[#C5A869]/10 pb-3 flex items-center justify-between"
             >
-              <span>Shop All Hampers</span>
+              <span>Shop Hampers</span>
               <span className="text-xs text-[#D8B979]">View All &rarr;</span>
-            </a>
+            </Link>
 
-            <a
-              href="#occasions"
-              onClick={() => scrollToSection('occasions')}
+            <Link
+              href="/occasions"
+              onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#D8B979] py-1 border-b border-[#C5A869]/10 pb-3 flex items-center justify-between"
             >
-              <span>Milestone Occasions</span>
+              <span>Occasions</span>
               <span className="text-xs text-[#EFE9DC]/60">Curations</span>
-            </a>
+            </Link>
 
-            <a
-              href="#corporate"
-              onClick={() => scrollToSection('corporate')}
+            <Link
+              href="/corporate"
+              onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#D8B979] py-1 border-b border-[#C5A869]/10 pb-3 flex items-center justify-between"
             >
-              <span>Corporate Gifting</span>
+              <span>CORPORATE GIFTS</span>
               <span className="text-xs text-[#EFE9DC]/60">Bulk Suites</span>
-            </a>
+            </Link>
 
-            <a
-              href="#story"
-              onClick={() => scrollToSection('story')}
+            <Link
+              href="/story"
+              onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#D8B979] py-1 border-b border-[#C5A869]/10 pb-3"
             >
-              Our Story & Heritage
-            </a>
+              OUR STORY
+            </Link>
 
-            <a
-              href="#testimonials"
-              onClick={() => scrollToSection('testimonials')}
+            <Link
+              href="/reviews"
+              onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#D8B979] py-1 border-b border-[#C5A869]/10 pb-3"
             >
-              Client Reviews (4.9 Rating)
-            </a>
+              REVIEWS
+            </Link>
 
-            <a
-              href="#contact"
-              onClick={() => scrollToSection('contact')}
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#D8B979] py-1 border-b border-[#C5A869]/10 pb-3"
             >
-              Contact & Studio
-            </a>
+              CONTACT
+            </Link>
+
+            {onOpenBuilder && (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenBuilder();
+                }}
+                className="text-left text-[#D8B979] hover:text-white py-1 border-b border-[#C5A869]/10 pb-3 uppercase tracking-wider font-semibold cursor-pointer"
+              >
+                BUILD BESPOKE HAMPER
+              </button>
+            )}
           </div>
 
           {/* Direct Mobile Contact CTA Box */}

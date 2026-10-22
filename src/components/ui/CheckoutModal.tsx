@@ -120,11 +120,11 @@ export default function CheckoutModal() {
     }
 
     const itemsSummary = items
-      .map((i) => `• ${i.product.name} (Qty: ${i.quantity}) - ₹${(i.product.price * i.quantity).toLocaleString('en-IN')}`)
+      .map((i) => `• ${i.product.name} (Qty: ${i.quantity})`)
       .join('\n');
 
     const msg = encodeURIComponent(
-      `*NEW LUXURY ORDER - THE KOCHI ATELIER*\n` +
+      `*NEW LUXURY ORDER INQUIRY - HAMPERS KOCHI*\n` +
       `*Order ID:* ${generatedId}\n\n` +
       `*Customer & Delivery Details:*\n` +
       `• Name: ${fullName}\n` +
@@ -132,10 +132,10 @@ export default function CheckoutModal() {
       `• Email: ${email || 'N/A'}\n` +
       `• Delivery Address: ${address}, ${city}, ${state} - PIN: ${pincode}\n` +
       `• Preferred Delivery Date: ${deliveryDate || 'Earliest All-India Delivery'}\n\n` +
-      `*Curated Hampers Ordered:*\n${itemsSummary}\n\n` +
-      `*Total Estimated Amount:* ₹${finalTotal.toLocaleString('en-IN')}\n` +
+      `*Curated Hampers Inquired:*\n${itemsSummary}\n\n` +
+      `*Pricing:* Price on Request via WhatsApp\n` +
       (giftNote ? `\n*Wax-Sealed Calligraphy Message:* "${giftNote}"\n` : '') +
-      `\nPlease confirm order acceptance and dispatch timeline.`
+      `\nPlease share pricing, payment details and dispatch timeline.`
     );
 
     window.open(`https://wa.me/919645556010?text=${msg}`, '_blank');
@@ -220,8 +220,8 @@ export default function CheckoutModal() {
                 <span className="font-medium text-[#183C2D]">+91 96455 56010</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#68756F]">Total Amount:</span>
-                <span className="font-semibold text-[#0B1D15]">₹{finalTotal.toLocaleString('en-IN')}</span>
+                <span className="text-[#68756F]">Pricing Status:</span>
+                <span className="font-semibold text-[#0B1D15]">Price on Request</span>
               </div>
             </div>
 
@@ -407,7 +407,7 @@ export default function CheckoutModal() {
                 {items.map((item) => (
                   <div key={item.product.id} className="flex justify-between">
                     <span>{item.product.name} (x{item.quantity})</span>
-                    <span className="font-semibold text-[#0B1D15]">₹{(item.product.price * item.quantity).toLocaleString('en-IN')}</span>
+                    <span className="font-semibold text-[#A88B4D]">Price on Request</span>
                   </div>
                 ))}
               </div>
@@ -416,9 +416,9 @@ export default function CheckoutModal() {
             {/* Order Total & Submit */}
             <div className="pt-4 border-t border-[#EFE9DC] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="text-left w-full sm:w-auto">
-                <span className="text-xs text-[#68756F] block">Total Amount:</span>
-                <span className="text-2xl font-serif-luxury text-[#0B1D15] font-semibold">
-                  ₹{finalTotal.toLocaleString('en-IN')}
+                <span className="text-xs text-[#68756F] block">Atelier Pricing:</span>
+                <span className="text-xl font-serif-luxury text-[#0B1D15] font-semibold">
+                  Price on Request
                 </span>
                 <span className="text-[11px] text-[#25D366] block font-medium">
                   Free All-India Express Delivery

@@ -7,9 +7,20 @@ export default function AnnouncementBar() {
   const { announcements, settings } = useCms();
   const [currentIdx, setCurrentIdx] = useState(0);
 
-  const messages = announcements.length > 0 ? announcements : [
+  const rawMessages = announcements.length > 0 ? announcements : [
     'HAND-TIED IN OUR KOCHI ATELIER · DELIVERED ACROSS INDIA WITHIN 48 HOURS',
   ];
+
+  const messages = rawMessages
+    .map((m) =>
+      typeof m === 'string'
+        ? m
+            .replace(/\s*·\s*CODE:\s*ROYAL10\s*FOR\s*10%\s*OFF/gi, '')
+            .replace(/CODE:\s*ROYAL10\s*FOR\s*10%\s*OFF/gi, '')
+            .trim()
+        : ''
+    )
+    .filter(Boolean);
 
   useEffect(() => {
     if (messages.length <= 1) return;

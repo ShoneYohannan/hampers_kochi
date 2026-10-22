@@ -12,7 +12,7 @@ interface FaqItem {
 const FAQ_ITEMS: FaqItem[] = [
   {
     category: 'Curation & Keepsakes',
-    question: 'What makes HamPers Kochi hampers unique and distinct from standard gift boxes?',
+    question: 'What makes Hampers Kochi hampers unique and distinct from standard gift boxes?',
     answer:
       'Every hamper is curated and hand-assembled in our Fort Kochi atelier. Rather than generic mass-market items, we curate heirloom-grade Kerala brassware (like handmade Vilakkus and Urulis), GI-tagged Balaramapuram Kasavu handlooms, single-origin high-grown Nilgiri teas, Wayanad artisanal chocolates, and handwritten calligraphy on handmade cotton paper, individually stamped with hot sealing wax.',
   },
@@ -20,31 +20,13 @@ const FAQ_ITEMS: FaqItem[] = [
     category: 'Delivery & Shipping',
     question: 'What are your delivery timelines within Kochi and across India?',
     answer:
-      'All HamPers Kochi creations are handcrafted on a bespoke pre-order basis to ensure optimal freshness and artisanal perfection. For Kochi and Ernakulam, pre-orders are hand-delivered upon completion or your preferred scheduled celebration date. For all-India delivery (including Bengaluru, Mumbai, Delhi NCR, Chennai, and Hyderabad), we dispatch via premium priority air express with thermal insulation and gel ice packs, arriving within 2 to 4 business days.',
+      'All Hampers Kochi creations are handcrafted on a bespoke pre-order basis to ensure optimal freshness and artisanal perfection. For Kochi and Ernakulam, pre-orders are hand-delivered upon completion or your preferred scheduled celebration date. For all-India delivery (including Bengaluru, Mumbai, Delhi NCR, Chennai, and Hyderabad), we dispatch via premium priority air express with thermal insulation and gel ice packs, arriving within 2 to 4 business days.',
   },
   {
     category: 'Personalization',
     question: 'Can I personalize my hamper with custom calligraphy notes and specific items?',
     answer:
-      'Yes, each hamper includes a complimentary personalized wax-sealed parchment note written by our in-house calligrapher with your custom message. You can also customize trunk ribbons, brass keepsakes, tea blends, or add bespoke keepsakes by contacting our concierge on WhatsApp at +91 96455 56010.',
-  },
-  {
-    category: 'Corporate & Bulk',
-    question: 'Do you cater to executive corporate gifting and grand wedding suites?',
-    answer:
-      'Yes. We regularly craft bespoke corporate gifting collections for tech firms, banks, luxury hospitality brands, and royal wedding suites. Services include 24k gold foil logo debossing, customized brand story booklets, multi-address doorstep dispatch to 28,000+ pincodes, and GST-compliant invoicing.',
-  },
-  {
-    category: 'Freshness Guarantee',
-    question: 'How do you preserve chocolates, confectionery, and perishables during transit?',
-    answer:
-      'We use temperature-regulated insulated foil envelopes, vacuum-sealed gourmet containers, and pharmaceutical-grade reusable food-safe gel ice packs. This ensures chocolates and delicate treats remain in pristine condition even during warm-weather flights across India.',
-  },
-  {
-    category: 'Orders & Payments',
-    question: 'Where is HamPers Kochi located and can I collect in person or pay online?',
-    answer:
-      'Our atelier is located in Kochi, Kerala. You can place your orders directly on our website or coordinate via WhatsApp. We accept all major payment methods including UPI (Google Pay, PhonePe, Paytm), Credit/Debit Cards, Net Banking, and Bank Transfers.',
+      'Yes, each hamper includes a complimentary personalized wax-sealed parchment note written by our in-house calligrapher with your custom message (up to 50 characters). You can also customize trunk ribbons, brass keepsakes, tea blends, or add bespoke keepsakes by contacting our concierge on WhatsApp at +91 96455 56010.',
   },
 ];
 
@@ -74,7 +56,7 @@ export default function FaqSection() {
           </p>
         </div>
 
-        {/* FAQ Accordion List */}
+        {/* FAQ Accordion List (Top 3 questions only) */}
         <div className="max-w-4xl mx-auto space-y-4">
           {FAQ_ITEMS.map((item, index) => {
             const isOpen = openIndex === index;
@@ -123,8 +105,8 @@ export default function FaqSection() {
           })}
         </div>
 
-        {/* Quick Assistance Banner */}
-        <div className="mt-12 text-center max-w-lg mx-auto p-6 rounded-xl bg-[#0B1D15] text-[#FCFBF8] border border-[#C5A869]/30">
+        {/* Quick Assistance Banner (Image 2: How Can We Help?) */}
+        <div className="mt-12 text-center max-w-lg mx-auto p-6 rounded-xl bg-[#0B1D15] text-[#FCFBF8] border border-[#C5A869]/30 shadow-xl">
           <h4 className="font-serif-luxury text-xl text-[#FCFBF8] mb-1">
             Have a custom inquiry or special request?
           </h4>
@@ -132,13 +114,13 @@ export default function FaqSection() {
             Our atelier concierge in Fort Kochi is available 7 days a week to assist with bespoke curations.
           </p>
           <a
-            href="https://wa.me/919645556010?text=Hello%20The%20Kochi%20Atelier%2C%20I%20have%20a%20question%20regarding%20a%20luxury%20hamper."
+            href="https://wa.me/919645556010?text=Hello%20Hampers%20Kochi%2C%20how%20can%20you%20help%20me%20with%20a%20luxury%20hamper%3F"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded bg-[#D8B979] text-[#0B1D15] text-xs font-semibold uppercase tracking-[0.2em] hover:bg-[#E6CE9F] transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded bg-[#D8B979] text-[#0B1D15] text-xs font-semibold uppercase tracking-[0.2em] hover:bg-[#E6CE9F] transition-colors shadow-md cursor-pointer"
           >
             <MessageSquare className="w-3.5 h-3.5" />
-            <span>Chat with Concierge</span>
+            <span>How Can We Help?</span>
           </a>
         </div>
 

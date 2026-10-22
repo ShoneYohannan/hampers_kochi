@@ -200,7 +200,7 @@ export default function BrandStory() {
                     <span>Consult with the Curator</span>
                   </a>
                   <a
-                    href="https://www.instagram.com/hampers_kochi/"
+                    href="https://www.instagram.com/hampers_kochi?srtk=MTR0NmdzYjF3ZzR3ZA=="
                     target="_blank"
                     rel="noreferrer"
                     className="text-xs text-[#EFE9DC]/70 hover:text-[#D8B979] underline transition-colors"

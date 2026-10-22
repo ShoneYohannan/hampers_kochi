@@ -24,6 +24,12 @@ const InstagramIcon = () => (
   </svg>
 );
 
+const PinterestIcon = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12C24.017 5.367 18.644 0 12.017 0z" />
+  </svg>
+);
+
 const WhatsAppIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
@@ -49,7 +55,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
           {/* Brand & Socials */}
           <div className="space-y-4">
             <h2 className="text-2xl font-serif-luxury tracking-widest text-[#FCFBF8] font-normal">
-              HamPers Kochi
+              Hampers  Kochi
             </h2>
             <p className="text-xs text-[#E8E1D4]/75 leading-relaxed font-light">
               Haute luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes,
@@ -57,13 +63,24 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://www.instagram.com/hampers_kochi/"
+                href="https://www.instagram.com/hampers_kochi?srtk=MTR0NmdzYjF3ZzR3ZA=="
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-sm bg-[#183C2D] border border-[#C5A869]/30 flex items-center justify-center hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors"
-                aria-label="Follow HamPers Kochi on Instagram"
+                aria-label="Follow Hampers Kochi on Instagram"
+                title="Follow on Instagram"
               >
                 <InstagramIcon />
+              </a>
+              <a
+                href="https://in.pinterest.com/hamperskochi/"
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-sm bg-[#183C2D] border border-[#C5A869]/30 flex items-center justify-center hover:bg-[#E60023] hover:text-white transition-colors"
+                aria-label="Discover Hampers Kochi on Pinterest"
+                title="Discover on Pinterest"
+              >
+                <PinterestIcon />
               </a>
               <a
                 href={`https://wa.me/${whatsappNumber}`}
@@ -71,6 +88,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
                 rel="noreferrer"
                 className="w-9 h-9 rounded-sm bg-[#183C2D] border border-[#C5A869]/30 flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-colors"
                 aria-label="Direct WhatsApp Concierge"
+                title="Chat on WhatsApp"
               >
                 <WhatsAppIcon />
               </a>
@@ -79,7 +97,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-sm bg-[#183C2D] border border-[#C5A869]/30 flex items-center justify-center hover:bg-[#D8B979] hover:text-[#0B1D15] transition-colors"
-                aria-label="HamPers Kochi on Google Maps"
+                aria-label="Hampers Kochi on Google Maps"
                 title="Locate on Google Maps"
               >
                 <MapPin className="w-4 h-4" />
@@ -93,11 +111,11 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
               Shop Collections
             </h4>
             <ul className="space-y-2 text-xs text-[#E8E1D4]/80 font-light">
-              <li><a href="#bestsellers" className="hover:text-[#C5A869] transition-colors">Signature Bestsellers</a></li>
-              <li><a href="#occasions" className="hover:text-[#C5A869] transition-colors">Occasion Curations</a></li>
-              <li><a href="#bestsellers" className="hover:text-[#C5A869] transition-colors">Bridal &amp; Wedding Suites</a></li>
-              <li><a href="#corporate" className="hover:text-[#C5A869] transition-colors">Corporate &amp; Executive Trunks</a></li>
-              <li><a href="#bestsellers" className="hover:text-[#C5A869] transition-colors">Festive Brass Keepsakes</a></li>
+              <li><Link href="/shop" className="hover:text-[#C5A869] transition-colors">All Curated Hampers</Link></li>
+              <li><Link href="/shop?category=Bestsellers" className="hover:text-[#C5A869] transition-colors">Signature Bestsellers</Link></li>
+              <li><Link href="/occasions" className="hover:text-[#C5A869] transition-colors">Occasion Curations</Link></li>
+              <li><Link href="/shop?category=Wedding%20%26%20Bridal" className="hover:text-[#C5A869] transition-colors">Bridal &amp; Wedding Suites</Link></li>
+              <li><Link href="/corporate" className="hover:text-[#C5A869] transition-colors">Corporate &amp; Executive Trunks</Link></li>
               <li><Link href="/cms" className="hover:text-[#C5A869] transition-colors text-[#D8B979]/80 font-medium">Atelier CMS Portal</Link></li>
             </ul>
           </div>
@@ -108,11 +126,10 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
               Atelier Information
             </h4>
             <ul className="space-y-2 text-xs text-[#E8E1D4]/80 font-light">
-              <li><a href="#story" className="hover:text-[#C5A869] transition-colors">Our Kochi Heritage Story</a></li>
-              <li><a href="#curator" className="hover:text-[#C5A869] transition-colors">Meet the Master Curator</a></li>
-              <li><a href="#faq" className="hover:text-[#C5A869] transition-colors">Frequently Asked Questions</a></li>
-              <li><a href="#delivery" className="hover:text-[#C5A869] transition-colors">All-India Pincode Checker</a></li>
-              <li><a href="#testimonials" className="hover:text-[#C5A869] transition-colors">Customer Reviews &amp; Testimonials</a></li>
+              <li><Link href="/story" className="hover:text-[#C5A869] transition-colors">Our Kochi Heritage Story</Link></li>
+              <li><Link href="/reviews" className="hover:text-[#C5A869] transition-colors">Customer Reviews &amp; Testimonials</Link></li>
+              <li><Link href="/contact" className="hover:text-[#C5A869] transition-colors">Studio Location &amp; Directions</Link></li>
+              <li><Link href="/faq" className="hover:text-[#C5A869] transition-colors">Frequently Asked Questions</Link></li>
               <li><a href="/sitemap.xml" className="hover:text-[#C5A869] transition-colors text-[11px] opacity-75">XML Sitemap</a></li>
             </ul>
           </div>

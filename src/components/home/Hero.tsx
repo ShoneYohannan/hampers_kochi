@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 interface HeroProps {
@@ -36,7 +37,7 @@ const HERO_IMAGES = [
   },
 ];
 
-export default function Hero({}: HeroProps) {
+export default function Hero({ onOpenBuilder }: HeroProps) {
   const [currentImg, setCurrentImg] = useState(0);
   const [fading, setFading] = useState(false);
 
@@ -75,11 +76,10 @@ export default function Hero({}: HeroProps) {
             <button
               key={idx}
               onClick={() => { setFading(true); setTimeout(() => { setCurrentImg(idx); setFading(false); }, 300); }}
-              className={`transition-all duration-300 rounded-sm cursor-pointer ${
-                currentImg === idx
-                  ? 'w-7 h-1.5 bg-[#D8B979]'
-                  : 'w-2 h-1.5 bg-white/40 hover:bg-white/80'
-              }`}
+              className={`transition-all duration-300 rounded-sm cursor-pointer ${currentImg === idx
+                ? 'w-7 h-1.5 bg-[#D8B979]'
+                : 'w-2 h-1.5 bg-white/40 hover:bg-white/80'
+                }`}
               aria-label={`View curation visual ${idx + 1}`}
             />
           ))}
@@ -118,16 +118,25 @@ export default function Hero({}: HeroProps) {
 
           {/* CTAs: Crisp rectangular buttons, no pill shapes */}
           <div className="mt-10 flex flex-wrap gap-4 items-center">
-            <a
-              href="#bestsellers"
+            <Link
+              href="/shop"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#D8B979] text-[#0B1D15] text-xs font-semibold tracking-[0.2em] uppercase hover:bg-[#E6CE9F] transition-all duration-300 group shadow-md rounded-sm"
             >
               <span>Explore Hampers</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            </Link>
+
+            {onOpenBuilder && (
+              <button
+                onClick={onOpenBuilder}
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-[#D8B979] text-[#D8B979] hover:bg-[#D8B979] hover:text-[#0B1D15] text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer shadow-sm rounded-sm"
+              >
+                <span>Build Bespoke Hamper</span>
+              </button>
+            )}
 
             <a
-              href="https://wa.me/919645556010?text=Hello%20The%20Kochi%20Atelier%2C%20I%20would%20like%20to%20pre-order%20a%20luxury%20hamper."
+              href="https://wa.me/919645556010?text=Hello%20Hampers%20Kochi%2C%20I%20would%20like%20to%20pre-order%20a%20luxury%20hamper."
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer shadow-sm rounded-sm"
@@ -137,7 +146,7 @@ export default function Hero({}: HeroProps) {
           </div>
 
           {/* Stats row - Pre-Order & All-India Delivery */}
-          <div className="mt-14 pt-8 border-t border-[#C5A869]/15 grid grid-cols-3 gap-6">
+          <div className="mt-14 pt-8 pb-6 sm:pb-10 border-t border-[#C5A869]/15 grid grid-cols-3 gap-6">
             <div>
               <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">Pre-Order</div>
               <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Handcrafted Only</div>

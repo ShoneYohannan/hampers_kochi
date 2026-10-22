@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { X, Heart, ShoppingBag, Trash2, ArrowRight } from 'lucide-react';
+import { X, Heart, ShoppingBag, Trash2, ArrowRight, MessageSquare } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
@@ -83,8 +83,8 @@ export default function WishlistModal({ isOpen, onClose, onSelectProduct }: Wish
                     <h4 className="text-xs sm:text-sm font-serif-luxury text-[#0B1D15] font-medium line-clamp-1">
                       {product.name}
                     </h4>
-                    <span className="text-xs font-semibold text-[#0B1D15]">
-                      ₹{product.price.toLocaleString('en-IN')}
+                    <span className="text-xs font-semibold text-[#A88B4D]">
+                      Price on Request
                     </span>
                     <div className="text-[10px] text-[#C5A869] uppercase tracking-wider">
                       {product.category}
@@ -93,18 +93,18 @@ export default function WishlistModal({ isOpen, onClose, onSelectProduct }: Wish
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      addToCart(product, 1);
-                      toast.success(`Added "${product.name}" to Bag!`);
-                    }}
-                    className="p-2 rounded bg-[#0B1D15] text-[#FCFBF8] hover:bg-[#C5A869] hover:text-[#0B1D15] transition-colors cursor-pointer"
-                    title="Add to Bag"
-                    aria-label="Add to Bag"
+                  <a
+                    href={`https://wa.me/919645556010?text=${encodeURIComponent(
+                      `Hello Hampers Kochi, I would like to inquire about the price and availability of "${product.name}".`
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-2 rounded bg-[#25D366] text-white hover:bg-[#128C7E] transition-colors cursor-pointer"
+                    title="Inquire Price on WhatsApp"
+                    aria-label="Inquire Price on WhatsApp"
                   >
-                    <ShoppingBag className="w-4 h-4" />
-                  </button>
+                    <MessageSquare className="w-4 h-4" />
+                  </a>
                   <button
                     type="button"
                     onClick={() => {

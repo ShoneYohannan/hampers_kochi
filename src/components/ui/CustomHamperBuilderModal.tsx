@@ -187,7 +187,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                         )}
                       </div>
                       <p className="text-[11px] text-[#68756F] line-clamp-2 mt-0.5">{box.description}</p>
-                      <div className="text-xs font-semibold text-[#0B1D15] mt-2">₹{box.price.toLocaleString('en-IN')}</div>
+                      <div className="text-xs font-semibold text-[#0B1D15] mt-2">Bespoke Casket Choice</div>
                     </div>
                   </div>
                 ))}
@@ -227,8 +227,8 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                         </div>
                         <p className="text-[11px] text-[#68756F] mt-1 line-clamp-2">{goodie.description}</p>
                       </div>
-                      <div className="text-xs font-serif-luxury font-semibold text-[#0B1D15] mt-3 pt-2 border-t border-[#EFE9DC]">
-                        +₹{goodie.price.toLocaleString('en-IN')}
+                      <div className="text-xs font-medium text-[#183C2D] mt-3 pt-2 border-t border-[#EFE9DC]">
+                        Atelier Curation Item
                       </div>
                     </div>
                   );
@@ -320,16 +320,25 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider font-medium text-[#38423D] mb-1">
-                    Your Personalized Calligraphy Message
-                  </label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs uppercase tracking-wider font-medium text-[#38423D]">
+                      Your Personalized Calligraphy Message
+                    </label>
+                    <span className="text-[11px] text-[#A88B4D] font-mono font-medium">
+                      {calligraphyMessage.length}/50 letters
+                    </span>
+                  </div>
                   <textarea
                     rows={4}
-                    placeholder="Wishing you joyous celebrations filled with love, laughter, and lifelong memories..."
+                    maxLength={50}
+                    placeholder="Wishing you joyous celebrations filled with love..."
                     value={calligraphyMessage}
-                    onChange={(e) => setCalligraphyMessage(e.target.value)}
+                    onChange={(e) => setCalligraphyMessage(e.target.value.slice(0, 50))}
                     className="w-full text-xs p-3 rounded border border-[#EFE9DC] focus:outline-none focus:border-[#C5A869]"
                   />
+                  <p className="text-[11px] text-[#68756F] mt-1">
+                    Maximum 50 letters limit for hand-lettered gold calligraphy parchment.
+                  </p>
                 </div>
               </div>
 
@@ -353,11 +362,11 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
         {/* Modal Footer Summary & Step Navigation */}
         <div className="p-5 bg-[#FCFBF8] border-t border-[#EFE9DC] flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <div className="text-xs text-[#68756F]">Estimated Atelier Total:</div>
-            <div className="text-xl font-serif-luxury font-semibold text-[#0B1D15]">
-              ₹{totalPrice.toLocaleString('en-IN')}
-              <span className="text-[11px] text-[#183C2D] font-normal ml-2 font-sans">
-                (All-India Delivery Included)
+            <div className="text-xs text-[#68756F]">Bespoke Atelier Proposal:</div>
+            <div className="text-lg font-serif-luxury font-semibold text-[#0B1D15]">
+              Contact on WhatsApp for Price
+              <span className="text-[11px] text-[#183C2D] font-normal ml-2 font-sans block sm:inline">
+                (Tailored Pan-India Shipping)
               </span>
             </div>
           </div>
