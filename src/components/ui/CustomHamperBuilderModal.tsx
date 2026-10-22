@@ -6,15 +6,10 @@ import {
   X, 
   Gift, 
   Check, 
-  Plus, 
-  Trash2, 
   ShoppingBag, 
-  Feather, 
-  Box, 
-  Cookie, 
-  Coffee, 
-  Heart,
-  ArrowRight
+  MessageSquare,
+  ArrowRight,
+  Sparkles
 } from 'lucide-react';
 import { BUILDER_ITEMS } from '@/data/products';
 import { useCart } from '@/context/CartContext';
@@ -32,11 +27,16 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
 
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(1);
   const [selectedBox, setSelectedBox] = useState(BUILDER_ITEMS.boxes[0]);
+  const [selectedCategoryTab, setSelectedCategoryTab] = useState<string>('All');
+  
+  // Real items extracted from actual hamper photos (Front.jpeg, 1001436447, 1001707222, 1001981345, 1002015334)
   const [selectedGoodies, setSelectedGoodies] = useState<string[]>([
-    'treat-truffles',
-    'bev-coffee',
-    'keep-candle',
+    'item-kasavu-saree',
+    'item-atelier-perfume',
+    'item-soy-candle',
+    'item-ghee-halwa',
   ]);
+  
   const [ribbonColor, setRibbonColor] = useState('Champagne Gold Double Satin');
   const [waxSealColor, setWaxSealColor] = useState('Antique Metallic Gold');
   const [recipientName, setRecipientName] = useState('');
@@ -45,10 +45,24 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
   if (!isOpen) return null;
 
   const allGoodieOptions = [
-    ...BUILDER_ITEMS.treats,
-    ...BUILDER_ITEMS.beverages,
-    ...BUILDER_ITEMS.keepsakes,
+    ...BUILDER_ITEMS.handlooms,
+    ...BUILDER_ITEMS.fragranceAndBeauty,
+    ...BUILDER_ITEMS.keepsakesAndJewelry,
+    ...BUILDER_ITEMS.gourmetAndTeas,
   ];
+
+  const categories = [
+    'All',
+    'Handlooms & Wearables',
+    'Fragrance & Self-Care',
+    'Jewelry & Adornments',
+    'Personalized Keepsakes',
+    'Gourmet & Delicacies',
+  ];
+
+  const displayedGoodies = selectedCategoryTab === 'All'
+    ? allGoodieOptions
+    : allGoodieOptions.filter((item) => item.category === selectedCategoryTab);
 
   const toggleGoodie = (id: string) => {
     setSelectedGoodies((prev) =>
@@ -56,26 +70,45 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
     );
   };
 
-  // Calculate live total price
-  const boxPrice = selectedBox.price;
-  const goodiesPrice = selectedGoodies.reduce((sum, id) => {
-    const item = allGoodieOptions.find((g) => g.id === id);
-    return sum + (item ? item.price : 0);
-  }, 0);
-  const finishingPrice = 250; // Ribbon + Wax Seal + Calligraphy
-  const totalPrice = boxPrice + goodiesPrice + finishingPrice;
-
-  const handleAddCustomHamper = () => {
-    const selectedGoodieNames = selectedGoodies
+  const getSelectedNames = () => {
+    return selectedGoodies
       .map((id) => allGoodieOptions.find((g) => g.id === id)?.name)
       .filter(Boolean) as string[];
+  };
+
+  const handleWhatsAppInquiry = () => {
+    const selectedGoodieNames = getSelectedNames();
+    const lines = [
+      `*Bespoke Hamper Atelier Inquiry - Hampers Kochi*`,
+      ``,
+      `*Selected Presentation Box:*`,
+      `• ${selectedBox.name}`,
+      ``,
+      `*Curated Authentic Items (${selectedGoodieNames.length} items):*`,
+      ...selectedGoodieNames.map((name) => `• ${name}`),
+      ``,
+      `*Presentation & Finishing:*`,
+      `• Ribbon: ${ribbonColor}`,
+      `• Wax Seal: ${waxSealColor} Hand-Pressed Hot Wax Seal`,
+      recipientName ? `• Recipient Name: ${recipientName}` : null,
+      calligraphyMessage ? `• Personalized Calligraphy: "${calligraphyMessage}"` : null,
+      ``,
+      `Hello! Please share the price quotation, packaging timeframe, and delivery options for this tailored curation.`
+    ].filter(Boolean);
+
+    const messageText = lines.join('\n');
+    window.open(`https://wa.me/919645556010?text=${encodeURIComponent(messageText)}`, '_blank');
+  };
+
+  const handleAddCustomHamper = () => {
+    const selectedGoodieNames = getSelectedNames();
 
     const customProduct: Product = {
       id: `custom-hamper-${Date.now()}`,
       name: `Bespoke Hamper in ${selectedBox.name}`,
       slug: `bespoke-hamper-${Date.now()}`,
       subtitle: `Hand-Curated with ${selectedGoodieNames.length} artisanal selections`,
-      price: totalPrice,
+      price: 0,
       rating: 5.0,
       reviewsCount: 1,
       image: selectedBox.image,
@@ -92,7 +125,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
       ],
       boxType: selectedBox.name,
       dimensions: '34cm x 26cm x 13cm',
-      weight: '2.2 kg',
+      weight: 'Custom Weight',
       deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
     };
 
@@ -129,7 +162,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
         <div className="bg-[#F7F4EC] border-b border-[#EFE9DC] px-6 py-3 flex items-center justify-between overflow-x-auto gap-2">
           {[
             { step: 1, label: '1. Luxury Box' },
-            { step: 2, label: `2. Goodies (${selectedGoodies.length})` },
+            { step: 2, label: `2. Treats & Keepsakes (${selectedGoodies.length})` },
             { step: 3, label: '3. Ribbons & Seals' },
             { step: 4, label: '4. Calligraphy Note' },
           ].map((item) => (
@@ -155,7 +188,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
             <div className="space-y-4">
               <div>
                 <h3 className="text-lg font-serif-luxury text-[#0B1D15]">Select Your Presentation Box</h3>
-                <p className="text-xs text-[#68756F]">Each box is handmade with reinforced rigid framing and signature metal fittings.</p>
+                <p className="text-xs text-[#68756F]">Handmade with reinforced framing, heritage handlooms, and signature brass fittings.</p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -198,13 +231,35 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
           {/* Step 2: Choose Goodies */}
           {currentStep === 2 && (
             <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-serif-luxury text-[#0B1D15]">Select Artisanal Treats & Keepsakes</h3>
-                <p className="text-xs text-[#68756F]">Choose as many items as you wish. Our atelier stylists will arrange them with elegance.</p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 className="text-lg font-serif-luxury text-[#0B1D15]">Select Artisanal Treats & Keepsakes</h3>
+                  <p className="text-xs text-[#68756F]">Choose as many items as you wish. Our atelier stylists will arrange them with elegance.</p>
+                </div>
+                <div className="text-xs text-[#A88B4D] font-medium bg-[#F7F4EC] px-3 py-1 rounded border border-[#EFE9DC] self-start sm:self-auto">
+                  {selectedGoodies.length} items chosen
+                </div>
+              </div>
+
+              {/* Sub-category pill filters */}
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategoryTab(cat)}
+                    className={`px-3 py-1 rounded-full whitespace-nowrap transition-colors ${
+                      selectedCategoryTab === cat
+                        ? 'bg-[#183C2D] text-[#D8B979] font-medium'
+                        : 'bg-[#F7F4EC] text-[#68756F] hover:text-[#0B1D15] border border-[#EFE9DC]'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {allGoodieOptions.map((goodie) => {
+                {displayedGoodies.map((goodie) => {
                   const isChecked = selectedGoodies.includes(goodie.id);
                   return (
                     <div
@@ -227,8 +282,9 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                         </div>
                         <p className="text-[11px] text-[#68756F] mt-1 line-clamp-2">{goodie.description}</p>
                       </div>
-                      <div className="text-xs font-medium text-[#183C2D] mt-3 pt-2 border-t border-[#EFE9DC]">
-                        Atelier Curation Item
+                      <div className="flex items-center justify-between text-[11px] font-medium text-[#183C2D] mt-3 pt-2 border-t border-[#EFE9DC]">
+                        <span>Atelier Curation Item</span>
+                        <span className="text-[10px] text-[#A88B4D] font-normal">{goodie.category}</span>
                       </div>
                     </div>
                   );
@@ -344,7 +400,8 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
 
               {/* Live Preview Box */}
               <div className="p-4 rounded-lg bg-[#FAF8F5] border border-[#C5A869]/40 text-center space-y-2">
-                <div className="text-[10px] uppercase tracking-widest text-[#C5A869] font-semibold">
+                <div className="text-[10px] uppercase tracking-widest text-[#C5A869] font-semibold flex items-center justify-center gap-1">
+                  <Sparkles className="w-3 h-3" />
                   Live Parchment Calligraphy Preview
                 </div>
                 <div className="font-serif-luxury italic text-base text-[#0B1D15] min-h-[40px]">
@@ -371,7 +428,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
             </div>
           </div>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto justify-end">
             {currentStep > 1 && (
               <button
                 onClick={() => setCurrentStep((s) => (s - 1) as any)}
@@ -390,13 +447,22 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             ) : (
-              <button
-                onClick={handleAddCustomHamper}
-                className="flex-1 sm:flex-initial px-8 py-3 rounded bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] text-xs font-semibold uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2 shadow-lg"
-              >
-                <ShoppingBag className="w-4 h-4" />
-                <span>Add Bespoke Hamper to Bag</span>
-              </button>
+              <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                <button
+                  onClick={handleWhatsAppInquiry}
+                  className="flex-1 sm:flex-initial px-5 py-2.5 rounded bg-[#183C2D] text-[#D8B979] hover:bg-[#204E3B] text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow"
+                >
+                  <MessageSquare className="w-4 h-4 text-[#25D366]" />
+                  <span>Order on WhatsApp</span>
+                </button>
+                <button
+                  onClick={handleAddCustomHamper}
+                  className="flex-1 sm:flex-initial px-5 py-2.5 rounded bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow"
+                >
+                  <ShoppingBag className="w-3.5 h-3.5" />
+                  <span>Add to Bag</span>
+                </button>
+              </div>
             )}
           </div>
         </div>

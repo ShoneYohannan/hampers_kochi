@@ -1072,67 +1072,220 @@ export const OCCASIONS_DATA = [
   },
 ];
 
-export const BUILDER_ITEMS: {
-  boxes: Array<{ id: string; name: string; price: number; description: string; image: string }>;
-  treats: Array<{ id: string; name: string; price: number; description: string }>;
-  beverages: Array<{ id: string; name: string; price: number; description: string }>;
-  keepsakes: Array<{ id: string; name: string; price: number; description: string }>;
-  finishing: Array<{ id: string; name: string; price: number; description: string }>;
-} = {
+export const BUILDER_ITEMS = {
   boxes: [
+    {
+      id: 'box-cane-basket',
+      name: 'Handwoven Kerala Cane & Wicker Basket',
+      description: 'Artisanal handwoven wicker basket with protective interior and natural rustic Kerala charm.',
+      image: '/images/1001981345.jpg.jpeg',
+    },
     {
       id: 'box-emerald-velvet',
       name: 'Emerald Velvet Rigid Chest with Gold Clasp',
-      price: 1299,
       description: 'Lush emerald green velvet exterior with cushioned interior and polished brass hardware.',
-      image: '/images/1001373001.jpg.jpeg'
+      image: '/images/1001373001.jpg.jpeg',
     },
     {
       id: 'box-ivory-magnetic',
       name: 'Warm Ivory Magnetic Keepsake Box',
-      price: 899,
       description: 'Understated matte ivory with gold debossed monogram and concealed magnetic closure.',
-      image: '/images/1001436447.jpg.jpeg'
+      image: '/images/1001436447.jpg.jpeg',
     },
     {
       id: 'box-teak-wood',
-      name: 'Artisanal Cedar & Teakwood Casket',
-      price: 1799,
-      description: 'Hand-polished wood with antique brass hinges. Designed to be treasured for generations.',
-      image: '/images/1001707225.jpg.jpeg'
+      name: 'Artisanal Cedar & Teakwood Heirloom Casket',
+      description: 'Hand-polished natural wood with antique brass hinges. Designed to be treasured for generations.',
+      image: '/images/1001707225.jpg.jpeg',
     },
     {
       id: 'box-noir-trunk',
       name: 'Midnight Charcoal & Gold Foil Trunk',
-      price: 1199,
       description: 'Deep matte black with gold foil botanical motif and ivory satin interior.',
-      image: '/images/1001551007.jpg.jpeg'
-    }
+      image: '/images/1001551007.jpg.jpeg',
+    },
   ],
-  treats: [
-    { id: 'treat-truffles', name: 'Artisanal Belgian Cocoa Truffles (180g)', price: 650, description: 'Handcrafted ganache infused with Kerala green cardamom.' },
-    { id: 'treat-macarons', name: 'French Almond & Rose Macarons (Box of 6)', price: 580, description: 'Delicate shells with salted caramel and raspberry ganache.' },
-    { id: 'treat-dates', name: 'Medjool Dates Stuffed with Roasted Walnuts (200g)', price: 720, description: 'Premium jumbo dates dipped in 70% dark cocoa.' },
-    { id: 'treat-cashews', name: 'Goan Roasted Cashews with Pink Salt (150g)', price: 450, description: 'Slow-roasted jumbo cashews with rosemary.' },
-    { id: 'treat-halwa', name: 'Kozhikode Ghee & Cardamom Halwa (250g)', price: 380, description: 'Authentic Kerala traditional delicacy made with pure ghee.' }
+  handlooms: [
+    {
+      id: 'item-kasavu-saree',
+      name: 'Kerala Kasavu Handloom Saree / Mundu',
+      category: 'Handlooms & Wearables',
+      description: 'Handwoven cotton with pure golden zari border and artisanal tassel accents.',
+    },
+    {
+      id: 'item-waffle-robe',
+      name: 'Premium Waffle Cotton Lounge Robe',
+      category: 'Handlooms & Wearables',
+      description: 'Breathable, ultra-soft waffle weave cotton robe with customized monogram option.',
+    },
+    {
+      id: 'item-silk-scrunchie',
+      name: 'Mulberry Silk Satin Hair Scrunchie & Ribbon Set',
+      category: 'Handlooms & Wearables',
+      description: 'Handcrafted smooth silk satin accessories in champagne and emerald tones.',
+    },
+    {
+      id: 'item-brocade-potli',
+      name: 'Handcrafted Golden Zari Ethnic Potli Pouch',
+      category: 'Handlooms & Wearables',
+      description: 'Traditional brocade pouch with drawstring tassels for keepsakes or jewelry.',
+    },
   ],
-  beverages: [
-    { id: 'bev-coffee', name: 'Monsoon Malabar Single-Origin Coffee (200g)', price: 490, description: 'Smooth, low-acidity dark roast with notes of chocolate and spice.' },
-    { id: 'bev-tea', name: 'Nilgiri Golden Pekoe Loose Leaf Tea (100g in Brass Caddy)', price: 550, description: 'Aromatic high-grown tea with floral top notes.' },
-    { id: 'bev-sparkling', name: 'Artisanal Sparkling Cranberry Blush Spritzer (750ml)', price: 690, description: 'Non-alcoholic celebratory bubbly with real fruit essence.' },
-    { id: 'bev-kahwa', name: 'Kashmir Saffron Kahwa Green Tea (80g)', price: 520, description: 'Whole green tea blended with cinnamon, cloves, and saffron.' }
+  fragranceAndBeauty: [
+    {
+      id: 'item-atelier-perfume',
+      name: 'Bespoke Atelier Eau De Parfum (Rizora Parfums)',
+      category: 'Fragrance & Self-Care',
+      description: 'Artisanal fine fragrance with lush floral notes and warm woody undertones.',
+    },
+    {
+      id: 'item-botanical-soap',
+      name: 'Handcrafted Cold-Pressed Botanical Bath Bar',
+      category: 'Fragrance & Self-Care',
+      description: 'Crafted with cold-pressed coconut oil and natural botanical extracts in gold organza wrap.',
+    },
+    {
+      id: 'item-glow-cream',
+      name: 'Illuminating Radiance Glow Strobe Cream',
+      category: 'Fragrance & Self-Care',
+      description: 'Premium skin-enhancing illuminator for festive celebrations and bridal radiance.',
+    },
+    {
+      id: 'item-soy-candle',
+      name: 'Amber & Sandalwood Hand-Poured Soy Wax Candle',
+      category: 'Fragrance & Self-Care',
+      description: 'Clean-burning aromatherapy soy wax in a brushed champagne gold tin.',
+    },
   ],
-  keepsakes: [
-    { id: 'keep-candle', name: 'Amber & Sandalwood Hand-Poured Soy Candle (200g)', price: 650, description: 'Clean-burning soy wax in a brushed champagne gold tin.' },
-    { id: 'keep-brass-diya', name: 'Hand-Cast Traditional Brass Peacock Diya', price: 850, description: 'Auspicious heirloom lamp crafted by traditional Kerala metal artisans.' },
-    { id: 'keep-journal', name: 'Monogrammed Vegan Leather Journal with Brass Pen', price: 950, description: 'Handmade cotton deckle-edge paper with gold-foil personalization.' },
-    { id: 'keep-glasses', name: 'Twin Crystal Champagne Flutes with Gold Rim', price: 1100, description: 'Faceted crystal glassware with hand-applied 24k gold rims.' }
+  keepsakesAndJewelry: [
+    {
+      id: 'item-temple-choker',
+      name: 'Antique Gold Temple Jewelry Choker Necklace',
+      category: 'Jewelry & Adornments',
+      description: 'Auspicious heritage necklace with ruby-emerald colored accents and adjustable cord.',
+    },
+    {
+      id: 'item-rose-gold-watch',
+      name: 'Rose Gold Mesh Bracelet Wristwatch',
+      category: 'Jewelry & Adornments',
+      description: 'Elegant timepiece with starry emerald-turquoise dial and gold bezel.',
+    },
+    {
+      id: 'item-pearl-tiara',
+      name: 'Handcrafted Pearl & Floral Bridal Tiara',
+      category: 'Jewelry & Adornments',
+      description: 'Delicate crystal and pearl beaded celebratory headpiece for brides and bridesmaids.',
+    },
+    {
+      id: 'item-jasmine-garland',
+      name: 'Handcrafted Jasmine (Mulla) Flower Garland',
+      category: 'Jewelry & Adornments',
+      description: 'Traditional fresh white floral arrangement for auspicious presentation.',
+    },
+    {
+      id: 'item-brass-nilavilakku',
+      name: 'Hand-Cast Traditional Kerala Brass Nilavilakku Diya',
+      category: 'Jewelry & Adornments',
+      description: 'Auspicious heirloom lamp crafted by traditional Kerala metal artisans.',
+    },
+    {
+      id: 'item-couple-portrait',
+      name: 'Custom Illustrated Couple Portrait Frame',
+      category: 'Personalized Keepsakes',
+      description: 'Personalized bespoke illustrated artwork framed in natural minimal wood.',
+    },
+    {
+      id: 'item-desk-calendar',
+      name: 'Personalized Mini Photo Desk Calendar',
+      category: 'Personalized Keepsakes',
+      description: 'Custom milestone desk calendar featuring memorable photographs.',
+    },
+    {
+      id: 'item-feather-quill',
+      name: 'Feather Quill Pen with Gold Satin Bow',
+      category: 'Personalized Keepsakes',
+      description: 'Vintage calligraphy writing quill pen with metallic gold detailing.',
+    },
+    {
+      id: 'item-keepsake-scroll',
+      name: 'Rolled Keepsake Message Scroll with Hot Wax Seal',
+      category: 'Personalized Keepsakes',
+      description: 'Handmade deckle-edge cotton parchment scroll tied with gold cord.',
+    },
+    {
+      id: 'item-ceramic-succulent',
+      name: 'Potted Mini Ceramic Succulent Plant',
+      category: 'Personalized Keepsakes',
+      description: 'Live resilient green succulent in white handcrafted ceramic planter.',
+    },
+    {
+      id: 'item-wooden-tag',
+      name: 'Hand-Carved Wooden Calligraphy Keepsake Tag',
+      category: 'Personalized Keepsakes',
+      description: 'Custom Malayalam or English festive calligraphy engraved wooden keepsake tag.',
+    },
+  ],
+  gourmetAndTeas: [
+    {
+      id: 'item-banana-chips',
+      name: 'Kerala Crispy Nendran Banana Chips (Glass Jar)',
+      category: 'Gourmet & Delicacies',
+      description: 'Authentic thin-sliced banana chips fried in pure coconut oil with sea salt.',
+    },
+    {
+      id: 'item-spiced-cashews',
+      name: 'Slow-Roasted Spiced Cashews (Glass Jar)',
+      category: 'Gourmet & Delicacies',
+      description: 'Jumbo roasted cashews with crushed black pepper, rosemary, and pink salt.',
+    },
+    {
+      id: 'item-ghee-halwa',
+      name: 'Kozhikode Pure Ghee Cardamom Halwa',
+      category: 'Gourmet & Delicacies',
+      description: 'Authentic Kerala traditional delicacy made with pure ghee and cardamom.',
+    },
+    {
+      id: 'item-nilgiri-tea',
+      name: 'Nilgiri Golden Pekoe Loose Leaf Tea in Brass Caddy',
+      category: 'Gourmet & Delicacies',
+      description: 'Aromatic high-grown tea with floral top notes in an embossed brass caddy.',
+    },
+    {
+      id: 'item-monsoon-coffee',
+      name: 'Monsoon Malabar Single-Origin Coffee (200g)',
+      category: 'Gourmet & Delicacies',
+      description: 'Smooth, low-acidity dark roast with notes of chocolate and spices.',
+    },
+    {
+      id: 'item-cocoa-truffles',
+      name: 'Artisanal Belgian Cocoa Truffles (180g)',
+      category: 'Gourmet & Delicacies',
+      description: 'Handcrafted ganache infused with Kerala green cardamom.',
+    },
+    {
+      id: 'item-crystal-flutes',
+      name: 'Twin Crystal Champagne Flutes with Gold Rim',
+      category: 'Gourmet & Delicacies',
+      description: 'Faceted crystal glassware with hand-applied 24k gold rims.',
+    },
   ],
   finishing: [
-    { id: 'finish-ribbon-gold', name: 'Double-Faced Champagne Gold Satin Ribbon', price: 0, description: 'Hand-tied lavish bow with tailored swallowtail cut.' },
-    { id: 'finish-wax-seal', name: 'Hand-Pressed Wax Seal (Antique Gold)', price: 150, description: 'Traditional hot sealing wax with Kochi Atelier botanical crest.' },
-    { id: 'finish-calligraphy', name: 'Personalized Hand-Lettered Calligraphy Note', price: 200, description: 'Written with dip pen and gold/black archival ink on handmade paper.' }
-  ]
+    {
+      id: 'finish-ribbon-gold',
+      name: 'Double-Faced Champagne Gold Satin Ribbon',
+      description: 'Hand-tied lavish bow with tailored swallowtail cut.',
+    },
+    {
+      id: 'finish-wax-seal',
+      name: 'Hand-Pressed Wax Seal (Antique Gold)',
+      description: 'Traditional hot sealing wax with Kochi Atelier botanical crest.',
+    },
+    {
+      id: 'finish-calligraphy',
+      name: 'Personalized Hand-Lettered Calligraphy Note',
+      description: 'Written with dip pen and gold/black archival ink on handmade paper.',
+    },
+  ],
 };
 
 export const TESTIMONIALS = [
