@@ -44,10 +44,28 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
     }
   };
 
+  const handleNavLinkClick = (href: string) => {
+    setShopDropdown(false);
+    setOccasionsDropdown(false);
+    setMobileMenuOpen(false);
+
+    if (typeof window !== 'undefined' && window.location.pathname === '/shop') {
+      try {
+        const url = new URL(href, window.location.origin);
+        const categoryParam = url.searchParams.get('category');
+        window.dispatchEvent(
+          new CustomEvent('hamper-category-change', {
+            detail: categoryParam || 'All',
+          })
+        );
+      } catch {}
+    }
+  };
+
   const shopLinks = [
     { label: 'All Curated Hampers', href: '/shop' },
     { label: 'Bestseller Curations', href: '/shop?category=Bestsellers' },
-    { label: 'Rare Limited Editions', href: '/shop?category=Bestsellers' },
+    { label: 'Rare Limited Editions', href: '/shop?category=Personalized%20%26%20Keepsakes' },
     { label: 'Gourmet Treats & Teas', href: '/shop?category=Gourmet%20%26%20Sweets' },
   ];
 
@@ -114,7 +132,7 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
                     <Link
                       key={item.label}
                       href={item.href}
-                      onClick={() => setShopDropdown(false)}
+                      onClick={() => handleNavLinkClick(item.href)}
                       className="block px-5 py-2.5 text-[#EFE9DC]/90 hover:text-[#D8B979] hover:bg-[#183C2D]/50 transition-colors text-xs tracking-[0.15em] whitespace-nowrap font-medium"
                     >
                       {item.label}
@@ -143,7 +161,7 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
                     <Link
                       key={item.label}
                       href={item.href}
-                      onClick={() => setOccasionsDropdown(false)}
+                      onClick={() => handleNavLinkClick(item.href)}
                       className="block px-5 py-2.5 text-[#EFE9DC]/90 hover:text-[#D8B979] hover:bg-[#183C2D]/50 transition-colors text-xs tracking-[0.15em] whitespace-nowrap font-medium"
                     >
                       {item.label}

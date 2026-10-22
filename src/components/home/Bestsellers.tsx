@@ -47,11 +47,11 @@ export default function Bestsellers({
   const displayedProducts = filteredProducts.slice(0, visibleCount);
 
   return (
-    <section id="bestsellers" className="py-16 md:py-24 bg-[#F7F4EC] border-b border-[#EFE9DC]">
+    <section id="bestsellers" className="pt-8 pb-16 md:pt-10 md:pb-20 bg-[#F7F4EC] border-b border-[#EFE9DC]">
       <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16">
 
         {/* Header - Expansive Luxury Presentation */}
-        <div className="mb-8 pb-6 border-b border-[#E1D6C2]">
+        <div className="mb-6 pb-5 border-b border-[#E1D6C2]">
           <div className="text-xs uppercase tracking-[0.25em] text-[#96742E] font-semibold mb-1.5">
             Handcrafted Masterpieces
           </div>
@@ -66,7 +66,7 @@ export default function Bestsellers({
         </div>
 
         {/* Category Tabs Filter (Tailored luxury tabs, no pill shapes) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar">
+        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 no-scrollbar">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
