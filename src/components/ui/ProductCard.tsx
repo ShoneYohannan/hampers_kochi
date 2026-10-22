@@ -122,7 +122,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
         <div className="mt-4 pt-3 border-t border-[#E8E1D4]">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs uppercase tracking-wider font-semibold text-[#A88B4D]">
-              Price on Request
+              Contact on WhatsApp for Prices
             </span>
             <span className="text-[10px] text-[#68756F]">
               Direct Atelier Quote

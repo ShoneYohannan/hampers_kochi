@@ -11,8 +11,6 @@ import {
   ShieldCheck,
   Heart,
   MessageSquare,
-  Box,
-  Weight,
   Maximize2
 } from 'lucide-react';
 import { Product } from '@/types';
@@ -112,20 +110,12 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
               </div>
             )}
 
-            {/* Specifications summary */}
-            <div className="mt-4 pt-4 border-t border-[#EFE9DC] text-xs space-y-1.5 text-[#38423D]">
-              <div className="flex items-center justify-between">
-                <span className="text-[#68756F] flex items-center gap-1.5"><Box className="w-3.5 h-3.5 text-[#C5A869]" /> Packaging:</span>
-                <span className="font-medium text-[11px] truncate max-w-[180px]">{product.boxType}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[#68756F] flex items-center gap-1.5"><Weight className="w-3.5 h-3.5 text-[#C5A869]" /> Weight:</span>
-                <span className="font-medium">{product.weight}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[#68756F] flex items-center gap-1.5"><Truck className="w-3.5 h-3.5 text-[#C5A869]" /> Delivery:</span>
-                <span className="font-medium text-[#183C2D]">All-India Delivery</span>
-              </div>
+            {/* Delivery Reassurance Note */}
+            <div className="mt-4 pt-3 border-t border-[#EFE9DC] flex items-center justify-between text-xs text-[#68756F]">
+              <span className="flex items-center gap-1.5 text-[#183C2D] font-medium">
+                <Truck className="w-3.5 h-3.5 text-[#C5A869]" /> All-India Delivery
+              </span>
+              <span className="text-[11px] text-[#A88B4D] font-medium">Bespoke Atelier Craft</span>
             </div>
           </div>
 
@@ -166,13 +156,10 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                 {product.subtitle}
               </p>
 
-              {/* Price on Request */}
-              <div className="mt-3 flex items-center gap-3">
+              {/* Price: Contact on WhatsApp for Prices */}
+              <div className="mt-3">
                 <span className="text-xl sm:text-2xl font-serif-luxury text-[#0B1D15] font-semibold">
-                  Price on Request
-                </span>
-                <span className="text-[11px] bg-[#10291E]/10 text-[#10291E] font-medium px-2 py-0.5 rounded">
-                  Inquire on WhatsApp for Price & Delivery
+                  Contact on WhatsApp for Prices
                 </span>
               </div>
 
@@ -180,24 +167,6 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
               <p className="mt-3 text-xs sm:text-sm text-[#38423D] font-light leading-relaxed">
                 {product.detailedDescription || product.description}
               </p>
-
-              {/* Contents Checklist */}
-              {product.contents && product.contents.length > 0 && (
-                <div className="mt-4 p-4 rounded-lg bg-[#FCFBF8] border border-[#EFE9DC]">
-                  <div className="text-[11px] uppercase tracking-wider font-semibold text-[#0B1D15] mb-2 flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-[#C5A869]" />
-                    <span>Curated Treasures Inside This Box:</span>
-                  </div>
-                  <ul className="space-y-1.5 text-xs text-[#38423D]">
-                    {product.contents.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <Check className="w-3.5 h-3.5 text-[#C5A869] shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
 
               {/* Personalization Inputs */}
               <div className="mt-4 space-y-3">

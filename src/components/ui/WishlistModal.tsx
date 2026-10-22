@@ -84,7 +84,7 @@ export default function WishlistModal({ isOpen, onClose, onSelectProduct }: Wish
                       {product.name}
                     </h4>
                     <span className="text-xs font-semibold text-[#A88B4D]">
-                      Price on Request
+                      Contact on WhatsApp for Prices
                     </span>
                     <div className="text-[10px] text-[#C5A869] uppercase tracking-wider">
                       {product.category}

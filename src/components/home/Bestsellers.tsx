@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { PackageOpen, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
+import { PackageOpen } from 'lucide-react';
 import { useCms } from '@/context/CmsContext';
 import { Product, OccasionCategory } from '@/types';
 import ProductCard from '@/components/ui/ProductCard';
@@ -30,7 +30,6 @@ export default function Bestsellers({
   onSelectCategory,
 }: BestsellersProps) {
   const { products } = useCms();
-  const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured');
   const [visibleCount, setVisibleCount] = useState(12);
 
   const filteredProducts = useMemo(() => {
@@ -42,51 +41,27 @@ export default function Bestsellers({
       list = list.filter((p) => p.category === selectedCategory);
     }
 
-    if (sortBy === 'price-asc') {
-      list.sort((a, b) => a.price - b.price);
-    } else if (sortBy === 'price-desc') {
-      list.sort((a, b) => b.price - a.price);
-    } else if (sortBy === 'rating') {
-      list.sort((a, b) => b.rating - a.rating);
-    }
-
     return list;
-  }, [selectedCategory, sortBy]);
+  }, [selectedCategory, products]);
 
   const displayedProducts = filteredProducts.slice(0, visibleCount);
 
   return (
     <section id="bestsellers" className="py-16 md:py-24 bg-[#F7F4EC] border-b border-[#EFE9DC]">
       <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16">
-        
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-6 border-b border-[#E1D6C2] gap-4">
-          <div>
-            <div className="text-xs uppercase tracking-[0.25em] text-[#96742E] font-semibold mb-1">
-              Handcrafted Masterpieces
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#0B1D15]">
+
+        {/* Header - Expansive Luxury Presentation */}
+        <div className="mb-8 pb-6 border-b border-[#E1D6C2]">
+          <div className="text-xs uppercase tracking-[0.25em] text-[#96742E] font-semibold mb-1.5">
+            Handcrafted Masterpieces
+          </div>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 lg:gap-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#0B1D15] leading-tight">
               The Hamper Collection
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-[#505D56] font-light max-w-xl">
+            <p className="text-sm sm:text-base text-[#505D56] font-light max-w-2xl lg:text-right leading-relaxed">
               Discover curated luxury hampers featuring authentic Kerala silks, brass keepsakes, Belgian chocolates, and single-estate delights.
             </p>
-          </div>
-
-          {/* Sort Dropdown */}
-          <div className="flex items-center gap-2 self-start md:self-auto">
-            <ArrowUpDown className="w-4 h-4 text-[#96742E]" />
-            <span className="text-xs uppercase tracking-wider text-[#38423D] font-medium">Sort By:</span>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-white border border-[#C5A869]/40 text-[#0B1D15] text-xs rounded py-2 px-3 focus:outline-none focus:ring-1 focus:ring-[#C5A869] cursor-pointer"
-            >
-              <option value="featured">Featured Curations</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="rating">Highest Rated (5.0 Stars)</option>
-            </select>
           </div>
         </div>
 
@@ -99,11 +74,10 @@ export default function Bestsellers({
                 onSelectCategory(cat);
                 setVisibleCount(12);
               }}
-              className={`whitespace-nowrap px-4 py-2 rounded-sm text-xs font-medium tracking-wider uppercase transition-all duration-200 cursor-pointer ${
-                selectedCategory === cat
+              className={`whitespace-nowrap px-4 py-2 rounded-sm text-xs font-medium tracking-wider uppercase transition-all duration-200 cursor-pointer ${selectedCategory === cat
                   ? 'bg-[#0B1D15] text-[#D8B979] border border-[#C5A869] shadow-sm'
                   : 'bg-white text-[#38423D] hover:bg-[#EFE9DC] border border-[#E1D6C2]'
-              }`}
+                }`}
             >
               {cat}
             </button>

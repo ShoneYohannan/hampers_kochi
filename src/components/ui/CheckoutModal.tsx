@@ -133,7 +133,7 @@ export default function CheckoutModal() {
       `• Delivery Address: ${address}, ${city}, ${state} - PIN: ${pincode}\n` +
       `• Preferred Delivery Date: ${deliveryDate || 'Earliest All-India Delivery'}\n\n` +
       `*Curated Hampers Inquired:*\n${itemsSummary}\n\n` +
-      `*Pricing:* Price on Request via WhatsApp\n` +
+      `*Pricing:* Contact on WhatsApp for Prices\n` +
       (giftNote ? `\n*Wax-Sealed Calligraphy Message:* "${giftNote}"\n` : '') +
       `\nPlease share pricing, payment details and dispatch timeline.`
     );
@@ -221,7 +221,7 @@ export default function CheckoutModal() {
               </div>
               <div className="flex justify-between">
                 <span className="text-[#68756F]">Pricing Status:</span>
-                <span className="font-semibold text-[#0B1D15]">Price on Request</span>
+                <span className="font-semibold text-[#0B1D15]">Contact on WhatsApp for Prices</span>
               </div>
             </div>
 
@@ -407,7 +407,7 @@ export default function CheckoutModal() {
                 {items.map((item) => (
                   <div key={item.product.id} className="flex justify-between">
                     <span>{item.product.name} (x{item.quantity})</span>
-                    <span className="font-semibold text-[#A88B4D]">Price on Request</span>
+                    <span className="font-semibold text-[#A88B4D]">Contact on WhatsApp for Prices</span>
                   </div>
                 ))}
               </div>
@@ -418,7 +418,7 @@ export default function CheckoutModal() {
               <div className="text-left w-full sm:w-auto">
                 <span className="text-xs text-[#68756F] block">Atelier Pricing:</span>
                 <span className="text-xl font-serif-luxury text-[#0B1D15] font-semibold">
-                  Price on Request
+                  Contact on WhatsApp for Prices
                 </span>
                 <span className="text-[11px] text-[#25D366] block font-medium">
                   Free All-India Express Delivery

@@ -139,7 +139,7 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }: Search
 
                   <div className="text-right shrink-0 pl-3">
                     <div className="text-xs font-semibold text-[#A88B4D]">
-                      Price on Request
+                      Contact on WhatsApp for Prices
                     </div>
                     <div className="text-[10px] text-[#25D366] font-medium">WhatsApp Quote</div>
                   </div>

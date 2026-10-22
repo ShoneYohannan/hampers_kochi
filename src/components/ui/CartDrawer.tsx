@@ -167,7 +167,7 @@ export default function CartDrawer() {
                       </div>
 
                       <div className="text-xs font-semibold text-[#A88B4D] mt-0.5">
-                        Price on Request
+                        Contact on WhatsApp for Prices
                       </div>
 
                       {item.recipientName && (
@@ -248,11 +248,11 @@ export default function CartDrawer() {
                 <p className="text-[11px] text-red-600">Invalid voucher code.</p>
               )}
 
-              {/* Price on Request Notice */}
+              {/* Contact on WhatsApp for Prices Notice */}
               <div className="space-y-1.5 text-xs text-[#38423D] pt-2 border-t border-[#EFE9DC]">
                 <div className="flex justify-between items-center text-sm font-serif-luxury text-[#0B1D15] font-semibold pt-1">
                   <span>Atelier Pricing</span>
-                  <span className="text-sm text-[#A88B4D]">Price on Request via WhatsApp</span>
+                  <span className="text-sm text-[#A88B4D]">Contact on WhatsApp for Prices</span>
                 </div>
                 <p className="text-[11px] text-[#68756F]">
                   Custom curations & bulk orders are finalized directly with our Fort Kochi concierge.

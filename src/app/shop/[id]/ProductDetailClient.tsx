@@ -144,13 +144,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   {product.subtitle || product.description}
                 </p>
 
-                {/* Price Display: Price on Request */}
-                <div className="mt-5 flex items-center justify-between pb-5 border-b border-[#EFE9DC]">
+                {/* Price Display: Contact on WhatsApp for Prices */}
+                <div className="mt-5 pb-5 border-b border-[#EFE9DC]">
                   <span className="text-2xl sm:text-3xl font-serif-luxury font-bold text-[#0B1D15]">
-                    Price on Request
-                  </span>
-                  <span className="text-xs uppercase tracking-wider text-[#A88B4D] font-semibold bg-[#A88B4D]/10 px-2.5 py-1 rounded">
-                    Direct WhatsApp Quote
+                    Contact on WhatsApp for Prices
                   </span>
                 </div>
 
@@ -223,33 +220,24 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
           </div>
 
-          {/* Hamper Contents Accordion / Description */}
+          {/* Hamper Composition & Atelier Craft */}
           <div className="mt-16 pt-12 border-t border-[#EFE9DC] grid grid-cols-1 md:grid-cols-12 gap-10">
             <div className="md:col-span-7 space-y-6">
               <h2 className="text-2xl font-serif-luxury text-[#0B1D15]">
-                Curator’s Detailed Composition
+                Curator’s Bespoke Composition
               </h2>
               <p className="text-sm text-[#4A5550] font-light leading-relaxed">
                 {product.detailedDescription || product.description}
               </p>
 
-              {product.contents && product.contents.length > 0 && (
-                <div>
-                  <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#C5A869] mb-4">
-                    Inside This Curated Casket
-                  </h3>
-                  <ul className="space-y-3">
-                    {product.contents.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-xs sm:text-sm text-[#4A5550]">
-                        <span className="w-4 h-4 rounded-full bg-[#183C2D]/15 text-[#183C2D] flex items-center justify-center shrink-0 mt-0.5">
-                          <Check className="w-3 h-3 text-[#2D6A4F]" />
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <div className="p-5 rounded-md bg-[#FAF8F5] border border-[#EFE9DC] space-y-2">
+                <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#A88B4D]">
+                  Tailored Inclusions & Customization
+                </h3>
+                <p className="text-xs text-[#505D56] font-light leading-relaxed">
+                  Every curation from our Fort Kochi studio is customized to your celebration. Inclusions, keepsakes, and confections can be tailored or upgraded upon direct WhatsApp consultation.
+                </p>
+              </div>
             </div>
 
             <div className="md:col-span-5 bg-[#FAF8F5] p-6 sm:p-8 rounded-md border border-[#EFE9DC] space-y-4">
@@ -257,27 +245,21 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 Atelier Specifications
               </h3>
               <div className="divide-y divide-[#EFE9DC] text-xs">
-                {product.boxType && (
-                  <div className="py-2.5 flex justify-between gap-4">
-                    <span className="text-[#68756F]">Casket Type</span>
-                    <span className="font-medium text-[#0B1D15] text-right">{product.boxType}</span>
-                  </div>
-                )}
-                {product.dimensions && (
-                  <div className="py-2.5 flex justify-between gap-4">
-                    <span className="text-[#68756F]">Dimensions</span>
-                    <span className="font-medium text-[#0B1D15] text-right">{product.dimensions}</span>
-                  </div>
-                )}
-                {product.weight && (
-                  <div className="py-2.5 flex justify-between gap-4">
-                    <span className="text-[#68756F]">Gross Weight</span>
-                    <span className="font-medium text-[#0B1D15] text-right">{product.weight}</span>
-                  </div>
-                )}
                 <div className="py-2.5 flex justify-between gap-4">
-                  <span className="text-[#68756F]">Production</span>
-                  <span className="font-medium text-[#0B1D15] text-right">Hand-Crafted in Kochi</span>
+                  <span className="text-[#68756F]">Origin</span>
+                  <span className="font-medium text-[#0B1D15] text-right">Hand-Crafted in Fort Kochi</span>
+                </div>
+                <div className="py-2.5 flex justify-between gap-4">
+                  <span className="text-[#68756F]">Fulfillment</span>
+                  <span className="font-medium text-[#0B1D15] text-right">Pre-Order Only &bull; All-India Express</span>
+                </div>
+                <div className="py-2.5 flex justify-between gap-4">
+                  <span className="text-[#68756F]">Personalization</span>
+                  <span className="font-medium text-[#0B1D15] text-right">Handwritten Calligraphy Card (50 Letters)</span>
+                </div>
+                <div className="py-2.5 flex justify-between gap-4">
+                  <span className="text-[#68756F]">Pricing & Quotes</span>
+                  <span className="font-medium text-[#183C2D] text-right">Direct via WhatsApp Concierge</span>
                 </div>
               </div>
             </div>
