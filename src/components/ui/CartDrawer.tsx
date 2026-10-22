@@ -175,6 +175,17 @@ export default function CartDrawer() {
                           For: {item.recipientName}
                         </div>
                       )}
+
+                      {item.product.contents && item.product.contents.length > 0 && (
+                        <div className="mt-2 p-2 bg-[#F7F4EC] rounded border border-[#EFE9DC] text-[10px] text-[#38423D]">
+                          <div className="font-semibold text-[#183C2D] uppercase tracking-wider text-[9px] mb-1">
+                            Curated Items ({item.product.contents.length} selections):
+                          </div>
+                          <div className="line-clamp-3 text-[#68756F] leading-relaxed">
+                            {item.product.contents.join(' • ')}
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Quantity controls */}

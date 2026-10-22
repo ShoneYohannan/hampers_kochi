@@ -120,8 +120,21 @@ export default function CheckoutModal() {
     }
 
     const itemsSummary = items
-      .map((i) => `• ${i.product.name} (Qty: ${i.quantity})`)
-      .join('\n');
+      .map((i) => {
+        let details = `• ${i.product.name} (Qty: ${i.quantity})`;
+        if (i.product.contents && i.product.contents.length > 0) {
+          const contentsList = i.product.contents.map((c) => `    - ${c}`).join('\n');
+          details += `\n  *Curated Hamper Selections:*\n${contentsList}`;
+        }
+        if (i.recipientName) {
+          details += `\n  *For Recipient:* ${i.recipientName}`;
+        }
+        if (i.giftMessage) {
+          details += `\n  *Calligraphy Message:* "${i.giftMessage}"`;
+        }
+        return details;
+      })
+      .join('\n\n');
 
     const msg = encodeURIComponent(
       `*NEW LUXURY ORDER INQUIRY - HAMPERS KOCHI*\n` +
@@ -134,7 +147,7 @@ export default function CheckoutModal() {
       `• Preferred Delivery Date: ${deliveryDate || 'Earliest All-India Delivery'}\n\n` +
       `*Curated Hampers Inquired:*\n${itemsSummary}\n\n` +
       `*Pricing:* Contact on WhatsApp for Prices\n` +
-      (giftNote ? `\n*Wax-Sealed Calligraphy Message:* "${giftNote}"\n` : '') +
+      (giftNote ? `\n*General Instructions / Note:* "${giftNote}"\n` : '') +
       `\nPlease share pricing, payment details and dispatch timeline.`
     );
 
@@ -405,9 +418,26 @@ export default function CheckoutModal() {
               </span>
               <div className="space-y-1.5 text-xs text-[#38423D] bg-[#FCFBF8] p-3 rounded border border-[#EFE9DC]">
                 {items.map((item) => (
-                  <div key={item.product.id} className="flex justify-between">
-                    <span>{item.product.name} (x{item.quantity})</span>
-                    <span className="font-semibold text-[#A88B4D]">Contact on WhatsApp for Prices</span>
+                  <div key={item.product.id} className="space-y-1 pb-2 border-b border-[#EFE9DC] last:border-b-0 last:pb-0">
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium text-[#0B1D15]">{item.product.name} (x{item.quantity})</span>
+                      <span className="font-semibold text-[#A88B4D]">Contact on WhatsApp for Prices</span>
+                    </div>
+                    {item.product.contents && item.product.contents.length > 0 && (
+                      <div className="text-[11px] text-[#68756F] pl-2 border-l-2 border-[#C5A869]/40 space-y-0.5 mt-1">
+                        <div className="text-[#183C2D] font-medium text-[10px] uppercase tracking-wider">
+                          Custom Hamper Contents ({item.product.contents.length} selections):
+                        </div>
+                        <p className="line-clamp-2 leading-relaxed">
+                          {item.product.contents.join(' • ')}
+                        </p>
+                      </div>
+                    )}
+                    {item.recipientName && (
+                      <div className="text-[10px] text-[#C5A869]">
+                        For: {item.recipientName}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
