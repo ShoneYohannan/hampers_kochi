@@ -98,7 +98,7 @@ export default function HamperBuilderPromo({ onOpenBuilder }: HamperBuilderPromo
               Ready to craft an unforgettable personal hamper?
             </h3>
             <p className="text-xs sm:text-sm text-[#EFE9DC]/80">
-              Live pricing calculation, custom wax seal colors & express delivery across India.
+              Hand-curated Kerala keepsakes, bespoke wax seal impressions & express delivery across India.
             </p>
           </div>
 
@@ -107,7 +107,7 @@ export default function HamperBuilderPromo({ onOpenBuilder }: HamperBuilderPromo
             className="px-8 py-4 rounded-sm bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] font-medium text-xs sm:text-sm uppercase tracking-[0.2em] transition-all duration-300 shadow-xl flex items-center gap-2 group cursor-pointer shrink-0"
           >
             <Gift className="w-4 h-4" />
-            <span>Launch Hamper Builder</span>
+            <span>Customize Your Hamper</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </button>
         </div>

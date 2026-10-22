@@ -192,7 +192,7 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
                 onClick={onOpenBuilder}
                 className="text-[#D8B979] hover:text-white transition-colors py-1 whitespace-nowrap cursor-pointer uppercase tracking-[0.16em] font-semibold border-b border-[#D8B979]/50 hover:border-white"
               >
-                BUILD BESPOKE
+                CUSTOMIZATION
               </button>
             )}
           </nav>
@@ -332,7 +332,7 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
                 }}
                 className="text-left text-[#D8B979] hover:text-white py-1 border-b border-[#C5A869]/10 pb-3 uppercase tracking-wider font-semibold cursor-pointer"
               >
-                BUILD BESPOKE HAMPER
+                CUSTOMIZE HAMPER
               </button>
             )}
           </div>

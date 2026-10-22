@@ -131,7 +131,7 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
                 onClick={onOpenBuilder}
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-[#D8B979] text-[#D8B979] hover:bg-[#D8B979] hover:text-[#0B1D15] text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer shadow-sm rounded-sm"
               >
-                <span>Build Bespoke Hamper</span>
+                <span>Customize Hamper</span>
               </button>
             )}
 
