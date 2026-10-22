@@ -71,22 +71,22 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
         : 'bg-[#0B1D15] border-b border-[#C5A869]/15 py-3.5 sm:py-4'
         }`}
     >
-      {/* Full-width container with responsive padding to prevent overflow on laptops */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="flex items-center justify-between gap-3 lg:gap-4 xl:gap-6">
+      {/* Full-width container with balanced padding so right button has comfortable breathing room */}
+      <div className="w-full px-4 sm:px-6 lg:px-5 xl:px-8">
+        <div className="flex items-center justify-between gap-2 lg:gap-3 xl:gap-4">
 
-          {/* Logo / Wordmark - Aligned to left edge */}
+          {/* Logo / Wordmark - Aligned cleanly to left */}
           <Link
             href="/"
-            className="flex-shrink-0 group flex items-center gap-2"
+            className="flex-shrink-0 group flex items-center gap-1.5"
           >
-            <span className="font-serif-luxury text-[#FCFBF8] text-2xl sm:text-3xl lg:text-[28px] xl:text-[30px] tracking-wide group-hover:text-[#D8B979] transition-colors whitespace-nowrap">
+            <span className="font-serif-luxury text-[#FCFBF8] text-2xl sm:text-2xl lg:text-[22px] xl:text-[24px] 2xl:text-[28px] tracking-wide group-hover:text-[#D8B979] transition-colors whitespace-nowrap">
               Hampers <span className="text-[#D8B979]">Kochi</span>
             </span>
           </Link>
 
-          {/* Desktop Navigation — Exactly Matching Image 5 */}
-          <nav className="hidden lg:flex items-center gap-2.5 xl:gap-3.5 2xl:gap-5 text-[11px] xl:text-xs 2xl:text-[13px] uppercase tracking-[0.06em] xl:tracking-[0.09em] font-semibold text-[#FCFBF8]">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2.5 2xl:gap-4 text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase tracking-[0.03em] xl:tracking-[0.05em] font-semibold text-[#FCFBF8]">
 
             <Link
               href="/"
@@ -180,53 +180,53 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
           </nav>
 
           {/* Right Action Icons & Direct WhatsApp */}
-          <div className="flex items-center gap-2.5 xl:gap-4 shrink-0">
+          <div className="flex items-center gap-1.5 xl:gap-2.5 shrink-0">
             {/* Search */}
             <button
               onClick={onOpenSearch}
-              className="p-2 text-[#EFE9DC]/90 hover:text-[#D8B979] transition-colors cursor-pointer"
+              className="p-1.5 text-[#EFE9DC]/90 hover:text-[#D8B979] transition-colors cursor-pointer"
               aria-label="Search Catalog"
               title="Search Catalog"
             >
-              <Search className="w-4 h-4 xl:w-5 xl:h-5" />
+              <Search className="w-4 h-4 xl:w-4.5 xl:h-4.5" />
             </button>
 
             {/* Wishlist */}
             <button
               onClick={onOpenWishlist}
-              className="relative p-2 text-[#EFE9DC]/90 hover:text-[#D8B979] transition-colors cursor-pointer"
+              className="relative p-1.5 text-[#EFE9DC]/90 hover:text-[#D8B979] transition-colors cursor-pointer"
               aria-label="Wishlist"
               title="Saved Items"
             >
-              <Heart className="w-4 h-4 xl:w-5 xl:h-5" />
+              <Heart className="w-4 h-4 xl:w-4.5 xl:h-4.5" />
               {wishlistCount > 0 && (
-                <span className="absolute top-1 right-1 w-3.5 h-3.5 bg-[#D8B979] text-[#0B1D15] rounded-sm text-[9px] font-bold flex items-center justify-center">
+                <span className="absolute top-0.5 right-0.5 w-3.5 h-3.5 bg-[#D8B979] text-[#0B1D15] rounded-sm text-[9px] font-bold flex items-center justify-center">
                   {wishlistCount}
                 </span>
               )}
             </button>
 
-            {/* Clickable Phone Number: sleek icon button to give WhatsApp Order 100% breathing room without overflow */}
+            {/* Clickable Phone Number */}
             <a
               href={`tel:${cleanPhone}`}
-              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 text-[#FCFBF8] hover:text-[#D8B979] text-xs transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded shrink-0 group"
+              className="hidden sm:flex items-center gap-1 px-2 py-1.5 text-[#FCFBF8] hover:text-[#D8B979] text-xs transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded shrink-0 group"
               title={`Call Concierge: ${displayPhone}`}
               aria-label={`Call Concierge: ${displayPhone}`}
             >
               <Phone className="w-3.5 h-3.5 text-[#D8B979] group-hover:scale-110 transition-transform" />
             </a>
 
-            {/* Direct WhatsApp Ordering Button — fully visible on all viewports */}
+            {/* Direct WhatsApp Ordering Button */}
             <a
-              href={`https://wa.me/${whatsappNumber}?text=Hello%20The%20Kochi%20Atelier%2C%20I%20would%20like%20to%20order%20a%20luxury%20hamper.`}
+              href={`https://wa.me/${whatsappNumber}?text=Hello%20Hampers%20Kochi%2C%20I%20would%20like%20to%20order%20a%20luxury%20hamper.`}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1.5 xl:gap-2 px-3.5 xl:px-4 py-2 bg-[#25D366] hover:bg-[#128C7E] text-white text-xs xl:text-sm font-bold uppercase tracking-wider rounded transition-all shadow-md hover:shadow-lg whitespace-nowrap cursor-pointer shrink-0"
+              className="flex items-center gap-1.5 px-3 xl:px-3.5 py-1.5 xl:py-2 bg-[#25D366] hover:bg-[#128C7E] text-white text-[11px] xl:text-xs font-bold uppercase tracking-wider rounded transition-all shadow-md hover:shadow-lg whitespace-nowrap cursor-pointer shrink-0"
               title="Direct WhatsApp Order"
               aria-label="Order on WhatsApp"
             >
-              <MessageSquare className="w-4 h-4 xl:w-4.5 xl:h-4.5" />
-              <span className="hidden sm:inline">WhatsApp Order</span>
+              <MessageSquare className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
+              <span>WhatsApp Order</span>
             </a>
 
             {/* Mobile Menu Toggle Button */}
