@@ -26,9 +26,9 @@ interface CmsContextType {
 }
 
 const DEFAULT_ANNOUNCEMENTS = [
-  'HAND-TIED IN OUR KOCHI ATELIER · DELIVERED ACROSS INDIA WITHIN 48 HOURS',
+  'HAND-TIED IN OUR KOCHI ATELIER · ALL-INDIA DELIVERY',
   'COMPLIMENTARY PERSONALIZED CALLIGRAPHY NOTE WITH EVERY ORDER',
-  'PRE-ORDER ONLY · BESPOKE HANDCRAFTED HAMPERS · ALL-INDIA DELIVERY ACROSS 28,000+ PINCODES',
+  'PRE-ORDER ONLY · BESPOKE HANDCRAFTED HAMPERS · ALL-INDIA DELIVERY',
 ];
 
 const DEFAULT_SETTINGS: StoreSettings = {
@@ -79,6 +79,8 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
                 ? msg
                     .replace(/\s*·\s*CODE:\s*ROYAL10\s*FOR\s*10%\s*OFF/gi, '')
                     .replace(/CODE:\s*ROYAL10\s*FOR\s*10%\s*OFF/gi, '')
+                    .replace(/·?\s*DELIVERED\s*ACROSS\s*INDIA\s*WITHIN\s*48\s*HOURS/gi, '· ALL-INDIA DELIVERY')
+                    .replace(/\s*WITHIN\s*48\s*HOURS/gi, '')
                     .trim()
                 : ''
             )

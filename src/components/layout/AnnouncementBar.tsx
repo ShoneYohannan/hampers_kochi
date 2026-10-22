@@ -8,7 +8,7 @@ export default function AnnouncementBar() {
   const [currentIdx, setCurrentIdx] = useState(0);
 
   const rawMessages = announcements.length > 0 ? announcements : [
-    'HAND-TIED IN OUR KOCHI ATELIER · DELIVERED ACROSS INDIA WITHIN 48 HOURS',
+    'HAND-TIED IN OUR KOCHI ATELIER · ALL-INDIA DELIVERY',
   ];
 
   const messages = rawMessages
@@ -17,6 +17,8 @@ export default function AnnouncementBar() {
         ? m
             .replace(/\s*·\s*CODE:\s*ROYAL10\s*FOR\s*10%\s*OFF/gi, '')
             .replace(/CODE:\s*ROYAL10\s*FOR\s*10%\s*OFF/gi, '')
+            .replace(/·?\s*DELIVERED\s*ACROSS\s*INDIA\s*WITHIN\s*48\s*HOURS/gi, '· ALL-INDIA DELIVERY')
+            .replace(/\s*WITHIN\s*48\s*HOURS/gi, '')
             .trim()
         : ''
     )
