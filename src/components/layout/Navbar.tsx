@@ -228,8 +228,8 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
             <a
               href={`tel:${cleanPhone}`}
               className="hidden sm:flex items-center gap-1 px-2 py-1.5 text-[#FCFBF8] hover:text-[#D8B979] text-xs transition-colors border border-[#C5A869]/40 hover:border-[#D8B979] rounded shrink-0 group"
-              title={`Call Concierge: ${displayPhone}`}
-              aria-label={`Call Concierge: ${displayPhone}`}
+              title={`Call: ${displayPhone}`}
+              aria-label={`Call: ${displayPhone}`}
             >
               <Phone className="w-3.5 h-3.5 text-[#D8B979] group-hover:scale-110 transition-transform" />
             </a>

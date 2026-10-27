@@ -67,12 +67,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
-    {
-      url: `${baseUrl}/cms`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.3,
-    },
   ];
 
   // Add Occasions

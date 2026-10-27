@@ -23,7 +23,7 @@ export default function NotFound() {
           className="text-xs uppercase tracking-[0.2em] text-[#D8B979] hover:text-white transition-colors flex items-center gap-1.5"
         >
           <MessageSquare className="w-3.5 h-3.5" />
-          <span>Concierge</span>
+          <span>Contact</span>
         </a>
       </header>
 

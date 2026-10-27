@@ -116,7 +116,6 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
               <li><Link href="/occasions" className="hover:text-[#C5A869] transition-colors">Occasion Curations</Link></li>
               <li><Link href="/shop?category=Wedding%20%26%20Bridal" className="hover:text-[#C5A869] transition-colors">Bridal &amp; Wedding Suites</Link></li>
               <li><Link href="/corporate" className="hover:text-[#C5A869] transition-colors">Corporate &amp; Executive Trunks</Link></li>
-              <li><Link href="/cms" className="hover:text-[#C5A869] transition-colors text-[#D8B979]/80 font-medium">Hampers Kochi CMS Portal</Link></li>
             </ul>
           </div>
 
@@ -136,7 +135,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
           {/* Contact & Studio Details */}
           <div className="space-y-3">
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#C5A869] font-semibold">
-              Hampers Kochi Concierge
+              Contact Us
             </h4>
             <div className="space-y-2.5 text-xs text-[#E8E1D4]/80 font-light">
               <div className="flex items-center gap-2">

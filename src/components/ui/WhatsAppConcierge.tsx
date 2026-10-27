@@ -31,7 +31,7 @@ export default function WhatsAppConcierge() {
                 <span className="w-2.5 h-2.5 rounded-sm bg-[#25D366] absolute bottom-0 right-0 border border-[#0B1D15]" />
               </div>
               <div>
-                <h4 className="text-xs font-semibold text-white tracking-wide">Hampers Kochi Concierge</h4>
+                <h4 className="text-xs font-semibold text-white tracking-wide">Hampers Kochi Support</h4>
                 <p className="text-[10px] text-[#D8B979]">Online &bull; Instant Reply</p>
               </div>
             </div>
@@ -78,8 +78,8 @@ export default function WhatsAppConcierge() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-12 h-12 sm:w-13 sm:h-13 rounded-lg bg-[#0B1D15] text-[#D8B979] hover:text-[#FCFBF8] border-2 border-[#C5A869] shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 group relative cursor-pointer"
-        aria-label="WhatsApp Concierge"
-        title="Chat with Gifting Concierge"
+        aria-label="WhatsApp Chat"
+        title="Chat with Hampers Kochi"
       >
         <MessageSquare className="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform" />
         <span className="w-2.5 h-2.5 rounded-sm bg-[#25D366] absolute -top-1 -right-1 border border-[#0B1D15]" />
