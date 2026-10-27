@@ -14,7 +14,7 @@ const FAQ_ITEMS: FaqItem[] = [
     category: 'Curation & Keepsakes',
     question: 'What makes Hampers Kochi hampers unique and distinct from standard gift boxes?',
     answer:
-      'Every hamper is curated and hand-assembled in our Fort Kochi atelier. Rather than generic mass-market items, we curate heirloom-grade Kerala brassware (like handmade Vilakkus and Urulis), GI-tagged Balaramapuram Kasavu handlooms, single-origin high-grown Nilgiri teas, Wayanad artisanal chocolates, and handwritten calligraphy on handmade cotton paper, individually stamped with hot sealing wax.',
+      'Every hamper is curated and hand-assembled in our Fort Kochi studio. Rather than generic mass-market items, we curate heirloom-grade Kerala brassware (like handmade Vilakkus and Urulis), GI-tagged Balaramapuram Kasavu handlooms, single-origin high-grown Nilgiri teas, Wayanad artisanal chocolates, and handwritten calligraphy on handmade cotton paper, individually stamped with hot sealing wax.',
   },
   {
     category: 'Delivery & Shipping',
@@ -26,7 +26,7 @@ const FAQ_ITEMS: FaqItem[] = [
     category: 'Personalization',
     question: 'Can I personalize my hamper with custom calligraphy notes and specific items?',
     answer:
-      'Yes, each hamper includes a complimentary personalized wax-sealed parchment note written by our in-house calligrapher with your custom message (up to 50 characters). You can also customize trunk ribbons, brass keepsakes, tea blends, or add bespoke keepsakes by contacting our concierge on WhatsApp at +91 96455 56010.',
+      'Yes, each hamper includes a complimentary personalized wax-sealed parchment note written by our in-house calligrapher with your custom message (up to 50 characters). You can also customize trunk ribbons, brass keepsakes, tea blends, or add bespoke keepsakes by contacting our concierge on WhatsApp at +91 98460 02241.',
   },
 ];
 
@@ -51,7 +51,7 @@ export default function FaqSection() {
             Frequently Asked Questions
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#68756F] font-light">
-            Answers regarding our Kochi atelier craftsmanship, climate-protected all-India shipping,
+            Answers regarding our Kochi studio craftsmanship, climate-protected all-India shipping,
             and bespoke personalization.
           </p>
         </div>
@@ -111,10 +111,10 @@ export default function FaqSection() {
             Have a custom inquiry or special request?
           </h4>
           <p className="text-xs text-[#EFE9DC]/75 font-light mb-4">
-            Our atelier concierge in Fort Kochi is available 7 days a week to assist with bespoke curations.
+            Our concierge in Fort Kochi is available 7 days a week to assist with bespoke curations.
           </p>
           <a
-            href="https://wa.me/919645556010?text=Hello%20Hampers%20Kochi%2C%20how%20can%20you%20help%20me%20with%20a%20luxury%20hamper%3F"
+            href="https://wa.me/919846002241?text=Hello%20Hampers%20Kochi%2C%20how%20can%20you%20help%20me%20with%20a%20luxury%20hamper%3F"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded bg-[#D8B979] text-[#0B1D15] text-xs font-semibold uppercase tracking-[0.2em] hover:bg-[#E6CE9F] transition-colors shadow-md cursor-pointer"

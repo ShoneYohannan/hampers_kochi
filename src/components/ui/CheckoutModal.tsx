@@ -151,7 +151,7 @@ export default function CheckoutModal() {
       `\nPlease share pricing, payment details and dispatch timeline.`
     );
 
-    window.open(`https://wa.me/919645556010?text=${msg}`, '_blank');
+    window.open(`https://wa.me/919846002241?text=${msg}`, '_blank');
 
     addInquiry({
       id: generatedId,
@@ -230,7 +230,7 @@ export default function CheckoutModal() {
               </div>
               <div className="flex justify-between">
                 <span className="text-[#68756F]">WhatsApp Concierge:</span>
-                <span className="font-medium text-[#183C2D]">+91 96455 56010</span>
+                <span className="font-medium text-[#183C2D]">+91 98460 02241</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#68756F]">Pricing Status:</span>
@@ -239,7 +239,7 @@ export default function CheckoutModal() {
             </div>
 
             <p className="text-xs text-[#68756F] max-w-md mx-auto leading-relaxed">
-              Your order summary and delivery instructions have been forwarded to our Fort Kochi studio WhatsApp (+91 96455 56010). Our team will reply shortly to confirm dispatch.
+              Your order summary and delivery instructions have been forwarded to our Fort Kochi studio WhatsApp (+91 98460 02241). Our team will reply shortly to confirm dispatch.
             </p>
 
             <button
@@ -264,7 +264,7 @@ export default function CheckoutModal() {
               </div>
               <div>
                 <span className="font-semibold block text-[#0B1D15]">Direct WhatsApp Ordering</span>
-                <span className="text-[#68756F]">No payment gateway hassle. Your order and details are transmitted directly to WhatsApp (+91 96455 56010).</span>
+                <span className="text-[#68756F]">No payment gateway hassle. Your order and details are transmitted directly to WhatsApp (+91 98460 02241).</span>
               </div>
             </div>
 
@@ -304,7 +304,7 @@ export default function CheckoutModal() {
                   <input
                     type="tel"
                     required
-                    placeholder="10-digit number (e.g. 9645556010)"
+                    placeholder="10-digit number (e.g. 9846002241)"
                     value={phone}
                     onChange={(e) => {
                       setPhone(e.target.value);

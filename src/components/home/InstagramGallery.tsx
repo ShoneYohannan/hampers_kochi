@@ -14,12 +14,12 @@ const InstagramIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
 
 export default function InstagramGallery() {
   const posts = [
-    { image: '/images/1001483615.jpg.jpeg', handle: '@thekochiatelier', tag: '#BridalHamper' },
-    { image: '/images/1001611483.jpg.jpeg', handle: '@thekochiatelier', tag: '#CoffeeCasket' },
-    { image: '/images/1001707222.jpg.jpeg', handle: '@thekochiatelier', tag: '#VelvetRomance' },
-    { image: '/images/1001981345.jpg.jpeg', handle: '@thekochiatelier', tag: '#RoyalTravancore' },
-    { image: '/images/1002015494.jpg.jpeg', handle: '@thekochiatelier', tag: '#Chocolatier' },
-    { image: '/images/1002029660.jpg.jpeg', handle: '@thekochiatelier', tag: '#CelebrationGold' },
+    { image: '/images/1001483615.jpg.jpeg', handle: '@hampers_kochi', tag: '#BridalHamper' },
+    { image: '/images/1001611483.jpg.jpeg', handle: '@hampers_kochi', tag: '#CoffeeCasket' },
+    { image: '/images/1001707222.jpg.jpeg', handle: '@hampers_kochi', tag: '#VelvetRomance' },
+    { image: '/images/1001981345.jpg.jpeg', handle: '@hampers_kochi', tag: '#RoyalTravancore' },
+    { image: '/images/1002015494.jpg.jpeg', handle: '@hampers_kochi', tag: '#Chocolatier' },
+    { image: '/images/1002029660.jpg.jpeg', handle: '@hampers_kochi', tag: '#CelebrationGold' },
   ];
 
   return (

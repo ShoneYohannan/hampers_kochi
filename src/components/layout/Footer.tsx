@@ -44,7 +44,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
     setCurrentYear(String(new Date().getFullYear()));
   }, []);
 
-  const whatsappNumber = settings?.whatsapp || '919645556010';
+  const whatsappNumber = settings?.whatsapp || '919846002241';
   const mapsUrl = 'https://www.google.com/maps/place/HamPers+Kochi/@10.0354402,76.3371076,17z/data=!3m1!4b1!4m6!3m5!1s0x3b080d0061e38933:0x15372481079d8544!8m2!3d10.0354402!4d76.3371076!16s%2Fg%2F11wqv83_n0?entry=ttu';
 
   return (
@@ -116,37 +116,36 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
               <li><Link href="/occasions" className="hover:text-[#C5A869] transition-colors">Occasion Curations</Link></li>
               <li><Link href="/shop?category=Wedding%20%26%20Bridal" className="hover:text-[#C5A869] transition-colors">Bridal &amp; Wedding Suites</Link></li>
               <li><Link href="/corporate" className="hover:text-[#C5A869] transition-colors">Corporate &amp; Executive Trunks</Link></li>
-              <li><Link href="/cms" className="hover:text-[#C5A869] transition-colors text-[#D8B979]/80 font-medium">Atelier CMS Portal</Link></li>
+              <li><Link href="/cms" className="hover:text-[#C5A869] transition-colors text-[#D8B979]/80 font-medium">Hampers_kochi CMS Portal</Link></li>
             </ul>
           </div>
 
           {/* Information & Links (Zero orphan pages) */}
           <div className="space-y-3">
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#C5A869] font-semibold">
-              Atelier Information
+              Hampers_kochi Information
             </h4>
             <ul className="space-y-2 text-xs text-[#E8E1D4]/80 font-light">
               <li><Link href="/story" className="hover:text-[#C5A869] transition-colors">Our Kochi Heritage Story</Link></li>
               <li><Link href="/reviews" className="hover:text-[#C5A869] transition-colors">Customer Reviews &amp; Testimonials</Link></li>
               <li><Link href="/contact" className="hover:text-[#C5A869] transition-colors">Studio Location &amp; Directions</Link></li>
               <li><Link href="/faq" className="hover:text-[#C5A869] transition-colors">Frequently Asked Questions</Link></li>
-              <li><a href="/sitemap.xml" className="hover:text-[#C5A869] transition-colors text-[11px] opacity-75">XML Sitemap</a></li>
             </ul>
           </div>
 
           {/* Contact & Studio Details */}
           <div className="space-y-3">
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#C5A869] font-semibold">
-              Atelier Concierge
+              Hampers_kochi Concierge
             </h4>
             <div className="space-y-2.5 text-xs text-[#E8E1D4]/80 font-light">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#C5A869] shrink-0" />
                 <a
-                  href={`tel:${(settings?.phone || '+91 96455 56010').replace(/\s+/g, '')}`}
+                  href={`tel:${(settings?.phone || '+91 98460 02241').replace(/\s+/g, '')}`}
                   className="hover:text-[#C5A869] transition-colors font-medium whitespace-nowrap"
                 >
-                  {settings?.phone || '+91 96455 56010'}
+                  {settings?.phone || '+91 98460 02241'}
                 </a>
               </div>
               <div className="flex items-center gap-2">
@@ -176,7 +175,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
         {/* Bottom Legal & Policy Links (No dead '#' links) */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EFE9DC]/60 gap-4">
           <div>
-            &copy; {currentYear} HamPers Kochi &bull; The Kochi Atelier. Handcrafted in Kerala, Delivered Across India.
+            &copy; {currentYear} Hampers_kochi. Handcrafted in Kerala, Delivered Across India.
           </div>
           <div className="flex items-center flex-wrap gap-4 sm:gap-6">
             <button

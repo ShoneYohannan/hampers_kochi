@@ -17,7 +17,7 @@ export default function NotFound() {
         </Link>
 
         <a
-          href="https://wa.me/919645556010"
+          href="https://wa.me/919846002241"
           target="_blank"
           rel="noreferrer"
           className="text-xs uppercase tracking-[0.2em] text-[#D8B979] hover:text-white transition-colors flex items-center gap-1.5"
@@ -37,7 +37,7 @@ export default function NotFound() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-serif-luxury font-normal leading-tight text-[#FCFBF8]">
-            The Atelier Page <br />
+            The Requested Page <br />
             <span className="italic text-[#D8B979]">Could Not Be Found</span>
           </h1>
 
@@ -51,7 +51,7 @@ export default function NotFound() {
               className="w-full sm:w-auto px-8 py-3.5 rounded bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] font-medium text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2 shadow-lg"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>Return to Atelier Home</span>
+              <span>Return to Home</span>
             </Link>
 
             <Link
@@ -65,9 +65,9 @@ export default function NotFound() {
 
           <div className="pt-6 border-t border-[#C5A869]/15">
             <p className="text-xs text-[#EFE9DC]/60">
-              Need immediate assistance? Speak directly with our Fort Kochi concierge at{' '}
-              <a href="tel:+919645556010" className="text-[#D8B979] underline hover:text-white">
-                +91 96455 56010
+              Need immediate assistance? Speak directly with our concierge at{' '}
+              <a href="tel:+919846002241" className="text-[#D8B979] underline hover:text-white">
+                +91 98460 02241
               </a>
             </p>
           </div>
@@ -77,7 +77,7 @@ export default function NotFound() {
 
       {/* Footer minimal */}
       <footer className="p-6 border-t border-[#C5A869]/15 text-center text-xs text-[#EFE9DC]/50">
-        &copy; 2026 The Kochi Atelier. Handcrafted in Kochi, Delivered Across India.
+        &copy; 2026 Hampers_kochi. Handcrafted in Kochi, Delivered Across India.
       </footer>
 
     </div>

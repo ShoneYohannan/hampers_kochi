@@ -6,7 +6,7 @@ import { useCms } from '@/context/CmsContext';
 
 export default function CustomHamperEnquiry() {
   const { settings } = useCms();
-  const whatsappNumber = settings?.whatsapp || '919645556010';
+  const whatsappNumber = settings?.whatsapp || '919846002241';
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hi, I am interested in creating a personalised hamper. Could you help me choose the perfect gift?')}`;
 
   return (

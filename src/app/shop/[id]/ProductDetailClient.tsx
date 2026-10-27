@@ -32,7 +32,7 @@ interface ProductDetailClientProps {
 
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
   const { isInWishlist, toggleWishlist } = useWishlist();
-  const { settings } = useCms();
+  const { settings, products } = useCms();
 
   const [activeImage, setActiveImage] = useState(product.image);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
@@ -44,8 +44,9 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   const isFavorite = isInWishlist(product.id);
   const gallery = [product.image];
 
-  const whatsappNumber = settings?.whatsapp || '919645556010';
-  const relatedProducts = ALL_PRODUCTS.filter(
+  const whatsappNumber = settings?.whatsapp || '919846002241';
+  const pool = products && products.length > 0 ? products : ALL_PRODUCTS;
+  const relatedProducts = pool.filter(
     (p) => p.id !== product.id && p.category === product.category
   ).slice(0, 3);
 
@@ -211,7 +212,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   </div>
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-[#C5A869] shrink-0" />
-                    <span>Fort Kochi Atelier Craft</span>
+                    <span>HamPers Kochi Craft</span>
                   </div>
                 </div>
 
@@ -220,7 +221,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
           </div>
 
-          {/* Hamper Composition & Atelier Craft */}
+          {/* Hamper Composition & Craft */}
           <div className="mt-16 pt-12 border-t border-[#EFE9DC] grid grid-cols-1 md:grid-cols-12 gap-10">
             <div className="md:col-span-7 space-y-6">
               <h2 className="text-2xl font-serif-luxury text-[#0B1D15]">
@@ -242,7 +243,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
             <div className="md:col-span-5 bg-[#FAF8F5] p-6 sm:p-8 rounded-md border border-[#EFE9DC] space-y-4">
               <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#0B1D15]">
-                Atelier Specifications
+                HamPers Kochi Specifications
               </h3>
               <div className="divide-y divide-[#EFE9DC] text-xs">
                 <div className="py-2.5 flex justify-between gap-4">

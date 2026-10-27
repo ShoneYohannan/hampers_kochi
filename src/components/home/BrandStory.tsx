@@ -43,7 +43,7 @@ export default function BrandStory() {
               <div className="relative aspect-[3/4] rounded overflow-hidden shadow-2xl bg-[#0B1D15]">
                 <Image
                   src="/images/1001877031.jpg.jpeg"
-                  alt="Crafting bespoke luxury hampers inside The Kochi Atelier design studio in Kerala"
+                  alt="Crafting bespoke luxury hampers inside HamPers Kochi design studio in Kerala"
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, 40vw"
@@ -52,10 +52,10 @@ export default function BrandStory() {
                 
                 <div className="absolute bottom-6 left-6 right-6 text-white text-left">
                   <div className="text-[10px] uppercase tracking-[0.25em] text-[#D8B979] font-medium">
-                    The Fort Kochi Atelier
+                    HamPers Kochi Studio
                   </div>
                   <h3 className="text-xl font-serif-luxury font-normal text-white mt-1">
-                    Fort Kochi Atelier · Sourcing Generational Kerala Crafts
+                    HamPers Kochi · Sourcing Generational Kerala Crafts
                   </h3>
                 </div>
               </div>
@@ -75,7 +75,7 @@ export default function BrandStory() {
             <p className="text-base text-[#38423D] font-light leading-relaxed">
               Centuries ago, the historic spice port of Cochin welcomed ships from Venice, Lisbon, 
               and Arabia in search of fragrant spices, silks, and gold. That maritime legacy of 
-              hospitality and treasured trade lives on at <strong>The Kochi Atelier</strong>.
+              hospitality and treasured trade lives on at <strong>HamPers Kochi</strong>.
             </p>
 
             <p className="text-sm text-[#68756F] font-light leading-relaxed">
@@ -133,7 +133,7 @@ export default function BrandStory() {
                 <div className="relative w-44 h-44 sm:w-52 sm:h-52 rounded-lg p-1.5 border-2 border-[#D8B979] shadow-2xl overflow-hidden bg-[#183C2D]">
                   <Image
                     src="/images/1001436447.jpg.jpeg"
-                    alt="Ann, Master Curator and Founder of The Kochi Atelier and HamPers Kochi"
+                    alt="Ann, Master Curator and Founder of HamPers Kochi"
                     fill
                     className="object-cover rounded"
                     sizes="200px"
@@ -142,7 +142,7 @@ export default function BrandStory() {
 
                 <div className="mt-5 space-y-1">
                   <h3 className="text-2xl font-serif-luxury text-[#FCFBF8] font-normal">
-                    Ann &amp; The Curatorial Atelier
+                    Ann &amp; The HamPers Kochi Curators
                   </h3>
                   <p className="text-xs uppercase tracking-[0.2em] text-[#D8B979] font-medium">
                     Founder &amp; Master Curator
@@ -192,7 +192,7 @@ export default function BrandStory() {
 
                 <div className="pt-4 flex items-center gap-4">
                   <a
-                    href="https://wa.me/919645556010?text=Hello%20Ann%2C%20I%20would%20love%20to%20consult%20with%20you%20regarding%20a%20bespoke%20hamper."
+                    href="https://wa.me/919846002241?text=Hello%20Ann%2C%20I%20would%20love%20to%20consult%20with%20you%20regarding%20a%20bespoke%20hamper."
                     target="_blank"
                     rel="noreferrer"
                     className="px-5 py-2.5 rounded-sm bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] font-medium text-xs uppercase tracking-[0.18em] transition-all inline-flex items-center gap-2 shadow-md"

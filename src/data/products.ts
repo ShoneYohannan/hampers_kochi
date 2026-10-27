@@ -17,7 +17,7 @@ export const ALL_PRODUCTS: Product[] = [
     category: 'Bestsellers',
     tags: ['Bestseller', 'Signature Keepsake', 'All-India Delivery'],
     description: 'An opulent tribute to Kerala’s rich heritage. Featuring artisanal single-estate spice chocolates, pure Nilgiri golden pekoe tea, and a hand-turned brass keepsake.',
-    detailedDescription: 'Hand-assembled in our Fort Kochi atelier, the Royal Malabar Sovereign Trunk represents the pinnacle of luxury gifting. Housed within a handcrafted emerald velvet rigid casket with brass hasp and lock, this gift conveys profound respect and celebration.',
+    detailedDescription: 'Hand-assembled in our Fort Kochi studio, the Royal Malabar Sovereign Trunk represents the pinnacle of luxury gifting. Housed within a handcrafted emerald velvet rigid casket with brass hasp and lock, this gift conveys profound respect and celebration.',
     contents: [
       'Artisanal Belgian Dark Chocolate Truffles with Cardamom Infusion (200g)',
       'Handcrafted Soy Wax Amber & Sandalwood Candle in Matte Gold Tin',
@@ -441,7 +441,7 @@ export const ALL_PRODUCTS: Product[] = [
     category: 'Bestsellers',
     tags: ['Bestseller', 'Heritage', 'Kochi Exclusive'],
     description: 'Echoing the vintage trade charm of old Mattancherry and Fort Kochi. A collectible gift chest packed with historic flavors and brass wonders.',
-    detailedDescription: 'Hand-assembled in our Fort Kochi atelier, honoring the spice traders and navigators who docked on our shores centuries ago.',
+    detailedDescription: 'Hand-assembled in our Fort Kochi studio, honoring the spice traders and navigators who docked on our shores centuries ago.',
     contents: [
       'Solid Brass Working Maritime Pocket Compass with Leather Pouch',
       'Dutch-Style Handmade Ceramic Tile Coasters (Set of 2)',

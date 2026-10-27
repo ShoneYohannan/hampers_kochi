@@ -110,7 +110,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
     ].filter(Boolean);
 
     const messageText = lines.join('\n');
-    window.open(`https://wa.me/919645556010?text=${encodeURIComponent(messageText)}`, '_blank');
+    window.open(`https://wa.me/919846002241?text=${encodeURIComponent(messageText)}`, '_blank');
   };
 
   const handleAddCustomHamper = () => {
@@ -129,7 +129,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
       category: 'Personalized & Keepsakes',
       tags: ['Bespoke', 'Hand-Curated', 'Wax-Sealed'],
       description: `Custom curated luxury hamper presented in a ${selectedBox.name}.`,
-      detailedDescription: `Bespoke curation assembled in our Fort Kochi atelier. Finished with ${ribbonColor} ribbon and ${waxSealColor} wax seal.`,
+      detailedDescription: `Bespoke curation assembled in our Fort Kochi studio. Finished with ${ribbonColor} ribbon and ${waxSealColor} wax seal.`,
       contents: [
         `Base Box: ${selectedBox.name}`,
         ...selectedGoodieNames,

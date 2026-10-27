@@ -284,7 +284,7 @@ export default function CartDrawer() {
 
               <div className="flex items-center justify-center gap-2 text-[10px] text-[#68756F] text-center">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#C5A869]" />
-                <span>Direct WhatsApp Concierge &bull; +91 96455 56010</span>
+                <span>Direct WhatsApp Concierge &bull; +91 98460 02241</span>
               </div>
 
             </div>

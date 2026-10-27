@@ -251,7 +251,7 @@ export default function CmsPage() {
             </Link>
             <div>
               <div className="text-[10px] tracking-[0.3em] uppercase text-[#C5A869] font-medium">
-                Atelier Client Portal
+                Hampers_kochi CMS Portal
               </div>
               <h1 className="text-xl sm:text-2xl font-serif-luxury text-[#FCFBF8]">
                 Content Management System
@@ -693,7 +693,7 @@ export default function CmsPage() {
                       </div>
 
                       <a
-                        href={`https://wa.me/${inq.phone.replace(/\D/g, '')}?text=Hello%20${encodeURIComponent(inq.customerName)},%20regarding%20your%20Atelier%20order%20${inq.id}`}
+                        href={`https://wa.me/${inq.phone.replace(/\D/g, '')}?text=Hello%20${encodeURIComponent(inq.customerName)},%20regarding%20your%20HamPers%20Kochi%20order%20${inq.id}`}
                         target="_blank"
                         rel="noreferrer"
                         className="px-3.5 py-2 rounded bg-[#25D366] text-white hover:bg-[#128C7E] text-xs font-semibold uppercase tracking-wider transition-colors"
@@ -730,7 +730,7 @@ export default function CmsPage() {
               <div className="flex items-center gap-2">
                 <PackageOpen className="w-5 h-5 text-[#D8B979]" />
                 <h3 className="text-xl font-serif-luxury text-white">
-                  {isAddingNew ? 'Create New Atelier Hamper' : `Edit: ${formName}`}
+                  {isAddingNew ? 'Create New Hamper' : `Edit: ${formName}`}
                 </h3>
               </div>
               <button
@@ -846,7 +846,7 @@ export default function CmsPage() {
               {/* Image Picker */}
               <div>
                 <label className="block text-[#EFE9DC]/75 mb-1.5 font-medium">
-                  Primary Hamper Image (Pick from Atelier Archive or Enter URL)
+                  Primary Hamper Image (Pick from Archive or Enter URL)
                 </label>
                 <div className="flex gap-2 mb-2">
                   <input
@@ -927,7 +927,7 @@ export default function CmsPage() {
 
       {/* Footer */}
       <footer className="p-6 border-t border-[#C5A869]/20 text-center text-xs text-[#EFE9DC]/50 bg-[#0B1D15]">
-        The Kochi Atelier &bull; Client Content Management Suite &bull; Changes sync live to website
+        HamPers Kochi &bull; Client Content Management Suite &bull; Changes sync live to website
       </footer>
 
     </div>

@@ -94,7 +94,7 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
           {/* Label */}
           <div className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#D8B979] font-medium mb-6 flex items-center gap-3">
             <span className="w-8 h-[1px] bg-[#D8B979]/60" />
-            HamPers Kochi · Fort Kochi Atelier
+            Hampers_kochi
           </div>
 
           {/* Headline - Direct, clear, concrete, no vague poetic fluff */}
@@ -136,7 +136,7 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
             )}
 
             <a
-              href="https://wa.me/919645556010?text=Hello%20Hampers%20Kochi%2C%20I%20would%20like%20to%20pre-order%20a%20luxury%20hamper."
+              href="https://wa.me/919846002241?text=Hello%20Hampers%20Kochi%2C%20I%20would%20like%20to%20pre-order%20a%20luxury%20hamper."
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer shadow-sm rounded-sm"

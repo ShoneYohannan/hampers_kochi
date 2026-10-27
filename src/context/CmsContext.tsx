@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product, StoreSettings, OrderInquiry } from '@/types';
 import { ALL_PRODUCTS } from '@/data/products';
+import { createClient } from '@/lib/supabase/client';
 
 interface CmsContextType {
   products: Product[];
@@ -26,16 +27,16 @@ interface CmsContextType {
 }
 
 const DEFAULT_ANNOUNCEMENTS = [
-  'HAND-TIED IN OUR KOCHI ATELIER · ALL-INDIA DELIVERY',
+  'HAND-TIED BY HAMPERS KOCHI · ALL-INDIA DELIVERY',
   'COMPLIMENTARY PERSONALIZED CALLIGRAPHY NOTE WITH EVERY ORDER',
   'PRE-ORDER ONLY · BESPOKE HANDCRAFTED HAMPERS · ALL-INDIA DELIVERY',
 ];
 
 const DEFAULT_SETTINGS: StoreSettings = {
-  phone: '+91 96455 56010',
-  whatsapp: '919645556010',
+  phone: '+91 98460 02241',
+  whatsapp: '919846002241',
   email: 'concierge@thekochiatelier.com',
-  address: 'Atelier House, 4th Cross Road, Panampilly Nagar & Bastion Street, Fort Kochi, Kerala 682001',
+  address: 'HamPers Kochi, Panampilly Nagar & Fort Kochi, Ernakulam, Kerala 682001',
   studioHours: 'Monday – Saturday, 9:30 AM – 8:00 PM IST',
   promoCode: '',
   promoDiscountPercent: 0,
@@ -51,21 +52,14 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
   const [inquiries, setInquiries] = useState<OrderInquiry[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load from localStorage safely on mount
+  // Load from Supabase and cache in localStorage on mount
   useEffect(() => {
     try {
       const storedProducts = localStorage.getItem('atelier_products');
       if (storedProducts) {
         const parsed = JSON.parse(storedProducts);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          const cleanedProducts = parsed.map((p: Product) => ({
-            ...p,
-            galleryImages: [p.image],
-          }));
-          setProducts(cleanedProducts);
-          try {
-            localStorage.setItem('atelier_products', JSON.stringify(cleanedProducts));
-          } catch {}
+          setProducts(parsed);
         }
       }
 
@@ -81,20 +75,25 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
                     .replace(/CODE:\s*ROYAL10\s*FOR\s*10%\s*OFF/gi, '')
                     .replace(/·?\s*DELIVERED\s*ACROSS\s*INDIA\s*WITHIN\s*48\s*HOURS/gi, '· ALL-INDIA DELIVERY')
                     .replace(/\s*WITHIN\s*48\s*HOURS/gi, '')
+                    .replace(/IN OUR KOCHI ATELIER/gi, 'BY HAMPERS KOCHI')
                     .trim()
                 : ''
             )
             .filter((msg: string) => msg.length > 0);
           setAnnouncements(cleaned.length > 0 ? cleaned : DEFAULT_ANNOUNCEMENTS);
-          try {
-            localStorage.setItem('atelier_announcements', JSON.stringify(cleaned.length > 0 ? cleaned : DEFAULT_ANNOUNCEMENTS));
-          } catch {}
         }
       }
 
       const storedSettings = localStorage.getItem('atelier_settings');
       if (storedSettings) {
-        setSettings((prev) => ({ ...prev, ...JSON.parse(storedSettings) }));
+        const parsedSettings = JSON.parse(storedSettings);
+        if (parsedSettings.phone === '+91 96455 56010' || parsedSettings.phone?.includes('96455')) {
+          parsedSettings.phone = '+91 98460 02241';
+        }
+        if (parsedSettings.whatsapp === '919645556010') {
+          parsedSettings.whatsapp = '919846002241';
+        }
+        setSettings((prev) => ({ ...prev, ...parsedSettings }));
       }
 
       const storedInquiries = localStorage.getItem('atelier_inquiries');
@@ -106,10 +105,58 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setIsLoaded(true);
     }
+
+    // Fetch live products from Supabase
+    const fetchSupabaseProducts = async () => {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from('products')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (!error && data && data.length > 0) {
+          const formatted: Product[] = data.map((item: any) => ({
+            id: item.id,
+            name: item.name,
+            slug: item.slug,
+            subtitle: item.subtitle || '',
+            price: Number(item.price),
+            originalPrice: item.originalPrice ? Number(item.originalPrice) : undefined,
+            rating: item.rating ? Number(item.rating) : 4.9,
+            reviewsCount: item.reviewsCount ? Number(item.reviewsCount) : 1,
+            image: item.image,
+            galleryImages: item.galleryImages && item.galleryImages.length > 0 ? item.galleryImages : [item.image],
+            category: item.category,
+            tags: item.tags || [],
+            description: item.description || '',
+            detailedDescription: item.detailedDescription || item.description || '',
+            contents: item.contents || [],
+            boxType: item.boxType || '',
+            dimensions: item.dimensions || '',
+            weight: item.weight || '',
+            deliveryEstimate: item.deliveryEstimate || '',
+            isBestseller: !!item.isBestseller,
+            isNewArrival: !!item.isNewArrival,
+            isLimitedEdition: !!item.isLimitedEdition,
+          }));
+
+          setProducts(formatted);
+          try {
+            localStorage.setItem('atelier_products', JSON.stringify(formatted));
+          } catch {}
+        }
+      } catch (err) {
+        console.warn('Supabase products fetch fallback:', err);
+      }
+    };
+
+    fetchSupabaseProducts();
   }, []);
 
-  // Save products
-  const addProduct = (newProduct: Product) => {
+  // Save products with Supabase persistence
+  const addProduct = async (newProduct: Product) => {
+    // Optimistic UI update
     setProducts((prev) => {
       const updated = [newProduct, ...prev];
       try {
@@ -119,9 +166,43 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
       }
       return updated;
     });
+
+    try {
+      const supabase = createClient();
+      const { error } = await supabase.from('products').insert([
+        {
+          id: newProduct.id,
+          name: newProduct.name,
+          slug: newProduct.slug,
+          subtitle: newProduct.subtitle,
+          price: newProduct.price,
+          originalPrice: newProduct.originalPrice || null,
+          rating: newProduct.rating || 5.0,
+          reviewsCount: newProduct.reviewsCount || 1,
+          image: newProduct.image,
+          galleryImages: newProduct.galleryImages || [newProduct.image],
+          category: newProduct.category,
+          tags: newProduct.tags || [],
+          description: newProduct.description,
+          detailedDescription: newProduct.detailedDescription || newProduct.description,
+          contents: newProduct.contents || [],
+          boxType: newProduct.boxType,
+          dimensions: newProduct.dimensions,
+          weight: newProduct.weight,
+          deliveryEstimate: newProduct.deliveryEstimate,
+          isBestseller: !!newProduct.isBestseller,
+          isNewArrival: !!newProduct.isNewArrival,
+          isLimitedEdition: !!newProduct.isLimitedEdition,
+        },
+      ]);
+      if (error) console.error('Supabase addProduct error:', error);
+    } catch (err) {
+      console.error('Supabase addProduct exception:', err);
+    }
   };
 
-  const updateProduct = (id: string, updatedFields: Partial<Product>) => {
+  const updateProduct = async (id: string, updatedFields: Partial<Product>) => {
+    // Optimistic UI update
     setProducts((prev) => {
       const updated = prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p));
       try {
@@ -131,9 +212,21 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
       }
       return updated;
     });
+
+    try {
+      const supabase = createClient();
+      const { error } = await supabase
+        .from('products')
+        .update(updatedFields)
+        .eq('id', id);
+      if (error) console.error('Supabase updateProduct error:', error);
+    } catch (err) {
+      console.error('Supabase updateProduct exception:', err);
+    }
   };
 
-  const deleteProduct = (id: string) => {
+  const deleteProduct = async (id: string) => {
+    // Optimistic UI update
     setProducts((prev) => {
       const updated = prev.filter((p) => p.id !== id);
       try {
@@ -143,12 +236,25 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
       }
       return updated;
     });
+
+    try {
+      const supabase = createClient();
+      const { error } = await supabase
+        .from('products')
+        .delete()
+        .eq('id', id);
+      if (error) console.error('Supabase deleteProduct error:', error);
+    } catch (err) {
+      console.error('Supabase deleteProduct exception:', err);
+    }
   };
 
-  const resetProductsToDefault = () => {
+  const resetProductsToDefault = async () => {
     setProducts(ALL_PRODUCTS);
     try {
       localStorage.removeItem('atelier_products');
+      const supabase = createClient();
+      await supabase.from('products').upsert(ALL_PRODUCTS, { onConflict: 'id' });
     } catch (err) {
       console.error(err);
     }

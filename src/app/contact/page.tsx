@@ -31,15 +31,15 @@ export default function ContactPage() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const phoneDisplay = settings?.phone || '+91 96455 56010';
+  const phoneDisplay = settings?.phone || '+91 98460 02241';
   const cleanPhone = phoneDisplay.replace(/\s+/g, '');
   const emailDisplay = settings?.email || 'concierge@thekochiatelier.com';
-  const addressDisplay = settings?.address || 'HamPers Kochi Atelier, Fort Kochi, Ernakulam, Kerala 682001';
-  const whatsappNumber = settings?.whatsapp || '919645556010';
+  const addressDisplay = settings?.address || 'HamPers Kochi Studio, Fort Kochi, Ernakulam, Kerala 682001';
+  const whatsappNumber = settings?.whatsapp || '919846002241';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `*New Atelier Inquiry*%0A%0A*Name:* ${encodeURIComponent(formData.name)}%0A*Phone:* ${encodeURIComponent(formData.phone)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*Occasion:* ${encodeURIComponent(formData.occasion)}%0A*Budget:* ${encodeURIComponent(formData.budget)}%0A*Message:* ${encodeURIComponent(formData.message)}`;
+    const text = `*New Hamper Inquiry*%0A%0A*Name:* ${encodeURIComponent(formData.name)}%0A*Phone:* ${encodeURIComponent(formData.phone)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*Occasion:* ${encodeURIComponent(formData.occasion)}%0A*Budget:* ${encodeURIComponent(formData.budget)}%0A*Message:* ${encodeURIComponent(formData.message)}`;
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
     setIsSubmitted(true);
   };
@@ -52,13 +52,13 @@ export default function ContactPage() {
         onOpenWishlist={() => setIsWishlistOpen(true)}
       />
 
-      <Breadcrumbs items={[{ label: 'Contact & Atelier Location' }]} />
+      <Breadcrumbs items={[{ label: 'Contact & Studio Location' }]} />
 
       {/* Header */}
       <div className="bg-[#0B1D15] text-[#FCFBF8] py-14 md:py-20 border-b border-[#C5A869]/20 relative overflow-hidden">
         <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16 text-center max-w-3xl mx-auto relative z-10">
           <div className="text-[11px] uppercase tracking-[0.25em] text-[#D8B979] font-medium mb-2">
-            The Fort Kochi Atelier
+            HamPers Kochi Studio
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#FCFBF8]">
             Connect With Our Concierge & Studio
@@ -82,7 +82,7 @@ export default function ContactPage() {
                   Studio Location
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-serif-luxury text-[#0B1D15] mt-1">
-                  Visit Our Heritage Atelier
+                  Visit Our Heritage Studio
                 </h2>
                 <p className="mt-2 text-sm text-[#68756F] font-light leading-relaxed">
                   Our private studio is situated in historic Fort Kochi. Pre-scheduled studio visits
@@ -99,7 +99,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-xs uppercase tracking-[0.15em] font-semibold text-[#0B1D15]">
-                      Fort Kochi Atelier Address
+                      Fort Kochi Studio Address
                     </h3>
                     <p className="text-sm text-[#4A5550] mt-1 font-light leading-snug">
                       {addressDisplay}
@@ -155,7 +155,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-xs uppercase tracking-[0.15em] font-semibold text-[#0B1D15]">
-                      Atelier Working Hours
+                      Studio Working Hours
                     </h3>
                     <p className="text-sm text-[#4A5550] mt-1 font-light">
                       Monday to Saturday: 9:30 AM – 7:30 PM IST<br />
@@ -186,7 +186,7 @@ export default function ContactPage() {
                     Explore Aesthetic Inspirations
                   </h3>
                   <p className="text-xs text-[#68756F] mt-1 font-light leading-relaxed">
-                    Follow our daily atelier unboxings, custom wax-sealed calligraphy reels, and bridal moodboards across social channels.
+                    Follow our daily studio unboxings, custom wax-sealed calligraphy reels, and bridal moodboards across social channels.
                   </p>
                 </div>
 
@@ -352,7 +352,7 @@ export default function ContactPage() {
                     className="w-full py-4 px-6 rounded bg-[#0B1D15] hover:bg-[#183C2D] text-[#FCFBF8] font-bold text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-colors cursor-pointer border border-[#C5A869]/30"
                   >
                     <Send className="w-4 h-4 text-[#D8B979]" />
-                    <span>Submit Atelier Inquiry</span>
+                    <span>Submit Hamper Inquiry</span>
                   </button>
                 </form>
               )}

@@ -45,7 +45,7 @@ export default function PolicyModals({ activePolicy, onClose }: PolicyModalsProp
           {activePolicy === 'privacy' && (
             <>
               <p>
-                At <strong>HamPers Kochi (The Kochi Atelier)</strong>, we take the confidentiality of your personal and recipient information with utmost seriousness.
+                At <strong>HamPers Kochi</strong>, we take the confidentiality of your personal and recipient information with utmost seriousness.
               </p>
               <h4 className="font-serif-luxury text-base text-[#0B1D15] font-semibold mt-4">1. Information We Collect</h4>
               <p>

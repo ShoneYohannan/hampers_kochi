@@ -94,7 +94,7 @@ export default function WishlistModal({ isOpen, onClose, onSelectProduct }: Wish
 
                 <div className="flex items-center gap-2">
                   <a
-                    href={`https://wa.me/919645556010?text=${encodeURIComponent(
+                    href={`https://wa.me/919846002241?text=${encodeURIComponent(
                       `Hello Hampers Kochi, I would like to inquire about the price and availability of "${product.name}".`
                     )}`}
                     target="_blank"

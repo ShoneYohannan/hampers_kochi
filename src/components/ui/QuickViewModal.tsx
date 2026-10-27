@@ -50,9 +50,9 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello The Kochi Atelier, I would like to order "${product.name}" (Qty: ${quantity}, Total: ₹${(product.price * quantity).toLocaleString('en-IN')}). Recipient: ${recipient || 'Not specified'}.${giftNote ? ` Gift Note: "${giftNote}"` : ''}`
+    `Hello HamPers Kochi, I would like to order "${product.name}" (Qty: ${quantity}, Total: ₹${(product.price * quantity).toLocaleString('en-IN')}). Recipient: ${recipient || 'Not specified'}.${giftNote ? ` Gift Note: "${giftNote}"` : ''}`
   );
-  const whatsappUrl = `https://wa.me/919645556010?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/919846002241?text=${whatsappMessage}`;
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
@@ -115,7 +115,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
               <span className="flex items-center gap-1.5 text-[#183C2D] font-medium">
                 <Truck className="w-3.5 h-3.5 text-[#C5A869]" /> All-India Delivery
               </span>
-              <span className="text-[11px] text-[#A88B4D] font-medium">Bespoke Atelier Craft</span>
+              <span className="text-[11px] text-[#A88B4D] font-medium">Bespoke Handcrafted Luxury</span>
             </div>
           </div>
 
@@ -229,7 +229,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
 
                 {/* Direct WhatsApp Order CTA */}
                 <a
-                  href={`https://wa.me/919645556010?text=${encodeURIComponent(
+                  href={`https://wa.me/919846002241?text=${encodeURIComponent(
                     `Hello Hampers Kochi, I would like to inquire about the price and order details for "${product.name}" (Quantity: ${quantity}).${giftNote ? ` Personalized Note: "${giftNote}"` : ''} Please share pricing and dispatch details.`
                   )}`}
                   target="_blank"

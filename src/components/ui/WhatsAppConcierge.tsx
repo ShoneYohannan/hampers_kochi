@@ -10,7 +10,7 @@ export default function WhatsAppConcierge() {
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
     const text = customQuery.trim() || 'Hello, I would like assistance with selecting a luxury hamper curation.';
-    window.open(`https://wa.me/919645556010?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/919846002241?text=${encodeURIComponent(text)}`, '_blank');
     setIsOpen(false);
     setCustomQuery('');
   };
@@ -31,7 +31,7 @@ export default function WhatsAppConcierge() {
                 <span className="w-2.5 h-2.5 rounded-sm bg-[#25D366] absolute bottom-0 right-0 border border-[#0B1D15]" />
               </div>
               <div>
-                <h4 className="text-xs font-semibold text-white tracking-wide">Kochi Atelier Concierge</h4>
+                <h4 className="text-xs font-semibold text-white tracking-wide">Hampers Kochi Concierge</h4>
                 <p className="text-[10px] text-[#D8B979]">Online &bull; Instant Reply</p>
               </div>
             </div>
@@ -69,7 +69,7 @@ export default function WhatsAppConcierge() {
           </div>
 
           <div className="p-2.5 bg-[#F7F4EC] text-center text-[10px] text-[#68756F]">
-            Direct line: +91 96455 56010 &bull; Fort Kochi Studio
+            Direct line: +91 98460 02241 &bull; Fort Kochi Studio
           </div>
         </div>
       )}

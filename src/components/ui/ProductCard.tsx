@@ -31,7 +31,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
   const whatsappMessage = encodeURIComponent(
     `Hello Hampers Kochi, I would like to inquire about the price and order details for "${product.name}". Could you please share the pricing and availability?`
   );
-  const whatsappUrl = `https://wa.me/919645556010?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/919846002241?text=${whatsappMessage}`;
 
   return (
     <div
@@ -125,7 +125,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
               Contact on WhatsApp for Prices
             </span>
             <span className="text-[10px] text-[#68756F]">
-              Direct Atelier Quote
+              Direct WhatsApp Quote
             </span>
           </div>
 

@@ -78,9 +78,9 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
     { label: 'Corporate & Executive Gifting', href: '/corporate' },
   ];
 
-  const cleanPhone = (settings?.phone || '+91 96455 56010').replace(/\s+/g, '');
-  const displayPhone = settings?.phone || '+91 96455 56010';
-  const whatsappNumber = settings?.whatsapp || '919645556010';
+  const cleanPhone = (settings?.phone || '+91 98460 02241').replace(/\s+/g, '');
+  const displayPhone = settings?.phone || '+91 98460 02241';
+  const whatsappNumber = settings?.whatsapp || '919846002241';
 
   return (
     <header

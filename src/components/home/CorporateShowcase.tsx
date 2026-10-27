@@ -26,11 +26,11 @@ export default function CorporateShowcase() {
   };
 
   const corporateWhatsApp = encodeURIComponent(
-    'Hello The Kochi Atelier Corporate Team, I would like to request your 2026 Corporate Luxury Gifting Catalogue and discuss a bespoke bulk curation.'
+    'Hello HamPers Kochi Corporate Team, I would like to request your 2026 Corporate Luxury Gifting Catalogue and discuss a bespoke bulk curation.'
   );
 
   const lookbookWhatsApp = encodeURIComponent(
-    'Hello The Kochi Atelier, please share the 2026 Corporate Luxury Lookbook PDF & Volume Gifting Suite.'
+    'Hello HamPers Kochi, please share the 2026 Corporate Luxury Lookbook PDF & Volume Gifting Suite.'
   );
 
   return (
@@ -79,7 +79,7 @@ export default function CorporateShowcase() {
             {/* CTAs */}
             <div className="pt-4 flex flex-wrap gap-4 items-center">
               <a
-                href={`https://wa.me/919645556010?text=${corporateWhatsApp}`}
+                href={`https://wa.me/919846002241?text=${corporateWhatsApp}`}
                 target="_blank"
                 rel="noreferrer"
                 className="px-6 py-3.5 rounded bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] font-medium text-xs uppercase tracking-[0.18em] transition-all flex items-center gap-2 shadow-lg"
@@ -89,7 +89,7 @@ export default function CorporateShowcase() {
               </a>
 
               <a
-                href={`https://wa.me/919645556010?text=${lookbookWhatsApp}`}
+                href={`https://wa.me/919846002241?text=${lookbookWhatsApp}`}
                 target="_blank"
                 rel="noreferrer"
                 className="px-6 py-3.5 rounded bg-[#183C2D] border border-[#C5A869]/40 text-[#FCFBF8] hover:bg-[#23523E] font-medium text-xs uppercase tracking-[0.18em] transition-all flex items-center gap-2 cursor-pointer"

@@ -95,7 +95,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
         </li>
 
         <li className="text-[#A88B4D] font-semibold" aria-current="page">
-          The Fort Kochi Atelier
+          HamPers Kochi
         </li>
       </ol>
     </nav>

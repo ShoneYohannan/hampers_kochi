@@ -8,7 +8,7 @@ export default function AnnouncementBar() {
   const [currentIdx, setCurrentIdx] = useState(0);
 
   const rawMessages = announcements.length > 0 ? announcements : [
-    'HAND-TIED IN OUR KOCHI ATELIER · ALL-INDIA DELIVERY',
+    'HAND-TIED BY HAMPERS KOCHI · ALL-INDIA DELIVERY',
   ];
 
   const messages = rawMessages
@@ -33,8 +33,8 @@ export default function AnnouncementBar() {
   }, [messages.length]);
 
   const activeIdx = currentIdx % messages.length;
-  const cleanPhone = (settings?.phone || '+91 96455 56010').replace(/\s+/g, '');
-  const displayPhone = settings?.phone || '+91 96455 56010';
+  const cleanPhone = (settings?.phone || '+91 98460 02241').replace(/\s+/g, '');
+  const displayPhone = settings?.phone || '+91 98460 02241';
 
   return (
     <div className="bg-[#0B1D15] text-[#EFE9DC] border-b border-[#C5A869]/20 py-2.5 px-4 sm:px-6 lg:px-5 xl:px-8">
@@ -56,7 +56,7 @@ export default function AnnouncementBar() {
           <a
             href={`tel:${cleanPhone}`}
             className="tracking-[0.15em] text-[#EFE9DC] hover:text-[#D8B979] transition-colors font-mono font-medium text-xs sm:text-sm"
-            title="Call The Kochi Atelier"
+            title="Call Hampers Kochi"
           >
             {displayPhone}
           </a>

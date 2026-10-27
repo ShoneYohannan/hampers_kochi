@@ -6,11 +6,11 @@ export default function StructuredData() {
     '@type': ['Store', 'LocalBusiness'],
     '@id': 'https://hamperskochi.com/#store',
     name: 'HamPers Kochi',
-    alternateName: 'The Kochi Atelier',
+    alternateName: 'Hampers_kochi',
     description:
       'Handcrafted luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes, Kasavu silks, single-estate teas, Belgian chocolates, and bespoke wax-sealed calligraphy with express all-India delivery.',
     url: 'https://hamperskochi.com',
-    telephone: '+91-96455-56010',
+    telephone: '+91-98460-02241',
     email: 'concierge@thekochiatelier.com',
     priceRange: '₹₹₹',
     currenciesAccepted: 'INR',
@@ -65,7 +65,7 @@ export default function StructuredData() {
         name: 'What makes HamPers Kochi luxury hampers unique?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Every hamper from HamPers Kochi is hand-assembled in our Fort Kochi atelier. We reject generic bulk items in favor of authentic Kerala heritage keepsakes—hand-cast brass Vilakkus, Balaramapuram Kasavu silks, single-estate Nilgiri teas, Wayanad artisanal chocolates, and handwritten calligraphy on handmade cotton paper sealed with hot wax.',
+          text: 'Every hamper from HamPers Kochi is hand-assembled in our Fort Kochi studio. We reject generic bulk items in favor of authentic Kerala heritage keepsakes—hand-cast brass Vilakkus, Balaramapuram Kasavu silks, single-estate Nilgiri teas, Wayanad artisanal chocolates, and handwritten calligraphy on handmade cotton paper sealed with hot wax.',
         },
       },
       {
@@ -102,10 +102,10 @@ export default function StructuredData() {
       },
       {
         '@type': 'Question',
-        name: 'Where is HamPers Kochi atelier located, and can I pick up in person?',
+        name: 'Where is HamPers Kochi studio located, and can I pick up in person?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Our design atelier and studio are based in Kochi, Kerala. You can arrange direct studio pickup or concierge delivery anywhere in the city by coordinating with our concierge at +91 96455 56010.',
+          text: 'Our design studio is based in Kochi, Kerala. You can arrange direct studio pickup or concierge delivery anywhere in the city by coordinating with our concierge at +91 98460 02241.',
         },
       },
     ],
@@ -139,7 +139,7 @@ export default function StructuredData() {
   const curatorPersonSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Ann & The Kochi Atelier Curators',
+    name: 'Ann & The HamPers Kochi Curators',
     jobTitle: 'Founder & Master Curator',
     worksFor: {
       '@type': 'Organization',
