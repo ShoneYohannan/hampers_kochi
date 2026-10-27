@@ -77,7 +77,7 @@ export default function NotFound() {
 
       {/* Footer minimal */}
       <footer className="p-6 border-t border-[#C5A869]/15 text-center text-xs text-[#EFE9DC]/50">
-        &copy; 2026 Hampers_kochi. Handcrafted in Kochi, Delivered Across India.
+        &copy; 2026 HamPers Kochi. Handcrafted in Kochi, Delivered Across India.
       </footer>
 
     </div>

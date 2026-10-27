@@ -61,7 +61,7 @@ export default function PolicyModals({ activePolicy, onClose }: PolicyModalsProp
               </p>
               <h4 className="font-serif-luxury text-base text-[#0B1D15] font-semibold mt-4">4. Inquiries</h4>
               <p>
-                For questions regarding your data, contact our data officer at <em>concierge@thekochiatelier.com</em>.
+                For questions regarding your data, contact our data officer at <em>concierge@hamperskochi.com</em>.
               </p>
             </>
           )}

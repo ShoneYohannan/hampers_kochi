@@ -35,7 +35,7 @@ const DEFAULT_ANNOUNCEMENTS = [
 const DEFAULT_SETTINGS: StoreSettings = {
   phone: '+91 98460 02241',
   whatsapp: '919846002241',
-  email: 'concierge@thekochiatelier.com',
+  email: 'concierge@hamperskochi.com',
   address: 'HamPers Kochi, Panampilly Nagar & Fort Kochi, Ernakulam, Kerala 682001',
   studioHours: 'Monday – Saturday, 9:30 AM – 8:00 PM IST',
   promoCode: '',
@@ -92,6 +92,9 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
         }
         if (parsedSettings.whatsapp === '919645556010') {
           parsedSettings.whatsapp = '919846002241';
+        }
+        if (parsedSettings.email === 'concierge@thekochiatelier.com' || parsedSettings.email?.includes('thekochiatelier')) {
+          parsedSettings.email = 'concierge@hamperskochi.com';
         }
         setSettings((prev) => ({ ...prev, ...parsedSettings }));
       }

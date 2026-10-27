@@ -11,7 +11,7 @@ export default function StructuredData() {
       'Handcrafted luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes, Kasavu silks, single-estate teas, Belgian chocolates, and bespoke wax-sealed calligraphy with express all-India delivery.',
     url: 'https://hamperskochi.com',
     telephone: '+91-98460-02241',
-    email: 'concierge@thekochiatelier.com',
+    email: 'concierge@hamperskochi.com',
     priceRange: '₹₹₹',
     currenciesAccepted: 'INR',
     paymentAccepted: 'Cash, Credit Card, Debit Card, UPI, Net Banking',

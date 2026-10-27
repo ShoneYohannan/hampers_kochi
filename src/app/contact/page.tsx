@@ -33,7 +33,7 @@ export default function ContactPage() {
 
   const phoneDisplay = settings?.phone || '+91 98460 02241';
   const cleanPhone = phoneDisplay.replace(/\s+/g, '');
-  const emailDisplay = settings?.email || 'concierge@thekochiatelier.com';
+  const emailDisplay = settings?.email || 'concierge@hamperskochi.com';
   const addressDisplay = settings?.address || 'HamPers Kochi Studio, Fort Kochi, Ernakulam, Kerala 682001';
   const whatsappNumber = settings?.whatsapp || '919846002241';
 

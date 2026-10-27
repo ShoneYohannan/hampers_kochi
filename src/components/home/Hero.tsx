@@ -94,7 +94,7 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
           {/* Label */}
           <div className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#D8B979] font-medium mb-6 flex items-center gap-3">
             <span className="w-8 h-[1px] bg-[#D8B979]/60" />
-            Hampers_kochi
+            HamPers Kochi
           </div>
 
           {/* Headline - Direct, clear, concrete, no vague poetic fluff */}

@@ -251,7 +251,7 @@ export default function CmsPage() {
             </Link>
             <div>
               <div className="text-[10px] tracking-[0.3em] uppercase text-[#C5A869] font-medium">
-                Hampers_kochi CMS Portal
+                Hampers Kochi CMS Portal
               </div>
               <h1 className="text-xl sm:text-2xl font-serif-luxury text-[#FCFBF8]">
                 Content Management System

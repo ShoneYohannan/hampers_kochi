@@ -116,14 +116,14 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
               <li><Link href="/occasions" className="hover:text-[#C5A869] transition-colors">Occasion Curations</Link></li>
               <li><Link href="/shop?category=Wedding%20%26%20Bridal" className="hover:text-[#C5A869] transition-colors">Bridal &amp; Wedding Suites</Link></li>
               <li><Link href="/corporate" className="hover:text-[#C5A869] transition-colors">Corporate &amp; Executive Trunks</Link></li>
-              <li><Link href="/cms" className="hover:text-[#C5A869] transition-colors text-[#D8B979]/80 font-medium">Hampers_kochi CMS Portal</Link></li>
+              <li><Link href="/cms" className="hover:text-[#C5A869] transition-colors text-[#D8B979]/80 font-medium">Hampers Kochi CMS Portal</Link></li>
             </ul>
           </div>
 
           {/* Information & Links (Zero orphan pages) */}
           <div className="space-y-3">
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#C5A869] font-semibold">
-              Hampers_kochi Information
+              About Hampers Kochi
             </h4>
             <ul className="space-y-2 text-xs text-[#E8E1D4]/80 font-light">
               <li><Link href="/story" className="hover:text-[#C5A869] transition-colors">Our Kochi Heritage Story</Link></li>
@@ -136,7 +136,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
           {/* Contact & Studio Details */}
           <div className="space-y-3">
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#C5A869] font-semibold">
-              Hampers_kochi Concierge
+              Hampers Kochi Concierge
             </h4>
             <div className="space-y-2.5 text-xs text-[#E8E1D4]/80 font-light">
               <div className="flex items-center gap-2">
@@ -151,10 +151,10 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#C5A869] shrink-0" />
                 <a
-                  href={`mailto:${settings?.email || 'concierge@thekochiatelier.com'}`}
+                  href={`mailto:${settings?.email || 'concierge@hamperskochi.com'}`}
                   className="hover:text-[#C5A869] transition-colors font-medium truncate"
                 >
-                  {settings?.email || 'concierge@thekochiatelier.com'}
+                  {settings?.email || 'concierge@hamperskochi.com'}
                 </a>
               </div>
               <div className="flex items-start gap-2">
@@ -175,7 +175,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
         {/* Bottom Legal & Policy Links (No dead '#' links) */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EFE9DC]/60 gap-4">
           <div>
-            &copy; {currentYear} Hampers_kochi. Handcrafted in Kerala, Delivered Across India.
+            &copy; {currentYear} Hampers Kochi. Handcrafted in Kerala, Delivered Across India.
           </div>
           <div className="flex items-center flex-wrap gap-4 sm:gap-6">
             <button
