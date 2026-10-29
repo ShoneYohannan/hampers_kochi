@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Search,
   Menu,
@@ -22,6 +23,12 @@ interface NavbarProps {
 }
 
 export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: NavbarProps) {
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [shopDropdown, setShopDropdown] = useState(false);
@@ -108,7 +115,7 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
 
             <Link
               href="/"
-              className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap"
+              className={`hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap ${isActive('/') ? 'text-[#D8B979] border-b border-[#D8B979]' : 'text-[#FCFBF8]'}`}
             >
               HOME
             </Link>
@@ -121,7 +128,7 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
             >
               <Link
                 href="/shop"
-                className="flex items-center gap-1.5 hover:text-[#D8B979] transition-colors py-1 cursor-pointer whitespace-nowrap"
+                className={`flex items-center gap-1.5 hover:text-[#D8B979] transition-colors py-1 cursor-pointer whitespace-nowrap ${isActive('/shop') ? 'text-[#D8B979] border-b border-[#D8B979]' : 'text-[#FCFBF8]'}`}
               >
                 <span>Shop Hampers</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${shopDropdown ? 'rotate-180 text-[#D8B979]' : ''}`} />
@@ -150,7 +157,7 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
             >
               <Link
                 href="/occasions"
-                className="flex items-center gap-1.5 hover:text-[#D8B979] transition-colors py-1 cursor-pointer whitespace-nowrap"
+                className={`flex items-center gap-1.5 hover:text-[#D8B979] transition-colors py-1 cursor-pointer whitespace-nowrap ${isActive('/occasions') ? 'text-[#D8B979] border-b border-[#D8B979]' : 'text-[#FCFBF8]'}`}
               >
                 <span>Occasions</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${occasionsDropdown ? 'rotate-180 text-[#D8B979]' : ''}`} />
@@ -171,26 +178,26 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
               )}
             </div>
 
-            <Link href="/corporate" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
+            <Link href="/corporate" className={`hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap ${isActive('/corporate') ? 'text-[#D8B979] border-b border-[#D8B979]' : 'text-[#FCFBF8]'}`}>
               CORPORATE GIFTS
             </Link>
 
-            <Link href="/story" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
+            <Link href="/story" className={`hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap ${isActive('/story') ? 'text-[#D8B979] border-b border-[#D8B979]' : 'text-[#FCFBF8]'}`}>
               OUR STORY
             </Link>
 
-            <Link href="/reviews" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
+            <Link href="/reviews" className={`hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap ${isActive('/reviews') ? 'text-[#D8B979] border-b border-[#D8B979]' : 'text-[#FCFBF8]'}`}>
               REVIEWS
             </Link>
 
-            <Link href="/contact" className="hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap">
+            <Link href="/contact" className={`hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap ${isActive('/contact') ? 'text-[#D8B979] border-b border-[#D8B979]' : 'text-[#FCFBF8]'}`}>
               CONTACT
             </Link>
 
             {onOpenBuilder && (
               <button
                 onClick={onOpenBuilder}
-                className="text-[#D8B979] hover:text-white transition-colors py-1 whitespace-nowrap cursor-pointer uppercase tracking-[0.16em] font-semibold border-b border-[#D8B979]/50 hover:border-white"
+                className="text-[#FCFBF8] hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap cursor-pointer uppercase tracking-[0.03em] xl:tracking-[0.05em] font-semibold"
               >
                 CUSTOMIZATION
               </button>
@@ -340,7 +347,7 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
           {/* Direct Mobile Contact CTA Box */}
           <div className="pt-2 border-t border-[#C5A869]/15 flex flex-col gap-2.5">
             <a
-              href={`https://wa.me/${whatsappNumber}?text=Hello%20The%20Kochi%20Atelier%2C%20I%20would%20like%20to%20order%20a%20luxury%20hamper.`}
+              href={`https://wa.me/${whatsappNumber}?text=Hello%20Hampers%20Kochi%2C%20I%20would%20like%20to%20order%20a%20luxury%20hamper.`}
               target="_blank"
               rel="noreferrer"
               className="w-full py-3.5 px-4 rounded bg-[#25D366] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-colors shadow-md whitespace-nowrap"
