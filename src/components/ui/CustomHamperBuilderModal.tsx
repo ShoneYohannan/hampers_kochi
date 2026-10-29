@@ -218,12 +218,12 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                         : 'border-[#EFE9DC] hover:border-[#C5A869]/50 bg-white'
                     }`}
                   >
-                    <div className="relative w-24 h-24 rounded overflow-hidden bg-[#0B1D15] shrink-0 border border-[#EFE9DC]">
+                    <div className="relative w-24 h-24 rounded overflow-hidden bg-white shrink-0 border border-[#EFE9DC]">
                       <Image
                         src={box.image}
                         alt={box.name}
                         fill
-                        className="object-cover"
+                        className="object-contain p-1"
                       />
                     </div>
                     <div className="flex-1">
@@ -493,8 +493,8 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
 
                     {/* Box preview */}
                     <div className="flex items-center gap-2.5 mt-2.5 p-2 bg-white rounded border border-[#EFE9DC]">
-                      <div className="relative w-12 h-12 rounded overflow-hidden shrink-0 border border-[#EFE9DC]">
-                        <Image src={selectedBox.image} alt={selectedBox.name} fill className="object-cover" />
+                      <div className="relative w-12 h-12 rounded overflow-hidden shrink-0 border border-[#EFE9DC] bg-white">
+                        <Image src={selectedBox.image} alt={selectedBox.name} fill className="object-contain p-0.5" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-[10px] text-[#A88B4D] uppercase tracking-wider font-semibold">Presentation Box</div>
