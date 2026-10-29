@@ -319,13 +319,6 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                         </div>
                         <p className="text-[11px] text-[#68756F] mt-1.5 line-clamp-2 leading-relaxed">{goodie.description}</p>
                       </div>
-                      <div className="flex items-center justify-between text-[11px] font-medium text-[#183C2D] mt-3 pt-2 border-t border-[#EFE9DC]">
-                        <span className="flex items-center gap-1">
-                          <Sparkles className="w-3 h-3 text-[#C5A869]" />
-                          <span>{isChecked ? 'Selected for Hamper' : 'Curated Selection'}</span>
-                        </span>
-                        <span className="text-[10px] text-[#A88B4D] font-normal">{goodie.category}</span>
-                      </div>
                     </div>
                   );
                 })}
