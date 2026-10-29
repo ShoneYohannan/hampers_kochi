@@ -36,8 +36,8 @@ const DEFAULT_SETTINGS: StoreSettings = {
   phone: '+91 98460 02241',
   whatsapp: '919846002241',
   email: 'HampersKochi@gmail.com',
-  address: "Seethy's tower, vallathol jn., Kakkanad",
-  studioHours: 'Monday – Saturday, 9:30 AM – 8:00 PM IST',
+  address: "Seethy's tower, vallathol jn, Kakkanad.",
+  studioHours: 'Mon to Sun: 9:30 AM – 7:30 PM',
   promoCode: '',
   promoDiscountPercent: 0,
   freeShippingThreshold: 2999,
@@ -96,8 +96,11 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
         if (parsedSettings.email === 'concierge@thekochiatelier.com' || parsedSettings.email?.includes('thekochiatelier') || parsedSettings.email === 'concierge@hamperskochi.com') {
           parsedSettings.email = 'HampersKochi@gmail.com';
         }
-        if (parsedSettings.address?.includes('Panampilly') || parsedSettings.address?.includes('Fort Kochi')) {
-          parsedSettings.address = "Seethy's tower, vallathol jn., Kakkanad";
+        if (parsedSettings.address?.includes('Panampilly') || parsedSettings.address?.includes('Fort Kochi') || parsedSettings.address?.includes('vallathol')) {
+          parsedSettings.address = "Seethy's tower, vallathol jn, Kakkanad.";
+        }
+        if (!parsedSettings.studioHours || parsedSettings.studioHours.includes('Monday – Saturday') || parsedSettings.studioHours.includes('8:00') || parsedSettings.studioHours.includes('Appointment')) {
+          parsedSettings.studioHours = 'Mon to Sun: 9:30 AM – 7:30 PM';
         }
         setSettings((prev) => ({ ...prev, ...parsedSettings }));
       }

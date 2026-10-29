@@ -22,7 +22,7 @@ export default function StructuredData() {
     ],
     address: {
       '@type': 'PostalAddress',
-      streetAddress: "Seethy's tower, vallathol jn., Kakkanad",
+      streetAddress: "Seethy's tower, vallathol jn, Kakkanad.",
       addressLocality: 'Kochi',
       addressRegion: 'Kerala',
       postalCode: '682001',
@@ -45,8 +45,8 @@ export default function StructuredData() {
           'Saturday',
           'Sunday',
         ],
-        opens: '09:00',
-        closes: '21:00',
+        opens: '09:30',
+        closes: '19:30',
       },
     ],
     sameAs: [

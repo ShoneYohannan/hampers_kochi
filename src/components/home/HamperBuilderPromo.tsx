@@ -46,14 +46,14 @@ export default function HamperBuilderPromo({ onOpenBuilder }: HamperBuilderPromo
             <span>Interactive Custom Atelier</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-luxury font-normal leading-tight">
-            The Bespoke Atelier: <br className="hidden sm:inline" />
+            Hampers Kochi: <br className="hidden sm:inline" />
             <span className="italic font-light text-[#D8B979]">
               Create Your Own Hamper
             </span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#EFE9DC]/80 font-light">
             Design an entirely custom luxury hamper in four intuitive steps. Select your favorite
-            casket, artisanal confections, and bespoke finishing touches.
+            casket, artisanal confections, and handcrafted finishing touches.
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export default function HamperBuilderPromo({ onOpenBuilder }: HamperBuilderPromo
               Ready to craft an unforgettable personal hamper?
             </h3>
             <p className="text-xs sm:text-sm text-[#EFE9DC]/80">
-              Hand-curated Kerala keepsakes, bespoke wax seal impressions & express delivery across India.
+              Hand-curated Kerala keepsakes, hand-pressed wax seal impressions & express delivery across India.
             </p>
           </div>
 

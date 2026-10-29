@@ -163,7 +163,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
                   rel="noreferrer"
                   className="hover:text-[#C5A869] transition-colors leading-relaxed"
                 >
-                  {settings?.address || "Seethy's tower, vallathol jn., Kakkanad"}
+                  {settings?.address || "Seethy's tower, vallathol jn, Kakkanad."}
                 </a>
               </div>
             </div>

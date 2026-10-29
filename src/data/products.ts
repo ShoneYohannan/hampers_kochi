@@ -1096,13 +1096,13 @@ export const BUILDER_ITEMS = {
       id: 'box-golden-wire-mesh',
       name: 'Golden wire mesh box',
       description: 'Lustrous golden wire mesh box for delicate, elevated gifting.',
-      image: '/images/1001551007.jpg.jpeg',
+      image: '/images/1002029660.jpg.jpeg',
     },
     {
       id: 'box-customised',
       name: 'Customised box',
       description: 'Tailor-made box customized according to your unique theme.',
-      image: '/images/1001373001.jpg.jpeg',
+      image: '/images/1001490450.jpg.jpeg',
     },
   ],
   items: [

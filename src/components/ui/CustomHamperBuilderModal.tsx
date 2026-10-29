@@ -88,7 +88,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
   const handleWhatsAppInquiry = () => {
     const selectedGoodieNames = getSelectedNames();
     const lines = [
-      `*BESPOKE LUXURY HAMPER INQUIRY - HAMPERS KOCHI*`,
+      `*LUXURY HAMPER INQUIRY - HAMPERS KOCHI*`,
       ``,
       `*Selected Presentation Box:*`,
       `• ${selectedBox.name}`,
@@ -114,8 +114,8 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
 
     const customProduct: Product = {
       id: `custom-hamper-${Date.now()}`,
-      name: `Bespoke Hamper in ${selectedBox.name}`,
-      slug: `bespoke-hamper-${Date.now()}`,
+      name: `Hamper in ${selectedBox.name}`,
+      slug: `hamper-${Date.now()}`,
       subtitle: `Hand-Curated with ${selectedGoodieNames.length} artisanal selections`,
       price: 0,
       rating: 5.0,
@@ -123,9 +123,9 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
       image: selectedBox.image,
       galleryImages: [selectedBox.image],
       category: 'Personalized & Keepsakes',
-      tags: ['Bespoke', 'Hand-Curated', 'Wax-Sealed'],
+      tags: ['Custom', 'Hand-Curated', 'Wax-Sealed'],
       description: `Custom curated luxury hamper presented in a ${selectedBox.name}.`,
-      detailedDescription: `Bespoke curation assembled in our Hampers Kochi studio. Finished with ${ribbonColor} ribbon and ${waxSealColor} wax seal.`,
+      detailedDescription: `Handcrafted curation assembled in our Hampers Kochi studio. Finished with ${ribbonColor} ribbon and ${waxSealColor} wax seal.`,
       contents: [
         `Base Box: ${selectedBox.name}`,
         ...selectedGoodieNames,
@@ -139,7 +139,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
     };
 
     addToCart(customProduct, 1, calligraphyMessage, recipientName);
-    toast.success(`Bespoke Hamper in "${selectedBox.name}" added to Bag!`);
+    toast.success(`Hamper in "${selectedBox.name}" added to Bag!`);
     setIsCartOpen(true);
     onClose();
   };
@@ -236,10 +236,6 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                         )}
                       </div>
                       <p className="text-[11px] text-[#68756F] line-clamp-2 mt-1">{box.description}</p>
-                      <div className="text-xs font-semibold text-[#183C2D] mt-2 flex items-center gap-1">
-                        <Sparkles className="w-3 h-3 text-[#C5A869]" />
-                        <span>Bespoke Casket Choice</span>
-                      </div>
                     </div>
                   </div>
                 ))}
@@ -426,7 +422,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
           {currentStep === 4 && (
             <div className="space-y-5">
               <div>
-                <h3 className="text-lg font-serif-luxury text-[#0B1D15]">Bespoke Calligraphy & Full Curation Review</h3>
+                <h3 className="text-lg font-serif-luxury text-[#0B1D15]">Calligraphy & Full Curation Review</h3>
                 <p className="text-xs text-[#68756F]">Review your personalized selections and hand-penned parchment note before ordering.</p>
               </div>
 
@@ -475,7 +471,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                       Live Parchment Calligraphy Preview
                     </div>
                     <div className="font-serif-luxury italic text-sm text-[#0B1D15] min-h-[32px] flex items-center justify-center">
-                      &ldquo;{calligraphyMessage || 'Your bespoke message will be penned here...'}&rdquo;
+                      &ldquo;{calligraphyMessage || 'Your message will be penned here...'}&rdquo;
                     </div>
                     <div className="text-[10px] text-[#68756F]">
                       Sealed with {waxSealColor} hot wax seal {recipientName ? `• For: ${recipientName}` : ''}
@@ -488,7 +484,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                   <div>
                     <div className="flex items-center justify-between pb-2 border-b border-[#EFE9DC]">
                       <span className="text-xs font-serif-luxury font-bold text-[#0B1D15] uppercase tracking-wider">
-                        Bespoke Curation Breakdown
+                        Curation Breakdown
                       </span>
                       <span className="text-[10px] bg-[#183C2D] text-[#D8B979] px-2 py-0.5 rounded font-medium">
                         {selectedGoodies.length} Items Selected
@@ -529,7 +525,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                   </div>
 
                   <div className="text-[10px] text-[#183C2D] font-medium bg-white p-2 rounded border border-[#EFE9DC] text-center">
-                    All bespoke items are carefully coordinated and arranged with fresh satin by our Hampers Kochi stylists.
+                    All items are carefully coordinated and arranged with fresh satin by our Hampers Kochi stylists.
                   </div>
                 </div>
               </div>

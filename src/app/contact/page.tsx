@@ -26,7 +26,7 @@ export default function ContactPage() {
     phone: '',
     email: '',
     occasion: 'Birthday',
-    budget: '₹3,000 - ₹5,000',
+    budget: '₹1,000 - ₹2,000',
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -34,7 +34,7 @@ export default function ContactPage() {
   const phoneDisplay = settings?.phone || '+91 98460 02241';
   const cleanPhone = phoneDisplay.replace(/\s+/g, '');
   const emailDisplay = settings?.email || 'HampersKochi@gmail.com';
-  const addressDisplay = settings?.address || "Seethy's tower, vallathol jn., Kakkanad";
+  const addressDisplay = settings?.address || "Seethy's tower, vallathol jn, Kakkanad.";
   const whatsappNumber = settings?.whatsapp || '919846002241';
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -64,7 +64,7 @@ export default function ContactPage() {
             Connect With Our Concierge & Studio
           </h1>
           <p className="mt-3 text-sm sm:text-base text-[#EFE9DC]/75 font-light leading-relaxed">
-            Whether you need a single bespoke anniversary chest or 500 corporate gift hampers,
+            Whether you need a single custom anniversary chest or 500 corporate gift hampers,
             our gifting curators are at your service for personal consultations.
           </p>
         </div>
@@ -77,19 +77,7 @@ export default function ContactPage() {
             
             {/* Left: Atelier Studio Location & Concierge Details */}
             <div className="lg:col-span-5 space-y-8">
-              <div>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-[#C5A869] font-semibold">
-                  Studio Location
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-serif-luxury text-[#0B1D15] mt-1">
-                  Visit Our Heritage Studio
-                </h2>
-                <p className="mt-2 text-sm text-[#68756F] font-light leading-relaxed">
-                  Our private studio is situated in Kakkanad, Kochi. Pre-scheduled studio visits
-                  allow you to touch artisanal Kerala Kasavu handlooms, preview hand-cast brass finishes,
-                  and sample single-estate Malabar spices and teas.
-                </p>
-              </div>
+              
 
               {/* Contact Cards */}
               <div className="space-y-4">
@@ -158,8 +146,7 @@ export default function ContactPage() {
                       Studio Working Hours
                     </h3>
                     <p className="text-sm text-[#4A5550] mt-1 font-light">
-                      Monday to Saturday: 9:30 AM – 7:30 PM IST<br />
-                      Sunday: By Pre-Booked Appointment
+                      Mon to Sun: 9:30 AM – 7:30 PM
                     </p>
                   </div>
                 </div>
@@ -313,7 +300,7 @@ export default function ContactPage() {
                         <option value="Anniversary">Anniversary & Romance</option>
                         <option value="Corporate">Corporate & Executive</option>
                         <option value="Festive">Festive / Onam / Diwali / Christmas</option>
-                        <option value="Other">Bespoke Custom Curation</option>
+                        <option value="Other">Custom Curation</option>
                       </select>
                     </div>
                   </div>
@@ -327,6 +314,7 @@ export default function ContactPage() {
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                       className="w-full px-4 py-3 rounded bg-[#FCFBF8] border border-[#EFE9DC] focus:border-[#C5A869] outline-none text-sm text-[#0B1D15]"
                     >
+                      <option value="₹1,000 - ₹2,000">₹1,000 – ₹2,000</option>
                       <option value="₹2,000 - ₹3,500">₹2,000 – ₹3,500</option>
                       <option value="₹3,500 - ₹6,000">₹3,500 – ₹6,000</option>
                       <option value="₹6,000 - ₹12,000">₹6,000 – ₹12,000</option>
