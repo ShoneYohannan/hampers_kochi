@@ -33,8 +33,8 @@ export default function ContactPage() {
 
   const phoneDisplay = settings?.phone || '+91 98460 02241';
   const cleanPhone = phoneDisplay.replace(/\s+/g, '');
-  const emailDisplay = settings?.email || 'concierge@hamperskochi.com';
-  const addressDisplay = settings?.address || 'HamPers Kochi Studio, Fort Kochi, Ernakulam, Kerala 682001';
+  const emailDisplay = settings?.email || 'HampersKochi@gmail.com';
+  const addressDisplay = settings?.address || "Seethy's tower, vallathol jn., Kakkanad";
   const whatsappNumber = settings?.whatsapp || '919846002241';
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -85,7 +85,7 @@ export default function ContactPage() {
                   Visit Our Heritage Studio
                 </h2>
                 <p className="mt-2 text-sm text-[#68756F] font-light leading-relaxed">
-                  Our private studio is situated in historic Fort Kochi. Pre-scheduled studio visits
+                  Our private studio is situated in Kakkanad, Kochi. Pre-scheduled studio visits
                   allow you to touch artisanal Kerala Kasavu handlooms, preview hand-cast brass finishes,
                   and sample single-estate Malabar spices and teas.
                 </p>
@@ -99,7 +99,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-xs uppercase tracking-[0.15em] font-semibold text-[#0B1D15]">
-                      Fort Kochi Studio Address
+                      Studio Address
                     </h3>
                     <p className="text-sm text-[#4A5550] mt-1 font-light leading-snug">
                       {addressDisplay}

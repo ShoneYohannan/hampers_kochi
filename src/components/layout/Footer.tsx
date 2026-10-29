@@ -55,11 +55,10 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
           {/* Brand & Socials */}
           <div className="space-y-4">
             <h2 className="text-2xl font-serif-luxury tracking-widest text-[#FCFBF8] font-normal">
-              Hampers  Kochi
+              Hampers Kochi
             </h2>
             <p className="text-xs text-[#E8E1D4]/75 leading-relaxed font-light">
-              Haute luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes,
-              single-estate teas, and artisanal chocolates delivered across India with care.
+              Beautiful gifting for every milestone and &quot;thinking of you&quot; moment. We curate aesthetic, handcrafted hampers blending unique keepsakes and delightful treats to tell your story perfectly.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
@@ -125,7 +124,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
               About Hampers Kochi
             </h4>
             <ul className="space-y-2 text-xs text-[#E8E1D4]/80 font-light">
-              <li><Link href="/story" className="hover:text-[#C5A869] transition-colors">Our Kochi Heritage Story</Link></li>
+              <li><Link href="/story" className="hover:text-[#C5A869] transition-colors">My Hampers Kochi Story</Link></li>
               <li><Link href="/reviews" className="hover:text-[#C5A869] transition-colors">Customer Reviews &amp; Testimonials</Link></li>
               <li><Link href="/contact" className="hover:text-[#C5A869] transition-colors">Studio Location &amp; Directions</Link></li>
               <li><Link href="/faq" className="hover:text-[#C5A869] transition-colors">Frequently Asked Questions</Link></li>
@@ -150,10 +149,10 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#C5A869] shrink-0" />
                 <a
-                  href={`mailto:${settings?.email || 'concierge@hamperskochi.com'}`}
+                  href={`mailto:${settings?.email || 'HampersKochi@gmail.com'}`}
                   className="hover:text-[#C5A869] transition-colors font-medium truncate"
                 >
-                  {settings?.email || 'concierge@hamperskochi.com'}
+                  {settings?.email || 'HampersKochi@gmail.com'}
                 </a>
               </div>
               <div className="flex items-start gap-2">
@@ -164,7 +163,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
                   rel="noreferrer"
                   className="hover:text-[#C5A869] transition-colors leading-relaxed"
                 >
-                  HamPers Kochi, Fort Kochi / Ernakulam, Kerala 682001
+                  {settings?.address || "Seethy's tower, vallathol jn., Kakkanad"}
                 </a>
               </div>
             </div>

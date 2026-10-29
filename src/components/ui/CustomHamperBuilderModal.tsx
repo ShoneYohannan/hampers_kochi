@@ -38,32 +38,28 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
   // Real items extracted from actual hamper photos
   const [selectedGoodies, setSelectedGoodies] = useState<string[]>([
     'item-kasavu-saree',
-    'item-atelier-perfume',
-    'item-soy-candle',
-    'item-ghee-halwa',
+    'item-chocolate',
+    'item-perfume',
+    'item-traditional-sweets',
   ]);
   
-  const [ribbonColor, setRibbonColor] = useState('Champagne Gold Double Satin');
-  const [waxSealColor, setWaxSealColor] = useState('Antique Metallic Gold');
+  const [ribbonColor, setRibbonColor] = useState('Gold');
+  const [waxSealColor, setWaxSealColor] = useState('Gold');
   const [recipientName, setRecipientName] = useState('');
   const [calligraphyMessage, setCalligraphyMessage] = useState('');
 
   if (!isOpen) return null;
 
-  const allGoodieOptions = [
-    ...BUILDER_ITEMS.handlooms,
-    ...BUILDER_ITEMS.fragranceAndBeauty,
-    ...BUILDER_ITEMS.keepsakesAndJewelry,
-    ...BUILDER_ITEMS.gourmetAndTeas,
-  ];
+  const allGoodieOptions = BUILDER_ITEMS.items;
 
   const categories = [
     'All',
     'Handlooms & Wearables',
     'Fragrance & Self-Care',
-    'Jewelry & Adornments',
-    'Personalized Keepsakes',
+    'Jewelry & Keepsakes',
     'Gourmet & Delicacies',
+    'Decor & Flowers',
+    'Keepsakes & Decor',
   ];
 
   const filteredByCategory = selectedCategoryTab === 'All'
@@ -129,7 +125,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
       category: 'Personalized & Keepsakes',
       tags: ['Bespoke', 'Hand-Curated', 'Wax-Sealed'],
       description: `Custom curated luxury hamper presented in a ${selectedBox.name}.`,
-      detailedDescription: `Bespoke curation assembled in our Fort Kochi studio. Finished with ${ribbonColor} ribbon and ${waxSealColor} wax seal.`,
+      detailedDescription: `Bespoke curation assembled in our Hampers Kochi studio. Finished with ${ribbonColor} ribbon and ${waxSealColor} wax seal.`,
       contents: [
         `Base Box: ${selectedBox.name}`,
         ...selectedGoodieNames,
@@ -161,7 +157,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
               <Gift className="w-4 h-4 text-[#D8B979]" />
             </div>
             <div>
-              <h2 className="text-base sm:text-lg font-serif-luxury tracking-wider">The Bespoke Hamper Atelier</h2>
+              <h2 className="text-base sm:text-lg font-serif-luxury tracking-wider">Hampers Kochi</h2>
               <span className="text-[11px] text-[#EFE9DC]/70">Step {currentStep} of 4 &bull; Tailored to Perfection</span>
             </div>
           </div>
@@ -330,7 +326,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                       <div className="flex items-center justify-between text-[11px] font-medium text-[#183C2D] mt-3 pt-2 border-t border-[#EFE9DC]">
                         <span className="flex items-center gap-1">
                           <Sparkles className="w-3 h-3 text-[#C5A869]" />
-                          <span>{isChecked ? 'Selected for Hamper' : 'Atelier Curation Item'}</span>
+                          <span>{isChecked ? 'Selected for Hamper' : 'Curated Selection'}</span>
                         </span>
                         <span className="text-[10px] text-[#A88B4D] font-normal">{goodie.category}</span>
                       </div>
@@ -352,26 +348,35 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
               {/* Ribbon Colors */}
               <div>
                 <label className="block text-xs uppercase tracking-wider font-semibold text-[#0B1D15] mb-2">
-                  Select Double-Faced Satin Ribbon
+                  Select Satin Ribbon ({15} options)
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
                   {[
-                    { name: 'Champagne Gold Double Satin', color: '#D8B979', desc: 'Lustrous champagne gold French satin bow.' },
-                    { name: 'Royal Emerald Green Velvet', color: '#10291E', desc: 'Plush deep emerald green velvet ribbon.' },
-                    { name: 'Ivory Cream Silk Ribbon', color: '#F7F4EC', desc: 'Delicate high-thread ivory silk ribbon.' },
+                    { name: 'Gold', color: '#D4AF37' },
+                    { name: 'Silver', color: '#C0C0C0' },
+                    { name: 'Cream', color: '#FFFDD0' },
+                    { name: 'Black', color: '#1A1A1A' },
+                    { name: 'Grey', color: '#808080' },
+                    { name: 'Ash', color: '#B2BEB5' },
+                    { name: 'White', color: '#FFFFFF' },
+                    { name: 'Off white', color: '#FAF9F6' },
+                    { name: 'Green', color: '#183C2D' },
+                    { name: 'Red', color: '#C41E3A' },
+                    { name: 'Yellow', color: '#FFD700' },
+                    { name: 'Orange', color: '#FFA500' },
+                    { name: 'Lavender', color: '#E6E6FA' },
+                    { name: 'Purple', color: '#800080' },
+                    { name: 'Blue', color: '#1E3F66' },
                   ].map((r) => (
                     <button
                       key={r.name}
                       onClick={() => setRibbonColor(r.name)}
-                      className={`p-3 rounded-lg border text-left flex items-start gap-3 transition-all ${
-                        ribbonColor === r.name ? 'border-[#C5A869] bg-[#F7F4EC] ring-1 ring-[#C5A869]' : 'border-[#EFE9DC]'
+                      className={`p-2.5 rounded-lg border text-left flex items-center gap-2.5 transition-all ${
+                        ribbonColor === r.name ? 'border-[#C5A869] bg-[#F7F4EC] ring-1 ring-[#C5A869]' : 'border-[#EFE9DC] bg-white hover:border-[#C5A869]/50'
                       }`}
                     >
-                      <span className="w-5 h-5 rounded-full border border-black/20 shrink-0 mt-0.5" style={{ backgroundColor: r.color }} />
-                      <div>
-                        <span className="text-xs font-semibold text-[#0B1D15] block">{r.name}</span>
-                        <span className="text-[10px] text-[#68756F] leading-tight block mt-0.5">{r.desc}</span>
-                      </div>
+                      <span className="w-4 h-4 rounded-full border border-black/20 shrink-0 shadow-sm" style={{ backgroundColor: r.color }} />
+                      <span className="text-xs font-medium text-[#0B1D15] truncate">{r.name}</span>
                     </button>
                   ))}
                 </div>
@@ -382,20 +387,21 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                 <label className="block text-xs uppercase tracking-wider font-semibold text-[#0B1D15] mb-2">
                   Select Hot Wax Seal Impression
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {[
-                    { name: 'Antique Metallic Gold', color: '#C5A869', desc: 'Embossed with Kochi Atelier botanical crest in gold.' },
-                    { name: 'Botanical Emerald Green', color: '#183C2D', desc: 'Deep forest green sealing wax with gold dusting.' },
-                    { name: 'Imperial Maroon Lacquer', color: '#681B26', desc: 'Rich royal lacquer seal for grand milestones.' },
+                    { name: 'Gold', color: '#D4AF37', desc: 'Radiant metallic gold wax crest' },
+                    { name: 'Silver', color: '#C0C0C0', desc: 'Polished metallic silver seal' },
+                    { name: 'Black', color: '#1A1A1A', desc: 'Understated matte noir seal' },
+                    { name: 'Red', color: '#8B0000', desc: 'Classic royal red wax seal' },
                   ].map((w) => (
                     <button
                       key={w.name}
                       onClick={() => setWaxSealColor(w.name)}
-                      className={`p-3 rounded-lg border text-left flex items-start gap-3 transition-all ${
-                        waxSealColor === w.name ? 'border-[#C5A869] bg-[#F7F4EC] ring-1 ring-[#C5A869]' : 'border-[#EFE9DC]'
+                      className={`p-3 rounded-lg border text-left flex items-start gap-2.5 transition-all ${
+                        waxSealColor === w.name ? 'border-[#C5A869] bg-[#F7F4EC] ring-1 ring-[#C5A869]' : 'border-[#EFE9DC] bg-white hover:border-[#C5A869]/50'
                       }`}
                     >
-                      <span className="w-5 h-5 rounded-full border border-black/20 shrink-0 mt-0.5" style={{ backgroundColor: w.color }} />
+                      <span className="w-5 h-5 rounded-full border border-black/20 shrink-0 mt-0.5 shadow-sm" style={{ backgroundColor: w.color }} />
                       <div>
                         <span className="text-xs font-semibold text-[#0B1D15] block">{w.name}</span>
                         <span className="text-[10px] text-[#68756F] leading-tight block mt-0.5">{w.desc}</span>
@@ -523,7 +529,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                   </div>
 
                   <div className="text-[10px] text-[#183C2D] font-medium bg-white p-2 rounded border border-[#EFE9DC] text-center">
-                    All bespoke items are carefully coordinated and arranged with fresh satin by our atelier stylists.
+                    All bespoke items are carefully coordinated and arranged with fresh satin by our Hampers Kochi stylists.
                   </div>
                 </div>
               </div>
@@ -535,7 +541,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
         {/* Modal Footer Summary & Step Navigation */}
         <div className="p-4 sm:p-5 bg-[#FCFBF8] border-t border-[#EFE9DC] flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <div className="text-xs text-[#68756F]">Bespoke Atelier Proposal:</div>
+            <div className="text-xs text-[#68756F]">Hampers Kochi Proposal:</div>
             <div className="text-base sm:text-lg font-serif-luxury font-semibold text-[#0B1D15]">
               Contact on WhatsApp for Price
               <span className="text-[11px] text-[#183C2D] font-normal ml-2 font-sans block sm:inline">

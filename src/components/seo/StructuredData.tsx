@@ -11,7 +11,7 @@ export default function StructuredData() {
       'Handcrafted luxury gift hampers curated in Kochi, Kerala. Heirloom brass keepsakes, Kasavu silks, single-estate teas, Belgian chocolates, and bespoke wax-sealed calligraphy with express all-India delivery.',
     url: 'https://hamperskochi.com',
     telephone: '+91-98460-02241',
-    email: 'concierge@hamperskochi.com',
+    email: 'HampersKochi@gmail.com',
     priceRange: '₹₹₹',
     currenciesAccepted: 'INR',
     paymentAccepted: 'Cash, Credit Card, Debit Card, UPI, Net Banking',
@@ -22,7 +22,7 @@ export default function StructuredData() {
     ],
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Fort Kochi / Ernakulam',
+      streetAddress: "Seethy's tower, vallathol jn., Kakkanad",
       addressLocality: 'Kochi',
       addressRegion: 'Kerala',
       postalCode: '682001',

@@ -35,8 +35,8 @@ const DEFAULT_ANNOUNCEMENTS = [
 const DEFAULT_SETTINGS: StoreSettings = {
   phone: '+91 98460 02241',
   whatsapp: '919846002241',
-  email: 'concierge@hamperskochi.com',
-  address: 'HamPers Kochi, Panampilly Nagar & Fort Kochi, Ernakulam, Kerala 682001',
+  email: 'HampersKochi@gmail.com',
+  address: "Seethy's tower, vallathol jn., Kakkanad",
   studioHours: 'Monday – Saturday, 9:30 AM – 8:00 PM IST',
   promoCode: '',
   promoDiscountPercent: 0,
@@ -93,8 +93,11 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
         if (parsedSettings.whatsapp === '919645556010') {
           parsedSettings.whatsapp = '919846002241';
         }
-        if (parsedSettings.email === 'concierge@thekochiatelier.com' || parsedSettings.email?.includes('thekochiatelier')) {
-          parsedSettings.email = 'concierge@hamperskochi.com';
+        if (parsedSettings.email === 'concierge@thekochiatelier.com' || parsedSettings.email?.includes('thekochiatelier') || parsedSettings.email === 'concierge@hamperskochi.com') {
+          parsedSettings.email = 'HampersKochi@gmail.com';
+        }
+        if (parsedSettings.address?.includes('Panampilly') || parsedSettings.address?.includes('Fort Kochi')) {
+          parsedSettings.address = "Seethy's tower, vallathol jn., Kakkanad";
         }
         setSettings((prev) => ({ ...prev, ...parsedSettings }));
       }

@@ -99,11 +99,11 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
 
           {/* Headline - Direct, clear, concrete, no vague poetic fluff */}
           <h1 className="font-serif-luxury font-normal text-[#FCFBF8] leading-[1.08] tracking-tight">
-            <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl mb-1">
-              Luxury Gift Hampers
+            <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-1">
+              From Milestones to
             </span>
-            <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl italic text-[#D8B979] mb-1">
-              Handcrafted in Kochi.
+            <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl italic text-[#D8B979] mb-1">
+              &ldquo;Thinking of You&rdquo; Moments
             </span>
           </h1>
 
@@ -112,8 +112,7 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
 
           {/* Description - Clear, factual, specific */}
           <p className="text-[#EFE9DC]/90 text-base sm:text-lg font-light leading-relaxed max-w-md">
-            Curated with Kerala Kasavu handlooms, hand-cast brass keepsakes, single-estate high-grown teas,
-            and artisanal chocolates. Handcrafted on pre-order with all-India express delivery.
+            Beautiful gifting for every chapter of life. From milestone celebrations to simple &ldquo;thinking of you&rdquo; moments, we curate aesthetic hampers tailored to every aspect of your life. Every box is handcrafted with care, blending unique keepsakes and delightful treats to tell your story perfectly. Open for pre-orders with express delivery.
           </p>
 
           {/* CTAs: Crisp rectangular buttons, no pill shapes */}
