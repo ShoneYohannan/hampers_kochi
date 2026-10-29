@@ -2,9 +2,8 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { X, Heart, ShoppingBag, Trash2, ArrowRight, MessageSquare } from 'lucide-react';
+import { X, Heart, Trash2, ArrowRight, MessageSquare } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
-import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
 import { Product } from '@/types';
 
@@ -16,7 +15,6 @@ interface WishlistModalProps {
 
 export default function WishlistModal({ isOpen, onClose, onSelectProduct }: WishlistModalProps) {
   const { wishlist, toggleWishlist } = useWishlist();
-  const { addToCart } = useCart();
   const toast = useToast();
 
   if (!isOpen) return null;

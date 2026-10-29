@@ -5,7 +5,6 @@ import Image from 'next/image';
 import {
   X,
   Star,
-  ShoppingBag,
   Truck,
   Check,
   ShieldCheck,
@@ -14,7 +13,6 @@ import {
   Maximize2
 } from 'lucide-react';
 import { Product } from '@/types';
-import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { useToast } from '@/context/ToastContext';
 
@@ -24,7 +22,6 @@ interface QuickViewModalProps {
 }
 
 export default function QuickViewModal({ product, onClose }: QuickViewModalProps) {
-  const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const toast = useToast();
 
@@ -32,22 +29,11 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
   const [quantity, setQuantity] = useState(1);
   const [giftNote, setGiftNote] = useState('');
   const [recipient, setRecipient] = useState('');
-  const [added, setAdded] = useState(false);
 
   if (!product) return null;
 
   const currentImage = selectedImage || product.image;
   const isFavorited = isInWishlist(product.id);
-
-  const handleAddToCart = () => {
-    addToCart(product, quantity, giftNote, recipient);
-    setAdded(true);
-    toast.success(`Added ${quantity}x "${product.name}" to Bag!`);
-    setTimeout(() => {
-      setAdded(false);
-      onClose();
-    }, 1200);
-  };
 
   const whatsappMessage = encodeURIComponent(
     `Hello HamPers Kochi, I would like to order "${product.name}" (Qty: ${quantity}, Total: ₹${(product.price * quantity).toLocaleString('en-IN')}). Recipient: ${recipient || 'Not specified'}.${giftNote ? ` Gift Note: "${giftNote}"` : ''}`

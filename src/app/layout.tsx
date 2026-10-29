@@ -4,8 +4,6 @@ import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { ToastProvider } from '@/context/ToastContext';
 import { CmsProvider } from '@/context/CmsContext';
-import CartDrawer from '@/components/ui/CartDrawer';
-import CheckoutModal from '@/components/ui/CheckoutModal';
 import WhatsAppConcierge from '@/components/ui/WhatsAppConcierge';
 
 
@@ -114,8 +112,6 @@ export default function RootLayout({
             <CartProvider>
               <WishlistProvider>
                 {children}
-                <CartDrawer />
-                <CheckoutModal />
                 <WhatsAppConcierge />
               </WishlistProvider>
             </CartProvider>

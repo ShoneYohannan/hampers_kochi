@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Compass, MessageSquare, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, Compass, MessageSquare, Sparkles } from 'lucide-react';
 
 export default function NotFound() {
   return (
@@ -58,7 +58,7 @@ export default function NotFound() {
               href="/#bestsellers"
               className="w-full sm:w-auto px-8 py-3.5 rounded bg-[#183C2D] border border-[#C5A869]/40 text-[#FCFBF8] hover:bg-[#23523E] font-medium text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2"
             >
-              <ShoppingBag className="w-4 h-4 text-[#D8B979]" />
+              <Sparkles className="w-4 h-4 text-[#D8B979]" />
               <span>Explore Bestsellers</span>
             </Link>
           </div>

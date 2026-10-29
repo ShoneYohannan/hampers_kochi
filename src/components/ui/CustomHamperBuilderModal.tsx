@@ -6,7 +6,6 @@ import {
   X, 
   Gift, 
   Check, 
-  ShoppingBag, 
   MessageSquare,
   ArrowRight,
   Sparkles,
@@ -17,9 +16,6 @@ import {
   Feather
 } from 'lucide-react';
 import { BUILDER_ITEMS } from '@/data/products';
-import { useCart } from '@/context/CartContext';
-import { useToast } from '@/context/ToastContext';
-import { Product } from '@/types';
 
 interface CustomHamperBuilderModalProps {
   isOpen: boolean;
@@ -27,8 +23,6 @@ interface CustomHamperBuilderModalProps {
 }
 
 export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamperBuilderModalProps) {
-  const { addToCart, setIsCartOpen } = useCart();
-  const toast = useToast();
 
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(1);
   const [selectedBox, setSelectedBox] = useState(BUILDER_ITEMS.boxes[0]);
@@ -107,41 +101,6 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
 
     const messageText = lines.join('\n');
     window.open(`https://wa.me/919846002241?text=${encodeURIComponent(messageText)}`, '_blank');
-  };
-
-  const handleAddCustomHamper = () => {
-    const selectedGoodieNames = getSelectedNames();
-
-    const customProduct: Product = {
-      id: `custom-hamper-${Date.now()}`,
-      name: `Hamper in ${selectedBox.name}`,
-      slug: `hamper-${Date.now()}`,
-      subtitle: `Hand-Curated with ${selectedGoodieNames.length} artisanal selections`,
-      price: 0,
-      rating: 5.0,
-      reviewsCount: 1,
-      image: selectedBox.image,
-      galleryImages: [selectedBox.image],
-      category: 'Personalized & Keepsakes',
-      tags: ['Custom', 'Hand-Curated', 'Wax-Sealed'],
-      description: `Custom curated luxury hamper presented in a ${selectedBox.name}.`,
-      detailedDescription: `Handcrafted curation assembled in our Hampers Kochi store. Finished with ${ribbonColor} ribbon and ${waxSealColor} wax seal.`,
-      contents: [
-        `Base Box: ${selectedBox.name}`,
-        ...selectedGoodieNames,
-        `Ribbon: ${ribbonColor}`,
-        `Seal: ${waxSealColor} Hand-Pressed Hot Wax Seal`,
-      ],
-      boxType: selectedBox.name,
-      dimensions: '34cm x 26cm x 13cm',
-      weight: 'Custom Weight',
-      deliveryEstimate: 'Pre-Order Only | Kochi & All-India Delivery',
-    };
-
-    addToCart(customProduct, 1, calligraphyMessage, recipientName);
-    toast.success(`Hamper in "${selectedBox.name}" added to Bag!`);
-    setIsCartOpen(true);
-    onClose();
   };
 
   return (
@@ -549,22 +508,13 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             ) : (
-              <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
-                <button
-                  onClick={handleWhatsAppInquiry}
-                  className="flex-1 sm:flex-initial px-5 py-2.5 rounded bg-[#25D366] text-white hover:bg-[#128C7E] text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow"
-                >
-                  <MessageSquare className="w-4 h-4 text-white" />
-                  <span>Order on WhatsApp</span>
-                </button>
-                <button
-                  onClick={handleAddCustomHamper}
-                  className="flex-1 sm:flex-initial px-5 py-2.5 rounded bg-[#0B1D15] text-[#D8B979] hover:bg-[#C5A869] hover:text-[#0B1D15] text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow border border-[#C5A869]/50"
-                >
-                  <ShoppingBag className="w-3.5 h-3.5" />
-                  <span>Add to Bag</span>
-                </button>
-              </div>
+              <button
+                onClick={handleWhatsAppInquiry}
+                className="w-full sm:w-auto px-6 py-2.5 rounded bg-[#25D366] text-white hover:bg-[#128C7E] text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer"
+              >
+                <MessageSquare className="w-4 h-4 text-white" />
+                <span>Order on WhatsApp</span>
+              </button>
             )}
           </div>
         </div>
