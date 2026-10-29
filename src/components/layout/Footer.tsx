@@ -126,12 +126,12 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
             <ul className="space-y-2 text-xs text-[#E8E1D4]/80 font-light">
               <li><Link href="/story" className="hover:text-[#C5A869] transition-colors">My Hampers Kochi Story</Link></li>
               <li><Link href="/reviews" className="hover:text-[#C5A869] transition-colors">Customer Reviews &amp; Testimonials</Link></li>
-              <li><Link href="/contact" className="hover:text-[#C5A869] transition-colors">Studio Location &amp; Directions</Link></li>
+              <li><Link href="/contact" className="hover:text-[#C5A869] transition-colors">Store Location &amp; Directions</Link></li>
               <li><Link href="/faq" className="hover:text-[#C5A869] transition-colors">Frequently Asked Questions</Link></li>
             </ul>
           </div>
 
-          {/* Contact & Studio Details */}
+          {/* Contact & Store Details */}
           <div className="space-y-3">
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#C5A869] font-semibold">
               Contact Us

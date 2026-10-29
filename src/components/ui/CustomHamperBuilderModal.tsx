@@ -125,7 +125,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
       category: 'Personalized & Keepsakes',
       tags: ['Custom', 'Hand-Curated', 'Wax-Sealed'],
       description: `Custom curated luxury hamper presented in a ${selectedBox.name}.`,
-      detailedDescription: `Handcrafted curation assembled in our Hampers Kochi studio. Finished with ${ribbonColor} ribbon and ${waxSealColor} wax seal.`,
+      detailedDescription: `Handcrafted curation assembled in our Hampers Kochi store. Finished with ${ribbonColor} ribbon and ${waxSealColor} wax seal.`,
       contents: [
         `Base Box: ${selectedBox.name}`,
         ...selectedGoodieNames,
@@ -406,15 +406,6 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
                   ))}
                 </div>
               </div>
-
-              {/* Combination Preview */}
-              <div className="p-3.5 bg-[#FAF8F5] rounded-lg border border-[#C5A869]/30 flex items-center justify-between text-xs text-[#38423D]">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#C5A869]" />
-                  <span><strong>Styling Selection:</strong> {ribbonColor} &bull; {waxSealColor} Seal</span>
-                </div>
-                <span className="text-[11px] text-[#183C2D] font-medium">Included Complimentary</span>
-              </div>
             </div>
           )}
 
@@ -541,7 +532,7 @@ export default function CustomHamperBuilderModal({ isOpen, onClose }: CustomHamp
             <div className="text-base sm:text-lg font-serif-luxury font-semibold text-[#0B1D15]">
               Contact on WhatsApp for Price
               <span className="text-[11px] text-[#183C2D] font-normal ml-2 font-sans block sm:inline">
-                (Tailored Pan-India Shipping)
+                (All-India Delivery)
               </span>
             </div>
           </div>

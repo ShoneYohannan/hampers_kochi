@@ -43,7 +43,7 @@ export default function BrandStory() {
               <div className="relative aspect-[3/4] rounded overflow-hidden shadow-2xl bg-[#0B1D15]">
                 <Image
                   src="/images/1001877031.jpg.jpeg"
-                  alt="Crafting bespoke luxury hampers inside HamPers Kochi design studio in Kerala"
+                  alt="Crafting luxury hampers inside Hampers Kochi store in Kerala"
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, 40vw"
@@ -52,7 +52,7 @@ export default function BrandStory() {
                 
                 <div className="absolute bottom-6 left-6 right-6 text-white text-left">
                   <div className="text-[10px] uppercase tracking-[0.25em] text-[#D8B979] font-medium">
-                    Hampers Kochi Studio
+                    Hampers Kochi Store
                   </div>
                   <h3 className="text-xl font-serif-luxury font-normal text-white mt-1">
                     Hampers Kochi · Handcrafted in Kochi
@@ -99,7 +99,7 @@ export default function BrandStory() {
             <div className="pt-4 border-t border-[#EFE9DC] flex items-center gap-6">
               <div>
                 <div className="text-2xl font-serif-luxury text-[#0B1D15] font-semibold">Kochi, Kerala</div>
-                <div className="text-[11px] text-[#68756F] uppercase tracking-wider">Design Studio &amp; Workshop</div>
+                <div className="text-[11px] text-[#68756F] uppercase tracking-wider">Hampers Store &amp; Workshop</div>
               </div>
               <div className="w-[1px] h-10 bg-[#C5A869]/40" />
               <div>
@@ -204,7 +204,7 @@ export default function BrandStory() {
 
                 <div className="pt-4 flex items-center gap-4">
                   <a
-                    href="https://wa.me/919846002241?text=Hello%20Ann%2C%20I%20would%20love%20to%20consult%20with%20you%20regarding%20a%20bespoke%20hamper."
+                    href="https://wa.me/919846002241?text=Hello%20Ann%2C%20I%20would%20love%20to%20consult%20with%20you%20regarding%20a%20luxury%20hamper."
                     target="_blank"
                     rel="noreferrer"
                     className="px-5 py-2.5 rounded-sm bg-[#C5A869] text-[#0B1D15] hover:bg-[#D8B979] font-medium text-xs uppercase tracking-[0.18em] transition-all inline-flex items-center gap-2 shadow-md"
@@ -217,7 +217,7 @@ export default function BrandStory() {
                     rel="noreferrer"
                     className="text-xs text-[#EFE9DC]/70 hover:text-[#D8B979] underline transition-colors"
                   >
-                    View Atelier Journal on Instagram
+                    View Store Journal on Instagram
                   </a>
                 </div>
 

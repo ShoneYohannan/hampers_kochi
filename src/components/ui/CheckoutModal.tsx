@@ -239,7 +239,7 @@ export default function CheckoutModal() {
             </div>
 
             <p className="text-xs text-[#68756F] max-w-md mx-auto leading-relaxed">
-              Your order summary and delivery instructions have been forwarded to our Fort Kochi studio WhatsApp (+91 98460 02241). Our team will reply shortly to confirm dispatch.
+              Your order summary and delivery instructions have been forwarded to our Hampers Kochi WhatsApp (+91 98460 02241). Our team will reply shortly to confirm dispatch.
             </p>
 
             <button

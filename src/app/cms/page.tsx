@@ -536,7 +536,7 @@ export default function CmsPage() {
               <div>
                 <h2 className="text-xl font-serif-luxury text-white">Store & WhatsApp Concierge Settings</h2>
                 <p className="text-xs text-[#EFE9DC]/60 mt-0.5">
-                  Update customer contact information, promo discount rates, and studio address.
+                  Update customer contact information, promo discount rates, and store address.
                 </p>
               </div>
 
@@ -572,7 +572,7 @@ export default function CmsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-[#EFE9DC]/75 mb-1 font-medium">Studio Operating Hours</label>
+                  <label className="block text-[#EFE9DC]/75 mb-1 font-medium">Store Operating Hours</label>
                   <input
                     type="text"
                     value={tempSettings.studioHours}
@@ -582,7 +582,7 @@ export default function CmsPage() {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[#EFE9DC]/75 mb-1 font-medium">Physical Studio Address</label>
+                  <label className="block text-[#EFE9DC]/75 mb-1 font-medium">Physical Store Address</label>
                   <textarea
                     rows={2}
                     value={tempSettings.address}

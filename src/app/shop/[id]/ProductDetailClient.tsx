@@ -236,14 +236,14 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   Tailored Inclusions & Customization
                 </h3>
                 <p className="text-xs text-[#505D56] font-light leading-relaxed">
-                  Every curation from our Fort Kochi studio is customized to your celebration. Inclusions, keepsakes, and confections can be tailored or upgraded upon direct WhatsApp consultation.
+                  Every curation from our Hampers Kochi store is customized to your celebration. Inclusions, keepsakes, and confections can be tailored or upgraded upon direct WhatsApp consultation.
                 </p>
               </div>
             </div>
 
             <div className="md:col-span-5 bg-[#FAF8F5] p-6 sm:p-8 rounded-md border border-[#EFE9DC] space-y-4">
               <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#0B1D15]">
-                HamPers Kochi Specifications
+                Hampers Kochi Specifications
               </h3>
               <div className="divide-y divide-[#EFE9DC] text-xs">
                 <div className="py-2.5 flex justify-between gap-4">

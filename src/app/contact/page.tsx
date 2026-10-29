@@ -52,16 +52,16 @@ export default function ContactPage() {
         onOpenWishlist={() => setIsWishlistOpen(true)}
       />
 
-      <Breadcrumbs items={[{ label: 'Contact & Studio Location' }]} />
+      <Breadcrumbs items={[{ label: 'Contact & Store Location' }]} />
 
       {/* Header */}
       <div className="bg-[#0B1D15] text-[#FCFBF8] py-14 md:py-20 border-b border-[#C5A869]/20 relative overflow-hidden">
         <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16 text-center max-w-3xl mx-auto relative z-10">
           <div className="text-[11px] uppercase tracking-[0.25em] text-[#D8B979] font-medium mb-2">
-            HamPers Kochi Studio
+            Hampers Kochi Store
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#FCFBF8]">
-            Connect With Our Concierge & Studio
+            Connect With Our Hampers Store
           </h1>
           <p className="mt-3 text-sm sm:text-base text-[#EFE9DC]/75 font-light leading-relaxed">
             Whether you need a single custom anniversary chest or 500 corporate gift hampers,
@@ -75,7 +75,7 @@ export default function ContactPage() {
         <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-7xl mx-auto">
             
-            {/* Left: Atelier Studio Location & Concierge Details */}
+            {/* Left: Hampers Store Location & Contact Details */}
             <div className="lg:col-span-5 space-y-8">
               
 
@@ -87,7 +87,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-xs uppercase tracking-[0.15em] font-semibold text-[#0B1D15]">
-                      Studio Address
+                      Store Address
                     </h3>
                     <p className="text-sm text-[#4A5550] mt-1 font-light leading-snug">
                       {addressDisplay}
@@ -118,7 +118,7 @@ export default function ContactPage() {
                       href={`tel:${cleanPhone}`}
                       className="inline-block mt-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#C5A869] hover:text-[#0B1D15] underline underline-offset-4"
                     >
-                      Call Studio Now &rarr;
+                      Call Store Now &rarr;
                     </a>
                   </div>
                 </div>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-xs uppercase tracking-[0.15em] font-semibold text-[#0B1D15]">
-                      Studio Working Hours
+                      Store Working Hours
                     </h3>
                     <p className="text-sm text-[#4A5550] mt-1 font-light">
                       Mon to Sun: 9:30 AM – 7:30 PM
@@ -173,7 +173,7 @@ export default function ContactPage() {
                     Explore Aesthetic Inspirations
                   </h3>
                   <p className="text-xs text-[#68756F] mt-1 font-light leading-relaxed">
-                    Follow our daily studio unboxings, custom wax-sealed calligraphy reels, and bridal moodboards across social channels.
+                    Follow our daily store unboxings, custom wax-sealed calligraphy reels, and bridal moodboards across social channels.
                   </p>
                 </div>
 

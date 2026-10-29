@@ -62,10 +62,10 @@ export default function StructuredData() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'What makes HamPers Kochi luxury hampers unique?',
+        name: 'What makes Hampers Kochi luxury hampers unique?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Every hamper from HamPers Kochi is hand-assembled in our Fort Kochi studio. We reject generic bulk items in favor of authentic Kerala heritage keepsakes—hand-cast brass Vilakkus, Balaramapuram Kasavu silks, single-estate Nilgiri teas, Wayanad artisanal chocolates, and handwritten calligraphy on handmade cotton paper sealed with hot wax.',
+          text: 'Every hamper from Hampers Kochi is hand-assembled in our Kochi store. We reject generic bulk items in favor of authentic Kerala heritage keepsakes—hand-cast brass Vilakkus, Balaramapuram Kasavu silks, single-estate Nilgiri teas, Wayanad artisanal chocolates, and handwritten calligraphy on handmade cotton paper sealed with hot wax.',
         },
       },
       {
@@ -102,10 +102,10 @@ export default function StructuredData() {
       },
       {
         '@type': 'Question',
-        name: 'Where is HamPers Kochi studio located, and can I pick up in person?',
+        name: 'Where is Hampers Kochi store located, and can I pick up in person?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Our design studio is based in Kochi, Kerala. You can arrange direct studio pickup or concierge delivery anywhere in the city by coordinating with our concierge at +91 98460 02241.',
+          text: "Our store is located at Seethy's tower, vallathol jn, Kakkanad, Kochi, Kerala. You can arrange direct store pickup or delivery anywhere in the city by coordinating with us at +91 98460 02241.",
         },
       },
     ],

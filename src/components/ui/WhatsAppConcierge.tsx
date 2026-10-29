@@ -69,7 +69,7 @@ export default function WhatsAppConcierge() {
           </div>
 
           <div className="p-2.5 bg-[#F7F4EC] text-center text-[10px] text-[#68756F]">
-            Direct line: +91 98460 02241 &bull; Fort Kochi Studio
+            Direct line: +91 98460 02241 &bull; Hampers Kochi Store
           </div>
         </div>
       )}

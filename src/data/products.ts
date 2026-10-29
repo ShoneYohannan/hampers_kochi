@@ -17,14 +17,14 @@ export const ALL_PRODUCTS: Product[] = [
     category: 'Bestsellers',
     tags: ['Bestseller', 'Signature Keepsake', 'All-India Delivery'],
     description: 'An opulent tribute to Kerala’s rich heritage. Featuring artisanal single-estate spice chocolates, pure Nilgiri golden pekoe tea, and a hand-turned brass keepsake.',
-    detailedDescription: 'Hand-assembled in our Fort Kochi studio, the Royal Malabar Sovereign Trunk represents the pinnacle of luxury gifting. Housed within a handcrafted emerald velvet rigid casket with brass hasp and lock, this gift conveys profound respect and celebration.',
+    detailedDescription: 'Hand-assembled in our Hampers Kochi store, the Royal Malabar Sovereign Trunk represents the pinnacle of luxury gifting. Housed within a handcrafted emerald velvet rigid casket with brass hasp and lock, this gift conveys profound respect and celebration.',
     contents: [
       'Artisanal Belgian Dark Chocolate Truffles with Cardamom Infusion (200g)',
       'Handcrafted Soy Wax Amber & Sandalwood Candle in Matte Gold Tin',
       'Nilgiri First-Flush Golden Pekoe Tea in Hand-Embossed Brass Caddy (100g)',
       'Kashmiri Saffron-Infused Wild Forest Honey (150g)',
       'Handmade Botanical Soap Bar with Cold-Pressed Coconut Oil',
-      'Bespoke Wax-Sealed Personalized Calligraphy Note'
+      'Wax-Sealed Personalized Calligraphy Note'
     ],
     boxType: 'Handmade Emerald Velvet Rigid Trunk with Gold Latch',
     dimensions: '35cm x 28cm x 15cm',
@@ -441,7 +441,7 @@ export const ALL_PRODUCTS: Product[] = [
     category: 'Bestsellers',
     tags: ['Bestseller', 'Heritage', 'Kochi Exclusive'],
     description: 'Echoing the vintage trade charm of old Mattancherry and Fort Kochi. A collectible gift chest packed with historic flavors and brass wonders.',
-    detailedDescription: 'Hand-assembled in our Fort Kochi studio, honoring the spice traders and navigators who docked on our shores centuries ago.',
+    detailedDescription: 'Hand-assembled in our Hampers Kochi store, honoring the spice traders and navigators who docked on our shores centuries ago.',
     contents: [
       'Solid Brass Working Maritime Pocket Compass with Leather Pouch',
       'Dutch-Style Handmade Ceramic Tile Coasters (Set of 2)',

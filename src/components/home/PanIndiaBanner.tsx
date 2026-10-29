@@ -43,19 +43,19 @@ export default function PanIndiaBanner() {
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif-luxury font-normal leading-tight">
-              From Our Kochi Atelier to Any Doorstep Across India
+              From Our Kochi Hampers Store to Any Doorstep Across All India
             </h2>
 
             <p className="text-xs sm:text-sm text-[#EFE9DC]/80 font-light max-w-xl leading-relaxed">
               We deliver across all 28 states and union territories — Mumbai, Bengaluru, Delhi NCR, 
-              Hyderabad, Chennai, Kolkata, and beyond. Every bespoke hamper is handcrafted on pre-order in cushioned, climate-sealed 
+              Hyderabad, Chennai, Kolkata, and beyond. Every luxury hamper is handcrafted on pre-order in cushioned, climate-sealed 
               chambers so chocolates arrive cold and brass keepsakes arrive gleaming.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-[#EFE9DC]/70">
               <span className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-[#D8B979]" />
-                Bespoke Pre-Order Dispatch
+                Pre-Order Dispatch
               </span>
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#D8B979]" />

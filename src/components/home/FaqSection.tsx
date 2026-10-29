@@ -14,19 +14,19 @@ const FAQ_ITEMS: FaqItem[] = [
     category: 'Curation & Keepsakes',
     question: 'What makes Hampers Kochi hampers unique and distinct from standard gift boxes?',
     answer:
-      'Every hamper is curated and hand-assembled in our Fort Kochi studio. Rather than generic mass-market items, we curate heirloom-grade Kerala brassware (like handmade Vilakkus and Urulis), GI-tagged Balaramapuram Kasavu handlooms, single-origin high-grown Nilgiri teas, Wayanad artisanal chocolates, and handwritten calligraphy on handmade cotton paper, individually stamped with hot sealing wax.',
+      'Every hamper is curated and hand-assembled in our Kochi store. Rather than generic mass-market items, we curate heirloom-grade Kerala brassware (like handmade Vilakkus and Urulis), GI-tagged Balaramapuram Kasavu handlooms, single-origin high-grown Nilgiri teas, Wayanad artisanal chocolates, and handwritten calligraphy on handmade cotton paper, individually stamped with hot sealing wax.',
   },
   {
     category: 'Delivery & Shipping',
     question: 'What are your delivery timelines within Kochi and across India?',
     answer:
-      'All Hampers Kochi creations are handcrafted on a bespoke pre-order basis to ensure optimal freshness and artisanal perfection. For Kochi and Ernakulam, pre-orders are hand-delivered upon completion or your preferred scheduled celebration date. For all-India delivery (including Bengaluru, Mumbai, Delhi NCR, Chennai, and Hyderabad), we dispatch via premium priority air express with thermal insulation and gel ice packs, arriving within 2 to 4 business days.',
+      'All Hampers Kochi creations are handcrafted on a pre-order basis to ensure optimal freshness and artisanal perfection. For Kochi and Ernakulam, pre-orders are hand-delivered upon completion or your preferred scheduled celebration date. For all-India delivery (including Bengaluru, Mumbai, Delhi NCR, Chennai, and Hyderabad), we dispatch via premium priority air express with thermal insulation and gel ice packs, arriving within 2 to 4 business days.',
   },
   {
     category: 'Personalization',
     question: 'Can I personalize my hamper with custom calligraphy notes and specific items?',
     answer:
-      'Yes, each hamper includes a complimentary personalized wax-sealed parchment note written by our in-house calligrapher with your custom message (up to 50 characters). You can also customize trunk ribbons, brass keepsakes, tea blends, or add bespoke keepsakes by contacting our concierge on WhatsApp at +91 98460 02241.',
+      'Yes, each hamper includes a complimentary personalized wax-sealed parchment note written by our in-house calligrapher with your custom message (up to 50 characters). You can also customize trunk ribbons, brass keepsakes, tea blends, or add custom keepsakes by contacting our concierge on WhatsApp at +91 98460 02241.',
   },
 ];
 
@@ -51,8 +51,8 @@ export default function FaqSection() {
             Frequently Asked Questions
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#68756F] font-light">
-            Answers regarding our Kochi studio craftsmanship, climate-protected all-India shipping,
-            and bespoke personalization.
+            Answers regarding our Kochi store craftsmanship, climate-protected all-India shipping,
+            and custom personalization.
           </p>
         </div>
 
@@ -111,7 +111,7 @@ export default function FaqSection() {
             Have a custom inquiry or special request?
           </h4>
           <p className="text-xs text-[#EFE9DC]/75 font-light mb-4">
-            Our concierge in Fort Kochi is available 7 days a week to assist with bespoke curations.
+            Our team at Hampers Kochi is available 7 days a week to assist with custom curations.
           </p>
           <a
             href="https://wa.me/919846002241?text=Hello%20Hampers%20Kochi%2C%20how%20can%20you%20help%20me%20with%20a%20luxury%20hamper%3F"
