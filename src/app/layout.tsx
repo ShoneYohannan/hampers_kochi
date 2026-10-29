@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
@@ -9,19 +8,6 @@ import CartDrawer from '@/components/ui/CartDrawer';
 import CheckoutModal from '@/components/ui/CheckoutModal';
 import WhatsAppConcierge from '@/components/ui/WhatsAppConcierge';
 
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-cormorant',
-  display: 'swap',
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-jakarta',
-  display: 'swap',
-});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -112,11 +98,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${jakarta.variable} scroll-smooth`}>
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        />
       </head>
       <body className="min-h-screen bg-[#FCFBF8] text-[#141A17] font-sans-clean antialiased selection:bg-[#C5A869]/25 selection:text-[#0B1D15] flex flex-col overflow-x-hidden">
         <CmsProvider>

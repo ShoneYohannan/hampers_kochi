@@ -2,6 +2,8 @@
 
 @layer base {
   :root {
+    --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+    --font-jakarta: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     /* Palette Option C: Dark Green & Gold with Warm Ivory */
     --color-forest-900: #0B1D15;
     --color-forest-800: #10291E;
