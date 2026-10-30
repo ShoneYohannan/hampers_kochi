@@ -82,7 +82,6 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
     { label: 'Wedding & Bridal Suite', href: '/shop?category=Wedding%20%26%20Bridal' },
     { label: 'Anniversary & Romance', href: '/shop?category=Anniversary%20%26%20Romance' },
     { label: 'Festive & Traditional Brass', href: '/shop?category=Festive%20%26%20Celebration' },
-    { label: 'Corporate & Executive Gifting', href: '/corporate' },
   ];
 
   const cleanPhone = (settings?.phone || '+91 98460 02241').replace(/\s+/g, '');
@@ -177,10 +176,6 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
                 </div>
               )}
             </div>
-
-            <Link href="/corporate" className={`hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap ${isActive('/corporate') ? 'text-[#D8B979] border-b border-[#D8B979]' : 'text-[#FCFBF8]'}`}>
-              CORPORATE GIFTS
-            </Link>
 
             <Link href="/story" className={`hover:text-[#D8B979] transition-colors py-1 whitespace-nowrap ${isActive('/story') ? 'text-[#D8B979] border-b border-[#D8B979]' : 'text-[#FCFBF8]'}`}>
               OUR STORY
@@ -296,15 +291,6 @@ export default function Navbar({ onOpenSearch, onOpenWishlist, onOpenBuilder }: 
             >
               <span>Occasions</span>
               <span className="text-xs text-[#EFE9DC]/60">Curations</span>
-            </Link>
-
-            <Link
-              href="/corporate"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-[#D8B979] py-1 border-b border-[#C5A869]/10 pb-3 flex items-center justify-between"
-            >
-              <span>CORPORATE GIFTS</span>
-              <span className="text-xs text-[#EFE9DC]/60">Bulk Suites</span>
             </Link>
 
             <Link

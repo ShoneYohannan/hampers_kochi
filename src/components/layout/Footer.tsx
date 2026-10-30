@@ -114,7 +114,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
               <li><Link href="/shop?category=Bestsellers" className="hover:text-[#C5A869] transition-colors">Signature Bestsellers</Link></li>
               <li><Link href="/occasions" className="hover:text-[#C5A869] transition-colors">Occasion Curations</Link></li>
               <li><Link href="/shop?category=Wedding%20%26%20Bridal" className="hover:text-[#C5A869] transition-colors">Bridal &amp; Wedding Suites</Link></li>
-              <li><Link href="/corporate" className="hover:text-[#C5A869] transition-colors">Corporate &amp; Executive Trunks</Link></li>
+              <li><Link href="/shop?category=Festive%20%26%20Celebration" className="hover:text-[#C5A869] transition-colors">Festive &amp; Celebrations</Link></li>
             </ul>
           </div>
 
