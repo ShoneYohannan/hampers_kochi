@@ -274,6 +274,70 @@ export default function CmsPage() {
     toast.success('Catalog exported as JSON backup.');
   };
 
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#0B1D15] text-[#FCFBF8] font-sans-clean flex flex-col items-center justify-center p-4 relative overflow-hidden">
+        <div className="absolute w-96 h-96 bg-[#C5A869]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-md w-full bg-[#10291E] border border-[#C5A869]/40 rounded-2xl p-8 sm:p-10 shadow-2xl relative z-10 text-center space-y-6">
+          <div className="w-16 h-16 rounded-full bg-[#0B1D15] border-2 border-[#C5A869]/60 flex items-center justify-center mx-auto text-[#D8B979] shadow-inner">
+            <Lock className="w-7 h-7" />
+          </div>
+
+          <div className="space-y-1.5">
+            <div className="text-[10px] tracking-[0.3em] uppercase text-[#C5A869] font-medium">
+              Authorized Access Only
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-serif-luxury text-[#FCFBF8]">
+              Hampers Kochi CMS
+            </h1>
+            <p className="text-xs text-[#EFE9DC]/70 font-light max-w-xs mx-auto">
+              Please enter your 4-digit administrative passcode to unlock the store manager.
+            </p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-4 pt-2">
+            <div>
+              <input
+                type="password"
+                maxLength={8}
+                autoFocus
+                placeholder="Enter Passcode"
+                value={passcodeInput}
+                onChange={(e) => {
+                  setPasscodeInput(e.target.value);
+                  setAuthError('');
+                }}
+                className="w-full text-center text-xl tracking-[0.3em] font-mono px-4 py-3 rounded-lg bg-[#0B1D15] border border-[#C5A869]/40 text-[#D8B979] placeholder:text-white/20 placeholder:tracking-normal placeholder:font-sans placeholder:text-xs focus:outline-none focus:border-[#D8B979] shadow-inner"
+              />
+              {authError && (
+                <p className="text-xs text-red-400 mt-2 font-medium">{authError}</p>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3.5 px-6 rounded-lg bg-[#C5A869] hover:bg-[#D8B979] text-[#0B1D15] font-semibold text-xs uppercase tracking-[0.2em] transition-all shadow-lg hover:shadow-xl cursor-pointer flex items-center justify-center gap-2"
+            >
+              <KeyRound className="w-4 h-4" />
+              <span>Unlock Dashboard</span>
+            </button>
+          </form>
+
+          <div className="pt-4 border-t border-[#C5A869]/15">
+            <Link
+              href="/"
+              className="text-xs text-[#EFE9DC]/60 hover:text-[#D8B979] transition-colors flex items-center justify-center gap-1.5"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Return to Public Website</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#0B1D15] text-[#FCFBF8] font-sans-clean flex flex-col">
       {/* Top CMS Header */}
@@ -315,6 +379,15 @@ export default function CmsPage() {
               <span>View Live Store</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </Link>
+
+            <button
+              onClick={handleLogout}
+              className="px-3.5 py-2 rounded bg-red-950/70 border border-red-500/40 text-red-300 hover:bg-red-900 hover:text-white text-xs font-medium uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
+              title="Lock Admin Dashboard"
+            >
+              <Lock className="w-3.5 h-3.5" />
+              <span>Lock</span>
+            </button>
           </div>
         </div>
 
