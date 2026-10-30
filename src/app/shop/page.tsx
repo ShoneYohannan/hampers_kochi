@@ -113,17 +113,16 @@ function ShopContent() {
         </div>
 
         <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16 text-center max-w-3xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C5A869]/10 border border-[#C5A869]/25 text-[10.5px] uppercase tracking-[0.22em] text-[#D8B979] font-medium mb-3">
-            <span>❀</span>
-            <span>Fresh Florals &amp; Curated Keepsakes</span>
-            <span>❀</span>
+          <div className="flex items-center justify-center gap-3 text-[11px] uppercase tracking-[0.25em] text-[#D8B979] font-medium mb-3">
+            <span className="w-8 h-[1px] bg-[#C5A869]/40 hidden sm:inline-block" />
+            <span>For Every Milestone &amp; &ldquo;Thinking of You&rdquo; Moment</span>
+            <span className="w-8 h-[1px] bg-[#C5A869]/40 hidden sm:inline-block" />
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#FCFBF8]">
             Curated Artisanal Hampers
           </h1>
           <p className="mt-3 text-xs sm:text-sm md:text-base text-[#EFE9DC]/80 font-light leading-relaxed max-w-2xl mx-auto">
-            Handcrafted on pre-order in Fort Kochi with fresh botanical blooms, Kerala Kasavu textiles, single-estate tea,
-            and hand-cast brass keepsakes. Delivered in luxury climate-controlled packaging across India.
+            Handcrafted on pre-order in Kochi with unique keepsakes, delightful treats, and personalized touches. Delivered with care across All India.
           </p>
         </div>
       </div>
