@@ -161,6 +161,10 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
     };
 
     fetchSupabaseProducts();
+    // Background lightweight ping to keep Supabase awake
+    try {
+      fetch('/api/cron/keepalive').catch(() => {});
+    } catch {}
   }, []);
 
   // Save products with Supabase persistence

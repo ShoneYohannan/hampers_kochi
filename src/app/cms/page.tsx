@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   Package,
+  Lock,
+  KeyRound,
   Plus,
   Edit3,
   Trash2,
@@ -74,6 +76,42 @@ export default function CmsPage() {
   } = useCms();
 
   const toast = useToast();
+
+  // Authentication PIN protection (8606)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [passcodeInput, setPasscodeInput] = useState('');
+  const [authError, setAuthError] = useState('');
+  const [hasMounted, setHasMounted] = useState(false);
+
+  React.useEffect(() => {
+    setHasMounted(true);
+    if (typeof window !== 'undefined') {
+      const auth = sessionStorage.getItem('hk_cms_authenticated');
+      if (auth === 'true') {
+        setIsAuthenticated(true);
+      }
+    }
+  }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passcodeInput.trim() === '8606') {
+      setIsAuthenticated(true);
+      setAuthError('');
+      sessionStorage.setItem('hk_cms_authenticated', 'true');
+      toast.success('Access granted. Welcome to Hampers Kochi CMS.');
+    } else {
+      setAuthError('Incorrect passcode. Please try again.');
+      toast.error('Incorrect passcode. Try again.');
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setPasscodeInput('');
+    sessionStorage.removeItem('hk_cms_authenticated');
+    toast.info('CMS Dashboard locked.');
+  };
 
   const [activeTab, setActiveTab] = useState<'products' | 'announcements' | 'settings' | 'inquiries'>('products');
   const [searchQuery, setSearchQuery] = useState('');
