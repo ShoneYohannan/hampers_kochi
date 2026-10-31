@@ -90,3 +90,25 @@ export interface OrderInquiry {
   giftNote?: string;
 }
 
+
+export interface OccasionItem {
+  title: string;
+  category: OccasionCategory;
+  description: string;
+  image: string;
+  itemCount: string;
+}
+
+export interface HeroSlideImage {
+  src: string;
+  alt: string;
+  pos?: string;
+}
+
+export interface HeroData {
+  tagline: string;
+  titleLine1: string;
+  titleLine2: string;
+  description: string;
+  images: HeroSlideImage[];
+}

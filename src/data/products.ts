@@ -1,4 +1,4 @@
-import { Product } from '@/types';
+import { Product, OccasionItem, HeroData, HeroSlideImage } from '@/types';
 
 export const ALL_PRODUCTS: Product[] = [
   {
@@ -1027,7 +1027,7 @@ export const ALL_PRODUCTS: Product[] = [
   },
 ];
 
-export const OCCASIONS_DATA = [
+export const OCCASIONS_DATA: OccasionItem[] = [
   {
     title: 'Birthday Hampers',
     category: 'Birthday' as const,
@@ -1071,6 +1071,43 @@ export const OCCASIONS_DATA = [
     itemCount: '5 Curations',
   },
 ];
+
+
+export const DEFAULT_HERO_IMAGES: HeroSlideImage[] = [
+  {
+    src: '/images/front.jpg',
+    alt: 'The Signature Kerala Kasavu & Jasmine Grand Festive Hamper with Brass Keepsake and Artisanal Delicacies',
+    pos: 'center 40%',
+  },
+  {
+    src: '/images/1002090346.jpg.jpeg',
+    alt: 'Handcrafted Heritage Wicker Hamper with Fresh Exotic Florals and Artisanal Chocolates from Kochi',
+    pos: 'center',
+  },
+  {
+    src: '/images/1001726475.jpg.jpeg',
+    alt: 'Royal Kerala Kasavu Silk Handloom & Single-Origin Chocolate Luxury Suite Hamper',
+    pos: 'center',
+  },
+  {
+    src: '/images/1001981345.jpg.jpeg',
+    alt: 'Traditional Malabar Wicker Casket with Hand-Cast Brass Vilakku Lamp and High-Grown Nilgiri Teas',
+    pos: 'center 40%',
+  },
+  {
+    src: '/images/celebration-birthday-hamper.jpg',
+    alt: 'Bespoke Celebration Hamper with Fresh Botanical Accents and Gourmet Artisanal Bakes',
+    pos: 'center 30%',
+  },
+];
+
+export const DEFAULT_HERO_DATA: HeroData = {
+  tagline: 'HamPers Kochi',
+  titleLine1: 'From Milestones to',
+  titleLine2: '“Thinking of You” Moments',
+  description: 'Beautiful gifting for every chapter of life. From milestone celebrations to simple “thinking of you” moments, we curate aesthetic hampers tailored to every aspect of your life. Every box is handcrafted with care, blending unique keepsakes and delightful treats to tell your story perfectly. Open for pre-orders with express delivery.',
+  images: DEFAULT_HERO_IMAGES,
+};
 
 export const BUILDER_ITEMS = {
   boxes: [

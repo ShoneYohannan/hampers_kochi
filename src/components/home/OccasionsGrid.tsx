@@ -5,12 +5,16 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { OCCASIONS_DATA } from '@/data/products';
 import { OccasionCategory } from '@/types';
+import { useCms } from '@/context/CmsContext';
 
 interface OccasionsGridProps {
   onSelectOccasion: (category: OccasionCategory) => void;
 }
 
 export default function OccasionsGrid({ onSelectOccasion }: OccasionsGridProps) {
+  const { occasions } = useCms();
+  const items = occasions && occasions.length > 0 ? occasions : OCCASIONS_DATA;
+
   return (
     <section id="occasions" className="py-16 md:py-24 bg-[#FCFBF8] border-b border-[#EFE9DC]">
       <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-16">
@@ -31,16 +35,16 @@ export default function OccasionsGrid({ onSelectOccasion }: OccasionsGridProps) 
 
         {/* Occasions 6-grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {OCCASIONS_DATA.map((item) => (
+          {items.map((item, idx) => (
             <div
-              key={item.title}
+              key={`${item.title}-${idx}`}
               onClick={() => onSelectOccasion(item.category)}
               className="group relative rounded-md overflow-hidden bg-[#0B1D15] cursor-pointer shadow-md hover:shadow-xl transition-all duration-500 border border-[#C5A869]/20"
             >
               {/* Image Container with Zoom effect */}
               <div className="relative aspect-[4/3] sm:aspect-[1/1] w-full overflow-hidden">
                 <Image
-                  src={item.image}
+                  src={item.image || '/images/front.jpg'}
                   alt={`${item.title} Luxury Gift Hamper Collection in Kochi`}
                   fill
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"

@@ -4,53 +4,40 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { useCms } from '@/context/CmsContext';
+import { DEFAULT_HERO_IMAGES } from '@/data/products';
 
 interface HeroProps {
   onOpenBuilder?: () => void;
 }
 
-const HERO_IMAGES = [
-  {
-    src: '/images/front.jpg',
-    alt: 'The Signature Kerala Kasavu & Jasmine Grand Festive Hamper with Brass Keepsake and Artisanal Delicacies',
-    pos: 'center 40%',
-  },
-  {
-    src: '/images/1002090346.jpg.jpeg',
-    alt: 'Handcrafted Heritage Wicker Hamper with Fresh Exotic Florals and Artisanal Chocolates from Kochi',
-    pos: 'center',
-  },
-  {
-    src: '/images/1001726475.jpg.jpeg',
-    alt: 'Royal Kerala Kasavu Silk Handloom & Single-Origin Chocolate Luxury Suite Hamper',
-    pos: 'center',
-  },
-  {
-    src: '/images/1001981345.jpg.jpeg',
-    alt: 'Traditional Malabar Wicker Casket with Hand-Cast Brass Vilakku Lamp and High-Grown Nilgiri Teas',
-    pos: 'center 40%',
-  },
-  {
-    src: '/images/celebration-birthday-hamper.jpg',
-    alt: 'Bespoke Celebration Hamper with Fresh Botanical Accents and Gourmet Artisanal Bakes',
-    pos: 'center 30%',
-  },
-];
-
 export default function Hero({ onOpenBuilder }: HeroProps) {
+  const { hero } = useCms();
+
+  const heroImages = hero?.images && hero.images.length > 0 ? hero.images : DEFAULT_HERO_IMAGES;
+  const tagline = hero?.tagline || 'HamPers Kochi';
+  const titleLine1 = hero?.titleLine1 || 'From Milestones to';
+  const titleLine2 = hero?.titleLine2 || '“Thinking of You” Moments';
+  const description =
+    hero?.description ||
+    'Beautiful gifting for every chapter of life. From milestone celebrations to simple “thinking of you” moments, we curate aesthetic hampers tailored to every aspect of your life. Every box is handcrafted with care, blending unique keepsakes and delightful treats to tell your story perfectly. Open for pre-orders with express delivery.';
+
   const [currentImg, setCurrentImg] = useState(0);
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
+    if (heroImages.length <= 1) return;
     const interval = setInterval(() => {
       setFading(true);
       setTimeout(() => {
-        setCurrentImg((prev) => (prev + 1) % HERO_IMAGES.length);
+        setCurrentImg((prev) => (prev + 1) % heroImages.length);
         setFading(false);
       }, 600);
     }, 5500);
     return () => clearInterval(interval);
-  }, []);
+  }, [heroImages.length]);
+
+  const activeImage = heroImages[currentImg] || heroImages[0] || DEFAULT_HERO_IMAGES[0];
 
   return (
     <section id="home" className="relative w-full flex flex-col lg:flex-row overflow-hidden" style={{ minHeight: 'calc(100vh - 88px)' }}>
@@ -58,32 +45,34 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
       {/* ── LEFT: Full-bleed image panel (fills edge-to-edge, zero left blank space) ── */}
       <div className="relative w-full lg:w-[55%] h-[55vw] sm:h-[70vw] lg:h-auto overflow-hidden bg-[#0B1D15] flex-shrink-0">
         <Image
-          src={HERO_IMAGES[currentImg].src}
-          alt={HERO_IMAGES[currentImg].alt}
+          src={activeImage.src}
+          alt={activeImage.alt || 'The Signature Kerala Kasavu & Jasmine Grand Festive Hamper with Brass Keepsake and Artisanal Delicacies'}
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 55vw"
           className={`object-cover transition-opacity duration-700 ease-in-out ${fading ? 'opacity-0' : 'opacity-100'}`}
-          style={{ objectPosition: HERO_IMAGES[currentImg].pos }}
+          style={{ objectPosition: activeImage.pos || 'center 40%' }}
         />
 
         {/* Subtle right-edge vignette for blending into the right panel */}
         <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-r from-transparent to-[#0B1D15] hidden lg:block" />
 
         {/* Image Indicators (Clean architectural lines, no pill shapes) */}
-        <div className="absolute bottom-6 left-6 flex items-center gap-2 z-10">
-          {HERO_IMAGES.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => { setFading(true); setTimeout(() => { setCurrentImg(idx); setFading(false); }, 300); }}
-              className={`transition-all duration-300 rounded-sm cursor-pointer ${currentImg === idx
-                ? 'w-7 h-1.5 bg-[#D8B979]'
-                : 'w-2 h-1.5 bg-white/40 hover:bg-white/80'
-                }`}
-              aria-label={`View curation visual ${idx + 1}`}
-            />
-          ))}
-        </div>
+        {heroImages.length > 1 && (
+          <div className="absolute bottom-6 left-6 flex items-center gap-2 z-10">
+            {heroImages.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => { setFading(true); setTimeout(() => { setCurrentImg(idx); setFading(false); }, 300); }}
+                className={`transition-all duration-300 rounded-sm cursor-pointer ${currentImg === idx
+                  ? 'w-7 h-1.5 bg-[#D8B979]'
+                  : 'w-2 h-1.5 bg-white/40 hover:bg-white/80'
+                  }`}
+                aria-label={`View curation visual ${idx + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* ── RIGHT: Content panel (Clean solid dark forest green, no AI purple/gradient blobs) ── */}
@@ -94,16 +83,16 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
           {/* Label */}
           <div className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#D8B979] font-medium mb-6 flex items-center gap-3">
             <span className="w-8 h-[1px] bg-[#D8B979]/60" />
-            HamPers Kochi
+            {tagline}
           </div>
 
           {/* Headline - Direct, clear, concrete, no vague poetic fluff */}
           <h1 className="font-serif-luxury font-normal text-[#FCFBF8] leading-[1.08] tracking-tight">
             <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-1">
-              From Milestones to
+              {titleLine1}
             </span>
             <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl italic text-[#D8B979] mb-1">
-              &ldquo;Thinking of You&rdquo; Moments
+              {titleLine2}
             </span>
           </h1>
 
@@ -112,7 +101,7 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
 
           {/* Description - Clear, factual, specific */}
           <p className="text-[#EFE9DC]/90 text-base sm:text-lg font-light leading-relaxed max-w-md">
-            Beautiful gifting for every chapter of life. From milestone celebrations to simple &ldquo;thinking of you&rdquo; moments, we curate aesthetic hampers tailored to every aspect of your life. Every box is handcrafted with care, blending unique keepsakes and delightful treats to tell your story perfectly. Open for pre-orders with express delivery.
+            {description}
           </p>
 
           {/* CTAs: Crisp rectangular buttons, no pill shapes */}

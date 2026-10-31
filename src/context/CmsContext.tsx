@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product, StoreSettings, OrderInquiry } from '@/types';
-import { ALL_PRODUCTS } from '@/data/products';
+import { Product, StoreSettings, OrderInquiry, OccasionItem, HeroData } from '@/types';
+import { ALL_PRODUCTS, OCCASIONS_DATA, DEFAULT_HERO_DATA } from '@/data/products';
 import { createClient } from '@/lib/supabase/client';
 
 interface CmsContextType {
@@ -17,6 +17,15 @@ interface CmsContextType {
   
   settings: StoreSettings;
   updateSettings: (newSettings: Partial<StoreSettings>) => void;
+
+  occasions: OccasionItem[];
+  updateOccasion: (index: number, updated: Partial<OccasionItem>) => void;
+  updateOccasions: (list: OccasionItem[]) => void;
+  resetOccasionsToDefault: () => void;
+
+  hero: HeroData;
+  updateHero: (updated: Partial<HeroData>) => void;
+  resetHeroToDefault: () => void;
 
   inquiries: OrderInquiry[];
   addInquiry: (inquiry: OrderInquiry) => void;
@@ -49,6 +58,8 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
   const [products, setProducts] = useState<Product[]>(ALL_PRODUCTS);
   const [announcements, setAnnouncements] = useState<string[]>(DEFAULT_ANNOUNCEMENTS);
   const [settings, setSettings] = useState<StoreSettings>(DEFAULT_SETTINGS);
+  const [occasions, setOccasions] = useState<OccasionItem[]>(OCCASIONS_DATA);
+  const [hero, setHero] = useState<HeroData>(DEFAULT_HERO_DATA);
   const [inquiries, setInquiries] = useState<OrderInquiry[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -103,6 +114,32 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
           parsedSettings.studioHours = 'Mon to Sun: 9:30 AM – 7:30 PM';
         }
         setSettings((prev) => ({ ...prev, ...parsedSettings }));
+      }
+
+      // Load Occasions
+      const storedOccasions = localStorage.getItem('hk_occasions');
+      if (storedOccasions) {
+        try {
+          const parsed = JSON.parse(storedOccasions);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setOccasions(parsed);
+          }
+        } catch {}
+      }
+
+      // Load Hero
+      const storedHero = localStorage.getItem('hk_hero_data');
+      if (storedHero) {
+        try {
+          const parsed = JSON.parse(storedHero);
+          if (parsed && typeof parsed === 'object') {
+            setHero((prev) => ({
+              ...prev,
+              ...parsed,
+              images: Array.isArray(parsed.images) && parsed.images.length > 0 ? parsed.images : prev.images,
+            }));
+          }
+        } catch {}
       }
 
       const storedInquiries = localStorage.getItem('atelier_inquiries');
@@ -169,7 +206,6 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
 
   // Save products with Supabase persistence
   const addProduct = async (newProduct: Product) => {
-    // Optimistic UI update
     setProducts((prev) => {
       const updated = [newProduct, ...prev];
       try {
@@ -215,7 +251,6 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
   };
 
   const updateProduct = async (id: string, updatedFields: Partial<Product>) => {
-    // Optimistic UI update
     setProducts((prev) => {
       const updated = prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p));
       try {
@@ -239,7 +274,6 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
   };
 
   const deleteProduct = async (id: string) => {
-    // Optimistic UI update
     setProducts((prev) => {
       const updated = prev.filter((p) => p.id !== id);
       try {
@@ -296,6 +330,62 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
+  // Save occasions
+  const updateOccasion = (index: number, updated: Partial<OccasionItem>) => {
+    setOccasions((prev) => {
+      const next = [...prev];
+      if (index >= 0 && index < next.length) {
+        next[index] = { ...next[index], ...updated };
+      }
+      try {
+        localStorage.setItem('hk_occasions', JSON.stringify(next));
+      } catch (err) {
+        console.error(err);
+      }
+      return next;
+    });
+  };
+
+  const updateOccasions = (list: OccasionItem[]) => {
+    setOccasions(list);
+    try {
+      localStorage.setItem('hk_occasions', JSON.stringify(list));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const resetOccasionsToDefault = () => {
+    setOccasions(OCCASIONS_DATA);
+    try {
+      localStorage.removeItem('hk_occasions');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Save Hero Data
+  const updateHero = (updated: Partial<HeroData>) => {
+    setHero((prev) => {
+      const next = { ...prev, ...updated };
+      try {
+        localStorage.setItem('hk_hero_data', JSON.stringify(next));
+      } catch (err) {
+        console.error(err);
+      }
+      return next;
+    });
+  };
+
+  const resetHeroToDefault = () => {
+    setHero(DEFAULT_HERO_DATA);
+    try {
+      localStorage.removeItem('hk_hero_data');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   // Save inquiries
   const addInquiry = (inquiry: OrderInquiry) => {
     setInquiries((prev) => {
@@ -342,6 +432,13 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
         updateAnnouncements,
         settings,
         updateSettings,
+        occasions,
+        updateOccasion,
+        updateOccasions,
+        resetOccasionsToDefault,
+        hero,
+        updateHero,
+        resetHeroToDefault,
         inquiries,
         addInquiry,
         deleteInquiry,
