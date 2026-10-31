@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { useCms } from '@/context/CmsContext';
 
 interface HeroProps {
   onOpenBuilder?: () => void;
@@ -38,6 +39,22 @@ const HERO_IMAGES = [
 ];
 
 export default function Hero({ onOpenBuilder }: HeroProps) {
+  const { siteContent } = useCms();
+  const hero = siteContent?.hero;
+
+  const tagline = hero?.tagline || 'HamPers Kochi';
+  const titleLine1 = hero?.titleLine1 || 'From Milestones to';
+  const titleLine2 = hero?.titleLine2 || '“Thinking of You” Moments';
+  const description =
+    hero?.description ||
+    'Beautiful gifting for every chapter of life. From milestone celebrations to simple “thinking of you” moments, we curate aesthetic hampers tailored to every aspect of your life. Every box is handcrafted with care, blending unique keepsakes and delightful treats to tell your story perfectly. Open for pre-orders with express delivery.';
+  const stat1Value = hero?.stat1Value || 'Pre-Order';
+  const stat1Label = hero?.stat1Label || 'Handcrafted Only';
+  const stat2Value = hero?.stat2Value || 'All-India';
+  const stat2Label = hero?.stat2Label || 'Express Delivery';
+  const stat3Value = hero?.stat3Value || '5.0 / 5.0';
+  const stat3Label = hero?.stat3Label || 'Google Rating';
+
   const [currentImg, setCurrentImg] = useState(0);
   const [fading, setFading] = useState(false);
 
@@ -94,16 +111,16 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
           {/* Label */}
           <div className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#D8B979] font-medium mb-6 flex items-center gap-3">
             <span className="w-8 h-[1px] bg-[#D8B979]/60" />
-            HamPers Kochi
+            {tagline}
           </div>
 
           {/* Headline - Direct, clear, concrete, no vague poetic fluff */}
           <h1 className="font-serif-luxury font-normal text-[#FCFBF8] leading-[1.08] tracking-tight">
             <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-1">
-              From Milestones to
+              {titleLine1}
             </span>
             <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl italic text-[#D8B979] mb-1">
-              &ldquo;Thinking of You&rdquo; Moments
+              {titleLine2}
             </span>
           </h1>
 
@@ -112,7 +129,7 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
 
           {/* Description - Clear, factual, specific */}
           <p className="text-[#EFE9DC]/90 text-base sm:text-lg font-light leading-relaxed max-w-md">
-            Beautiful gifting for every chapter of life. From milestone celebrations to simple &ldquo;thinking of you&rdquo; moments, we curate aesthetic hampers tailored to every aspect of your life. Every box is handcrafted with care, blending unique keepsakes and delightful treats to tell your story perfectly. Open for pre-orders with express delivery.
+            {description}
           </p>
 
           {/* CTAs: Crisp rectangular buttons, no pill shapes */}
@@ -147,16 +164,16 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
           {/* Stats row - Pre-Order & All-India Delivery */}
           <div className="mt-14 pt-8 pb-6 sm:pb-10 border-t border-[#C5A869]/15 grid grid-cols-3 gap-6">
             <div>
-              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">Pre-Order</div>
-              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Handcrafted Only</div>
+              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">{stat1Value}</div>
+              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">{stat1Label}</div>
             </div>
             <div>
-              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">All-India</div>
-              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Express Delivery</div>
+              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">{stat2Value}</div>
+              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">{stat2Label}</div>
             </div>
             <div>
-              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">5.0 / 5.0</div>
-              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">Google Rating</div>
+              <div className="text-[#D8B979] text-xl sm:text-2xl font-serif-luxury font-semibold">{stat3Value}</div>
+              <div className="text-[#EFE9DC]/60 text-[10px] uppercase tracking-[0.2em] mt-0.5">{stat3Label}</div>
             </div>
           </div>
 

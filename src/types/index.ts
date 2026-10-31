@@ -90,3 +90,42 @@ export interface OrderInquiry {
   giftNote?: string;
 }
 
+export interface OccasionItem {
+  title: string;
+  category: OccasionCategory;
+  description: string;
+  image: string;
+  itemCount: string;
+}
+
+export interface SiteContent {
+  hero: {
+    tagline: string;
+    titleLine1: string;
+    titleLine2: string;
+    description: string;
+    stat1Value: string;
+    stat1Label: string;
+    stat2Value: string;
+    stat2Label: string;
+    stat3Value: string;
+    stat3Label: string;
+  };
+  story: {
+    badge: string;
+    title: string;
+    p1: string;
+    p2: string;
+    callout1: string;
+    p3: string;
+    callout2: string;
+    p4: string;
+    p5: string;
+  };
+  faqs: {
+    category: string;
+    question: string;
+    answer: string;
+  }[];
+}
+

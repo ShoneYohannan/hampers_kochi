@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product, StoreSettings, OrderInquiry } from '@/types';
-import { ALL_PRODUCTS } from '@/data/products';
+import { Product, StoreSettings, OrderInquiry, OccasionItem, SiteContent } from '@/types';
+import { ALL_PRODUCTS, OCCASIONS_DATA, DEFAULT_SITE_CONTENT } from '@/data/products';
 import { createClient } from '@/lib/supabase/client';
 
 interface CmsContextType {
@@ -17,6 +17,15 @@ interface CmsContextType {
   
   settings: StoreSettings;
   updateSettings: (newSettings: Partial<StoreSettings>) => void;
+
+  occasions: OccasionItem[];
+  updateOccasion: (index: number, updated: Partial<OccasionItem>) => void;
+  updateOccasions: (list: OccasionItem[]) => void;
+  resetOccasionsToDefault: () => void;
+
+  siteContent: SiteContent;
+  updateSiteContent: (newContent: Partial<SiteContent> | ((prev: SiteContent) => SiteContent)) => void;
+  resetSiteContentToDefault: () => void;
 
   inquiries: OrderInquiry[];
   addInquiry: (inquiry: OrderInquiry) => void;
@@ -49,6 +58,8 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
   const [products, setProducts] = useState<Product[]>(ALL_PRODUCTS);
   const [announcements, setAnnouncements] = useState<string[]>(DEFAULT_ANNOUNCEMENTS);
   const [settings, setSettings] = useState<StoreSettings>(DEFAULT_SETTINGS);
+  const [occasions, setOccasions] = useState<OccasionItem[]>(OCCASIONS_DATA);
+  const [siteContent, setSiteContent] = useState<SiteContent>(DEFAULT_SITE_CONTENT);
   const [inquiries, setInquiries] = useState<OrderInquiry[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -103,6 +114,28 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
           parsedSettings.studioHours = 'Mon to Sun: 9:30 AM – 7:30 PM';
         }
         setSettings((prev) => ({ ...prev, ...parsedSettings }));
+      }
+
+      // Load Occasions
+      const storedOccasions = localStorage.getItem('hk_occasions') || localStorage.getItem('atelier_occasions');
+      if (storedOccasions) {
+        const parsed = JSON.parse(storedOccasions);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setOccasions(parsed);
+        }
+      }
+
+      // Load Site Content
+      const storedContent = localStorage.getItem('hk_site_content');
+      if (storedContent) {
+        const parsedContent = JSON.parse(storedContent);
+        if (parsedContent && typeof parsedContent === 'object') {
+          setSiteContent((prev) => ({
+            hero: { ...prev.hero, ...(parsedContent.hero || {}) },
+            story: { ...prev.story, ...(parsedContent.story || {}) },
+            faqs: parsedContent.faqs && Array.isArray(parsedContent.faqs) ? parsedContent.faqs : prev.faqs,
+          }));
+        }
       }
 
       const storedInquiries = localStorage.getItem('atelier_inquiries');
@@ -161,6 +194,7 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
     };
 
     fetchSupabaseProducts();
+
     // Background lightweight ping to keep Supabase awake
     try {
       fetch('/api/cron/keepalive').catch(() => {});
@@ -169,7 +203,6 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
 
   // Save products with Supabase persistence
   const addProduct = async (newProduct: Product) => {
-    // Optimistic UI update
     setProducts((prev) => {
       const updated = [newProduct, ...prev];
       try {
@@ -215,7 +248,6 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
   };
 
   const updateProduct = async (id: string, updatedFields: Partial<Product>) => {
-    // Optimistic UI update
     setProducts((prev) => {
       const updated = prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p));
       try {
@@ -239,7 +271,6 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
   };
 
   const deleteProduct = async (id: string) => {
-    // Optimistic UI update
     setProducts((prev) => {
       const updated = prev.filter((p) => p.id !== id);
       try {
@@ -296,6 +327,66 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
+  // Save occasions
+  const updateOccasion = (index: number, updated: Partial<OccasionItem>) => {
+    setOccasions((prev) => {
+      const next = [...prev];
+      if (index >= 0 && index < next.length) {
+        next[index] = { ...next[index], ...updated };
+      }
+      try {
+        localStorage.setItem('hk_occasions', JSON.stringify(next));
+      } catch (err) {
+        console.error(err);
+      }
+      return next;
+    });
+  };
+
+  const updateOccasions = (list: OccasionItem[]) => {
+    setOccasions(list);
+    try {
+      localStorage.setItem('hk_occasions', JSON.stringify(list));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const resetOccasionsToDefault = () => {
+    setOccasions(OCCASIONS_DATA);
+    try {
+      localStorage.removeItem('hk_occasions');
+      localStorage.removeItem('atelier_occasions');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Save site content
+  const updateSiteContent = (
+    newContent: Partial<SiteContent> | ((prev: SiteContent) => SiteContent)
+  ) => {
+    setSiteContent((prev) => {
+      const updated =
+        typeof newContent === 'function' ? newContent(prev) : { ...prev, ...newContent };
+      try {
+        localStorage.setItem('hk_site_content', JSON.stringify(updated));
+      } catch (err) {
+        console.error(err);
+      }
+      return updated;
+    });
+  };
+
+  const resetSiteContentToDefault = () => {
+    setSiteContent(DEFAULT_SITE_CONTENT);
+    try {
+      localStorage.removeItem('hk_site_content');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   // Save inquiries
   const addInquiry = (inquiry: OrderInquiry) => {
     setInquiries((prev) => {
@@ -342,6 +433,13 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
         updateAnnouncements,
         settings,
         updateSettings,
+        occasions,
+        updateOccasion,
+        updateOccasions,
+        resetOccasionsToDefault,
+        siteContent,
+        updateSiteContent,
+        resetSiteContentToDefault,
         inquiries,
         addInquiry,
         deleteInquiry,

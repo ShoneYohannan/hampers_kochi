@@ -3,8 +3,21 @@
 import React from 'react';
 import Image from 'next/image';
 import { Award, Feather, ShieldCheck, HeartHandshake, CheckCircle2 } from 'lucide-react';
+import { useCms } from '@/context/CmsContext';
 
 export default function BrandStory() {
+  const { siteContent } = useCms();
+  const story = siteContent?.story;
+
+  const badge = story?.badge || 'My Hampers Kochi Story';
+  const title = story?.title || 'The Threads of Yesterday';
+  const p1 = story?.p1 || 'The Arabian Sea does not forget the waves that shaped its shore, nor do we forget the late-night tea, the rustle of satin ribbons, and the shared dreams of 2010.';
+  const p2 = story?.p2 || "During my post-graduation years from 2010 to 2012, my friends and I didn't just study; we built a universe out of nothing. We were a team bound not by contracts, but by an unspoken promise to bring joy to people's milestones. Our part-time event company was an exhausting, exhilarating whirlwind. Together with my best friends, we learned the choreographies of human happiness. We saw it in the relieved smiles of hosts and the glowing eyes of guests. We were a great team—seamless, intuitive, and profoundly dedicated to the personal touch.";
+  const callout1 = story?.callout1 || 'Then, life shifted gears.';
+  const p3 = story?.p3 || 'Post-graduation demanded a permanent anchor, and we poured our collective ambition into the demanding, beautiful chaos of a full-time restaurant business. The event company slowly quieted down, its grand stages dismantled. Yet, passion is a stubborn thing. It refuses to be entirely put out. Even as the restaurant kitchen hummed, we kept a quiet sanctuary for our first love. We became the secret keepers of intimate celebrations—crafting bespoke giveaways, gentle return gifts, and deeply personal keepsakes for brides, grooms, and their emotional parents.';
+  const callout2 = story?.callout2 || 'We wrapped memories in linen and twine, unable to let go of the magic we created together.';
+  const p4 = story?.p4 || 'Then came the turning point—a gentle, persistent push from the very friends who knew my soul, and a regular customer who saw the poetry in my hands. They looked at the boxes of carefully curated joy and said, “This is who you are.”';
+  const p5 = story?.p5 || 'From that beautiful spark of encouragement came Hampers Kochi: my third venture, and my debut as a solo founder.';
   const pillars = [
     {
       icon: Award,
@@ -65,34 +78,26 @@ export default function BrandStory() {
           {/* Right: Narrative Story */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="text-[11px] uppercase tracking-[0.25em] text-[#C5A869] font-medium">
-              My Hampers Kochi Story
+              {badge}
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#0B1D15] leading-tight">
-              The Threads of Yesterday
+              {title}
             </h2>
 
             <div className="space-y-4 text-sm sm:text-base text-[#38423D] font-light leading-relaxed">
-              <p>
-                The Arabian Sea does not forget the waves that shaped its shore, nor do we forget the late-night tea, the rustle of satin ribbons, and the shared dreams of 2010.
-              </p>
-              <p>
-                During my post-graduation years from 2010 to 2012, my friends and I didn’t just study; we built a universe out of nothing. We were a team bound not by contracts, but by an unspoken promise to bring joy to people’s milestones. Our part-time event company was an exhausting, exhilarating whirlwind. Together with my best friends, we learned the choreographies of human happiness. We saw it in the relieved smiles of hosts and the glowing eyes of guests. We were a great team—seamless, intuitive, and profoundly dedicated to the personal touch.
-              </p>
+              <p>{p1}</p>
+              <p>{p2}</p>
               <p className="font-serif-luxury italic text-[#0B1D15] text-base sm:text-lg">
-                Then, life shifted gears.
+                {callout1}
               </p>
-              <p>
-                Post-graduation demanded a permanent anchor, and we poured our collective ambition into the demanding, beautiful chaos of a full-time restaurant business. The event company slowly quieted down, its grand stages dismantled. Yet, passion is a stubborn thing. It refuses to be entirely put out. Even as the restaurant kitchen hummed, we kept a quiet sanctuary for our first love. We became the secret keepers of intimate celebrations—crafting bespoke giveaways, gentle return gifts, and deeply personal keepsakes for brides, grooms, and their emotional parents.
-              </p>
+              <p>{p3}</p>
               <p className="italic text-[#183C2D]">
-                We wrapped memories in linen and twine, unable to let go of the magic we created together.
+                {callout2}
               </p>
-              <p>
-                Then came the turning point—a gentle, persistent push from the very friends who knew my soul, and a regular customer who saw the poetry in my hands. They looked at the boxes of carefully curated joy and said, &ldquo;This is who you are.&rdquo;
-              </p>
+              <p>{p4}</p>
               <p className="font-medium text-[#0B1D15]">
-                From that beautiful spark of encouragement came <strong>Hampers Kochi</strong>: my third venture, and my debut as a solo founder.
+                {p5}
               </p>
             </div>
 
