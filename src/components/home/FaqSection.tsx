@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle, MessageSquare } from 'lucide-react';
-import { useCms } from '@/context/CmsContext';
 
 interface FaqItem {
   question: string;
@@ -32,8 +31,6 @@ const FAQ_ITEMS: FaqItem[] = [
 ];
 
 export default function FaqSection() {
-  const { siteContent } = useCms();
-  const activeFaqs = siteContent?.faqs && siteContent.faqs.length > 0 ? siteContent.faqs : FAQ_ITEMS;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleFaq = (index: number) => {
@@ -61,7 +58,7 @@ export default function FaqSection() {
 
         {/* FAQ Accordion List (Top 3 questions only) */}
         <div className="max-w-4xl mx-auto space-y-4">
-          {activeFaqs.map((item, index) => {
+          {FAQ_ITEMS.map((item, index) => {
             const isOpen = openIndex === index;
             return (
               <div

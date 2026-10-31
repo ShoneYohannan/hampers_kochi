@@ -10,20 +10,14 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Supabase REST and Auth APIs
+      - name: Ping Supabase REST API
         run: |
           API_KEY="${{ secrets.SUPABASE_ANON_KEY }}"
           if [ -z "$API_KEY" ]; then
             API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InloZnZ2cG9iaGJva21qc3Bmdm9vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzMzYxNzEsImV4cCI6MjEwNzkxMjE3MX0.DPL-kC4DxncTXCWXQQMZAJY20d2tgJUKK37iyMrFrcU"
           fi
-          
-          # Ping Auth Health (always responds 200 and registers activity)
-          curl -s -i "https://yhfvvpobhbokmjspfvoo.supabase.co/auth/v1/health" \
-            -H "apikey: $API_KEY" || true
-            
-          # Ping REST Database endpoint
-          curl -s -i "https://yhfvvpobhbokmjspfvoo.supabase.co/rest/v1/products?select=id&limit=1" \
+          curl -s -f -X GET \
+            "https://yhfvvpobhbokmjspfvoo.supabase.co/rest/v1/products?select=id&limit=1" \
             -H "apikey: $API_KEY" \
-            -H "Authorization: Bearer $API_KEY" || true
-
-          echo "Supabase keep-alive pulse transmitted successfully."
+            -H "Authorization: Bearer $API_KEY"
+          echo "Supabase successfully pinged."

@@ -1,4 +1,4 @@
-import { Product, OccasionItem, SiteContent } from '@/types';
+import { Product } from '@/types';
 
 export const ALL_PRODUCTS: Product[] = [
   {
@@ -1027,7 +1027,7 @@ export const ALL_PRODUCTS: Product[] = [
   },
 ];
 
-export const OCCASIONS_DATA: OccasionItem[] = [
+export const OCCASIONS_DATA = [
   {
     title: 'Birthday Hampers',
     category: 'Birthday' as const,
@@ -1071,52 +1071,6 @@ export const OCCASIONS_DATA: OccasionItem[] = [
     itemCount: '5 Curations',
   },
 ];
-
-export const DEFAULT_SITE_CONTENT: SiteContent = {
-  hero: {
-    tagline: 'Hampers Kochi',
-    titleLine1: 'From Milestones to',
-    titleLine2: '“Thinking of You” Moments',
-    description: 'Beautiful gifting for every chapter of life. From milestone celebrations to simple “thinking of you” moments, we curate aesthetic hampers tailored to every aspect of your life. Every box is handcrafted with care, blending unique keepsakes and delightful treats to tell your story perfectly. Open for pre-orders with express delivery.',
-    stat1Value: 'Pre-Order',
-    stat1Label: 'Handcrafted Only',
-    stat2Value: 'All-India',
-    stat2Label: 'Express Delivery',
-    stat3Value: '5.0 / 5.0',
-    stat3Label: 'Google Rating',
-  },
-  story: {
-    badge: 'My Hampers Kochi Story',
-    title: 'The Threads of Yesterday',
-    p1: 'The Arabian Sea does not forget the waves that shaped its shore, nor do we forget the late-night tea, the rustle of satin ribbons, and the shared dreams of 2010.',
-    p2: "During my post-graduation years from 2010 to 2012, my friends and I didn't just study; we built a universe out of nothing. We were a team bound not by contracts, but by an unspoken promise to bring joy to people's milestones. Our part-time event company was an exhausting, exhilarating whirlwind. Together with my best friends, we learned the choreographies of human happiness. We saw it in the relieved smiles of hosts and the glowing eyes of guests. We were a great team—seamless, intuitive, and profoundly dedicated to the personal touch.",
-    callout1: 'Then, life shifted gears.',
-    p3: 'Post-graduation demanded a permanent anchor, and we poured our collective ambition into the demanding, beautiful chaos of a full-time restaurant business. The event company slowly quieted down, its grand stages dismantled. Yet, passion is a stubborn thing. It refuses to be entirely put out. Even as the restaurant kitchen hummed, we kept a quiet sanctuary for our first love. We became the secret keepers of intimate celebrations—crafting bespoke giveaways, gentle return gifts, and deeply personal keepsakes for brides, grooms, and their emotional parents.',
-    callout2: 'We wrapped memories in linen and twine, unable to let go of the magic we created together.',
-    p4: 'Then came the turning point—a gentle, persistent push from the very friends who knew my soul, and a regular customer who saw the poetry in my hands. They looked at the boxes of carefully curated joy and said, “This is who you are.”',
-    p5: 'From that beautiful spark of encouragement came Hampers Kochi: my third venture, and my debut as a solo founder.',
-  },
-  faqs: [
-    {
-      category: 'Curation & Keepsakes',
-      question: 'What makes Hampers Kochi hampers unique and distinct from standard gift boxes?',
-      answer:
-        'Every hamper is curated and hand-assembled in our Kochi store. Rather than generic mass-market items, we curate heirloom-grade Kerala brassware (like handmade Vilakkus and Urulis), GI-tagged Balaramapuram Kasavu handlooms, single-origin high-grown Nilgiri teas, Wayanad artisanal chocolates, and handwritten calligraphy on handmade cotton paper, individually stamped with hot sealing wax.',
-    },
-    {
-      category: 'Delivery & Shipping',
-      question: 'What are your delivery timelines within Kochi and across India?',
-      answer:
-        'All Hampers Kochi creations are handcrafted on a pre-order basis to ensure optimal freshness and artisanal perfection. For Kochi and Ernakulam, pre-orders are hand-delivered upon completion or your preferred scheduled celebration date. For all-India delivery (including Bengaluru, Mumbai, Delhi NCR, Chennai, and Hyderabad), we dispatch via premium priority air express with thermal insulation and gel ice packs, arriving within 2 to 4 business days.',
-    },
-    {
-      category: 'Personalization',
-      question: 'Can I personalize my hamper with custom calligraphy notes and specific items?',
-      answer:
-        'Yes, each hamper includes a complimentary personalized wax-sealed parchment note written by our in-house calligrapher with your custom message (up to 50 characters). You can also customize trunk ribbons, brass keepsakes, tea blends, or add custom keepsakes by contacting our concierge on WhatsApp at +91 98460 02241.',
-    },
-  ],
-};
 
 export const BUILDER_ITEMS = {
   boxes: [
