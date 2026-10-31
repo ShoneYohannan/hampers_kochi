@@ -30,9 +30,10 @@ import {
   ExternalLink,
   X,
   Filter,
-  Sparkles,
+  Layers,
   Layout,
   ArrowUpRight,
+  UploadCloud,
   Image as ImageIcon
 } from 'lucide-react';
 import { useCms } from '@/context/CmsContext';
@@ -68,6 +69,51 @@ const PRESET_IMAGES = [
   '/images/1002015334.jpg.jpeg',
   '/images/1002090346.jpg.jpeg',
 ];
+
+/**
+ * Browser-side image downscaler & compressor.
+ * Reads camera/device photos, resizes to maxDimension (e.g. 1000px) on HTML5 canvas,
+ * and encodes to compact JPEG data URL for instant cloud persistence & fast page loading.
+ */
+function compressImageFile(file: File, maxDimension = 1000, quality = 0.82): Promise<string> {
+  return new Promise((resolve, reject) => {
+    if (!file.type.startsWith('image/')) {
+      reject(new Error('Please select an image file (JPG, PNG, WEBP)'));
+      return;
+    }
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('Failed to read image file'));
+    reader.onload = (e) => {
+      const img = document.createElement('img');
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > maxDimension || height > maxDimension) {
+          if (width > height) {
+            height = Math.round((height * maxDimension) / width);
+            width = maxDimension;
+          } else {
+            width = Math.round((width * maxDimension) / height);
+            height = maxDimension;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          resolve(e.target?.result as string);
+          return;
+        }
+        ctx.drawImage(img, 0, 0, width, height);
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        resolve(dataUrl);
+      };
+      img.onerror = () => reject(new Error('Could not parse image'));
+      img.src = e.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 export default function CmsPage() {
   const {
@@ -165,6 +211,11 @@ export default function CmsPage() {
   const [formOccasionDescription, setFormOccasionDescription] = useState('');
   const [formOccasionImage, setFormOccasionImage] = useState(PRESET_IMAGES[0]);
   const [formOccasionItemCount, setFormOccasionItemCount] = useState('6 Curations');
+
+  // Image Upload Processing States
+  const [isProcessingOccasionImage, setIsProcessingOccasionImage] = useState(false);
+  const [isProcessingHeroImage, setIsProcessingHeroImage] = useState(false);
+  const [isProcessingProductImage, setIsProcessingProductImage] = useState(false);
 
   // Announcement state for editing
   const [tempAnnouncements, setTempAnnouncements] = useState<string[]>(announcements);
@@ -347,6 +398,55 @@ export default function CmsPage() {
     setHeroImages(updated);
     updateHero({ images: updated });
     toast.info('Hero image removed.');
+  };
+
+  // Image Upload Handlers for Device Photos
+  const handleOccasionImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      setIsProcessingOccasionImage(true);
+      const dataUrl = await compressImageFile(file, 1000, 0.82);
+      setFormOccasionImage(dataUrl);
+      toast.success('Photo uploaded from device! Preview updated below.');
+    } catch (err: any) {
+      toast.error(err?.message || 'Failed to upload photo');
+    } finally {
+      setIsProcessingOccasionImage(false);
+      e.target.value = '';
+    }
+  };
+
+  const handleHeroImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      setIsProcessingHeroImage(true);
+      const dataUrl = await compressImageFile(file, 1200, 0.82);
+      setNewHeroImgUrl(dataUrl);
+      toast.success('Hero photo loaded from device! Click "Add Image Slide" to insert.');
+    } catch (err: any) {
+      toast.error(err?.message || 'Failed to upload photo');
+    } finally {
+      setIsProcessingHeroImage(false);
+      e.target.value = '';
+    }
+  };
+
+  const handleProductImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      setIsProcessingProductImage(true);
+      const dataUrl = await compressImageFile(file, 1000, 0.82);
+      setFormImage(dataUrl);
+      toast.success('Hamper photo uploaded from device!');
+    } catch (err: any) {
+      toast.error(err?.message || 'Failed to upload photo');
+    } finally {
+      setIsProcessingProductImage(false);
+      e.target.value = '';
+    }
   };
 
   // Occasions Section Handlers
@@ -554,7 +654,7 @@ export default function CmsPage() {
           {[
             { id: 'products', label: `Hampers Catalog (${products.length})`, icon: Package },
             { id: 'hero', label: 'Front Page: Hero Banner', icon: Layout },
-            { id: 'occasions', label: `Front Page: Occasions (${occasions.length})`, icon: Sparkles },
+            { id: 'occasions', label: `Front Page: Occasions (${occasions.length})`, icon: Layers },
             { id: 'announcements', label: 'Announcements Bar', icon: Bell },
             { id: 'settings', label: 'Store & Concierge', icon: Settings },
             { id: 'inquiries', label: `WhatsApp Inquiries (${inquiries.length})`, icon: ClipboardList },
@@ -666,7 +766,13 @@ export default function CmsPage() {
                       <tr key={p.id} className="hover:bg-[#183C2D]/50 transition-colors">
                         <td className="py-3 px-4 flex items-center gap-3">
                           <div className="relative w-12 h-12 rounded overflow-hidden bg-[#0B1D15] shrink-0 border border-[#C5A869]/20">
-                            <Image src={p.image} alt={p.name} fill className="object-cover" />
+                            <Image
+                              src={p.image}
+                              alt={p.name}
+                              fill
+                              unoptimized={typeof p.image === 'string' && (p.image.startsWith('data:') || p.image.startsWith('http'))}
+                              className="object-cover"
+                            />
                           </div>
                           <div>
                             <div className="font-serif-luxury text-sm sm:text-base text-white font-medium">
@@ -831,18 +937,43 @@ export default function CmsPage() {
 
               {/* Add New Slide Form */}
               <div className="p-4 rounded-lg bg-[#0B1D15] border border-[#C5A869]/30 space-y-3 text-xs">
-                <div className="font-medium text-white flex items-center gap-1.5">
-                  <Plus className="w-4 h-4 text-[#C5A869]" />
-                  <span>Add New Image to Slideshow</span>
+                <div className="font-medium text-white flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <Plus className="w-4 h-4 text-[#C5A869]" />
+                    <span>Add New Image to Slideshow</span>
+                  </div>
+                  {newHeroImgUrl.startsWith('data:') && (
+                    <span className="text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+                      ✓ Device photo loaded
+                    </span>
+                  )}
+                </div>
+
+                {/* Device Photo Upload Button */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <label className={`px-3.5 py-2 rounded bg-[#183C2D] hover:bg-[#23523E] border border-[#C5A869]/50 text-white flex items-center gap-2 cursor-pointer transition-all shadow-sm ${isProcessingHeroImage ? 'opacity-50 pointer-events-none' : ''}`}>
+                    <UploadCloud className="w-4 h-4 text-[#C5A869]" />
+                    <span className="font-semibold text-xs text-[#EFE9DC]">
+                      {isProcessingHeroImage ? 'Optimizing Photo...' : 'Upload Photo from Device (Phone/PC)'}
+                    </span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      disabled={isProcessingHeroImage}
+                      onChange={handleHeroImageUpload}
+                    />
+                  </label>
+                  <span className="text-[11px] text-[#EFE9DC]/50">or select preset / URL below:</span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[#EFE9DC]/70 mb-1">Image URL (or select from presets below)</label>
+                    <label className="block text-[#EFE9DC]/70 mb-1">Image URL or Source</label>
                     <input
                       type="text"
                       placeholder="e.g. /images/front.jpg or external https://..."
-                      value={newHeroImgUrl}
+                      value={newHeroImgUrl.startsWith('data:') ? 'Custom Photo Uploaded from Device' : newHeroImgUrl}
                       onChange={(e) => setNewHeroImgUrl(e.target.value)}
                       className="w-full bg-[#10291E] border border-[#C5A869]/30 rounded p-2 text-white"
                     />
@@ -904,7 +1035,13 @@ export default function CmsPage() {
                       className="flex items-center gap-3 p-3 rounded-lg bg-[#0B1D15] border border-[#C5A869]/20 group"
                     >
                       <div className="relative w-16 h-16 rounded overflow-hidden shrink-0 bg-[#10291E] border border-[#C5A869]/30">
-                        <Image src={slide.src} alt={slide.alt || 'Slide'} fill className="object-cover" />
+                        <Image
+                          src={slide.src}
+                          alt={slide.alt || 'Slide'}
+                          fill
+                          unoptimized={typeof slide.src === 'string' && (slide.src.startsWith('data:') || slide.src.startsWith('http'))}
+                          className="object-cover"
+                        />
                       </div>
                       <div className="flex-1 min-w-0 text-xs">
                         <div className="text-[10px] uppercase tracking-wider text-[#C5A869] font-medium">
@@ -939,7 +1076,7 @@ export default function CmsPage() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
               <div>
                 <div className="text-[10px] uppercase tracking-[0.25em] text-[#C5A869] font-medium mb-1 flex items-center gap-2">
-                  <Sparkles className="w-3.5 h-3.5" />
+                  <Layers className="w-3.5 h-3.5" />
                   Homepage 6-Card Grid Section
                 </div>
                 <h2 className="text-xl sm:text-2xl font-serif-luxury text-[#FCFBF8]">
@@ -973,6 +1110,7 @@ export default function CmsPage() {
                       src={occ.image || PRESET_IMAGES[0]}
                       alt={occ.title}
                       fill
+                      unoptimized={typeof occ.image === 'string' && (occ.image.startsWith('data:') || occ.image.startsWith('http'))}
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D15] via-[#0B1D15]/40 to-transparent" />
@@ -1346,31 +1484,63 @@ export default function CmsPage() {
                 />
               </div>
 
-              {/* Image Picker */}
-              <div>
-                <label className="block text-[#EFE9DC]/80 mb-1.5 font-medium">
-                  Card Cover Photo (Enter URL or Select Preset)
-                </label>
-                <input
-                  type="text"
-                  value={formOccasionImage}
-                  onChange={(e) => setFormOccasionImage(e.target.value)}
-                  className="w-full bg-[#0B1D15] border border-[#C5A869]/30 rounded p-2 text-white focus:outline-none focus:border-[#C5A869] mb-2"
-                />
+              {/* Image Picker with Direct Device Upload */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="block text-[#EFE9DC]/80 font-medium">
+                    Card Cover Photo *
+                  </label>
+                  {formOccasionImage.startsWith('data:') && (
+                    <span className="text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+                      ✓ Device photo attached
+                    </span>
+                  )}
+                </div>
 
-                <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+                {/* Upload Button from Device */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <label className={`px-4 py-2.5 rounded bg-[#183C2D] hover:bg-[#23523E] border border-[#C5A869]/50 text-white flex items-center gap-2 cursor-pointer transition-all shadow-sm ${isProcessingOccasionImage ? 'opacity-50 pointer-events-none' : ''}`}>
+                    <UploadCloud className="w-4 h-4 text-[#C5A869]" />
+                    <span className="font-semibold text-xs text-[#EFE9DC]">
+                      {isProcessingOccasionImage ? 'Optimizing Photo...' : 'Upload Photo from Device (Phone/PC)'}
+                    </span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      disabled={isProcessingOccasionImage}
+                      onChange={handleOccasionImageUpload}
+                    />
+                  </label>
+                  <span className="text-[11px] text-[#EFE9DC]/50">or select from catalog presets:</span>
+                </div>
+
+                {/* Preset image thumbnails */}
+                <div className="flex items-center gap-2 overflow-x-auto py-1 no-scrollbar">
                   {PRESET_IMAGES.map((img, i) => (
                     <button
                       key={i}
                       type="button"
                       onClick={() => setFormOccasionImage(img)}
-                      className={`relative w-14 h-14 rounded overflow-hidden shrink-0 border-2 transition-all ${
-                        formOccasionImage === img ? 'border-[#C5A869] scale-105' : 'border-[#183C2D] opacity-60 hover:opacity-100'
+                      className={`relative w-14 h-14 rounded overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
+                        formOccasionImage === img ? 'border-[#C5A869] ring-2 ring-[#C5A869]/40 scale-105' : 'border-[#183C2D] opacity-60 hover:opacity-100'
                       }`}
+                      title={`Select preset ${i + 1}`}
                     >
                       <Image src={img} alt="Preset thumbnail" fill className="object-cover" />
                     </button>
                   ))}
+                </div>
+
+                {/* Direct URL input */}
+                <div className="pt-1">
+                  <input
+                    type="text"
+                    placeholder="Or enter image URL (/images/... or https://...)"
+                    value={formOccasionImage.startsWith('data:') ? 'Custom Photo Uploaded from Device (Ready to Save)' : formOccasionImage}
+                    onChange={(e) => setFormOccasionImage(e.target.value)}
+                    className="w-full bg-[#0B1D15] border border-[#C5A869]/20 rounded p-2 text-xs text-[#EFE9DC]/80 focus:outline-none focus:border-[#C5A869]"
+                  />
                 </div>
               </div>
 
@@ -1384,6 +1554,7 @@ export default function CmsPage() {
                     src={formOccasionImage || PRESET_IMAGES[0]}
                     alt="Preview"
                     fill
+                    unoptimized={typeof formOccasionImage === 'string' && (formOccasionImage.startsWith('data:') || formOccasionImage.startsWith('http'))}
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D15] via-[#0B1D15]/40 to-transparent opacity-85" />
@@ -1552,16 +1723,41 @@ export default function CmsPage() {
               </div>
 
               {/* Image Picker */}
-              <div>
-                <label className="block text-[#EFE9DC]/75 mb-1.5 font-medium">
-                  Primary Hamper Image (Pick from Archive or Enter URL)
-                </label>
-                <div className="flex gap-2 mb-2">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="block text-[#EFE9DC]/75 font-medium">
+                    Primary Hamper Image *
+                  </label>
+                  {formImage.startsWith('data:') && (
+                    <span className="text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+                      ✓ Device photo loaded
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  <label className={`px-3.5 py-2 rounded bg-[#183C2D] hover:bg-[#23523E] border border-[#C5A869]/50 text-white flex items-center gap-2 cursor-pointer transition-all shadow-sm ${isProcessingProductImage ? 'opacity-50 pointer-events-none' : ''}`}>
+                    <UploadCloud className="w-4 h-4 text-[#C5A869]" />
+                    <span className="font-semibold text-xs text-[#EFE9DC]">
+                      {isProcessingProductImage ? 'Optimizing Photo...' : 'Upload Photo from Device (Phone/PC)'}
+                    </span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      disabled={isProcessingProductImage}
+                      onChange={handleProductImageUpload}
+                    />
+                  </label>
+                  <span className="text-[11px] text-[#EFE9DC]/50">or select preset / enter path:</span>
+                </div>
+
+                <div className="flex gap-2">
                   <input
                     type="text"
-                    value={formImage}
+                    value={formImage.startsWith('data:') ? 'Custom Photo Uploaded from Device' : formImage}
                     onChange={(e) => setFormImage(e.target.value)}
-                    className="flex-1 bg-[#0B1D15] border border-[#C5A869]/30 rounded p-2 text-white focus:outline-none focus:border-[#C5A869]"
+                    className="flex-1 bg-[#0B1D15] border border-[#C5A869]/30 rounded p-2 text-xs text-white focus:outline-none focus:border-[#C5A869]"
                   />
                 </div>
 

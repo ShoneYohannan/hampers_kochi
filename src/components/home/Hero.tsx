@@ -49,6 +49,7 @@ export default function Hero({ onOpenBuilder }: HeroProps) {
           alt={activeImage.alt || 'The Signature Kerala Kasavu & Jasmine Grand Festive Hamper with Brass Keepsake and Artisanal Delicacies'}
           fill
           priority
+          unoptimized={typeof activeImage.src === 'string' && (activeImage.src.startsWith('data:') || activeImage.src.startsWith('http'))}
           sizes="(max-width: 1024px) 100vw, 55vw"
           className={`object-cover transition-opacity duration-700 ease-in-out ${fading ? 'opacity-0' : 'opacity-100'}`}
           style={{ objectPosition: activeImage.pos || 'center 40%' }}

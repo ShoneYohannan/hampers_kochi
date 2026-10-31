@@ -47,6 +47,7 @@ export default function OccasionsGrid({ onSelectOccasion }: OccasionsGridProps) 
                   src={item.image || '/images/front.jpg'}
                   alt={`${item.title} Luxury Gift Hamper Collection in Kochi`}
                   fill
+                  unoptimized={typeof item.image === 'string' && (item.image.startsWith('data:') || item.image.startsWith('http'))}
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />

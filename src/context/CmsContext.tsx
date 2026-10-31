@@ -70,7 +70,7 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
       if (storedProducts) {
         const parsed = JSON.parse(storedProducts);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setProducts(parsed);
+          setProducts(parsed.filter((p: any) => !p.id?.startsWith('site-')));
         }
       }
 
@@ -116,7 +116,7 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
         setSettings((prev) => ({ ...prev, ...parsedSettings }));
       }
 
-      // Load Occasions
+      // Load Occasions from localStorage
       const storedOccasions = localStorage.getItem('hk_occasions');
       if (storedOccasions) {
         try {
@@ -127,7 +127,7 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
         } catch {}
       }
 
-      // Load Hero
+      // Load Hero from localStorage
       const storedHero = localStorage.getItem('hk_hero_data');
       if (storedHero) {
         try {
@@ -152,8 +152,8 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
       setIsLoaded(true);
     }
 
-    // Fetch live products from Supabase
-    const fetchSupabaseProducts = async () => {
+    // Fetch live products AND site configs from Supabase
+    const fetchSupabaseData = async () => {
       try {
         const supabase = createClient();
         const { data, error } = await supabase
@@ -162,42 +162,72 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
           .order('created_at', { ascending: false });
 
         if (!error && data && data.length > 0) {
-          const formatted: Product[] = data.map((item: any) => ({
-            id: item.id,
-            name: item.name,
-            slug: item.slug,
-            subtitle: item.subtitle || '',
-            price: Number(item.price),
-            originalPrice: item.originalPrice ? Number(item.originalPrice) : undefined,
-            rating: item.rating ? Number(item.rating) : 4.9,
-            reviewsCount: item.reviewsCount ? Number(item.reviewsCount) : 1,
-            image: item.image,
-            galleryImages: item.galleryImages && item.galleryImages.length > 0 ? item.galleryImages : [item.image],
-            category: item.category,
-            tags: item.tags || [],
-            description: item.description || '',
-            detailedDescription: item.detailedDescription || item.description || '',
-            contents: item.contents || [],
-            boxType: item.boxType || '',
-            dimensions: item.dimensions || '',
-            weight: item.weight || '',
-            deliveryEstimate: item.deliveryEstimate || '',
-            isBestseller: !!item.isBestseller,
-            isNewArrival: !!item.isNewArrival,
-            isLimitedEdition: !!item.isLimitedEdition,
-          }));
+          // 1. Process custom configs (occasions & hero)
+          data.forEach((item: any) => {
+            if (item.id === 'site-occasions' && item.description) {
+              try {
+                const parsed = JSON.parse(item.description);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                  setOccasions(parsed);
+                  localStorage.setItem('hk_occasions', JSON.stringify(parsed));
+                }
+              } catch (e) {}
+            }
+            if (item.id === 'site-hero' && item.description) {
+              try {
+                const parsed = JSON.parse(item.description);
+                if (parsed && typeof parsed === 'object') {
+                  setHero((prev) => ({
+                    ...prev,
+                    ...parsed,
+                    images: Array.isArray(parsed.images) && parsed.images.length > 0 ? parsed.images : prev.images,
+                  }));
+                  localStorage.setItem('hk_hero_data', JSON.stringify(parsed));
+                }
+              } catch (e) {}
+            }
+          });
 
-          setProducts(formatted);
-          try {
-            localStorage.setItem('atelier_products', JSON.stringify(formatted));
-          } catch {}
+          // 2. Process real products (excluding internal config rows)
+          const realProducts = data.filter((item: any) => !item.id?.startsWith('site-'));
+          if (realProducts.length > 0) {
+            const formatted: Product[] = realProducts.map((item: any) => ({
+              id: item.id,
+              name: item.name,
+              slug: item.slug,
+              subtitle: item.subtitle || '',
+              price: Number(item.price),
+              originalPrice: item.originalPrice ? Number(item.originalPrice) : undefined,
+              rating: item.rating ? Number(item.rating) : 4.9,
+              reviewsCount: item.reviewsCount ? Number(item.reviewsCount) : 1,
+              image: item.image,
+              galleryImages: item.galleryImages && item.galleryImages.length > 0 ? item.galleryImages : [item.image],
+              category: item.category,
+              tags: item.tags || [],
+              description: item.description || '',
+              detailedDescription: item.detailedDescription || item.description || '',
+              contents: item.contents || [],
+              boxType: item.boxType || '',
+              dimensions: item.dimensions || '',
+              weight: item.weight || '',
+              deliveryEstimate: item.deliveryEstimate || '',
+              isBestseller: !!item.isBestseller,
+              isNewArrival: !!item.isNewArrival,
+              isLimitedEdition: !!item.isLimitedEdition,
+            }));
+
+            setProducts(formatted);
+            try {
+              localStorage.setItem('atelier_products', JSON.stringify(formatted));
+            } catch {}
+          }
         }
       } catch (err) {
-        console.warn('Supabase products fetch fallback:', err);
+        console.warn('Supabase fetch fallback:', err);
       }
     };
 
-    fetchSupabaseProducts();
+    fetchSupabaseData();
     // Background lightweight ping to keep Supabase awake
     try {
       fetch('/api/cron/keepalive').catch(() => {});
@@ -330,13 +360,15 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  // Save occasions
-  const updateOccasion = (index: number, updated: Partial<OccasionItem>) => {
+  // Save Occasions with Supabase Cloud Sync
+  const updateOccasion = async (index: number, updated: Partial<OccasionItem>) => {
+    let nextList: OccasionItem[] = [];
     setOccasions((prev) => {
       const next = [...prev];
       if (index >= 0 && index < next.length) {
         next[index] = { ...next[index], ...updated };
       }
+      nextList = next;
       try {
         localStorage.setItem('hk_occasions', JSON.stringify(next));
       } catch (err) {
@@ -344,30 +376,82 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
       }
       return next;
     });
+
+    try {
+      const supabase = createClient();
+      await supabase.from('products').upsert({
+        id: 'site-occasions',
+        name: '__SITE_OCCASIONS__',
+        slug: 'site-occasions',
+        subtitle: 'Occasions Configuration',
+        price: 0,
+        category: 'All',
+        image: '',
+        galleryImages: [],
+        tags: ['__INTERNAL__'],
+        description: JSON.stringify(nextList),
+        detailedDescription: '',
+        contents: [],
+        boxType: '',
+        dimensions: '',
+        weight: '',
+        deliveryEstimate: '',
+      });
+    } catch (err) {
+      console.error('Supabase updateOccasion sync error:', err);
+    }
   };
 
-  const updateOccasions = (list: OccasionItem[]) => {
+  const updateOccasions = async (list: OccasionItem[]) => {
     setOccasions(list);
     try {
       localStorage.setItem('hk_occasions', JSON.stringify(list));
     } catch (err) {
       console.error(err);
     }
+
+    try {
+      const supabase = createClient();
+      await supabase.from('products').upsert({
+        id: 'site-occasions',
+        name: '__SITE_OCCASIONS__',
+        slug: 'site-occasions',
+        subtitle: 'Occasions Configuration',
+        price: 0,
+        category: 'All',
+        image: '',
+        galleryImages: [],
+        tags: ['__INTERNAL__'],
+        description: JSON.stringify(list),
+        detailedDescription: '',
+        contents: [],
+        boxType: '',
+        dimensions: '',
+        weight: '',
+        deliveryEstimate: '',
+      });
+    } catch (err) {
+      console.error('Supabase updateOccasions sync error:', err);
+    }
   };
 
-  const resetOccasionsToDefault = () => {
+  const resetOccasionsToDefault = async () => {
     setOccasions(OCCASIONS_DATA);
     try {
       localStorage.removeItem('hk_occasions');
+      const supabase = createClient();
+      await supabase.from('products').delete().eq('id', 'site-occasions');
     } catch (err) {
       console.error(err);
     }
   };
 
-  // Save Hero Data
-  const updateHero = (updated: Partial<HeroData>) => {
+  // Save Hero Data with Supabase Cloud Sync
+  const updateHero = async (updated: Partial<HeroData>) => {
+    let nextHero: HeroData = DEFAULT_HERO_DATA;
     setHero((prev) => {
       const next = { ...prev, ...updated };
+      nextHero = next;
       try {
         localStorage.setItem('hk_hero_data', JSON.stringify(next));
       } catch (err) {
@@ -375,12 +459,38 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
       }
       return next;
     });
+
+    try {
+      const supabase = createClient();
+      await supabase.from('products').upsert({
+        id: 'site-hero',
+        name: '__SITE_HERO__',
+        slug: 'site-hero',
+        subtitle: 'Hero Banner Configuration',
+        price: 0,
+        category: 'All',
+        image: '',
+        galleryImages: [],
+        tags: ['__INTERNAL__'],
+        description: JSON.stringify(nextHero),
+        detailedDescription: '',
+        contents: [],
+        boxType: '',
+        dimensions: '',
+        weight: '',
+        deliveryEstimate: '',
+      });
+    } catch (err) {
+      console.error('Supabase updateHero sync error:', err);
+    }
   };
 
-  const resetHeroToDefault = () => {
+  const resetHeroToDefault = async () => {
     setHero(DEFAULT_HERO_DATA);
     try {
       localStorage.removeItem('hk_hero_data');
+      const supabase = createClient();
+      await supabase.from('products').delete().eq('id', 'site-hero');
     } catch (err) {
       console.error(err);
     }
